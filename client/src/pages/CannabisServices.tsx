@@ -102,6 +102,27 @@ export default function CannabisServices() {
         </div>
       </section>
 
+      <section className="py-16 md:py-20 bg-brand-dark">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-green/20 text-brand-green text-sm font-medium rounded-full mb-4">
+            Passend dazu
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-4">
+            KI-Enablement für Ihr Team
+          </h2>
+          <p className="text-white/70 mb-8">
+            Ergänzen Sie Ihre Cannabis-Beratung mit unseren KI-Workshops für Vertrieb und Business Development.
+            Copilot & ChatGPT praxisnah einführen – compliance-bewusst und messbar.
+          </p>
+          <Link href="/leistungen/ki-sales-bd">
+            <Button className="bg-brand-green hover:bg-brand-green/90 text-white">
+              KI-Workshops entdecken
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </Link>
+        </div>
+      </section>
+
       <CTABand
         title="Cannabis-Beratung anfragen"
         subtitle="Besprechen Sie Ihr Vorhaben mit uns – unverbindlich und vertraulich."

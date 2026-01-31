@@ -33,7 +33,7 @@ const contactSchema = z.object({
   firma: z.string().min(1, "Bitte geben Sie Ihre Firma an"),
   email: z.string().email("Bitte geben Sie eine gültige E-Mail-Adresse ein"),
   telefon: z.string().optional(),
-  thema: z.enum(["cannabis", "medizintechnik", "allgemein"], {
+  thema: z.enum(["cannabis", "medizintechnik", "ki-workshop", "allgemein"], {
     required_error: "Bitte wählen Sie ein Thema",
   }),
   nachricht: z.string().min(10, "Nachricht muss mindestens 10 Zeichen lang sein"),
@@ -129,7 +129,6 @@ export default function Kontakt() {
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                       <input
                         type="text"
-                        name="honeypot"
                         {...form.register("honeypot")}
                         style={{ display: "none" }}
                         tabIndex={-1}
@@ -230,6 +229,7 @@ export default function Kontakt() {
                               <SelectContent>
                                 <SelectItem value="cannabis">Medizinisches Cannabis</SelectItem>
                                 <SelectItem value="medizintechnik">Medizintechnik</SelectItem>
+                                <SelectItem value="ki-workshop">KI Workshop (Copilot & ChatGPT)</SelectItem>
                                 <SelectItem value="allgemein">Allgemeine Anfrage</SelectItem>
                               </SelectContent>
                             </Select>

@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
-import { ArrowRight, Leaf, Stethoscope } from "lucide-react";
+import { ArrowRight, Leaf, Stethoscope, Bot } from "lucide-react";
 
 export default function Leistungen() {
   return (
@@ -114,6 +114,58 @@ export default function Leistungen() {
               </Link>
             </Card>
           </div>
+
+          <Card
+            className="p-8 lg:p-10 mt-8 bg-gradient-to-r from-brand-dark to-brand-dark/95 border-brand-green"
+            data-testid="card-ki-overview"
+          >
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-green/20 text-brand-green text-sm font-medium rounded-full mb-4">
+                  <Bot className="w-4 h-4" />
+                  Querschnittsleistung
+                </div>
+                <h2 className="text-2xl font-bold text-white mb-4">
+                  KI für Sales & Business Development
+                </h2>
+                <p className="text-white/70 mb-6 leading-relaxed">
+                  Praktische Einführung in Copilot & ChatGPT für Vertriebsteams. 
+                  Workshops, Use-Cases und Enablement – praxisnah, messbar, compliance-bewusst.
+                </p>
+                <p className="text-sm text-brand-green mb-6">
+                  Diese Leistung ist unabhängig vom Fachbereich buchbar und kombinierbar 
+                  mit unseren Cannabis- und Medizintechnik-Beratungen.
+                </p>
+                <Link href="/leistungen/ki-sales-bd">
+                  <Button
+                    className="bg-brand-green hover:bg-brand-green/90 text-white"
+                    data-testid="button-ki-details"
+                  >
+                    Alle Details ansehen
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-4 bg-white/10 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-brand-green mb-1">2h</div>
+                  <div className="text-xs text-white/70">Kickstart Workshop</div>
+                </div>
+                <div className="p-4 bg-white/10 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-brand-green mb-1">½ Tag</div>
+                  <div className="text-xs text-white/70">Team-Workshop</div>
+                </div>
+                <div className="p-4 bg-white/10 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-brand-green mb-1">4 Wo.</div>
+                  <div className="text-xs text-white/70">Enablement</div>
+                </div>
+                <div className="p-4 bg-white/10 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-brand-green mb-1">20+</div>
+                  <div className="text-xs text-white/70">Prompt-Vorlagen</div>
+                </div>
+              </div>
+            </div>
+          </Card>
         </div>
       </section>
 

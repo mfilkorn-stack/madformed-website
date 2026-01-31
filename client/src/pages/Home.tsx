@@ -6,7 +6,7 @@ import { SEO } from "@/components/SEO";
 import { HeroSlider } from "@/components/HeroSlider";
 import { benefits, workProcess } from "@/content/company";
 import { companyLogos } from "@/content/references";
-import { ArrowRight, Leaf, Stethoscope, CheckCircle2, AlertTriangle, Building2 } from "lucide-react";
+import { ArrowRight, Leaf, Stethoscope, CheckCircle2, AlertTriangle, Building2, Bot } from "lucide-react";
 
 export default function Home() {
   return (
@@ -21,25 +21,25 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             title="Unsere Beratungsschwerpunkte"
-            subtitle="Zwei Branchen, ein Ansatz: strukturierte Beratung für regulierte Märkte"
+            subtitle="Drei Leistungsbereiche für Ihren Erfolg"
           />
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             <Link href="/leistungen/medizinisches-cannabis">
               <Card
-                className="p-8 bg-brand-light border-brand-grey/20 hover:border-brand-green transition-colors cursor-pointer group"
+                className="p-6 lg:p-8 bg-brand-light border-brand-grey/20 hover:border-brand-green transition-colors cursor-pointer group h-full"
                 data-testid="card-cannabis"
               >
-                <div className="w-16 h-16 bg-brand-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-green/20 transition-colors">
-                  <Leaf className="w-8 h-8 text-brand-green" />
+                <div className="w-14 h-14 bg-brand-green/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-brand-green/20 transition-colors">
+                  <Leaf className="w-7 h-7 text-brand-green" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-brand-dark mb-3">
+                <h3 className="text-lg md:text-xl font-bold text-brand-dark mb-3">
                   Medizinisches Cannabis
                 </h3>
-                <p className="text-brand-dark/70 mb-4">
+                <p className="text-brand-dark/70 mb-4 text-sm">
                   Von der Strategie bis zur Supply Chain: Beratung für Hersteller, 
                   Importeure, Großhändler und Apothekennetzwerke.
                 </p>
-                <span className="inline-flex items-center text-brand-green font-medium">
+                <span className="inline-flex items-center text-brand-green font-medium text-sm">
                   Mehr erfahren
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </span>
@@ -48,20 +48,45 @@ export default function Home() {
 
             <Link href="/leistungen/medizintechnik">
               <Card
-                className="p-8 bg-brand-light border-brand-grey/20 hover:border-brand-green transition-colors cursor-pointer group"
+                className="p-6 lg:p-8 bg-brand-light border-brand-grey/20 hover:border-brand-green transition-colors cursor-pointer group h-full"
                 data-testid="card-medtech"
               >
-                <div className="w-16 h-16 bg-brand-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-green/20 transition-colors">
-                  <Stethoscope className="w-8 h-8 text-brand-green" />
+                <div className="w-14 h-14 bg-brand-green/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-brand-green/20 transition-colors">
+                  <Stethoscope className="w-7 h-7 text-brand-green" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-brand-dark mb-3">
+                <h3 className="text-lg md:text-xl font-bold text-brand-dark mb-3">
                   Medizintechnik
                 </h3>
-                <p className="text-brand-dark/70 mb-4">
+                <p className="text-brand-dark/70 mb-4 text-sm">
                   Go-to-Market, Prozessoptimierung und Sales Enablement für 
                   Medizintechnik-Unternehmen.
                 </p>
-                <span className="inline-flex items-center text-brand-green font-medium">
+                <span className="inline-flex items-center text-brand-green font-medium text-sm">
+                  Mehr erfahren
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Card>
+            </Link>
+
+            <Link href="/leistungen/ki-sales-bd">
+              <Card
+                className="p-6 lg:p-8 bg-gradient-to-br from-brand-dark to-brand-dark/90 border-brand-green hover:border-brand-green/80 transition-colors cursor-pointer group h-full"
+                data-testid="card-ki"
+              >
+                <div className="inline-flex items-center gap-1 px-2 py-1 bg-brand-green/20 text-brand-green text-xs font-medium rounded mb-4">
+                  Neu
+                </div>
+                <div className="w-14 h-14 bg-brand-green/20 rounded-xl flex items-center justify-center mb-5 group-hover:bg-brand-green/30 transition-colors">
+                  <Bot className="w-7 h-7 text-brand-green" />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold text-white mb-3">
+                  KI für Sales & BD
+                </h3>
+                <p className="text-white/70 mb-4 text-sm">
+                  Copilot & ChatGPT praktisch einführen: Workshops und 
+                  Enablement für Vertriebsteams.
+                </p>
+                <span className="inline-flex items-center text-brand-green font-medium text-sm">
                   Mehr erfahren
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </span>
