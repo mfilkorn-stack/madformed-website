@@ -1,0 +1,141 @@
+Erstelle eine moderne, schnelle, SEO-optimierte Website für MadforMed GmbH (Bonner Straße 12, 51371 Leverkusen, Deutschland) mit Next.js (App Router) + TypeScript + Tailwind. Die Firma bietet Beratung in medizinischem Cannabis und Medizintechnik. Zusätzlich gibt es eine querschnittliche Leistung, die für beide Bereiche gilt:
+
+„Praktische Einführung von KI-Modellen (Copilot & ChatGPT) – Schwerpunkt Sales & Business Development“.
+
+1) Tech-Stack
+	•	Next.js (App Router) + TypeScript
+	•	Tailwind CSS (clean, medical, B2B)
+	•	Forms: zod
+	•	SEO: next/metadata, OpenGraph, Twitter Cards, JSON-LD, sitemap.xml, robots.txt
+	•	Content: /src/content/* (TS/JSON objects)
+
+2) Branding
+	•	Farben:
+	•	Primary Green #7ED957
+	•	Dark #2F3A34
+	•	Grey #9AA89A
+	•	Light #F5F7F6
+	•	Font: Inter
+	•	Logo unter /public/madformed-logo.png
+
+3) Navigation (muss umgesetzt werden)
+
+Header Links:
+	•	Leistungen
+	•	KI für Sales & Business Development   (NEU: prominenter Menüpunkt)
+	•	Über uns
+	•	Insights
+	•	Kontakt
+Rechts: Primary Button „Kontakt aufnehmen“
+
+Footer: Adresse + Kontakt + Quicklinks + Impressum/Datenschutz.
+
+4) Seitenstruktur (Routen)
+
+Erstelle diese Routen:
+	•	/ Startseite: Hero + 3 Leistungs-Kacheln:
+	1.	Medizinisches Cannabis
+	2.	Medizintechnik
+	3.	KI für Sales & Business Development (Copilot & ChatGPT)  (NEU)
+Jede Kachel hat CTA „Mehr erfahren“.
+	•	/leistungen Übersicht:
+	•	Bereich 1: Medizinisches Cannabis → /leistungen/medizinisches-cannabis
+	•	Bereich 2: Medizintechnik → /leistungen/medizintechnik
+	•	Bereich 3 (Querschnitt): KI-Einführung → /leistungen/ki-sales-bd
+Zusätzlich: ein kurzer Hinweis „Diese Leistung ist unabhängig vom Fachbereich buchbar (Cannabis & Medizintechnik).“
+	•	/leistungen/medizinisches-cannabis
+	•	Leistungsbausteine als Cards
+	•	CTA: „KI für Sales & BD“ als Cross-Link Abschnitt („Passend dazu: KI-Enablement für Teams“ → /leistungen/ki-sales-bd)
+	•	/leistungen/medizintechnik
+	•	Leistungsbausteine als Cards
+	•	CTA: Cross-Link auf KI Seite
+	•	/leistungen/ki-sales-bd  (NEU, zentrale Landingpage)
+Erstelle eine vollständige, SEO-optimierte Landingpage mit folgenden Abschnitten:
+A) Hero
+	•	H1: „Praktische Einführung in KI-Modelle (Copilot & ChatGPT) für Sales & Business Development“
+	•	Subline: „Workshops, Use-Cases und Enablement für Teams – praxisnah, messbar, compliance-bewusst.“
+B) Zielgruppen
+	•	Sales Teams (Field Sales, Key Account)
+	•	Business Development
+	•	Marketing/Commercial Operations
+	•	Management
+C) Outcomes (Messbare Ergebnisse)
+	•	Schnellere Erstellung von E-Mails & Angeboten
+	•	Bessere Recherche & Gesprächsvorbereitung
+	•	Einheitlicherer Außenauftritt (Templates/Tone of Voice)
+	•	Pipeline-Qualität & Follow-up Disziplin verbessern
+D) Workshop-Formate (Pakete als Cards)
+	1.	„Kickstart (2h)“ – Intro, Setup, 5 Use-Cases
+	2.	„Team-Workshop (1/2 Tag)“ – Prozesse, Prompting, Templates, Live-Übungen
+	3.	„Enablement (4 Wochen)“ – Playbook, Review, KPI, Coaching
+Jeder Card enthält: Dauer, Ziel, Deliverables, Voraussetzungen.
+E) Use-Case Library (Sales/BD Fokus)
+	•	Arzt-/Kunden-E-Mails (Follow-up, Reaktivierung, Terminvereinbarung)
+	•	Gesprächsvorbereitung (Account Briefing, Stakeholder Map)
+	•	Angebotsstruktur (Value Proposition, Einwände, Vergleichstabellen)
+	•	Markt-/Wettbewerbsrecherche (quellenbasiert, Zusammenfassungen)
+	•	CRM-Notizen in saubere Follow-ups übersetzen (ohne sensible Daten)
+	•	Interne Updates (Management Summary aus Field Notes)
+F) Tooling: Copilot vs. ChatGPT (neutraler Vergleich)
+	•	Wann Copilot (MS365 Integration)
+	•	Wann ChatGPT (Ideation/Prompting/Workflows)
+	•	Datenschutz/IT: Hinweise „keine sensiblen Patientendaten“, Nutzung nach Unternehmensrichtlinien
+G) Deliverables (konkret)
+	•	Prompt-Playbook (PDF/Markdown)
+	•	10–20 Prompt-Vorlagen (E-Mail, Angebot, Recherche, Follow-up)
+	•	1–2 Standard-Workflows (z.B. Angebotsprozess)
+	•	Optional: Teams-Training Deck
+H) FAQ
+	•	„Was darf ich datenschutzrechtlich eingeben?“
+	•	„Brauchen wir Enterprise Lizenzen?“
+	•	„Wie messen wir Erfolg?“
+	•	„Welche Voraussetzungen im Team?“
+	•	„Kann das mit Medizintechnik / Cannabis kombiniert werden?“ → Ja.
+I) CTA
+	•	„Workshop anfragen“ → /kontakt (Formular mit Dropdown Thema: „KI Workshop“)
+	•	/insights Blog + /insights/[slug]
+Mindestens 3 Startartikel, davon 1 speziell KI:
+	•	„KI im Außendienst: 10 praxiserprobte Use Cases“
+	•	„Copilot vs. ChatGPT: was passt zu Sales-Prozessen?“
+	•	„Wie Teams mit Prompt-Playbooks Konsistenz gewinnen“
+	•	/kontakt
+	•	Kontaktblock + Formular
+	•	Dropdown „Anliegen“ mit:
+	•	Medizinisches Cannabis
+	•	Medizintechnik
+	•	KI Workshop (Copilot & ChatGPT)
+	•	/impressum, /datenschutz, /404
+
+5) SEO (Must-have)
+	•	Unique title/description pro Seite
+	•	OpenGraph/Twitter
+	•	JSON-LD:
+	•	Organization/LocalBusiness (MadforMed GmbH + Adresse)
+	•	Service schema auf jeder Leistungsseite, insbesondere /leistungen/ki-sales-bd
+	•	FAQPage schema auf KI-Seite (FAQ)
+	•	sitemap.xml + robots.txt
+	•	Interne Verlinkung:
+	•	Cannabis → KI
+	•	Medizintechnik → KI
+	•	KI → Kontakt
+
+6) Komponenten (zwingend)
+
+Erstelle wiederverwendbare Komponenten:
+	•	ContactInfoBlock (Adresse/E-Mail/Telefon)
+	•	ServiceCard
+	•	PackageCard (für KI Pakete)
+	•	FAQAccordion
+	•	CTASection
+
+7) Definition of Done
+	•	Läuft in Replit: npm run dev
+	•	Responsive
+	•	KI-Leistungsseite komplett und prominent eingebunden
+	•	SEO/Schema vorhanden
+	•	Kontaktformular speichert Anfragen (lokal JSON) und zeigt Success/Error
+
+8) README
+	•	Setup/Run/Deploy
+	•	Wo Content gepflegt wird (/src/content)
+	•	Wo Mailversand ergänzt werden kann (z.B. Resend/SMTP)

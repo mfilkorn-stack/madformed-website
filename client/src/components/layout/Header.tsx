@@ -6,8 +6,8 @@ import logoImage from "@assets/63287e6f-fa20-4b0e-897a-d638ddbbda36_176986409988
 
 const navItems = [
   { label: "Leistungen", path: "/leistungen" },
+  { label: "KI für Sales & BD", path: "/leistungen/ki-sales-bd" },
   { label: "Über uns", path: "/ueber-uns" },
-  { label: "Projekte", path: "/projekte" },
   { label: "Insights", path: "/insights" },
   { label: "Kontakt", path: "/kontakt" },
 ];
