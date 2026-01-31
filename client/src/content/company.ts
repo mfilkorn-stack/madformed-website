@@ -1,5 +1,6 @@
 export const companyInfo = {
-  name: "MadforMed GmbH",
+  name: "MAD for MED GmbH",
+  tagline: "Medical Resulting",
   address: {
     street: "Bonner Straße 12",
     zip: "51371",

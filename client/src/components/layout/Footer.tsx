@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { companyInfo } from "@/content/company";
 import { Mail, Phone, MapPin } from "lucide-react";
+import logoImage from "@assets/63287e6f-fa20-4b0e-897a-d638ddbbda36_1769864099886.jpeg";
 
 const quickLinks = [
   { label: "Leistungen", path: "/leistungen" },
@@ -21,11 +22,12 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-brand-green rounded-md flex items-center justify-center">
-                <span className="text-white font-bold text-lg">M</span>
-              </div>
-              <span className="font-semibold text-lg">MadforMed</span>
+            <div className="mb-4">
+              <img 
+                src={logoImage} 
+                alt="MAD for MED GmbH - Medical Resulting" 
+                className="h-14 w-auto brightness-0 invert"
+              />
             </div>
             <p className="text-brand-grey text-sm mb-6 max-w-md">
               Beratung für medizinisches Cannabis und Medizintechnik. Strukturiert, 

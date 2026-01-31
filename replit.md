@@ -15,11 +15,13 @@ Professionelle, SEO-optimierte Website für MadforMed GmbH - eine Beratungsgesel
 
 ## Branding
 
-- **Primary Green**: #7ED957
-- **Dark**: #2F3A34
-- **Medical Grey**: #9AA89A
-- **Light BG**: #F5F7F6
+- **Primary Green**: #5FB94E (lebhaftes Grün passend zum Logo)
+- **Dark**: #4A5A4A (Logo-Grau)
+- **Medical Grey**: #7A8A7A (Logo-Grau)
+- **Light BG**: #F8FAF8
 - **Font**: Inter (Google Fonts)
+- **Logo**: Cannabis-Blatt mit EKG-Linie und "MAD for MED" Schriftzug
+- **Tagline**: Medical Resulting
 
 ## Seitenstruktur
 

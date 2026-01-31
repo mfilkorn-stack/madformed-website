@@ -2,6 +2,7 @@ import { Link, useLocation } from "wouter";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoImage from "@assets/63287e6f-fa20-4b0e-897a-d638ddbbda36_1769864099886.jpeg";
 
 const navItems = [
   { label: "Leistungen", path: "/leistungen" },
@@ -20,14 +21,11 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link href="/" data-testid="link-home">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <div className="w-10 h-10 bg-brand-green rounded-md flex items-center justify-center">
-                <span className="text-white font-bold text-lg">M</span>
-              </div>
-              <span className="text-brand-dark font-semibold text-lg hidden sm:block">
-                MadforMed
-              </span>
-            </div>
+            <img 
+              src={logoImage} 
+              alt="MAD for MED GmbH - Medical Resulting" 
+              className="h-12 md:h-14 w-auto cursor-pointer"
+            />
           </Link>
 
           <nav className="hidden md:flex items-center gap-1" data-testid="nav-desktop">

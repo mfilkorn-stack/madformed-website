@@ -12,10 +12,10 @@ export default {
       },
       colors: {
         brand: {
-          green: "#7ED957",
-          dark: "#2F3A34",
-          grey: "#9AA89A",
-          light: "#F5F7F6",
+          green: "#5FB94E",
+          dark: "#4A5A4A",
+          grey: "#7A8A7A",
+          light: "#F8FAF8",
         },
         // Flat / base colors (regular buttons)
         background: "hsl(var(--background) / <alpha-value>)",
