@@ -6,7 +6,8 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
 import { benefits, workProcess } from "@/content/company";
-import { ArrowRight, Leaf, Stethoscope, CheckCircle2, AlertTriangle } from "lucide-react";
+import { companyLogos } from "@/content/references";
+import { ArrowRight, Leaf, Stethoscope, CheckCircle2, AlertTriangle, Building2 } from "lucide-react";
 
 export default function Home() {
   return (
@@ -150,6 +151,30 @@ export default function Home() {
                 {step.step < 3 && (
                   <div className="hidden md:block absolute top-5 left-[calc(100%+1rem)] w-8 h-0.5 bg-brand-grey/30" />
                 )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 bg-white" data-testid="references-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            title="Erfahrung aus führenden Unternehmen"
+            subtitle="Branchenexpertise aus namhaften Unternehmen der Medizintechnik und Pharmabranche"
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {companyLogos.map((company, index) => (
+              <div
+                key={index}
+                className="text-center p-6 bg-brand-light rounded-lg border border-brand-grey/20"
+                data-testid={`home-company-${index}`}
+              >
+                <div className="w-14 h-14 bg-brand-green/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Building2 className="w-7 h-7 text-brand-green" />
+                </div>
+                <h3 className="font-semibold text-brand-dark text-sm">{company.name}</h3>
+                <p className="text-xs text-brand-dark/60">{company.industry}</p>
               </div>
             ))}
           </div>

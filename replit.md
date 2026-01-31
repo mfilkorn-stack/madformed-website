@@ -44,6 +44,7 @@ Professionelle, SEO-optimierte Website für MadforMed GmbH - eine Beratungsgesel
 - `client/src/content/faqs.ts` - FAQ-Inhalte
 - `client/src/content/posts.ts` - Blog-Artikel
 - `client/src/content/company.ts` - Firmendaten (Adresse, Kontakt, etc.)
+- `client/src/content/references.ts` - Projektreferenzen, Firmenlogos, Erfahrungskennzahlen
 
 ### Komponenten
 - `client/src/components/layout/` - Header, Footer, Layout
