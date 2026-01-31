@@ -18,6 +18,11 @@ const slides = [
     image: "/images/hero-slide-3.png",
     title: "Ihr Partner für nachhaltiges Wachstum",
     subtitle: "M&A, Interim Management und Business Development – wir bringen die Erfahrung mit, die Ihr Projekt zum Erfolg führt."
+  },
+  {
+    image: "/images/hero-slide-4.png",
+    title: "KI-Enablement für Ihren Vertrieb",
+    subtitle: "Copilot & ChatGPT praxisnah einführen: Workshops, Prompt-Playbooks und Enablement-Programme für Sales-Teams – compliance-bewusst und messbar."
   }
 ];
 
