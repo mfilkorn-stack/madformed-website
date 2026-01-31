@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Test Benutzer",
+    "firma": "Test GmbH",
+    "email": "test@example.com",
+    "telefon": "+491234567890üDies ist eine Testnachricht für die Website.",
+    "thema": "allgemein",
+    "nachricht": "Dies ist eine Testnachricht für die Website. Vielen Dank für Ihre Rückmeldung.",
+    "id": "24fb89b7-7b8d-4b54-b5f5-3e50128b1d7e",
+    "createdAt": "2026-01-31T12:54:29.169Z"
+  }
+]
