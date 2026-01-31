@@ -1,0 +1,158 @@
+Baue eine moderne, schnelle, SEO-optimierte Firmenwebsite für MadforMed GmbH, Bonner Straße 12, 51371 Leverkusen, Deutschland. MadforMed bietet Beratung in medizinischem Cannabis und Medizintechnik. Die Website soll clean, medizinisch/tech, B2B-seriös sein und sich in Aufbau/Navigation/CTA-Logik an orthohoch3.de orientieren (ohne Copy/Paste von deren Texten/Design, nur ähnliche UX-Prinzipien).
+
+1) Tech-Stack / Setup
+	•	Framework: Next.js (App Router) + TypeScript
+	•	Styling: Tailwind CSS
+	•	Forms: zod für Validierung
+	•	SEO: next/metadata, OpenGraph, Twitter Cards, JSON-LD (Schema.org), sitemap.xml, robots.txt
+	•	Performance: next/image, keine unnötigen Libraries, Lighthouse-friendly
+	•	Content-Organisation: /src/content/* als JSON/TS Objekte (Services, FAQs, Blogposts)
+
+2) Branding (aus dem Logo)
+	•	Logo-Datei liegt bereits vor/kommt später: /public/madformed-logo.png
+	•	Farben:
+	•	Primary Green: #7ED957
+	•	Dark: #2F3A34
+	•	Medical Grey: #9AA89A
+	•	Light BG: #F5F7F6
+	•	Font: Inter (Google Font)
+	•	Stil: viel Weißraum, klare Typo, dezente Linien/Cards, kein “Lifestyle-Cannabis” Look
+
+3) Informationsarchitektur & Routen
+
+Erstelle folgende Seiten:
+
+/ Startseite
+	•	Hero:
+	•	H1: „Beratung für medizinisches Cannabis & Medizintechnik“
+	•	Subline: „MadforMed begleitet Unternehmen entlang regulatorischer, operativer und kommerzieller Fragestellungen – strukturiert, compliance-orientiert, ergebnisfokussiert.“
+	•	CTA Buttons: „Leistungen ansehen“ → /leistungen und „Kontakt aufnehmen“ → /kontakt
+	•	Direkt darunter ein Kontakt-Infoblock (wie auf orthohoch3 als wiederkehrendes Element):
+	•	Adresse: MadforMed GmbH, Bonner Straße 12, 51371 Leverkusen
+	•	E-Mail (Platzhalter): kontakt@madformed.de
+	•	Telefon (Platzhalter): +49 …
+	•	Hinweis: „Rückmeldung i. d. R. innerhalb von 48h“
+	•	Zwei große Service-Kacheln:
+	•	Medizinisches Cannabis → /leistungen/medizinisches-cannabis
+	•	Medizintechnik → /leistungen/medizintechnik
+	•	Abschnitt „Warum MadforMed“ (4 Bullet-Benefits, B2B)
+	•	Abschnitt „Arbeitsweise“ (3 Schritte: Analyse → Konzept → Umsetzung/Begleitung)
+	•	Compliance-Disclaimer: keine Rechtsberatung, keine medizinische Beratung, keine Heilversprechen
+	•	CTA-Band am Ende („Projekt besprechen“ → Kontakt)
+
+/leistungen Übersicht
+	•	Zwei Hauptsektionen + Deep Links + interne Links zu /projekte und /kontakt
+
+/leistungen/medizinisches-cannabis
+	•	Zielgruppen: Hersteller/Importeure, Großhandel/Distribution, Apotheken/Netzwerke, Investoren/Startups
+	•	Leistungsbausteine (Cards):
+	•	Markteintritt & Strategie (DE/EU)
+	•	EU-GMP / EU-GDP Prozessberatung (high-level, keine Rechtsberatung)
+	•	Supply Chain & Logistik-Konzeption
+	•	Partner-/Lizenzierungs-Roadmaps (orientierend)
+	•	QM/Dokumentations-Konzeption
+	•	FAQ Sektion (8–10 Fragen) + optional FAQPage JSON-LD
+	•	CTA: Kontakt
+
+/leistungen/medizintechnik
+	•	Zielgruppen: Hersteller, Vertriebsteams, Praxen/OP-Zentren, Partner
+	•	Leistungsbausteine (Cards):
+	•	Go-to-Market & Business Development
+	•	Prozessoptimierung (OP/Praxis-Workflows)
+	•	Reimbursement-Orientierung (keine Rechtsberatung)
+	•	Sales Enablement & Trainings
+	•	Projektmanagement & Implementierung
+	•	Case-Study/Projektbeispiele als anonymisierte Platzhalter (3 Kacheln)
+	•	FAQ + CTA
+
+/ueber-uns
+	•	Kurzprofil MadforMed GmbH
+	•	Erfahrung/Schwerpunkte (Platzhaltertext, editierbar)
+	•	Werte/Arbeitsprinzipien
+	•	Optional: Netzwerk/Partner (neutral formuliert)
+
+/projekte
+	•	Keine namentlichen Kunden nennen (Platzhalter)
+	•	Stattdessen „Projektarten“ + „Beispiel-Deliverables“ (anonymisiert)
+	•	Interne Verlinkung auf passende Leistungsseiten
+
+/insights + /insights/[slug] (Blog für SEO)
+	•	3 Startartikel als Platzhalter (MDX oder JSON):
+	1.	Medizinisches Cannabis in Deutschland: Überblick für Unternehmen
+	2.	EU-GDP in der Praxis: typische Stolpersteine in der Supply Chain
+	3.	Medizintechnik: Von Prozessanalyse zu messbarem Ergebnis
+	•	Tags, Datum, Autor (Platzhalter)
+	•	BlogPosting JSON-LD pro Artikel
+
+/kontakt
+	•	Wieder den Kontakt-Infoblock (Adresse/E-Mail/Telefon)
+	•	Kontaktformular:
+	•	Name, Firma, E-Mail, Telefon optional, Thema Dropdown (Cannabis/Medizintechnik/Allgemein), Nachricht
+	•	Form Handling:
+	•	POST /api/contact
+	•	Validierung mit zod
+	•	Honeypot Field + minimales Rate Limit (z.B. in-memory Map)
+	•	Speichere Anfragen lokal als JSON in /data/leads.json (für Replit) und logge zusätzlich in Console
+	•	Success/Error UI States
+
+/impressum & /datenschutz
+	•	Deutsche Platzhalterseiten, klar markiert „final rechtlich prüfen“
+	•	Impressum Felder: GF, Register, HRB, USt-ID als Platzhalter
+	•	Datenschutz: Kontaktformular, Hosting, keine Tracker standardmäßig
+
+/404
+	•	Clean, Link zurück zur Startseite, CTA Kontakt
+
+4) UI-Vorgaben (UX ähnlich orthohoch3, aber eigener Look)
+	•	Sticky Header mit Logo links, Navigation:
+	•	Leistungen, Über uns, Projekte, Insights, Kontakt
+	•	Rechts im Header ein Primary Button: „Kontakt aufnehmen“
+	•	Wiederkehrender Kontakt-Infoblock auf Startseite + Kontaktseite + Footer
+	•	Footer: Adresse, Quicklinks, Impressum, Datenschutz
+
+5) SEO-Anforderungen (Must-have)
+	•	Pro Seite: unique title, description, canonical
+	•	OpenGraph + Twitter Cards
+	•	JSON-LD:
+	•	Organization/LocalBusiness (MadforMed GmbH + Adresse)
+	•	WebSite + SearchAction
+	•	Für Leistungen: Service
+	•	Für FAQ: FAQPage (optional)
+	•	Für Blogposts: BlogPosting
+	•	robots.txt + sitemap.xml
+	•	Nutze next-sitemap oder implementiere eine einfache sitemap route
+	•	On-page: exakt 1 H1, klare H2/H3, starke interne Verlinkung
+
+6) Projektstruktur (zwingend)
+	•	/src/app/* (App Router)
+	•	/src/components/* (Button, Card, SectionHeading, FAQAccordion, ContactBlock)
+	•	/src/content/* (services.ts, faqs.ts, posts.ts)
+	•	/src/lib/seo.ts (JSON-LD Helpers)
+	•	/public/madformed-logo.png
+	•	/data/leads.json (wird automatisch erstellt)
+
+7) Tailwind Theme (zwingend)
+
+Erweitere Tailwind Farben:
+	•	brand.green #7ED957
+	•	brand.dark #2F3A34
+	•	brand.grey #9AA89A
+	•	brand.light #F5F7F6
+
+Buttons:
+	•	Primary: bg brand.green, text white
+	•	Secondary: outline brand.green, text brand.dark
+
+8) Definition of Done
+	•	npm run dev läuft fehlerfrei
+	•	Responsive Design
+	•	Alle Seiten über Navigation erreichbar
+	•	SEO Artefakte vorhanden: metadata, json-ld, sitemap, robots
+	•	Kontaktformular funktioniert inkl. Validierung + Speicherung
+
+9) Lieferumfang
+	•	Vollständiger Code + README:
+	•	Starten
+	•	Build/Deploy
+	•	Wo Inhalte gepflegt werden
+	•	Wo man E-Mail Versand später ergänzt (Resend/SMTP)
