@@ -1,10 +1,9 @@
 import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ContactBlock } from "@/components/ContactBlock";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
+import { HeroSlider } from "@/components/HeroSlider";
 import { benefits, workProcess } from "@/content/company";
 import { companyLogos } from "@/content/references";
 import { ArrowRight, Leaf, Stethoscope, CheckCircle2, AlertTriangle, Building2 } from "lucide-react";
@@ -16,47 +15,7 @@ export default function Home() {
         title="Beratung für medizinisches Cannabis & Medizintechnik | MadforMed GmbH"
         description="MadforMed begleitet Unternehmen entlang regulatorischer, operativer und kommerzieller Fragestellungen – strukturiert, compliance-orientiert, ergebnisfokussiert."
       />
-      <section className="py-16 md:py-24 lg:py-32" data-testid="hero-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-dark leading-tight mb-6">
-                Beratung für medizinisches Cannabis & Medizintechnik
-              </h1>
-              <p className="text-lg md:text-xl text-brand-dark/70 mb-8 leading-relaxed">
-                MadforMed begleitet Unternehmen entlang regulatorischer, operativer 
-                und kommerzieller Fragestellungen – strukturiert, compliance-orientiert, 
-                ergebnisfokussiert.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/leistungen">
-                  <Button
-                    size="lg"
-                    className="bg-brand-green hover:bg-brand-green/90 text-white"
-                    data-testid="button-services"
-                  >
-                    Leistungen ansehen
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-                <Link href="/kontakt">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-brand-green text-brand-green hover:bg-brand-green/10"
-                    data-testid="button-contact-hero"
-                  >
-                    Kontakt aufnehmen
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            <div>
-              <ContactBlock variant="card" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSlider />
 
       <section className="py-16 md:py-20 bg-white" data-testid="services-overview">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
