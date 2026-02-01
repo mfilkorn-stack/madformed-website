@@ -27,7 +27,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             <Link href="/leistungen/medizinisches-cannabis">
               <Card
-                className="group relative p-8 bg-white border-2 border-brand-green/20 hover:border-brand-green hover:shadow-lg transition-all cursor-pointer h-full overflow-hidden"
+                className="group relative p-8 bg-white border-2 border-brand-green/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-cannabis"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-green to-brand-green/50" />
@@ -50,7 +50,7 @@ export default function Home() {
 
             <Link href="/leistungen/ki-sales-bd">
               <Card
-                className="group relative p-8 bg-white border-2 border-brand-cyan/20 hover:border-brand-cyan hover:shadow-lg transition-all cursor-pointer h-full overflow-hidden"
+                className="group relative p-8 bg-white border-2 border-brand-cyan/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-ki"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-cyan to-brand-cyan/50" />
@@ -78,7 +78,7 @@ export default function Home() {
 
             <Link href="/leistungen/medizintechnik">
               <Card
-                className="group relative p-8 bg-white border-2 border-brand-cyan/20 hover:border-brand-cyan hover:shadow-lg transition-all cursor-pointer h-full overflow-hidden"
+                className="group relative p-8 bg-white border-2 border-brand-cyan/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-medtech"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-cyan to-brand-green" />

@@ -36,7 +36,6 @@ export function LogoHero() {
           <Link href="/leistungen">
             <Button
               size="lg"
-              className="bg-brand-green hover:bg-brand-green/90 text-white shadow-lg px-8"
               data-testid="button-services-hero"
             >
               Leistungen entdecken
@@ -47,7 +46,6 @@ export function LogoHero() {
             <Button
               size="lg"
               variant="outline"
-              className="border-brand-cyan text-brand-cyan hover:bg-brand-cyan/10 px-8"
               data-testid="button-contact-hero"
             >
               Kontakt aufnehmen
