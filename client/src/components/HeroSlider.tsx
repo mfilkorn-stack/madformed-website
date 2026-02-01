@@ -1,28 +1,44 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Leaf, Brain, Monitor, Target } from "lucide-react";
 
 const slides = [
   {
-    image: "/images/hero-slide-1.png",
-    title: "Strategieberatung für regulierte Märkte",
-    subtitle: "Wir begleiten Unternehmen im Bereich medizinisches Cannabis und Medizintechnik – strukturiert, compliance-orientiert, ergebnisfokussiert."
+    icon: Target,
+    accentColor: "brand-green",
+    gradientFrom: "from-brand-green/20",
+    gradientTo: "to-brand-cyan/10",
+    title: "Medical Resulting",
+    subtitle: "Strategieberatung für regulierte Märkte – strukturiert, compliance-orientiert, ergebnisfokussiert.",
+    tagline: "MadforMed GmbH"
   },
   {
-    image: "/images/hero-slide-2.png",
-    title: "Expertise in Medizinalcannabis",
-    subtitle: "Von EU-GMP/GDP bis zur Supply Chain: Wir kennen die regulatorischen Anforderungen und unterstützen Sie bei der erfolgreichen Umsetzung."
+    icon: Leaf,
+    accentColor: "brand-green",
+    gradientFrom: "from-brand-green/30",
+    gradientTo: "to-brand-green/5",
+    title: "Medizinisches Cannabis",
+    subtitle: "Von EU-GMP/GDP bis zur Supply Chain: Regulatorische Expertise und operative Begleitung für Hersteller, Importeure und Großhändler.",
+    tagline: "Beratung & Compliance"
   },
   {
-    image: "/images/hero-slide-3.png",
-    title: "Ihr Partner für nachhaltiges Wachstum",
-    subtitle: "M&A, Interim Management und Business Development – wir bringen die Erfahrung mit, die Ihr Projekt zum Erfolg führt."
+    icon: Brain,
+    accentColor: "brand-cyan",
+    gradientFrom: "from-brand-cyan/25",
+    gradientTo: "to-brand-cyan/5",
+    title: "KI-Enablement für Vertrieb",
+    subtitle: "Copilot & ChatGPT praxisnah einführen: Workshops, Prompt-Playbooks und Enablement-Programme für Sales-Teams.",
+    tagline: "Workshops & Training"
   },
   {
-    image: "/images/hero-slide-4.png",
-    title: "KI-Enablement für Ihren Vertrieb",
-    subtitle: "Copilot & ChatGPT praxisnah einführen: Workshops, Prompt-Playbooks und Enablement-Programme für Sales-Teams – compliance-bewusst und messbar."
+    icon: Monitor,
+    accentColor: "brand-cyan",
+    gradientFrom: "from-brand-cyan/20",
+    gradientTo: "to-brand-green/10",
+    title: "Medizintechnik",
+    subtitle: "Go-to-Market, Prozessoptimierung und Sales Enablement für Medizintechnik-Unternehmen im Klinik- und Praxisumfeld.",
+    tagline: "Strategie & Umsetzung"
   }
 ];
 
@@ -64,62 +80,100 @@ export function HeroSlider() {
     }
   };
 
+  const slide = slides[currentSlide];
+  const Icon = slide.icon;
+
   return (
-    <section className="relative h-[90vh] min-h-[600px] max-h-[900px] overflow-hidden" data-testid="hero-slider">
-      {slides.map((slide, index) => (
+    <section className="relative min-h-[600px] h-[85vh] max-h-[800px] overflow-hidden bg-brand-dark" data-testid="hero-slider">
+      {slides.map((s, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-            index === currentSlide 
-              ? "opacity-100 scale-100" 
-              : "opacity-0 scale-105"
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out bg-gradient-to-br ${s.gradientFrom} ${s.gradientTo} ${
+            index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
-        >
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(${slide.image})` }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
-          </div>
-        </div>
+        />
       ))}
+
+      <div className="absolute inset-0 overflow-hidden">
+        <svg className="absolute bottom-0 left-0 w-full h-48 opacity-20" viewBox="0 0 1440 200" preserveAspectRatio="none">
+          <path 
+            d="M0,100 C360,180 720,20 1080,100 C1260,140 1380,80 1440,100 L1440,200 L0,200 Z" 
+            fill="url(#waveGradient1)"
+          />
+          <path 
+            d="M0,140 C240,80 480,160 720,120 C960,80 1200,160 1440,120 L1440,200 L0,200 Z" 
+            fill="url(#waveGradient2)"
+            opacity="0.6"
+          />
+          <defs>
+            <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#5FB94E" />
+              <stop offset="100%" stopColor="#1E9BD9" />
+            </linearGradient>
+            <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#1E9BD9" />
+              <stop offset="100%" stopColor="#5FB94E" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <div className="absolute top-20 right-20 w-64 h-64 bg-brand-green/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-40 left-10 w-48 h-48 bg-brand-cyan/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 right-1/4 w-32 h-32 bg-brand-green/5 rounded-full blur-2xl" />
+      </div>
 
       <div className="relative z-10 h-full flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-2xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div
               className={`transition-all duration-700 ${
                 isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
               }`}
             >
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
-                {slides[currentSlide].title}
+              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-${slide.accentColor}/20 text-${slide.accentColor} text-sm font-medium mb-6`}>
+                <Icon className="w-4 h-4" />
+                {slide.tagline}
+              </div>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6">
+                {slide.title}
               </h1>
-              <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed drop-shadow-md max-w-xl">
-                {slides[currentSlide].subtitle}
+              <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed max-w-xl">
+                {slide.subtitle}
               </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/leistungen">
+                  <Button
+                    size="lg"
+                    className="bg-brand-green hover:bg-brand-green/90 text-white shadow-lg"
+                    data-testid="button-services-hero"
+                  >
+                    Leistungen ansehen
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/kontakt">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
+                    data-testid="button-contact-hero"
+                  >
+                    Kontakt aufnehmen
+                  </Button>
+                </Link>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/leistungen">
-                <Button
-                  size="lg"
-                  className="bg-brand-green hover:bg-brand-green/90 text-white shadow-lg"
-                  data-testid="button-services-hero"
-                >
-                  Leistungen ansehen
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-              <Link href="/kontakt">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white/10 backdrop-blur-sm"
-                  data-testid="button-contact-hero"
-                >
-                  Kontakt aufnehmen
-                </Button>
-              </Link>
+
+            <div className="hidden lg:flex justify-center">
+              <div
+                className={`transition-all duration-700 ${
+                  isAnimating ? "opacity-0 scale-90" : "opacity-100 scale-100"
+                }`}
+              >
+                <div className={`w-64 h-64 rounded-3xl bg-gradient-to-br from-${slide.accentColor}/30 to-${slide.accentColor}/10 backdrop-blur-sm border border-white/10 flex items-center justify-center shadow-2xl`}>
+                  <Icon className={`w-32 h-32 text-${slide.accentColor}`} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -127,7 +181,7 @@ export function HeroSlider() {
 
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-colors text-white"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-colors text-white border border-white/10"
         aria-label="Vorheriges Bild"
         data-testid="button-prev-slide"
       >
@@ -135,7 +189,7 @@ export function HeroSlider() {
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-colors text-white"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-colors text-white border border-white/10"
         aria-label="Nächstes Bild"
         data-testid="button-next-slide"
       >
@@ -143,14 +197,14 @@ export function HeroSlider() {
       </button>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-        {slides.map((_, index) => (
+        {slides.map((s, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`h-3 rounded-full transition-all duration-300 ${
               index === currentSlide
-                ? "bg-brand-green w-8"
-                : "bg-white/50 hover:bg-white/80"
+                ? `bg-${s.accentColor} w-8`
+                : "bg-white/30 hover:bg-white/50 w-3"
             }`}
             aria-label={`Zu Folie ${index + 1}`}
             data-testid={`button-slide-${index}`}
@@ -158,7 +212,7 @@ export function HeroSlider() {
         ))}
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-light to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-brand-light to-transparent z-10" />
     </section>
   );
 }

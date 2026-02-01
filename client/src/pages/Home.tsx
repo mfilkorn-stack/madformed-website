@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
-import { LogoHero } from "@/components/LogoHero";
+import { HeroSlider } from "@/components/HeroSlider";
 import { WaveDivider } from "@/components/WaveDivider";
 import { benefits, workProcess } from "@/content/company";
 import { companyLogos } from "@/content/references";
@@ -16,7 +16,7 @@ export default function Home() {
         title="Beratung für medizinisches Cannabis & Medizintechnik | MadforMed GmbH"
         description="MadforMed begleitet Unternehmen entlang regulatorischer, operativer und kommerzieller Fragestellungen – strukturiert, compliance-orientiert, ergebnisfokussiert."
       />
-      <LogoHero />
+      <HeroSlider />
 
       <section className="py-16 md:py-24 bg-white relative" data-testid="services-overview">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
