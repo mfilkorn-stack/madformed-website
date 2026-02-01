@@ -13,6 +13,7 @@ export default {
       colors: {
         brand: {
           green: "#5FB94E",
+          cyan: "#1E9BD9",
           dark: "#4A5A4A",
           grey: "#7A8A7A",
           light: "#F8FAF8",
