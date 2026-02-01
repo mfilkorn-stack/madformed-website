@@ -61,9 +61,39 @@ export const companyLogos = [
     description: "Führender Anbieter für Arthroskopie"
   },
   {
+    name: "Lohmann & Rauscher",
+    industry: "Medizintechnik",
+    description: "Spezialist für Verbandmittel und Medizinprodukte"
+  },
+  {
+    name: "Prima-med",
+    industry: "Medizintechnik",
+    description: "Medizintechnik-Lösungen"
+  },
+  {
     name: "Cansativa",
     industry: "Medizinalcannabis",
     description: "Deutscher Cannabis-Distributor"
+  },
+  {
+    name: "Canify AG",
+    industry: "Medizinalcannabis",
+    description: "Cannabis-Unternehmen"
+  },
+  {
+    name: "Balancial GmbH",
+    industry: "Medizinalcannabis",
+    description: "Cannabis-Unternehmen"
+  },
+  {
+    name: "Canpharma",
+    industry: "Medizinalcannabis",
+    description: "Cannabis-Pharma-Unternehmen"
+  },
+  {
+    name: "b-noble",
+    industry: "Medizinalcannabis",
+    description: "Cannabis-Unternehmen"
   },
   {
     name: "aescologic",
