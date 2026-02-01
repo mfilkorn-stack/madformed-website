@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoImage from "@assets/63287e6f-fa20-4b0e-897a-d638ddbbda36_1769864099886.jpeg";
+import logoImage from "@assets/586E4BEB-9A32-49CD-B6A4-925E000A0D62_1769909787454.png";
 
 const navItems = [
   { label: "Leistungen", path: "/leistungen" },
@@ -23,8 +23,8 @@ export function Header() {
           <Link href="/" data-testid="link-home">
             <img 
               src={logoImage} 
-              alt="MAD for MED GmbH - Medical Resulting" 
-              className="h-12 md:h-14 w-auto cursor-pointer"
+              alt="MadforMed GmbH - Medical Resulting" 
+              className="h-10 md:h-12 w-auto cursor-pointer"
             />
           </Link>
 
