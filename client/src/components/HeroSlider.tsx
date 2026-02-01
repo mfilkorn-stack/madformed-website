@@ -133,69 +133,58 @@ export function HeroSlider() {
 
       <div className="relative z-10 h-full flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div className="max-w-2xl">
-              <div
-                className={`transition-all duration-700 ${
-                  isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
-                }`}
-              >
-                <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm text-sm font-medium mb-6 ${
-                  slide.accentColor === 'brand-green'
-                    ? 'bg-brand-green/30 text-brand-green border border-brand-green/30'
-                    : 'bg-brand-cyan/30 text-brand-cyan border border-brand-cyan/30'
-                }`}>
-                  <Icon className="w-4 h-4" />
-                  {slide.tagline}
+          <div className={`${slide.showLogo ? 'text-center max-w-4xl mx-auto' : 'max-w-2xl'}`}>
+            <div
+              className={`transition-all duration-700 ${
+                isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
+              }`}
+            >
+              {slide.showLogo && (
+                <div className="mb-8">
+                  <img 
+                    src={logoImage} 
+                    alt="MadforMed Logo" 
+                    className="w-64 md:w-80 lg:w-96 h-auto mx-auto drop-shadow-2xl"
+                  />
                 </div>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
-                  {slide.title}
-                </h1>
-                <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-xl drop-shadow-md">
-                  {slide.subtitle}
-                </p>
+              )}
+              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm text-sm font-medium mb-6 ${
+                slide.accentColor === 'brand-green'
+                  ? 'bg-brand-green/30 text-brand-green border border-brand-green/30'
+                  : 'bg-brand-cyan/30 text-brand-cyan border border-brand-cyan/30'
+              }`}>
+                <Icon className="w-4 h-4" />
+                {slide.tagline}
               </div>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/leistungen">
-                  <Button
-                    size="lg"
-                    className="bg-brand-green hover:bg-brand-green/90 text-white shadow-lg"
-                    data-testid="button-services-hero"
-                  >
-                    Leistungen ansehen
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-                <Link href="/kontakt">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-white/40 text-white hover:bg-white/10 backdrop-blur-sm"
-                    data-testid="button-contact-hero"
-                  >
-                    Kontakt aufnehmen
-                  </Button>
-                </Link>
-              </div>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
+                {slide.title}
+              </h1>
+              <p className={`text-lg md:text-xl text-white/90 mb-8 leading-relaxed drop-shadow-md ${slide.showLogo ? 'max-w-2xl mx-auto' : 'max-w-xl'}`}>
+                {slide.subtitle}
+              </p>
             </div>
-
-            {slide.showLogo && (
-              <div className="hidden md:flex justify-center">
-                <div
-                  className={`transition-all duration-700 ${
-                    isAnimating ? "opacity-0 scale-90" : "opacity-100 scale-100"
-                  }`}
+            <div className={`flex flex-wrap gap-4 ${slide.showLogo ? 'justify-center' : ''}`}>
+              <Link href="/leistungen">
+                <Button
+                  size="lg"
+                  className="bg-brand-green hover:bg-brand-green/90 text-white shadow-lg"
+                  data-testid="button-services-hero"
                 >
-                  <div className="p-6 md:p-8 rounded-2xl md:rounded-3xl bg-white/15 backdrop-blur-lg border border-white/30 shadow-2xl">
-                    <img 
-                      src={logoImage} 
-                      alt="MadforMed Logo" 
-                      className="w-48 md:w-64 lg:w-72 h-auto drop-shadow-lg"
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
+                  Leistungen ansehen
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+              <Link href="/kontakt">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white/40 text-white hover:bg-white/10 backdrop-blur-sm"
+                  data-testid="button-contact-hero"
+                >
+                  Kontakt aufnehmen
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
