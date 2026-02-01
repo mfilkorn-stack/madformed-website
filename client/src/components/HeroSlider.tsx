@@ -180,17 +180,17 @@ export function HeroSlider() {
             </div>
 
             {slide.showLogo && (
-              <div className="hidden lg:flex justify-center">
+              <div className="hidden md:flex justify-center">
                 <div
                   className={`transition-all duration-700 ${
                     isAnimating ? "opacity-0 scale-90" : "opacity-100 scale-100"
                   }`}
                 >
-                  <div className="p-8 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl">
+                  <div className="p-6 md:p-8 rounded-2xl md:rounded-3xl bg-white/15 backdrop-blur-lg border border-white/30 shadow-2xl">
                     <img 
                       src={logoImage} 
                       alt="MadforMed Logo" 
-                      className="w-64 h-auto"
+                      className="w-48 md:w-64 lg:w-72 h-auto drop-shadow-lg"
                     />
                   </div>
                 </div>
