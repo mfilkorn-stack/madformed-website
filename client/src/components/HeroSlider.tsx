@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight, Leaf, Brain, Monitor, Target } from "lucide-react";
+import logoImage from "@assets/586E4BEB-9A32-49CD-B6A4-925E000A0D62_1769909787454.png";
 
 const slides = [
   {
@@ -10,7 +11,8 @@ const slides = [
     accentColor: "brand-green",
     title: "Medical Resulting",
     subtitle: "Strategieberatung für regulierte Märkte – strukturiert, compliance-orientiert, ergebnisfokussiert.",
-    tagline: "MadforMed GmbH"
+    tagline: "MadforMed GmbH",
+    showLogo: true
   },
   {
     image: "/images/hero-slide-2.jpg",
@@ -18,7 +20,8 @@ const slides = [
     accentColor: "brand-green",
     title: "Medizinisches Cannabis",
     subtitle: "Von EU-GMP/GDP bis zur Supply Chain: Regulatorische Expertise und operative Begleitung für Hersteller, Importeure und Großhändler.",
-    tagline: "Beratung & Compliance"
+    tagline: "Beratung & Compliance",
+    showLogo: false
   },
   {
     image: "/images/hero-slide-3.jpg",
@@ -26,15 +29,17 @@ const slides = [
     accentColor: "brand-cyan",
     title: "KI-Enablement für Vertrieb",
     subtitle: "Copilot & ChatGPT praxisnah einführen: Workshops, Prompt-Playbooks und Enablement-Programme für Sales-Teams.",
-    tagline: "Workshops & Training"
+    tagline: "Workshops & Training",
+    showLogo: false
   },
   {
     image: "/images/hero-slide-4.jpg",
     icon: Monitor,
     accentColor: "brand-cyan",
     title: "Medizintechnik",
-    subtitle: "Go-to-Market, Prozessoptimierung und Sales Enablement für Medizintechnik-Unternehmen im Klinik- und Praxisumfeld.",
-    tagline: "Strategie & Umsetzung"
+    subtitle: "Medizintechnik mit Schwerpunkt auf das ambulante Operieren: Go-to-Market, Prozessoptimierung und Sales Enablement.",
+    tagline: "Strategie & Umsetzung",
+    showLogo: false
   }
 ];
 
@@ -128,49 +133,69 @@ export function HeroSlider() {
 
       <div className="relative z-10 h-full flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-2xl">
-            <div
-              className={`transition-all duration-700 ${
-                isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
-              }`}
-            >
-              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm text-sm font-medium mb-6 ${
-                slide.accentColor === 'brand-green'
-                  ? 'bg-brand-green/30 text-brand-green border border-brand-green/30'
-                  : 'bg-brand-cyan/30 text-brand-cyan border border-brand-cyan/30'
-              }`}>
-                <Icon className="w-4 h-4" />
-                {slide.tagline}
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <div className="max-w-2xl">
+              <div
+                className={`transition-all duration-700 ${
+                  isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
+                }`}
+              >
+                <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm text-sm font-medium mb-6 ${
+                  slide.accentColor === 'brand-green'
+                    ? 'bg-brand-green/30 text-brand-green border border-brand-green/30'
+                    : 'bg-brand-cyan/30 text-brand-cyan border border-brand-cyan/30'
+                }`}>
+                  <Icon className="w-4 h-4" />
+                  {slide.tagline}
+                </div>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
+                  {slide.title}
+                </h1>
+                <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-xl drop-shadow-md">
+                  {slide.subtitle}
+                </p>
               </div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
-                {slide.title}
-              </h1>
-              <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-xl drop-shadow-md">
-                {slide.subtitle}
-              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/leistungen">
+                  <Button
+                    size="lg"
+                    className="bg-brand-green hover:bg-brand-green/90 text-white shadow-lg"
+                    data-testid="button-services-hero"
+                  >
+                    Leistungen ansehen
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/kontakt">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white/40 text-white hover:bg-white/10 backdrop-blur-sm"
+                    data-testid="button-contact-hero"
+                  >
+                    Kontakt aufnehmen
+                  </Button>
+                </Link>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/leistungen">
-                <Button
-                  size="lg"
-                  className="bg-brand-green hover:bg-brand-green/90 text-white shadow-lg"
-                  data-testid="button-services-hero"
+
+            {slide.showLogo && (
+              <div className="hidden lg:flex justify-center">
+                <div
+                  className={`transition-all duration-700 ${
+                    isAnimating ? "opacity-0 scale-90" : "opacity-100 scale-100"
+                  }`}
                 >
-                  Leistungen ansehen
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-              <Link href="/kontakt">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white/40 text-white hover:bg-white/10 backdrop-blur-sm"
-                  data-testid="button-contact-hero"
-                >
-                  Kontakt aufnehmen
-                </Button>
-              </Link>
-            </div>
+                  <div className="p-8 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl">
+                    <img 
+                      src={logoImage} 
+                      alt="MadforMed Logo" 
+                      className="w-64 h-auto"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
