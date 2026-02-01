@@ -14,38 +14,17 @@ export const blogPosts: BlogPost[] = [
     slug: "medizinisches-cannabis-deutschland-ueberblick",
     title: "Medizinisches Cannabis in Deutschland: Überblick für Unternehmen",
     excerpt: "Ein strukturierter Überblick über den deutschen Markt für medizinisches Cannabis, regulatorische Rahmenbedingungen und Markteintrittsstrategien für Unternehmen.",
-    content: `
-# Medizinisches Cannabis in Deutschland: Überblick für Unternehmen
-
-Der deutsche Markt für medizinisches Cannabis hat sich seit der Legalisierung 2017 kontinuierlich entwickelt. Für Unternehmen, die in diesem Segment tätig werden möchten, ist ein fundiertes Verständnis der Marktstruktur und regulatorischen Anforderungen essentiell.
-
-## Marktentwicklung
+    content: `Der deutsche Markt für medizinisches Cannabis hat sich seit der Legalisierung 2017 kontinuierlich entwickelt. Für Unternehmen, die in diesem Segment tätig werden möchten, ist ein fundiertes Verständnis der Marktstruktur und regulatorischen Anforderungen essentiell.
 
 Deutschland ist einer der größten Märkte für medizinisches Cannabis in Europa. Die Nachfrage wächst stetig, getrieben durch eine zunehmende Akzeptanz bei Ärzten und Patienten sowie eine Erweiterung der Indikationen.
 
-## Regulatorische Rahmenbedingungen
+Die regulatorischen Rahmenbedingungen sind vielschichtig. Das Betäubungsmittelgesetz (BtMG) definiert Cannabis als Betäubungsmittel, dessen Handel streng reguliert ist. Daneben unterliegt medizinisches Cannabis den Anforderungen des Arzneimittelgesetzes (AMG). Hinzu kommen die EU-GMP/GDP-Standards für Herstellung und Distribution.
 
-Die wichtigsten regulatorischen Säulen sind:
+Die Wertschöpfungskette umfasst typischerweise den Anbau und die Herstellung (meist international), den Import nach Deutschland, den Großhandel und die Distribution sowie die Apotheken als Abgabestellen.
 
-- **Betäubungsmittelgesetz (BtMG)**: Cannabis ist ein Betäubungsmittel, dessen Handel streng reguliert ist
-- **Arzneimittelgesetz (AMG)**: Medizinisches Cannabis unterliegt den Anforderungen für Arzneimittel
-- **EU-GMP/GDP**: Qualitätsstandards für Herstellung und Distribution
+Der Markt bietet durchaus Chancen, erfordert aber eine sorgfältige Vorbereitung und echte Compliance-Expertise. Eine frühzeitige strategische Positionierung ist entscheidend für den Erfolg.
 
-## Marktteilnehmer
-
-Die Wertschöpfungskette umfasst:
-
-1. Anbau und Herstellung (meist international)
-2. Import nach Deutschland
-3. Großhandel und Distribution
-4. Apotheken als Abgabestellen
-
-## Fazit
-
-Der Markt bietet Chancen, erfordert aber sorgfältige Vorbereitung und Compliance-Expertise. Eine frühzeitige strategische Positionierung ist entscheidend.
-
-*Hinweis: Dieser Artikel dient der allgemeinen Information und stellt keine Rechtsberatung dar.*
-    `,
+Hinweis: Dieser Artikel dient der allgemeinen Information und stellt keine Rechtsberatung dar.`,
     date: "2024-01-15",
     author: "MadforMed Team",
     category: "cannabis",
@@ -55,44 +34,21 @@ Der Markt bietet Chancen, erfordert aber sorgfältige Vorbereitung und Complianc
     slug: "eu-gdp-stolpersteine-supply-chain",
     title: "EU-GDP in der Praxis: Typische Stolpersteine in der Supply Chain",
     excerpt: "Welche Herausforderungen treten bei der Umsetzung von EU-GDP-Anforderungen in der Cannabis-Supply-Chain häufig auf? Ein Praxisbericht.",
-    content: `
-# EU-GDP in der Praxis: Typische Stolpersteine in der Supply Chain
-
-Die Einhaltung der EU-GDP (Good Distribution Practice) ist für alle Akteure in der pharmazeutischen Lieferkette verpflichtend. Im Bereich medizinisches Cannabis ergeben sich dabei spezifische Herausforderungen.
-
-## Was ist EU-GDP?
+    content: `Die Einhaltung der EU-GDP (Good Distribution Practice) ist für alle Akteure in der pharmazeutischen Lieferkette verpflichtend. Im Bereich medizinisches Cannabis ergeben sich dabei spezifische Herausforderungen.
 
 EU-GDP definiert die Mindeststandards für den Großhandelsvertrieb von Arzneimitteln. Sie soll sicherstellen, dass Produkte ihre Qualität vom Hersteller bis zur Abgabe behalten.
 
-## Häufige Herausforderungen
+In der Praxis begegnen uns immer wieder dieselben Stolpersteine. Das Temperaturmanagement ist einer davon: Cannabis-Produkte haben spezifische Lagerungsanforderungen, und eine lückenlose Temperaturüberwachung samt Dokumentation ist kritisch.
 
-### 1. Temperaturmanagement
+Ein weiterer häufiger Problembereich ist die Transportvalidierung. Jede Transportroute muss validiert sein, und bei Cannabis kommen zusätzliche Sicherheitsanforderungen hinzu, die viele Unternehmen unterschätzen.
 
-Cannabis-Produkte haben spezifische Lagerungsanforderungen. Lückenlose Temperaturüberwachung und -dokumentation sind kritisch.
+Auch die Dokumentation wird oft unterschätzt. Die GDP erfordert umfassende Dokumentation – von Standardarbeitsanweisungen (SOPs) über Schulungsnachweise bis hin zum Abweichungsmanagement. Der Aufwand dafür überrascht viele.
 
-### 2. Transportvalidierung
+Schließlich ist die Qualifizierung von Lieferanten ein aufwändiger, aber essentieller Prozess. Alle Partner in der Lieferkette müssen qualifiziert werden.
 
-Jede Transportroute muss validiert sein. Bei Cannabis kommen zusätzliche Sicherheitsanforderungen hinzu.
+Meine Empfehlungen: Binden Sie GDP-Expertise frühzeitig ein, investieren Sie in digitale Dokumentationssysteme und führen Sie regelmäßige Audits und Schulungen durch.
 
-### 3. Dokumentation
-
-Die GDP erfordert umfassende Dokumentation. Viele Unternehmen unterschätzen den Aufwand für:
-- Standardarbeitsanweisungen (SOPs)
-- Schulungsnachweise
-- Abweichungsmanagement
-
-### 4. Qualifizierung von Lieferanten
-
-Alle Partner in der Lieferkette müssen qualifiziert werden – ein aufwändiger, aber essentieller Prozess.
-
-## Empfehlungen
-
-- Frühzeitige Einbindung von GDP-Expertise
-- Investition in digitale Dokumentationssysteme
-- Regelmäßige Audits und Schulungen
-
-*Hinweis: Dieser Artikel stellt keine Rechtsberatung dar. Für spezifische Compliance-Fragen konsultieren Sie bitte Fachexperten.*
-    `,
+Hinweis: Dieser Artikel stellt keine Rechtsberatung dar. Für spezifische Compliance-Fragen konsultieren Sie bitte Fachexperten.`,
     date: "2024-02-20",
     author: "MadforMed Team",
     category: "cannabis",
@@ -102,52 +58,19 @@ Alle Partner in der Lieferkette müssen qualifiziert werden – ein aufwändiger
     slug: "medizintechnik-prozessanalyse-ergebnis",
     title: "Medizintechnik: Von Prozessanalyse zu messbarem Ergebnis",
     excerpt: "Wie Medizintechnik-Unternehmen durch strukturierte Prozessoptimierung messbare Verbesserungen in Kliniken und Praxen erzielen können.",
-    content: `
-# Medizintechnik: Von Prozessanalyse zu messbarem Ergebnis
+    content: `Die Einführung neuer Medizintechnik scheitert häufig nicht am Produkt selbst, sondern an mangelnder Prozessintegration. Ein strukturierter Ansatz ist entscheidend für den Erfolg.
 
-Die Einführung neuer Medizintechnik scheitert häufig nicht am Produkt selbst, sondern an mangelnder Prozessintegration. Ein strukturierter Ansatz ist entscheidend.
+Das Problem ist oft dasselbe: Neue Medizintechnik wird isoliert betrachtet. Der Fokus liegt auf Produktfeatures statt auf Workflow-Integration. Die Schulung des Personals kommt zu kurz, und eine echte Erfolgsmessung findet nicht statt.
 
-## Das Problem
+Unser Ansatz beginnt mit einer detaillierten Ist-Analyse. Wir beobachten vor Ort, führen Interviews mit allen Beteiligten und identifizieren Schmerzpunkte und Ineffizienzen.
 
-Neue Medizintechnik wird oft isoliert betrachtet:
-- Fokus auf Produktfeatures statt Workflow-Integration
-- Unzureichende Schulung des Personals
-- Fehlende Erfolgsmessung
+Auf dieser Basis entwickeln wir in der Konzeptionsphase optimierte Workflows, passende Schulungskonzepte und KPIs für die Erfolgsmessung.
 
-## Unser Ansatz
+Die Implementierung erfolgt dann schrittweise: Wir starten mit einer Pilotphase in einem ausgewählten Bereich, passen basierend auf dem Feedback an und rollen dann mit begleitenden Schulungen aus.
 
-### Phase 1: Ist-Analyse
+Am Ende steht die Erfolgskontrolle. Messbare Ergebnisse sind entscheidend – ein Vorher-Nachher-Vergleich anhand definierter KPIs, kontinuierliche Optimierung und eine saubere Dokumentation der Verbesserungen.
 
-Wir beginnen mit einer detaillierten Aufnahme der bestehenden Prozesse:
-- Beobachtung vor Ort
-- Interviews mit allen Beteiligten
-- Identifikation von Schmerzpunkten und Ineffizienzen
-
-### Phase 2: Konzeption
-
-Basierend auf der Analyse entwickeln wir:
-- Optimierte Workflows
-- Schulungskonzepte
-- KPIs für die Erfolgsmessung
-
-### Phase 3: Implementierung
-
-Die Umsetzung erfolgt schrittweise:
-- Pilotphase in ausgewähltem Bereich
-- Anpassung basierend auf Feedback
-- Rollout mit begleitenden Schulungen
-
-### Phase 4: Erfolgskontrolle
-
-Messbare Ergebnisse sind entscheidend:
-- Vorher-Nachher-Vergleich anhand definierter KPIs
-- Kontinuierliche Optimierung
-- Dokumentation der Verbesserungen
-
-## Fazit
-
-Erfolgreiche Medizintechnik-Implementierung erfordert einen ganzheitlichen Ansatz, der Menschen, Prozesse und Technologie zusammendenkt.
-    `,
+Erfolgreiche Medizintechnik-Implementierung erfordert einen ganzheitlichen Ansatz, der Menschen, Prozesse und Technologie zusammendenkt.`,
     date: "2024-03-10",
     author: "MadforMed Team",
     category: "medtech",
@@ -157,68 +80,27 @@ Erfolgreiche Medizintechnik-Implementierung erfordert einen ganzheitlichen Ansat
     slug: "ki-aussendienst-use-cases",
     title: "KI im Außendienst: 10 praxiserprobte Use Cases",
     excerpt: "Von Follow-up E-Mails bis zur Account-Vorbereitung: Wie Vertriebsteams mit ChatGPT und Copilot ihre tägliche Arbeit effizienter gestalten.",
-    content: `
-# KI im Außendienst: 10 praxiserprobte Use Cases
+    content: `Künstliche Intelligenz verändert den Vertriebsalltag. Doch statt abstrakter Versprechen brauchen Sales-Teams konkrete Anwendungsfälle. Hier sind 10 Use Cases, die sich in der Praxis bewährt haben.
 
-Künstliche Intelligenz verändert den Vertriebsalltag. Doch statt abstrakter Versprechen brauchen Sales-Teams konkrete Anwendungsfälle. Hier sind 10 Use Cases, die sich in der Praxis bewährt haben.
+Follow-up E-Mails nach Kundengesprächen lassen sich in 10-15 Minuten statt einer Stunde erstellen. Ein Beispiel: "Schreibe eine Follow-up E-Mail nach einem Erstgespräch mit einem Chefarzt der Orthopädie. Thema war unser neues Arthroskopie-System. Er hat Interesse an einer Produktdemonstration gezeigt."
 
-## 1. Follow-up E-Mails nach Kundengesprächen
+Account-Briefings vor Terminen sparen 20-30 Minuten pro Vorbereitung. Lassen Sie sich relevante Informationen über Krankenhaus, Entscheider und aktuelle Entwicklungen zusammenfassen. Wichtig: Nur öffentliche Quellen nutzen, keine vertraulichen Daten eingeben.
 
-**Zeitersparnis: 10-15 Minuten pro E-Mail**
+Auch bei der Einwandbehandlung hilft KI: Generieren Sie überzeugende Antworten auf typische Einwände Ihrer Zielgruppe. Das Modell kann verschiedene Perspektiven durchspielen.
 
-Prompt-Beispiel: "Schreibe eine Follow-up E-Mail nach einem Erstgespräch mit einem Chefarzt der Orthopädie. Thema war unser neues Arthroskopie-System. Er hat Interesse an einer Produktdemonstration gezeigt."
+Angebots-Begleittexte lassen sich personalisieren – statt Standardtexte bekommen Sie individuelle Value Propositions für jeden Kunden.
 
-## 2. Account-Briefings vor Terminen
+CRM-Notizen können Sie schnell strukturieren. Verwandeln Sie schnelle Notizen nach dem Termin in aussagekräftige CRM-Einträge.
 
-**Zeitersparnis: 20-30 Minuten pro Vorbereitung**
+Wettbewerbsvergleiche lassen sich auf Basis öffentlicher Informationen erstellen. Reaktivierungs-Kampagnen werden durch personalisierte E-Mails für länger inaktive Kunden unterstützt.
 
-Lassen Sie sich relevante Informationen über Krankenhaus, Entscheider und aktuelle Entwicklungen zusammenfassen. Achtung: Öffentliche Quellen nutzen, keine vertraulichen Daten eingeben!
+Interne Reports lassen sich zu Management Summaries verdichten. Schulungsunterlagen für neue Produkte oder Kampagnen können Sie vorbereiten. Und selbst die Terminkoordination wird einfacher – professionell und persönlich formulierte Terminanfragen und -bestätigungen.
 
-## 3. Einwandbehandlung vorbereiten
-
-Generieren Sie überzeugende Antworten auf typische Einwände Ihrer Zielgruppe. Das KI-Modell kann verschiedene Perspektiven durchspielen.
-
-## 4. Angebots-Begleittexte personalisieren
-
-Statt Standardtexte: individuelle Value Propositions für jeden Kunden.
-
-## 5. CRM-Notizen strukturieren
-
-Verwandeln Sie schnelle Notizen nach dem Termin in strukturierte, aussagekräftige CRM-Einträge.
-
-## 6. Wettbewerbsvergleiche erstellen
-
-Lassen Sie sich bei der Erstellung von Vergleichstabellen unterstützen – natürlich auf Basis öffentlicher Informationen.
-
-## 7. Reaktivierungs-Kampagnen
-
-Personalisierte E-Mails für Kunden, die länger nicht aktiv waren.
-
-## 8. Interne Reports zusammenfassen
-
-Management Summaries aus detaillierten Field Reports erstellen.
-
-## 9. Schulungsunterlagen vorbereiten
-
-Präsentationen und Gesprächsleitfäden für neue Produkte oder Kampagnen.
-
-## 10. Terminkoordination
-
-Formulierung von Terminanfragen und -bestätigungen, die professionell und persönlich wirken.
-
-## Wichtig: Datenschutz beachten
-
-- Keine Patientendaten eingeben
-- Keine vertraulichen Geschäftsinformationen
-- Enterprise-Versionen bevorzugen
-- Im Zweifel: IT/Datenschutz fragen
-
-## Fazit
+Beim Datenschutz gilt: Keine Patientendaten eingeben, keine vertraulichen Geschäftsinformationen, Enterprise-Versionen bevorzugen, und im Zweifel IT oder Datenschutz fragen.
 
 KI ersetzt nicht den persönlichen Kontakt – aber sie befreit Zeit dafür. Die Kunst liegt darin, die richtigen Use Cases zu identifizieren und sauber umzusetzen.
 
-*Interessiert an einem KI-Workshop für Ihr Team? [Kontaktieren Sie uns](/kontakt).*
-    `,
+Interessiert an einem KI-Workshop für Ihr Team? Kontaktieren Sie uns.`,
     date: "2025-01-20",
     author: "MadforMed Team",
     category: "ki",
@@ -228,65 +110,23 @@ KI ersetzt nicht den persönlichen Kontakt – aber sie befreit Zeit dafür. Die
     slug: "copilot-vs-chatgpt-sales",
     title: "Copilot vs. ChatGPT: Was passt zu Sales-Prozessen?",
     excerpt: "Microsoft Copilot oder ChatGPT? Ein neutraler Vergleich für Vertriebsteams mit konkreten Empfehlungen für verschiedene Anwendungsfälle.",
-    content: `
-# Copilot vs. ChatGPT: Was passt zu Sales-Prozessen?
+    content: `Beide Tools haben ihre Stärken. Die richtige Wahl hängt von Ihren spezifischen Anforderungen und der vorhandenen IT-Infrastruktur ab.
 
-Beide Tools haben ihre Stärken. Die richtige Wahl hängt von Ihren spezifischen Anforderungen und der vorhandenen IT-Infrastruktur ab.
+Microsoft Copilot punktet vor allem durch die nahtlose Integration in die Microsoft-Welt. Es arbeitet direkt in Outlook, Teams, Word und Excel. Copilot kann auf Unternehmensdaten zugreifen (entsprechende Berechtigungen vorausgesetzt), fasst lange E-Mail-Threads automatisch zusammen und erstellt Zusammenfassungen von Teams-Meetings.
 
-## Microsoft Copilot
+Copilot ist ideal für Teams, die stark in der Microsoft-Welt arbeiten, Unternehmen mit vorhandener M365 E5-Lizenz und Anwendungsfälle, die Unternehmensdaten erfordern. Zu beachten sind die zusätzlichen Lizenzkosten von etwa 30 Euro pro User und Monat, und die volle Funktionalität gibt es nur mit entsprechender Microsoft-Infrastruktur.
 
-### Stärken
-- **Nahtlose MS365-Integration**: Arbeitet direkt in Outlook, Teams, Word und Excel
-- **Kontextwissen**: Kann auf Unternehmensdaten zugreifen (entsprechende Berechtigungen vorausgesetzt)
-- **E-Mail-Zusammenfassungen**: Fasst lange E-Mail-Threads automatisch zusammen
-- **Meeting-Protokolle**: Erstellt Zusammenfassungen von Teams-Meetings
+ChatGPT hat andere Stärken. Es ist stärker bei Brainstorming und kreativen Aufgaben, bietet mehr Kontrolle über Ausgabeformat und -stil durch flexibles Prompting, ermöglicht dauerhaft hinterlegte Kontext-Informationen durch Custom Instructions und bietet spezialisierte Mini-Anwendungen für wiederkehrende Aufgaben durch GPTs.
 
-### Ideal für
-- Teams, die stark in der Microsoft-Welt arbeiten
-- Unternehmen mit vorhandener M365 E5-Lizenz
-- Anwendungsfälle, die Unternehmensdaten erfordern
+ChatGPT ist ideal für kreative Textarbeit und Ideation, Teams mit heterogener IT-Landschaft und Anwendungsfälle, die keine Unternehmensdaten erfordern. Zu beachten: Kein direkter Zugriff auf Unternehmenssysteme, und für die volle Funktionalität braucht es ChatGPT Plus (20 Euro pro Monat) oder Team (25 Euro pro User und Monat).
 
-### Zu beachten
-- Erfordert zusätzliche Lizenzkosten (ca. 30€/User/Monat)
-- Volle Funktionalität nur mit entsprechender Microsoft-Infrastruktur
+In der Praxis nutzen viele Teams beide Tools. Copilot für E-Mail-Management und Meeting-Aufgaben, ChatGPT für kreative Aufgaben und komplexe Prompting-Workflows.
 
-## ChatGPT
+Unabhängig vom Tool gilt beim Datenschutz: Keine sensiblen Patientendaten eingeben, keine vertraulichen Geschäftsinformationen, Unternehmensrichtlinien beachten, Enterprise-Versionen bevorzugen.
 
-### Stärken
-- **Kreative Ideenfindung**: Stärker bei Brainstorming und kreativen Aufgaben
-- **Flexible Prompting**: Mehr Kontrolle über Ausgabeformat und -stil
-- **Custom Instructions**: Dauerhaft hinterlegte Kontext-Informationen
-- **GPTs**: Spezialisierte Mini-Anwendungen für wiederkehrende Aufgaben
+Meine Empfehlung: Starten Sie mit einem Pilot in einem Team. Testen Sie beide Tools für Ihre spezifischen Use Cases und evaluieren Sie nach 4-6 Wochen, welches Tool besser passt – oder ob eine Kombination sinnvoll ist.
 
-### Ideal für
-- Kreative Textarbeit und Ideation
-- Teams mit heterogener IT-Landschaft
-- Anwendungsfälle, die keine Unternehmensdaten erfordern
-
-### Zu beachten
-- Kein direkter Zugriff auf Unternehmenssysteme
-- ChatGPT Plus (20€/Monat) oder Team (25€/User/Monat) für volle Funktionalität
-
-## Kombination beider Tools
-
-In der Praxis nutzen viele Teams beide Tools:
-- **Copilot** für E-Mail-Management und Meeting-Aufgaben
-- **ChatGPT** für kreative Aufgaben und komplexe Prompting-Workflows
-
-## Datenschutz in beiden Fällen
-
-Unabhängig vom Tool:
-- Keine sensiblen Patientendaten eingeben
-- Keine vertraulichen Geschäftsinformationen
-- Unternehmensrichtlinien beachten
-- Enterprise-Versionen bevorzugen
-
-## Empfehlung
-
-Starten Sie mit einem Pilot in einem Team. Testen Sie beide Tools für Ihre spezifischen Use Cases und evaluieren Sie nach 4-6 Wochen, welches Tool besser passt – oder ob eine Kombination sinnvoll ist.
-
-*Wir unterstützen Sie bei der Auswahl und Einführung. [Kontaktieren Sie uns](/kontakt) für ein unverbindliches Gespräch.*
-    `,
+Wir unterstützen Sie bei der Auswahl und Einführung. Kontaktieren Sie uns für ein unverbindliches Gespräch.`,
     date: "2025-01-25",
     author: "MadforMed Team",
     category: "ki",
@@ -296,97 +136,23 @@ Starten Sie mit einem Pilot in einem Team. Testen Sie beide Tools für Ihre spez
     slug: "prompt-playbooks-konsistenz",
     title: "Wie Teams mit Prompt-Playbooks Konsistenz gewinnen",
     excerpt: "Ein Prompt-Playbook sorgt für einheitliche Qualität im Team. So erstellen Sie ein effektives Playbook für Ihren Vertrieb.",
-    content: `
-# Wie Teams mit Prompt-Playbooks Konsistenz gewinnen
+    content: `Wenn jedes Teammitglied eigene Prompts entwickelt, entstehen unterschiedliche Qualitätsniveaus und Stile. Ein Prompt-Playbook schafft Abhilfe.
 
-Wenn jedes Teammitglied eigene Prompts entwickelt, entstehen unterschiedliche Qualitätsniveaus und Stile. Ein Prompt-Playbook schafft Abhilfe.
+Ein Prompt-Playbook ist eine Sammlung standardisierter Prompts für wiederkehrende Aufgaben. Es enthält fertige Vorlagen zum Copy-Paste, Platzhalter für individuelle Anpassung, Beispiele für gute Ergebnisse und Hinweise zu Dos und Don'ts.
 
-## Was ist ein Prompt-Playbook?
+Warum braucht ein Team ein Playbook? Erstens: Ein konsistenter Außenauftritt. Alle E-Mails und Dokumente folgen dem gleichen Tone of Voice. Zweitens: Schnellere Einarbeitung. Neue Teammitglieder können sofort produktiv arbeiten. Drittens: Qualitätssicherung. Bewährte Prompts liefern zuverlässig gute Ergebnisse. Viertens: Zeitersparnis. Kein Neuerfinden des Rades bei jeder Aufgabe.
 
-Ein Prompt-Playbook ist eine Sammlung standardisierter Prompts für wiederkehrende Aufgaben:
-- Fertige Vorlagen zum Copy-Paste
-- Platzhalter für individuelle Anpassung
-- Beispiele für gute Ergebnisse
-- Hinweise zu Dos und Don'ts
+Ein gutes Playbook ist strukturiert aufgebaut. Es beginnt mit Grundlagen – einer kurzen Einführung in Prompting, generellen Tipps und Datenschutz-Hinweisen. Dann folgen E-Mail-Templates für Follow-ups, Terminvereinbarungen, Angebots-Begleitschreiben und Kundenreaktivierung. Ein weiteres Kapitel behandelt die Vorbereitung: Account-Briefings, Stakeholder-Analysen, Wettbewerbsvergleiche. Dokumentation ist ebenfalls wichtig: CRM-Notizen strukturieren, Management Summaries erstellen, Meeting-Protokolle. Und schließlich Spezialfälle: branchen- und produktspezifische Prompts.
 
-## Warum braucht ein Team ein Playbook?
+Bei der Erstellung haben sich einige Best Practices bewährt. Starten Sie mit den besten Prompts, die im Team bereits funktionieren. Entwickeln Sie gemeinsam – das erhöht die Akzeptanz. Definieren Sie Platzhalter klar, etwa KUNDENNAME, PRODUKT, ANLIEGEN. Zeigen Sie Beispiele: Gute Prompts plus erwartete Ergebnisse machen das Playbook greifbar. Und aktualisieren Sie regelmäßig – neue Use Cases, bessere Prompts, Lessons Learned.
 
-### 1. Konsistenter Außenauftritt
-Alle E-Mails und Dokumente folgen dem gleichen Tone of Voice.
+Beim Format haben Sie verschiedene Optionen: PDF zum Ausdrucken und schnellen Nachschlagen, Notion oder Confluence für einfache Updates und Suche, oder Markdown für technisch versierte Teams.
 
-### 2. Schnellere Einarbeitung
-Neue Teammitglieder können sofort produktiv arbeiten.
-
-### 3. Qualitätssicherung
-Bewährte Prompts liefern zuverlässig gute Ergebnisse.
-
-### 4. Zeitersparnis
-Kein Neuerfinden des Rades bei jeder Aufgabe.
-
-## Aufbau eines Prompt-Playbooks
-
-### Kapitel 1: Grundlagen
-- Kurze Einführung in Prompting
-- Generelle Tipps (Kontext geben, klare Anweisungen, etc.)
-- Datenschutz-Hinweise
-
-### Kapitel 2: E-Mail-Templates
-- Follow-up nach Erstgespräch
-- Terminvereinbarung
-- Angebots-Begleitschreiben
-- Reaktivierung inaktiver Kunden
-
-### Kapitel 3: Vorbereitung
-- Account-Briefing
-- Stakeholder-Analyse
-- Wettbewerbsvergleich
-
-### Kapitel 4: Dokumentation
-- CRM-Notizen strukturieren
-- Management Summary erstellen
-- Meeting-Protokolle
-
-### Kapitel 5: Spezialfälle
-- Branchenspezifische Prompts
-- Produktspezifische Prompts
-
-## Best Practices für die Erstellung
-
-### 1. Mit den besten Prompts starten
-Sammeln Sie, was im Team bereits funktioniert.
-
-### 2. Gemeinsam entwickeln
-Binden Sie das Team ein – das erhöht die Akzeptanz.
-
-### 3. Platzhalter definieren
-Markieren Sie klar, was individuell angepasst werden muss: [KUNDENNAME], [PRODUKT], [ANLIEGEN].
-
-### 4. Beispiele zeigen
-Gute Prompts + erwartete Ergebnisse machen das Playbook greifbar.
-
-### 5. Regelmäßig aktualisieren
-Neue Use Cases, bessere Prompts, Lessons Learned einarbeiten.
-
-## Format
-
-- **PDF**: Zum Ausdrucken und schnellen Nachschlagen
-- **Notion/Confluence**: Für einfache Updates und Suche
-- **Markdown**: Für technisch versierte Teams
-
-## Messung des Erfolgs
-
-Nach 4 Wochen sollten Sie messen:
-- Nutzungsrate im Team
-- Zeitersparnis (Selbsteinschätzung)
-- Qualität der Outputs (Stichproben)
-- Feedback der Teammitglieder
-
-## Fazit
+Nach 4 Wochen sollten Sie messen: Nutzungsrate im Team, Zeitersparnis (Selbsteinschätzung), Qualität der Outputs (Stichproben) und Feedback der Teammitglieder.
 
 Ein Prompt-Playbook ist kein Nice-to-have, sondern die Basis für konsistente KI-Nutzung im Team. Der initiale Aufwand zahlt sich schnell aus.
 
-*Wir entwickeln mit Ihnen ein maßgeschneidertes Prompt-Playbook. [Kontaktieren Sie uns](/kontakt) für mehr Informationen.*
-    `,
+Wir entwickeln mit Ihnen ein maßgeschneidertes Prompt-Playbook. Kontaktieren Sie uns für mehr Informationen.`,
     date: "2025-01-28",
     author: "MadforMed Team",
     category: "ki",
