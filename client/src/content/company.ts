@@ -8,8 +8,8 @@ export const companyInfo = {
     country: "Deutschland"
   },
   contact: {
-    email: "kontakt@madformed.de",
-    phone: "+49 214 123456"
+    email: "matthias@madformed.de",
+    phone: "0176/22765249"
   },
   responseTime: "Rückmeldung i. d. R. innerhalb von 48h",
   legal: {
