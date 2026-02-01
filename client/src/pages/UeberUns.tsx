@@ -14,11 +14,12 @@ const founderProfile = {
   education: [
     { degree: "Master of Arts", field: "Health Economics", university: "Apollon Hochschule Bremen" },
     { degree: "Bachelor of Science", field: "Health Economics", university: "Universität zu Köln" },
+    { degree: "Notfallsanitäter", field: "", university: "" },
   ],
   languages: ["Deutsch (Muttersprache)", "Englisch (fließend)", "Portugiesisch (fortgeschritten)"],
   highlights: [
     "15+ Jahre Erfahrung in Healthcare & Life Sciences",
-    "Führungspositionen bei Smith & Nephew, Arthrex, Cansativa",
+    "Langjährige Führungserfahrung bei Smith & Nephew, Arthrex, Cansativa, aescologic",
     "CEO-Erfahrung im Medizinalcannabis-Bereich",
     "M&A und Restrukturierungsexpertise"
   ]
@@ -70,7 +71,11 @@ export default function UeberUns() {
                         </div>
                         <ul className="space-y-1 text-sm text-brand-dark/70">
                           {founderProfile.education.map((edu, i) => (
-                            <li key={i}>{edu.degree} – {edu.field}, {edu.university}</li>
+                            <li key={i}>
+                              {edu.field && edu.university 
+                                ? `${edu.degree} – ${edu.field}, ${edu.university}`
+                                : edu.degree}
+                            </li>
                           ))}
                         </ul>
                       </div>
