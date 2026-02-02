@@ -133,22 +133,17 @@ export function HeroSlider() {
 
       <div className="relative z-10 h-full flex items-center">
         {slide.showLogo && (
-          <div className="absolute inset-0 flex items-start justify-center pt-16 md:pt-20 lg:pt-24 pointer-events-none overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-end pr-8 md:pr-16 lg:pr-24 pointer-events-none overflow-hidden">
             <div
               className={`transition-all duration-1000 ${
                 isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
               }`}
             >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-green/25 via-transparent to-brand-cyan/25 rounded-full blur-3xl scale-150" />
-                <div className="relative p-6 md:p-10 lg:p-14 rounded-full bg-white/8 backdrop-blur-md border border-white/15">
-                  <img 
-                    src={logoImage} 
-                    alt="MadforMed Logo" 
-                    className="w-56 md:w-72 lg:w-96 xl:w-[28rem] h-auto opacity-50 md:opacity-60"
-                  />
-                </div>
-              </div>
+              <img 
+                src={logoImage} 
+                alt="MadforMed Logo" 
+                className="w-[20rem] md:w-[28rem] lg:w-[36rem] xl:w-[44rem] h-auto opacity-25 md:opacity-30"
+              />
             </div>
           </div>
         )}
