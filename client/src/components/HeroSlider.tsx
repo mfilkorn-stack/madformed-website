@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight, Leaf, Brain, Monitor, Target } from "lucide-react";
-import logoImage from "@assets/586E4BEB-9A32-49CD-B6A4-925E000A0D62_1769909787454.png";
 
 const slides = [
   {
@@ -11,8 +10,7 @@ const slides = [
     accentColor: "brand-green",
     title: "Medical Resulting",
     subtitle: "Strategieberatung für regulierte Märkte – strukturiert, compliance-orientiert, ergebnisfokussiert.",
-    tagline: "MadforMed GmbH",
-    showLogo: true
+    tagline: "MadforMed GmbH"
   },
   {
     image: "/images/hero-slide-2.jpg",
@@ -20,8 +18,7 @@ const slides = [
     accentColor: "brand-green",
     title: "Medizinisches Cannabis",
     subtitle: "Von EU-GMP/GDP bis zur Supply Chain: Regulatorische Expertise und operative Begleitung für Hersteller, Importeure und Großhändler.",
-    tagline: "Beratung & Compliance",
-    showLogo: false
+    tagline: "Beratung & Compliance"
   },
   {
     image: "/images/hero-slide-3.jpg",
@@ -29,8 +26,7 @@ const slides = [
     accentColor: "brand-cyan",
     title: "KI-Enablement für Vertrieb",
     subtitle: "Copilot & ChatGPT praxisnah einführen: Workshops, Prompt-Playbooks und Enablement-Programme für Sales-Teams.",
-    tagline: "Workshops & Training",
-    showLogo: false
+    tagline: "Workshops & Training"
   },
   {
     image: "/images/hero-slide-4.jpg",
@@ -38,8 +34,7 @@ const slides = [
     accentColor: "brand-cyan",
     title: "Medizintechnik",
     subtitle: "Medizintechnik mit Schwerpunkt auf das ambulante Operieren: Go-to-Market, Prozessoptimierung und Sales Enablement.",
-    tagline: "Strategie & Umsetzung",
-    showLogo: false
+    tagline: "Strategie & Umsetzung"
   }
 ];
 
@@ -132,22 +127,6 @@ export function HeroSlider() {
       </div>
 
       <div className="relative z-10 h-full flex items-center">
-        {slide.showLogo && (
-          <div className="absolute top-20 right-4 md:right-8 lg:right-12 pointer-events-none">
-            <div
-              className={`transition-all duration-1000 ${
-                isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
-              }`}
-            >
-              <img 
-                src={logoImage} 
-                alt="MadforMed Logo" 
-                className="w-32 md:w-40 lg:w-52 xl:w-64 h-auto opacity-70 md:opacity-80 drop-shadow-lg"
-              />
-            </div>
-          </div>
-        )}
-        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
           <div className="max-w-2xl">
             <div
