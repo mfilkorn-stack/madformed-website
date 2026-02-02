@@ -132,22 +132,34 @@ export function HeroSlider() {
       </div>
 
       <div className="relative z-10 h-full flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className={`${slide.showLogo ? 'text-center max-w-4xl mx-auto' : 'max-w-2xl'}`}>
+        {slide.showLogo && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+            <div
+              className={`transition-all duration-1000 ${
+                isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
+              }`}
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-green/20 via-transparent to-brand-cyan/20 rounded-full blur-3xl scale-150" />
+                <div className="relative p-8 md:p-12 lg:p-16 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
+                  <img 
+                    src={logoImage} 
+                    alt="MadforMed Logo" 
+                    className="w-48 md:w-64 lg:w-80 xl:w-96 h-auto opacity-40 md:opacity-50"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
+          <div className="max-w-2xl">
             <div
               className={`transition-all duration-700 ${
                 isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
               }`}
             >
-              {slide.showLogo && (
-                <div className="mb-8">
-                  <img 
-                    src={logoImage} 
-                    alt="MadforMed Logo" 
-                    className="w-64 md:w-80 lg:w-96 h-auto mx-auto drop-shadow-2xl"
-                  />
-                </div>
-              )}
               <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm text-sm font-medium mb-6 ${
                 slide.accentColor === 'brand-green'
                   ? 'bg-brand-green/30 text-brand-green border border-brand-green/30'
@@ -159,11 +171,11 @@ export function HeroSlider() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
                 {slide.title}
               </h1>
-              <p className={`text-lg md:text-xl text-white/90 mb-8 leading-relaxed drop-shadow-md ${slide.showLogo ? 'max-w-2xl mx-auto' : 'max-w-xl'}`}>
+              <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-xl drop-shadow-md">
                 {slide.subtitle}
               </p>
             </div>
-            <div className={`flex flex-wrap gap-4 ${slide.showLogo ? 'justify-center' : ''}`}>
+            <div className="flex flex-wrap gap-4">
               <Link href="/leistungen">
                 <Button
                   size="lg"
