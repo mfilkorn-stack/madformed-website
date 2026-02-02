@@ -7,7 +7,7 @@ import { HeroSlider } from "@/components/HeroSlider";
 import { WaveDivider } from "@/components/WaveDivider";
 import { benefits, workProcess } from "@/content/company";
 import { companyLogos } from "@/content/references";
-import { ArrowRight, Leaf, Monitor, Brain, CheckCircle2, AlertTriangle, Building2, Search, Lightbulb, Rocket, Shield, Zap, Target, Users } from "lucide-react";
+import { ArrowRight, Leaf, Monitor, Brain, CheckCircle2, AlertTriangle, Building2, Search, Lightbulb, Rocket, Shield, Zap, Target, Users, ShoppingCart } from "lucide-react";
 
 export default function Home() {
   return (
@@ -21,27 +21,27 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-white relative" data-testid="services-overview">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            title="Drei Säulen für Ihren Erfolg"
+            title="Vier Säulen für Ihren Erfolg"
             subtitle="Unsere Beratungsschwerpunkte"
           />
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Link href="/leistungen/medizinisches-cannabis">
               <Card
-                className="group relative p-8 bg-white border-2 border-brand-green/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
+                className="group relative p-6 bg-white border-2 border-brand-green/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-cannabis"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-green to-brand-green/50" />
-                <div className="w-16 h-16 bg-brand-green/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-green/20 transition-colors">
-                  <Leaf className="w-8 h-8 text-brand-green" />
+                <div className="w-14 h-14 bg-brand-green/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand-green/20 transition-colors">
+                  <Leaf className="w-7 h-7 text-brand-green" />
                 </div>
-                <h3 className="text-xl font-bold text-brand-dark mb-4">
-                  Medizinisches Cannabis
+                <h3 className="text-lg font-bold text-brand-dark mb-3">
+                  Med. Cannabis
                 </h3>
-                <p className="text-brand-dark/70 mb-6 leading-relaxed">
-                  Von der Strategie bis zur Supply Chain: Beratung für Hersteller, 
-                  Importeure, Großhändler und Apothekennetzwerke.
+                <p className="text-brand-dark/70 mb-5 leading-relaxed text-sm">
+                  Beratung für Hersteller, Importeure, Großhändler und 
+                  Apothekennetzwerke.
                 </p>
-                <span className="inline-flex items-center text-brand-green font-semibold">
+                <span className="inline-flex items-center text-brand-green font-semibold text-sm">
                   Mehr erfahren
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
                 </span>
@@ -50,26 +50,26 @@ export default function Home() {
 
             <Link href="/leistungen/ki-sales-bd">
               <Card
-                className="group relative p-8 bg-white border-2 border-brand-cyan/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
+                className="group relative p-6 bg-white border-2 border-brand-cyan/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-ki"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-cyan to-brand-cyan/50" />
-                <div className="absolute top-4 right-4">
-                  <span className="inline-flex items-center px-2.5 py-1 bg-brand-cyan/10 text-brand-cyan text-xs font-semibold rounded-full">
+                <div className="absolute top-3 right-3">
+                  <span className="inline-flex items-center px-2 py-0.5 bg-brand-cyan/10 text-brand-cyan text-xs font-semibold rounded-full">
                     Neu
                   </span>
                 </div>
-                <div className="w-16 h-16 bg-brand-cyan/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-cyan/20 transition-colors">
-                  <Brain className="w-8 h-8 text-brand-cyan" />
+                <div className="w-14 h-14 bg-brand-cyan/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand-cyan/20 transition-colors">
+                  <Brain className="w-7 h-7 text-brand-cyan" />
                 </div>
-                <h3 className="text-xl font-bold text-brand-dark mb-4">
+                <h3 className="text-lg font-bold text-brand-dark mb-3">
                   KI-Enablement
                 </h3>
-                <p className="text-brand-dark/70 mb-6 leading-relaxed">
-                  Copilot & ChatGPT praxisnah einführen: Workshops, Prompt-Playbooks 
-                  und Enablement für Vertriebsteams.
+                <p className="text-brand-dark/70 mb-5 leading-relaxed text-sm">
+                  Copilot & ChatGPT Workshops und Prompt-Playbooks 
+                  für Vertriebsteams.
                 </p>
-                <span className="inline-flex items-center text-brand-cyan font-semibold">
+                <span className="inline-flex items-center text-brand-cyan font-semibold text-sm">
                   Mehr erfahren
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
                 </span>
@@ -78,21 +78,44 @@ export default function Home() {
 
             <Link href="/leistungen/medizintechnik">
               <Card
-                className="group relative p-8 bg-white border-2 border-brand-cyan/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
+                className="group relative p-6 bg-white border-2 border-brand-green/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-medtech"
               >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-cyan to-brand-green" />
-                <div className="w-16 h-16 bg-brand-cyan/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-cyan/20 transition-colors">
-                  <Monitor className="w-8 h-8 text-brand-cyan" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-green to-brand-green/50" />
+                <div className="w-14 h-14 bg-brand-green/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand-green/20 transition-colors">
+                  <Monitor className="w-7 h-7 text-brand-green" />
                 </div>
-                <h3 className="text-xl font-bold text-brand-dark mb-4">
+                <h3 className="text-lg font-bold text-brand-dark mb-3">
                   Medizintechnik
                 </h3>
-                <p className="text-brand-dark/70 mb-6 leading-relaxed">
+                <p className="text-brand-dark/70 mb-5 leading-relaxed text-sm">
                   Go-to-Market, Prozessoptimierung und Sales Enablement für 
                   Medizintechnik-Unternehmen.
                 </p>
-                <span className="inline-flex items-center text-brand-cyan font-semibold">
+                <span className="inline-flex items-center text-brand-green font-semibold text-sm">
+                  Mehr erfahren
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
+                </span>
+              </Card>
+            </Link>
+
+            <Link href="/leistungen/medizinalhandel">
+              <Card
+                className="group relative p-6 bg-white border-2 border-brand-cyan/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
+                data-testid="card-handel"
+              >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-cyan to-brand-cyan/50" />
+                <div className="w-14 h-14 bg-brand-cyan/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand-cyan/20 transition-colors">
+                  <ShoppingCart className="w-7 h-7 text-brand-cyan" />
+                </div>
+                <h3 className="text-lg font-bold text-brand-dark mb-3">
+                  Medizinalhandel
+                </h3>
+                <p className="text-brand-dark/70 mb-5 leading-relaxed text-sm">
+                  Vertriebsstrategie und Key Account Management für Händler 
+                  und Distributoren.
+                </p>
+                <span className="inline-flex items-center text-brand-cyan font-semibold text-sm">
                   Mehr erfahren
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
                 </span>

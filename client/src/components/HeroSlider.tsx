@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronLeft, ChevronRight, Leaf, Brain, Monitor, Target } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Leaf, Brain, Monitor, Target, ShoppingCart } from "lucide-react";
 
 const slides = [
   {
@@ -35,6 +35,14 @@ const slides = [
     title: "Medizintechnik",
     subtitle: "Medizintechnik mit Schwerpunkt auf das ambulante Operieren: Go-to-Market, Prozessoptimierung und Sales Enablement.",
     tagline: "Strategie & Umsetzung"
+  },
+  {
+    image: "/images/hero-slide-5.png",
+    icon: ShoppingCart,
+    accentColor: "brand-cyan",
+    title: "Medizinalhandel",
+    subtitle: "Vertriebsstrategie, Lieferantenmanagement und Key Account Management für Händler und Distributoren von Medizinprodukten.",
+    tagline: "Handel & Distribution"
   }
 ];
 
