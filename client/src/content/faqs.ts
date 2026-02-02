@@ -59,3 +59,26 @@ export const medtechFaqs = [
     answer: "Ja, im Rahmen unseres Sales Enablement entwickeln wir maßgeschneiderte Schulungsprogramme für Vertriebsteams im Medizintechnik-Bereich."
   }
 ];
+
+export const medizinalhandelFaqs = [
+  {
+    question: "Was unterscheidet Medizinalhandel von Medizintechnik-Beratung?",
+    answer: "Während die Medizintechnik-Beratung sich auf produzierende Unternehmen fokussiert, richtet sich unsere Medizinalhandel-Beratung an rein handelnde Unternehmen – also Distributoren, Großhändler und Fachhändler, die Medizinprodukte vertreiben ohne selbst zu produzieren."
+  },
+  {
+    question: "Welche Handelssegmente deckt MadforMed ab?",
+    answer: "Wir beraten im gesamten Spektrum des Medizinalhandels: von Verbrauchsmaterialien über Implantate bis hin zu Investitionsgütern. Besondere Expertise haben wir im Bereich Orthopädie, Chirurgie und Anästhesie."
+  },
+  {
+    question: "Wie unterstützen Sie bei Herstellerverhandlungen?",
+    answer: "Wir begleiten Sie bei der Vorbereitung und Durchführung von Konditionsverhandlungen, analysieren Vertragsbedingungen und helfen bei der Optimierung Ihrer Lieferantenbeziehungen."
+  },
+  {
+    question: "Bieten Sie auch Unterstützung für regionale Fachhändler?",
+    answer: "Ja, gerade regionale Fachhändler profitieren von unserer Expertise bei Marktpositionierung, Sortimentsgestaltung und der Entwicklung von Wettbewerbsvorteilen gegenüber größeren Marktteilnehmern."
+  },
+  {
+    question: "Können Sie bei der Erschließung neuer Kundengruppen helfen?",
+    answer: "Absolut. Wir unterstützen bei der Identifikation und Ansprache neuer Zielkunden, entwickeln Key-Account-Strategien und begleiten Sie beim Aufbau langfristiger Kundenbeziehungen."
+  }
+];

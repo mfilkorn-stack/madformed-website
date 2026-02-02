@@ -8,6 +8,7 @@ const leistungenSubmenu = [
   { label: "Übersicht", path: "/leistungen" },
   { label: "Medizinisches Cannabis", path: "/leistungen/medizinisches-cannabis" },
   { label: "Medizintechnik", path: "/leistungen/medizintechnik" },
+  { label: "Medizinalhandel", path: "/leistungen/medizinalhandel" },
   { label: "KI für Sales & BD", path: "/leistungen/ki-sales-bd" },
 ];
 

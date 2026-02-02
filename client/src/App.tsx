@@ -8,6 +8,7 @@ import Home from "@/pages/Home";
 import Leistungen from "@/pages/Leistungen";
 import CannabisServices from "@/pages/CannabisServices";
 import MedtechServices from "@/pages/MedtechServices";
+import MedizinalhandelServices from "@/pages/MedizinalhandelServices";
 import KiServices from "@/pages/KiServices";
 import UeberUns from "@/pages/UeberUns";
 import Projekte from "@/pages/Projekte";
@@ -26,6 +27,7 @@ function Router() {
         <Route path="/leistungen" component={Leistungen} />
         <Route path="/leistungen/medizinisches-cannabis" component={CannabisServices} />
         <Route path="/leistungen/medizintechnik" component={MedtechServices} />
+        <Route path="/leistungen/medizinalhandel" component={MedizinalhandelServices} />
         <Route path="/leistungen/ki-sales-bd" component={KiServices} />
         <Route path="/ueber-uns" component={UeberUns} />
         <Route path="/projekte" component={Projekte} />

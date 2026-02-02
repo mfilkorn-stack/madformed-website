@@ -78,6 +78,46 @@ export const medtechTargetGroups = [
   { title: "Partner", description: "Kooperationen und Netzwerkaufbau" }
 ];
 
+export const medizinalhandelServices = [
+  {
+    id: "vertriebsstrategie",
+    title: "Vertriebsstrategie & Markterschließung",
+    description: "Entwicklung effektiver Vertriebsstrategien für den Medizinalhandel. Identifikation von Zielkunden, Marktanalyse und Positionierung.",
+    icon: "target"
+  },
+  {
+    id: "lieferantenmanagement",
+    title: "Lieferanten- & Herstellermanagement",
+    description: "Optimierung der Zusammenarbeit mit Herstellern und Lieferanten. Vertragsverhandlungen, Konditionen und Partnerschaftsmodelle.",
+    icon: "handshake"
+  },
+  {
+    id: "logistik-distribution",
+    title: "Logistik & Distribution",
+    description: "Effiziente Lager- und Distributionskonzepte für Medizinprodukte. Optimierung von Lieferketten und Bestandsmanagement.",
+    icon: "truck"
+  },
+  {
+    id: "kundenbetreuung",
+    title: "Kundenbetreuung & Key Account",
+    description: "Aufbau und Weiterentwicklung von Kundenbeziehungen. Key Account Management für Kliniken, Praxen und Einkaufsgemeinschaften.",
+    icon: "users"
+  },
+  {
+    id: "produktportfolio",
+    title: "Produktportfolio-Management",
+    description: "Strategische Sortimentsgestaltung und Portfolioanalyse. Identifikation von Marktlücken und Wachstumschancen.",
+    icon: "clipboardList"
+  }
+];
+
+export const medizinalhandelTargetGroups = [
+  { title: "Medizinprodukte-Händler", description: "Vertriebsoptimierung und Wachstumsstrategien" },
+  { title: "Großhändler & Distributoren", description: "Logistik und Lieferantenmanagement" },
+  { title: "Einkaufsgemeinschaften", description: "Verhandlungsstrategien und Konditionen" },
+  { title: "Regionale Fachhandel", description: "Marktpositionierung und Kundenbindung" }
+];
+
 export const caseStudies = [
   {
     id: "case-1",

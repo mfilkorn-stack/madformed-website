@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
-import { ArrowRight, Leaf, Stethoscope, Bot } from "lucide-react";
+import { ArrowRight, Leaf, Stethoscope, ShoppingCart, Bot } from "lucide-react";
 
 export default function Leistungen() {
   return (
@@ -25,70 +25,64 @@ export default function Leistungen() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             <Card
-              className="p-8 lg:p-10 bg-white border-brand-grey/20 hover:border-brand-green transition-colors"
+              className="p-6 lg:p-8 bg-white border-brand-grey/20 hover:border-brand-green transition-colors"
               data-testid="card-cannabis-overview"
             >
-              <div className="w-16 h-16 bg-brand-green/10 rounded-xl flex items-center justify-center mb-6">
-                <Leaf className="w-8 h-8 text-brand-green" />
+              <div className="w-14 h-14 bg-brand-green/10 rounded-xl flex items-center justify-center mb-5">
+                <Leaf className="w-7 h-7 text-brand-green" />
               </div>
-              <h2 className="text-2xl font-bold text-brand-dark mb-4">
+              <h2 className="text-xl font-bold text-brand-dark mb-3">
                 Medizinisches Cannabis
               </h2>
-              <p className="text-brand-dark/70 mb-6 leading-relaxed">
-                Der deutsche Markt für medizinisches Cannabis wächst und wird zunehmend 
-                komplexer. Wir unterstützen Unternehmen bei der Navigation durch 
-                regulatorische Anforderungen und der Entwicklung tragfähiger Geschäftsmodelle.
+              <p className="text-brand-dark/70 mb-5 leading-relaxed text-sm">
+                Navigation durch regulatorische Anforderungen und Entwicklung 
+                tragfähiger Geschäftsmodelle im wachsenden Cannabis-Markt.
               </p>
-              <ul className="space-y-2 mb-8 text-sm text-brand-dark/70">
+              <ul className="space-y-2 mb-6 text-sm text-brand-dark/70">
                 <li className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full" />
                   Markteintritt & Strategie
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full" />
-                  EU-GMP / EU-GDP Prozessberatung
+                  EU-GMP / EU-GDP Beratung
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full" />
                   Supply Chain & Logistik
                 </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-brand-green rounded-full" />
-                  QM/Dokumentation
-                </li>
               </ul>
               <Link href="/leistungen/medizinisches-cannabis">
                 <Button
-                  className="bg-brand-green hover:bg-brand-green/90 text-white w-full sm:w-auto"
+                  className="bg-brand-green hover:bg-brand-green/90 text-white w-full"
                   data-testid="button-cannabis-details"
                 >
-                  Alle Leistungen ansehen
+                  Details
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
             </Card>
 
             <Card
-              className="p-8 lg:p-10 bg-white border-brand-grey/20 hover:border-brand-green transition-colors"
+              className="p-6 lg:p-8 bg-white border-brand-grey/20 hover:border-brand-green transition-colors"
               data-testid="card-medtech-overview"
             >
-              <div className="w-16 h-16 bg-brand-green/10 rounded-xl flex items-center justify-center mb-6">
-                <Stethoscope className="w-8 h-8 text-brand-green" />
+              <div className="w-14 h-14 bg-brand-green/10 rounded-xl flex items-center justify-center mb-5">
+                <Stethoscope className="w-7 h-7 text-brand-green" />
               </div>
-              <h2 className="text-2xl font-bold text-brand-dark mb-4">
+              <h2 className="text-xl font-bold text-brand-dark mb-3">
                 Medizintechnik
               </h2>
-              <p className="text-brand-dark/70 mb-6 leading-relaxed">
-                Medizintechnik-Unternehmen stehen vor vielfältigen Herausforderungen: 
-                von der Markteinführung über Prozessoptimierung bis zur Schulung von 
-                Vertriebsteams. Wir bieten praxisorientierte Beratung.
+              <p className="text-brand-dark/70 mb-5 leading-relaxed text-sm">
+                Praxisorientierte Beratung für produzierende Medizintechnik-Unternehmen 
+                von Markteinführung bis Vertriebsschulung.
               </p>
-              <ul className="space-y-2 mb-8 text-sm text-brand-dark/70">
+              <ul className="space-y-2 mb-6 text-sm text-brand-dark/70">
                 <li className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full" />
-                  Go-to-Market & Business Development
+                  Go-to-Market & BD
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full" />
@@ -96,19 +90,54 @@ export default function Leistungen() {
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full" />
-                  Sales Enablement & Trainings
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-brand-green rounded-full" />
-                  Projektmanagement
+                  Sales Enablement
                 </li>
               </ul>
               <Link href="/leistungen/medizintechnik">
                 <Button
-                  className="bg-brand-green hover:bg-brand-green/90 text-white w-full sm:w-auto"
+                  className="bg-brand-green hover:bg-brand-green/90 text-white w-full"
                   data-testid="button-medtech-details"
                 >
-                  Alle Leistungen ansehen
+                  Details
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </Card>
+
+            <Card
+              className="p-6 lg:p-8 bg-white border-brand-grey/20 hover:border-brand-cyan transition-colors"
+              data-testid="card-handel-overview"
+            >
+              <div className="w-14 h-14 bg-brand-cyan/10 rounded-xl flex items-center justify-center mb-5">
+                <ShoppingCart className="w-7 h-7 text-brand-cyan" />
+              </div>
+              <h2 className="text-xl font-bold text-brand-dark mb-3">
+                Medizinalhandel
+              </h2>
+              <p className="text-brand-dark/70 mb-5 leading-relaxed text-sm">
+                Spezialisierte Beratung für Händler und Distributoren von 
+                Medizinprodukten – vom Vertrieb bis zur Kundenbetreuung.
+              </p>
+              <ul className="space-y-2 mb-6 text-sm text-brand-dark/70">
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-brand-cyan rounded-full" />
+                  Vertriebsstrategie
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-brand-cyan rounded-full" />
+                  Lieferantenmanagement
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-brand-cyan rounded-full" />
+                  Key Account Management
+                </li>
+              </ul>
+              <Link href="/leistungen/medizinalhandel">
+                <Button
+                  className="bg-brand-cyan hover:bg-brand-cyan/90 text-white w-full"
+                  data-testid="button-handel-details"
+                >
+                  Details
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
@@ -134,7 +163,7 @@ export default function Leistungen() {
                 </p>
                 <p className="text-sm text-brand-green mb-6">
                   Diese Leistung ist unabhängig vom Fachbereich buchbar und kombinierbar 
-                  mit unseren Cannabis- und Medizintechnik-Beratungen.
+                  mit unseren Cannabis-, Medizintechnik- und Handels-Beratungen.
                 </p>
                 <Link href="/leistungen/ki-sales-bd">
                   <Button
