@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { CTABand } from "@/components/CTABand";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { SEO } from "@/components/SEO";
+import { ServiceData, FAQData, BreadcrumbData } from "@/components/StructuredData";
 import {
   kiServiceInfo,
   kiTargetGroups,
@@ -40,12 +41,25 @@ const targetGroupIcons: Record<string, React.ElementType> = {
 };
 
 export default function KiServices() {
+  const faqItems = kiFaqs.map(faq => ({ question: faq.question, answer: faq.answer }));
+  
   return (
     <div className="bg-brand-light">
       <SEO
         title="KI für Sales & Business Development | Copilot & ChatGPT Workshops"
         description="Praktische Einführung in KI-Modelle für Vertriebsteams. Workshops, Use-Cases und Enablement – praxisnah, messbar, compliance-bewusst."
       />
+      <ServiceData 
+        name="KI-Enablement für Sales & Business Development" 
+        description="Praktische Einführung in Copilot und ChatGPT für Vertriebsteams: Workshops, Prompt-Playbooks und Enablement-Programme für nachhaltige Produktivitätssteigerung."
+        serviceType="Training"
+      />
+      <FAQData items={faqItems} />
+      <BreadcrumbData items={[
+        { name: "Start", url: "/" },
+        { name: "Leistungen", url: "/leistungen" },
+        { name: "KI für Sales & BD", url: "/leistungen/ki-sales-bd" }
+      ]} />
 
       <section className="py-16 md:py-24 bg-gradient-to-br from-brand-dark via-brand-dark to-brand-green/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

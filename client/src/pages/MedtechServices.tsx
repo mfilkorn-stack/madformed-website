@@ -6,17 +6,31 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
+import { ServiceData, FAQData, BreadcrumbData } from "@/components/StructuredData";
 import { medtechServices, medtechTargetGroups, caseStudies } from "@/content/services";
 import { medtechFaqs } from "@/content/faqs";
 import { ArrowRight, Stethoscope, Users, CheckCircle2 } from "lucide-react";
 
 export default function MedtechServices() {
+  const faqItems = medtechFaqs.map(faq => ({ question: faq.question, answer: faq.answer }));
+  
   return (
     <div className="bg-brand-light">
       <SEO
         title="Medizintechnik Beratung"
         description="Praxisorientierte Beratung für Medizintechnik: Go-to-Market, Prozessoptimierung, Sales Enablement, Projektmanagement. Für Hersteller und Vertriebsteams."
       />
+      <ServiceData 
+        name="Beratung Medizintechnik" 
+        description="Praxisorientierte Beratung für Medizintechnik-Unternehmen: Go-to-Market-Strategien, Prozessoptimierung und Sales Enablement mit Fokus auf ambulantes Operieren."
+        serviceType="Consulting"
+      />
+      <FAQData items={faqItems} />
+      <BreadcrumbData items={[
+        { name: "Start", url: "/" },
+        { name: "Leistungen", url: "/leistungen" },
+        { name: "Medizintechnik", url: "/leistungen/medizintechnik" }
+      ]} />
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm text-brand-dark/60 mb-6">

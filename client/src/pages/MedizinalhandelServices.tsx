@@ -6,17 +6,31 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
+import { ServiceData, FAQData, BreadcrumbData } from "@/components/StructuredData";
 import { medizinalhandelServices, medizinalhandelTargetGroups } from "@/content/services";
 import { medizinalhandelFaqs } from "@/content/faqs";
 import { ArrowRight, ShoppingCart, Users, CheckCircle2 } from "lucide-react";
 
 export default function MedizinalhandelServices() {
+  const faqItems = medizinalhandelFaqs.map(faq => ({ question: faq.question, answer: faq.answer }));
+  
   return (
     <div className="bg-brand-light">
       <SEO
         title="Medizinalhandel Beratung"
         description="Beratung für den Medizinalhandel: Vertriebsstrategie, Lieferantenmanagement, Logistik, Key Account Management. Für Händler und Distributoren."
       />
+      <ServiceData 
+        name="Beratung Medizinalhandel" 
+        description="Spezialisierte Beratung für den Handel mit Medizinprodukten: Vertriebsstrategie, Lieferantenmanagement, Key Account Management und Prozessoptimierung."
+        serviceType="Consulting"
+      />
+      <FAQData items={faqItems} />
+      <BreadcrumbData items={[
+        { name: "Start", url: "/" },
+        { name: "Leistungen", url: "/leistungen" },
+        { name: "Medizinalhandel", url: "/leistungen/medizinalhandel" }
+      ]} />
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm text-brand-dark/60 mb-6">

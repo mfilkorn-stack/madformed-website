@@ -114,6 +114,60 @@ Um E-Mail-Benachrichtigungen für neue Kontaktanfragen zu aktivieren:
 2. Fügen Sie die E-Mail-Logik in `server/routes.ts` nach erfolgreicher Speicherung hinzu
 3. Konfigurieren Sie SMTP-Credentials als Umgebungsvariablen
 
+## SEO & LLM-Optimierung (Februar 2026)
+
+### Implementierte Features
+
+1. **robots.txt** - `/robots.txt`
+   - Erlaubt alle Crawler
+   - Verweist auf Sitemap
+   - Enthält Crawl-delay für höfliches Crawling
+
+2. **sitemap.xml** - `/sitemap.xml`
+   - Dynamisch generiert mit allen Seiten
+   - Enthält lastmod, changefreq, priority
+   - Automatische Aktualisierung bei Deployment
+
+3. **llms.txt** - `/llms.txt`
+   - Spezielles Format für KI-Systeme
+   - Unternehmensprofil, Kernkompetenzen, wichtige URLs
+   - Kontaktinformationen
+
+4. **Strukturierte Daten (JSON-LD)**
+   - `OrganizationData`: Globale Unternehmensdaten
+   - `WebSiteData`: Website-Metadaten
+   - `ServiceData`: Pro Leistungsseite
+   - `FAQData`: FAQPage Schema für alle FAQs
+   - `BreadcrumbData`: Navigationspfade
+
+### Komponenten
+
+- `client/src/components/StructuredData.tsx` - Alle Schema.org Komponenten
+- `client/src/components/SEO.tsx` - Meta-Tags (title, description, OG, Twitter)
+
+### Testen
+
+```bash
+# robots.txt prüfen
+curl http://localhost:5000/robots.txt
+
+# sitemap.xml prüfen
+curl http://localhost:5000/sitemap.xml
+
+# llms.txt prüfen
+curl http://localhost:5000/llms.txt
+
+# Strukturierte Daten im Browser prüfen
+# 1. Seite öffnen
+# 2. View Source (Strg+U)
+# 3. Nach "application/ld+json" suchen
+```
+
+### Noch ausstehend (P1/P2)
+
+- **SSR/Prerendering**: Für echte Crawler-Lesbarkeit empfohlen (react-snap oder SSG-Migration)
+- **Canonical URLs**: Bei Produktion Domain ersetzen (SITE_URL in server/routes.ts)
+
 ## Hinweise
 
 - **Impressum/Datenschutz**: Diese Seiten enthalten Platzhalter und müssen vor der Veröffentlichung rechtlich geprüft werden

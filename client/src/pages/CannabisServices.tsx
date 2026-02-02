@@ -6,17 +6,31 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
+import { ServiceData, FAQData, BreadcrumbData } from "@/components/StructuredData";
 import { cannabisServices, cannabisTargetGroups } from "@/content/services";
 import { cannabisFaqs } from "@/content/faqs";
 import { ArrowRight, Leaf, Users } from "lucide-react";
 
 export default function CannabisServices() {
+  const faqItems = cannabisFaqs.map(faq => ({ question: faq.question, answer: faq.answer }));
+  
   return (
     <div className="bg-brand-light">
       <SEO
         title="Medizinisches Cannabis Beratung"
         description="Beratung für medizinisches Cannabis: Markteintritt, EU-GMP/GDP, Supply Chain, QM-Konzeption. Für Hersteller, Importeure, Großhändler und Apotheken."
       />
+      <ServiceData 
+        name="Beratung Medizinisches Cannabis" 
+        description="Strategische und operative Beratung für Unternehmen im Bereich medizinisches Cannabis: EU-GMP/GDP-Compliance, Supply Chain, Import, Großhandel und Apothekennetzwerke."
+        serviceType="Consulting"
+      />
+      <FAQData items={faqItems} />
+      <BreadcrumbData items={[
+        { name: "Start", url: "/" },
+        { name: "Leistungen", url: "/leistungen" },
+        { name: "Medizinisches Cannabis", url: "/leistungen/medizinisches-cannabis" }
+      ]} />
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm text-brand-dark/60 mb-6">

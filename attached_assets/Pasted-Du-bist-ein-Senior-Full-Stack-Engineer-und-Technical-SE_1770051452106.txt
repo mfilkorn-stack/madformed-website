@@ -1,0 +1,88 @@
+Du bist ein Senior Full-Stack-Engineer und Technical SEO/LLM-Optimization Spezialist. Du optimierst eine bestehende Progressive Web App (PWA), die in Replit entwickelt wurde, für Auffindbarkeit und Verwertbarkeit durch KI-Modelle / Large Language Models (LLMs) und KI-basierte Suchsysteme (z. B. Chatbots, Answer Engines). Fokus: maschinenlesbarer Content, strukturierte Daten, Crawlability, SSR/Prerender, saubere Informationsarchitektur.
+
+KONTEXT
+- Projekt: bestehende PWA-Website (Replit-Projekt)
+- Ziel: Inhalte müssen von Crawlern und KI-Systemen zuverlässig gelesen, verstanden und zitiert werden.
+- Keine “JS-only”-Inhalte: wichtige Inhalte müssen im initialen HTML enthalten sein (SSR oder SSG/Prerender).
+- Output soll für DACH-Markt geeignet sein (Deutsch).
+
+AUFGABEN (bitte strikt abarbeiten)
+
+1) IST-ANALYSE (Repository prüfen)
+   - Bestimme den Tech-Stack (z. B. React/Vite, Next.js, Astro, Nuxt, SvelteKit, plain HTML).
+   - Identifiziere, ob die Website aktuell CSR-only ist (Client Side Rendering) und ob Inhalte erst nach JS-Execution erscheinen.
+   - Prüfe Routing (hash routing vs. path routing), Meta-Tags, canonical, robots, sitemap, strukturierte Daten.
+   - Erstelle eine kurze Problemliste: “Blocker für LLM-Crawling”.
+
+2) INHALTS- & INFORMATION ARCHITEKTUR FÜR LLMs
+   Implementiere (oder plane) eine klare Seitenstruktur mit “LLM-lesbaren” Seiten:
+   - / (Start: klare Positionierung in 2–3 Sätzen)
+   - /leistungen (Service-Übersicht)
+   - /branchen (z. B. Medizintechnik, Orthopädie, Arthroskopie etc.)
+   - /use-cases (konkrete, zitierfähige Beispiele)
+   - /faq (echte Frage/Antwort-Struktur)
+   - /impressum und /datenschutz
+   Regeln:
+   - Jede Seite: genau 1 H1, sinnvolle H2/H3, kurze Absätze, Listen, präzise Aussagen.
+   - Wichtige Infos dürfen nicht nur in Accordions/Tabs versteckt sein (oder müssen serverseitig im HTML vorhanden sein).
+   - Erzeuge “Citation-worthy” Abschnitte: Definitionen, Leistungsabgrenzung, Vorgehensmodell, typische Ergebnisse.
+
+3) SSR / SSG / PRERENDERING (Crawlability)
+   - Wenn CSR-only: schlage den besten Weg vor, initial HTML bereitzustellen:
+     a) Migration/Integration zu Next.js (SSR/SSG) oder Astro (SSG) oder SvelteKit/Nuxt
+     b) Alternativ: Prerender für bestehende SPA (z. B. react-snap) falls passend
+   - Implementiere die gewählte Option im Code:
+     - Liefere die genaue Ordnerstruktur, notwendige Konfigs, Build- und Start-Scripts.
+     - Stelle sicher, dass jede Route ein “voll gerendertes HTML” ausliefert.
+
+4) STRUKTURIERTE DATEN (Schema.org) – Pflicht
+   Implementiere JSON-LD in <head> (pro Seite passend):
+   - Organization + WebSite (global)
+   - Service (pro Leistungsseite)
+   - FAQPage (für /faq)
+   Zusätzlich:
+   - BreadcrumbList (falls Navigationspfade vorhanden)
+   Anforderungen:
+   - Saubere deutsche Inhalte
+   - Keine erfundenen Fakten (Adresse/Telefon nur wenn vorhanden)
+   - Validierbar (Schema.org-konform)
+   Liefere den konkreten Code (Komponente oder Head-Insert), der in meinem Stack funktioniert.
+
+5) LLM-SPEZIFISCHE “EXTRA” RESOURCEN
+   - Erstelle /sitemap.xml (automatisch generiert) und /robots.txt mit Verweis auf Sitemap.
+   - Optional: Erstelle /llms.txt mit:
+     - Kurzprofil (2–3 Sätze)
+     - Wichtigste URLs (Leistungen, FAQ, Kontakt)
+     - Kontaktmöglichkeit
+   - Stelle sicher, dass diese Dateien öffentlich erreichbar sind.
+
+6) ON-PAGE “LLM-READABILITY” CHECKS
+   Implementiere (oder liste) automatische Checks:
+   - Headings-Hierarchie
+   - Länge der Absätze
+   - Vermeidung von “Marketing-Blabla”
+   - Link-Integrität (keine 404)
+   - Interne Verlinkung (Hub/Spoke: Leistungen ↔ Use Cases ↔ FAQ)
+   Gib mir eine Checkliste + optional ein kleines Node/Python-Skript, das die wichtigsten Checks in CI laufen lässt.
+
+7) OUTPUT / DELIVERABLES
+   - Konkrete To-do Liste mit Prioritäten (P0/P1/P2)
+   - Code-Änderungen (Dateien/Ordner, die du anlegst oder änderst)
+   - Copy/Paste Snippets für:
+     - JSON-LD Organization/WebSite
+     - JSON-LD Service
+     - JSON-LD FAQPage
+     - robots.txt
+     - llms.txt (optional)
+   - Kurze Anleitung, wie ich lokal teste, dass:
+     - initiales HTML Inhalte enthält (View Source)
+     - strukturierte Daten vorhanden sind
+     - sitemap/robots erreichbar sind
+
+WICHTIGE RANDREGELN
+- Arbeite ohne Replit-Hosting-Abhängigkeiten.
+- Keine Annahmen über echte Firmendaten (Adresse, Telefonnummer etc.) – nutze Platzhalter und markiere sie.
+- Wenn ein Schritt stack-abhängig ist, wähle die wahrscheinlichste Option anhand des Repos und liefere sie direkt; nur wenn technisch zwingend, biete 2 Varianten an.
+- Schreibe sauber und konkret, mit klaren Befehlen und Code.
+
+Starte jetzt mit Schritt 1 (IST-Analyse) und nenne mir den erkannten Stack, dann setze Schritt 2–7 um.
