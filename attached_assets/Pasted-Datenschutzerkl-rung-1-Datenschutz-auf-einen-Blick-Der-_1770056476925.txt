@@ -1,0 +1,180 @@
+Datenschutzerklärung
+
+1. Datenschutz auf einen Blick
+
+Der Schutz Ihrer personenbezogenen Daten ist uns ein wichtiges Anliegen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
+
+⸻
+
+2. Verantwortliche Stelle
+
+MadforMed GmbH
+Bonnerstraße 12
+51371 Leverkusen
+Deutschland
+
+Geschäftsführer: Matthias Joerg Filkorn
+E-Mail: matthias@madformed.de
+
+⸻
+
+3. Allgemeine Hinweise und Pflichtinformationen
+
+Datenschutz
+
+Wir verarbeiten Ihre personenbezogenen Daten ausschließlich im Rahmen der gesetzlichen Datenschutzvorschriften, insbesondere der Datenschutz-Grundverordnung (DSGVO).
+
+⸻
+
+Rechtsgrundlagen der Verarbeitung
+
+Die Verarbeitung personenbezogener Daten erfolgt auf Grundlage von:
+	•	Art. 6 Abs. 1 lit. a DSGVO – Einwilligung
+	•	Art. 6 Abs. 1 lit. b DSGVO – Vertrag / vorvertragliche Maßnahmen
+	•	Art. 6 Abs. 1 lit. c DSGVO – rechtliche Verpflichtung
+	•	Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse
+
+⸻
+
+Ihre Rechte
+
+Sie haben jederzeit das Recht auf:
+	•	Auskunft (Art. 15 DSGVO)
+	•	Berichtigung (Art. 16 DSGVO)
+	•	Löschung (Art. 17 DSGVO)
+	•	Einschränkung der Verarbeitung (Art. 18 DSGVO)
+	•	Datenübertragbarkeit (Art. 20 DSGVO)
+	•	Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)
+
+Zudem besteht ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde.
+
+⸻
+
+4. Hosting
+
+Hosting durch IONOS
+
+Diese Website wird bei der IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, Deutschland gehostet.
+
+IONOS verarbeitet personenbezogene Daten im Rahmen eines Auftragsverarbeitungsvertrages gemäß Art. 28 DSGVO.
+
+Rechtsgrundlage:
+Art. 6 Abs. 1 lit. f DSGVO
+Berechtigtes Interesse: sichere und stabile Bereitstellung der Website.
+
+⸻
+
+5. Datenerfassung auf dieser Website
+
+Server-Log-Dateien
+
+IONOS erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien:
+	•	Browsertyp und Browserversion
+	•	verwendetes Betriebssystem
+	•	Referrer URL
+	•	Hostname
+	•	Uhrzeit der Serveranfrage
+	•	IP-Adresse (gekürzt oder anonymisiert)
+
+Eine Zusammenführung mit anderen Datenquellen erfolgt nicht.
+
+⸻
+
+6. Kontaktformular
+
+Wenn Sie uns über das Kontaktformular kontaktieren, werden Ihre Angaben aus dem Formular inklusive der von Ihnen angegebenen Kontaktdaten verarbeitet, um Ihre Anfrage zu bearbeiten.
+
+Verarbeitete Daten:
+	•	Name
+	•	E-Mail-Adresse
+	•	ggf. Telefonnummer
+	•	Inhalt der Nachricht
+
+Rechtsgrundlage:
+	•	Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen)
+	•	Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse)
+
+Die Daten werden gelöscht, sobald sie für den Zweck nicht mehr erforderlich sind.
+
+⸻
+
+7. Kontaktaufnahme per E-Mail
+
+Bei Kontaktaufnahme per E-Mail werden die übermittelten personenbezogenen Daten ausschließlich zur Bearbeitung der Anfrage verwendet.
+
+⸻
+
+8. Google Analytics
+
+Diese Website nutzt Google Analytics 4, einen Webanalysedienst der
+Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.
+
+Google Analytics verwendet Cookies, die eine Analyse der Benutzung der Website ermöglichen.
+
+IP-Anonymisierung
+
+Die IP-Adresse wird von Google innerhalb der EU oder des EWR gekürzt, bevor sie gespeichert wird.
+
+⸻
+
+Zweck der Verarbeitung
+	•	Analyse des Nutzerverhaltens
+	•	Optimierung der Website
+	•	Reichweitenmessung
+
+⸻
+
+Rechtsgrundlage
+
+Die Nutzung von Google Analytics erfolgt ausschließlich auf Grundlage Ihrer Einwilligung gemäß:
+
+Art. 6 Abs. 1 lit. a DSGVO
+§ 25 Abs. 1 TTDSG
+
+Die Einwilligung erfolgt über ein Cookie-Consent-Tool und kann jederzeit widerrufen werden.
+
+⸻
+
+Datenübermittlung in Drittländer
+
+Eine Übertragung von Daten in die USA kann nicht ausgeschlossen werden. Google stützt sich hierbei auf Standardvertragsklauseln (SCCs) der EU-Kommission.
+
+⸻
+
+Widerspruch / Opt-Out
+
+Sie können Ihre Einwilligung jederzeit über die Cookie-Einstellungen widerrufen oder das Browser-Add-on zur Deaktivierung von Google Analytics nutzen.
+
+⸻
+
+9. Cookies
+
+Diese Website verwendet:
+	•	technisch notwendige Cookies
+	•	Analyse-Cookies (Google Analytics, nur mit Einwilligung)
+
+Beim ersten Besuch der Website werden Sie über ein Cookie-Banner um Ihre Zustimmung gebeten.
+
+⸻
+
+10. Einsatz von Künstlicher Intelligenz (KI)
+
+Sofern KI-gestützte Systeme eingesetzt werden (z. B. zur Textanalyse oder Entscheidungsunterstützung), erfolgt dies:
+	•	ohne automatisierte Einzelentscheidungen im Sinne von Art. 22 DSGVO
+	•	ohne Profilbildung
+	•	unter Wahrung der Vertraulichkeit
+
+⸻
+
+11. Weitergabe von Daten
+
+Eine Weitergabe personenbezogener Daten erfolgt nur, wenn:
+	•	eine gesetzliche Verpflichtung besteht
+	•	Sie eingewilligt haben
+	•	dies zur Vertragserfüllung erforderlich ist
+
+⸻
+
+12. Aktualität und Änderungen
+
+Diese Datenschutzerklärung ist aktuell gültig und wird bei Bedarf angepasst
