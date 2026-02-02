@@ -2,15 +2,17 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight, Leaf, Brain, Monitor, Target, ShoppingCart } from "lucide-react";
+import logoPath from "@assets/IMG_0824_1770006786137.jpeg";
 
 const slides = [
   {
-    image: "/images/hero-slide-1.jpg",
+    image: "/images/hero-slide-1-new.png",
     icon: Target,
     accentColor: "brand-green",
     title: "Medical Resulting",
     subtitle: "Strategieberatung für regulierte Märkte – strukturiert, compliance-orientiert, ergebnisfokussiert.",
-    tagline: "MadforMed GmbH"
+    tagline: "MadforMed GmbH",
+    showLogo: true
   },
   {
     image: "/images/hero-slide-2.jpg",
@@ -100,14 +102,20 @@ export function HeroSlider() {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${s.image})` }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
-            <div className={`absolute inset-0 ${
-              s.accentColor === 'brand-green' 
-                ? 'bg-gradient-to-br from-brand-green/20 to-transparent' 
-                : s.accentColor === 'brand-gradient'
-                ? 'bg-gradient-to-br from-brand-green/15 via-brand-cyan/15 to-transparent'
-                : 'bg-gradient-to-br from-brand-cyan/20 to-transparent'
-            }`} />
+            {s.showLogo ? (
+              <div className="absolute inset-0 bg-gradient-to-r from-[#4A5A4A]/90 via-[#4A5A4A]/70 to-transparent" />
+            ) : (
+              <>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+                <div className={`absolute inset-0 ${
+                  s.accentColor === 'brand-green' 
+                    ? 'bg-gradient-to-br from-brand-green/20 to-transparent' 
+                    : s.accentColor === 'brand-gradient'
+                    ? 'bg-gradient-to-br from-brand-green/15 via-brand-cyan/15 to-transparent'
+                    : 'bg-gradient-to-br from-brand-cyan/20 to-transparent'
+                }`} />
+              </>
+            )}
           </div>
         </div>
       ))}
@@ -144,16 +152,26 @@ export function HeroSlider() {
                 isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
               }`}
             >
-              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm text-sm font-medium mb-6 ${
-                slide.accentColor === 'brand-green'
-                  ? 'bg-brand-green/30 text-brand-green border border-brand-green/30'
-                  : slide.accentColor === 'brand-gradient'
-                  ? 'bg-gradient-to-r from-brand-green/30 to-brand-cyan/30 text-brand-cyan border border-brand-cyan/30'
-                  : 'bg-brand-cyan/30 text-brand-cyan border border-brand-cyan/30'
-              }`}>
-                <Icon className="w-4 h-4" />
-                {slide.tagline}
-              </div>
+              {slide.showLogo ? (
+                <div className="mb-8">
+                  <img 
+                    src={logoPath} 
+                    alt="MadforMed Logo" 
+                    className="h-32 md:h-40 lg:h-48 w-auto mb-4 drop-shadow-xl"
+                  />
+                </div>
+              ) : (
+                <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm text-sm font-medium mb-6 ${
+                  slide.accentColor === 'brand-green'
+                    ? 'bg-brand-green/30 text-brand-green border border-brand-green/30'
+                    : slide.accentColor === 'brand-gradient'
+                    ? 'bg-gradient-to-r from-brand-green/30 to-brand-cyan/30 text-brand-cyan border border-brand-cyan/30'
+                    : 'bg-brand-cyan/30 text-brand-cyan border border-brand-cyan/30'
+                }`}>
+                  <Icon className="w-4 h-4" />
+                  {slide.tagline}
+                </div>
+              )}
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
                 {slide.title}
               </h1>
