@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight, Leaf, Brain, Monitor, Target, ShoppingCart } from "lucide-react";
-import logoPath from "@assets/IMG_0824_1770006786137.jpeg";
+import logoPath from "@assets/586E4BEB-9A32-49CD-B6A4-925E000A0D62_1769909787454.png";
 
 const slides = [
   {
