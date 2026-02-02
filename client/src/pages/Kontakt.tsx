@@ -98,11 +98,11 @@ export default function Kontakt() {
   const labels = {
     title: isEnglish ? "Contact" : "Kontakt",
     subtitle: isEnglish 
-      ? "Have a project or question? We look forward to your message and usually respond within 48 hours."
-      : "Haben Sie ein Projekt oder eine Frage? Wir freuen uns auf Ihre Nachricht und melden uns in der Regel innerhalb von 48 Stunden.",
+      ? "Are you planning a project or need a qualified assessment? We would be happy to discuss your matter personally and confidentially. Simply send us a message – we will get back to you promptly."
+      : "Sie planen ein Projekt oder benötigen eine fundierte Einschätzung? Gerne besprechen wir Ihr Anliegen persönlich und vertraulich. Senden Sie uns einfach eine Nachricht – wir melden uns zeitnah bei Ihnen.",
     seoDescription: isEnglish
-      ? "Contact MadforMed for a non-binding consultation about medical cannabis or medical technology. Response within 48 hours."
-      : "Kontaktieren Sie MadforMed für ein unverbindliches Beratungsgespräch zu medizinischem Cannabis oder Medizintechnik. Rückmeldung innerhalb von 48h.",
+      ? "Contact MadforMed for a non-binding consultation about medical cannabis or medical technology."
+      : "Kontaktieren Sie MadforMed für ein unverbindliches Beratungsgespräch zu medizinischem Cannabis oder Medizintechnik.",
     sendMessage: isEnglish ? "Send Message" : "Nachricht senden",
     thankYou: isEnglish ? "Thank you!" : "Vielen Dank!",
     successMessage: isEnglish 
