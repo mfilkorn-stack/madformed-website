@@ -68,6 +68,7 @@ export function Header() {
                               : "text-brand-dark hover:text-brand-green hover:bg-brand-light"
                           }`}
                           data-testid={`nav-${item.label.toLowerCase().replace(/\s/g, "-")}`}
+                          onClick={() => setLeistungenOpen(false)}
                         >
                           {item.label}
                         </span>
