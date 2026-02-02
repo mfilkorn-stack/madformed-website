@@ -1,22 +1,39 @@
 import { Link } from "wouter";
 import { companyInfo } from "@/content/company";
+import { useLanguage } from "@/lib/i18n";
 import { Mail, Phone, MapPin } from "lucide-react";
 import logoImage from "@assets/63287e6f-fa20-4b0e-897a-d638ddbbda36_1769864099886.jpeg";
 
-const quickLinks = [
-  { label: "Leistungen", path: "/leistungen" },
-  { label: "Über uns", path: "/ueber-uns" },
-  { label: "Projekte", path: "/projekte" },
-  { label: "Insights", path: "/insights" },
-  { label: "Kontakt", path: "/kontakt" },
-];
-
-const legalLinks = [
-  { label: "Impressum", path: "/impressum" },
-  { label: "Datenschutz", path: "/datenschutz" },
-];
-
 export function Footer() {
+  const { language, t } = useLanguage();
+  const isEnglish = language === "en";
+
+  const quickLinks = isEnglish ? [
+    { label: t("nav.services"), path: "/en/services" },
+    { label: t("nav.about"), path: "/en/about" },
+    { label: t("nav.projects"), path: "/en/projects" },
+    { label: t("nav.insights"), path: "/en/insights" },
+    { label: t("footer.services"), path: "/en/contact" },
+  ] : [
+    { label: t("nav.services"), path: "/leistungen" },
+    { label: t("nav.about"), path: "/ueber-uns" },
+    { label: t("nav.projects"), path: "/projekte" },
+    { label: t("nav.insights"), path: "/insights" },
+    { label: "Kontakt", path: "/kontakt" },
+  ];
+
+  const legalLinks = isEnglish ? [
+    { label: t("nav.legalNotice"), path: "/en/legal-notice" },
+    { label: t("nav.privacy"), path: "/en/privacy-policy" },
+  ] : [
+    { label: t("nav.legalNotice"), path: "/impressum" },
+    { label: t("nav.privacy"), path: "/datenschutz" },
+  ];
+
+  const taglineText = isEnglish 
+    ? "Consulting for medical cannabis and medical technology. Structured, compliance-oriented, results-focused."
+    : "Beratung für medizinisches Cannabis und Medizintechnik. Strukturiert, compliance-orientiert, ergebnisfokussiert.";
+
   return (
     <footer className="bg-brand-dark text-white" data-testid="footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
@@ -25,13 +42,12 @@ export function Footer() {
             <div className="mb-4">
               <img 
                 src={logoImage} 
-                alt="MAD for MED GmbH - Medical Resulting" 
+                alt="MadforMed GmbH - Medical Resulting" 
                 className="h-14 w-auto brightness-0 invert"
               />
             </div>
             <p className="text-brand-grey text-sm mb-6 max-w-md">
-              Beratung für medizinisches Cannabis und Medizintechnik. Strukturiert, 
-              compliance-orientiert, ergebnisfokussiert.
+              {taglineText}
             </p>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-3">
@@ -64,7 +80,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Navigation</h3>
+            <h3 className="font-semibold mb-4">
+              {isEnglish ? "Navigation" : "Navigation"}
+            </h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.path}>
@@ -79,7 +97,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Rechtliches</h3>
+            <h3 className="font-semibold mb-4">
+              {isEnglish ? "Legal" : "Rechtliches"}
+            </h3>
             <ul className="space-y-2">
               {legalLinks.map((link) => (
                 <li key={link.path}>
@@ -96,7 +116,7 @@ export function Footer() {
 
         <div className="border-t border-brand-grey/20 mt-12 pt-8">
           <p className="text-brand-grey text-sm text-center">
-            © {new Date().getFullYear()} {companyInfo.name}. Alle Rechte vorbehalten.
+            © {new Date().getFullYear()} {companyInfo.name}. {t("footer.copyright")}
           </p>
         </div>
       </div>

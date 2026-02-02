@@ -2,34 +2,54 @@ import { Link, useLocation } from "wouter";
 import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/lib/i18n";
 import logoImage from "@assets/586E4BEB-9A32-49CD-B6A4-925E000A0D62_1769909787454.png";
-
-const leistungenSubmenu = [
-  { label: "Übersicht", path: "/leistungen" },
-  { label: "Medizinisches Cannabis", path: "/leistungen/medizinisches-cannabis" },
-  { label: "Medizintechnik", path: "/leistungen/medizintechnik" },
-  { label: "Medizinalhandel", path: "/leistungen/medizinalhandel" },
-  { label: "KI für Sales & BD", path: "/leistungen/ki-sales-bd" },
-];
-
-const navItems = [
-  { label: "Über uns", path: "/ueber-uns" },
-  { label: "Referenzen & Projekte", path: "/projekte" },
-  { label: "Insights", path: "/insights" },
-];
 
 export function Header() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [leistungenOpen, setLeistungenOpen] = useState(false);
+  const { language, t, getLocalizedPath } = useLanguage();
 
-  const isLeistungenActive = location.startsWith("/leistungen");
+  const isEnglish = language === "en";
+  
+  const leistungenSubmenu = isEnglish ? [
+    { label: t("nav.servicesOverview"), path: "/en/services" },
+    { label: t("nav.cannabis"), path: "/en/services/medical-cannabis" },
+    { label: t("nav.medtech"), path: "/en/services/medical-technology" },
+    { label: t("nav.medizinalhandel"), path: "/en/services/medical-trade" },
+    { label: t("nav.kiSales"), path: "/en/services/ai-sales-bd" },
+  ] : [
+    { label: t("nav.servicesOverview"), path: "/leistungen" },
+    { label: t("nav.cannabis"), path: "/leistungen/medizinisches-cannabis" },
+    { label: t("nav.medtech"), path: "/leistungen/medizintechnik" },
+    { label: t("nav.medizinalhandel"), path: "/leistungen/medizinalhandel" },
+    { label: t("nav.kiSales"), path: "/leistungen/ki-sales-bd" },
+  ];
+
+  const navItems = isEnglish ? [
+    { label: t("nav.about"), path: "/en/about" },
+    { label: t("nav.projects"), path: "/en/projects" },
+    { label: t("nav.insights"), path: "/en/insights" },
+  ] : [
+    { label: t("nav.about"), path: "/ueber-uns" },
+    { label: t("nav.projects"), path: "/projekte" },
+    { label: t("nav.insights"), path: "/insights" },
+  ];
+
+  const contactPath = isEnglish ? "/en/contact" : "/kontakt";
+  const homePath = isEnglish ? "/en" : "/";
+
+  const isLeistungenActive = isEnglish 
+    ? location.startsWith("/en/services") 
+    : location.startsWith("/leistungen");
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-brand-grey/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" data-testid="link-home">
+          <Link href={homePath} data-testid="link-home">
             <img 
               src={logoImage} 
               alt="MadforMed GmbH - Medical Resulting" 
@@ -43,7 +63,7 @@ export function Header() {
               onMouseEnter={() => setLeistungenOpen(true)}
               onMouseLeave={() => setLeistungenOpen(false)}
             >
-              <Link href="/leistungen">
+              <Link href={leistungenSubmenu[0].path}>
                 <span
                   className={`inline-flex items-center gap-1 px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer ${
                     isLeistungenActive
@@ -52,7 +72,7 @@ export function Header() {
                   }`}
                   data-testid="nav-leistungen"
                 >
-                  Leistungen
+                  {t("nav.services")}
                   <ChevronDown className={`w-4 h-4 transition-transform ${leistungenOpen ? "rotate-180" : ""}`} />
                 </span>
               </Link>
@@ -97,12 +117,16 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <Link href="/kontakt" className="hidden md:block">
+            <div className="hidden md:block">
+              <LanguageSwitcher />
+            </div>
+            
+            <Link href={contactPath} className="hidden md:block">
               <Button
                 className="bg-brand-green hover:bg-brand-green/90 text-white"
                 data-testid="button-contact-header"
               >
-                Kontakt aufnehmen
+                {t("nav.contact")}
               </Button>
             </Link>
 
@@ -110,6 +134,7 @@ export function Header() {
               className="md:hidden p-2 text-brand-dark"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               data-testid="button-mobile-menu"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -120,9 +145,13 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-brand-grey/20" data-testid="nav-mobile">
           <nav className="flex flex-col p-4 space-y-1">
+            <div className="flex justify-center pb-4 border-b border-brand-grey/20 mb-2">
+              <LanguageSwitcher />
+            </div>
+            
             <div className="mb-2">
               <span className="block px-4 py-2 text-xs font-semibold text-brand-grey uppercase tracking-wider">
-                Leistungen
+                {t("nav.services")}
               </span>
               {leistungenSubmenu.map((item) => (
                 <Link key={item.path} href={item.path}>
@@ -154,12 +183,12 @@ export function Header() {
                 </span>
               </Link>
             ))}
-            <Link href="/kontakt">
+            <Link href={contactPath}>
               <Button
                 className="w-full mt-4 bg-brand-green hover:bg-brand-green/90 text-white"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Kontakt aufnehmen
+                {t("nav.contact")}
               </Button>
             </Link>
           </nav>

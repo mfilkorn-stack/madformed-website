@@ -1,0 +1,73 @@
+You are a senior full-stack engineer and SEO/AI-content specialist. I have an existing website for madformed.de (German) in my Replit project. I want to add a fully translated English version of the entire site and enable a language switcher (DE/EN) in the top navigation. Keep the current German design and layout exactly as-is. Implement the English version so it is search-engine optimized (SEO) and also optimized for AI crawlers/LLMs (clear structure, semantic HTML, good metadata). Do NOT remove any existing German content; add English in parallel.
+
+GOALS
+1) Full bilingual site (German + English) with a toggle in the top menu.
+2) Each language must have its own clean URL structure:
+   - German: /de (or default /)
+   - English: /en
+3) Perfect SEO basics for both languages:
+   - Proper <title>, meta description, canonical, Open Graph, Twitter cards
+   - hreflang tags for de-DE and en
+   - Clean heading hierarchy (H1/H2/H3)
+   - Semantic sections (<main>, <header>, <nav>, <footer>)
+   - Accessible nav and language toggle (aria-labels)
+4) “AI optimization”:
+   - Add Organization schema.org JSON-LD (Company) with name, URL, logo, address, email
+   - Add WebSite schema and potentially WebPage schema for key pages
+   - Ensure content is easy to parse (no text embedded only in images)
+5) Translate all key pages including: Home, Services, About, Contact, Legal (Impressum), Privacy Policy (Datenschutzerklärung). For English legal pages, create English equivalents (Legal Notice, Privacy Policy) while keeping German originals unchanged.
+
+TECH REQUIREMENTS
+- Determine the site framework used (e.g., Next.js, React, Vite, plain HTML, etc.) by inspecting repo/package.json.
+- Implement i18n using best practice for the detected framework:
+  * If Next.js: use built-in i18n routing OR App Router with /de and /en segments + next-intl (preferred).
+  * If React/Vite: use react-router with /de and /en routes + i18next/react-i18next, or a simple route-based content map if small.
+  * If plain HTML: generate /en mirrored pages and keep shared components via templates/partials.
+- The language selection must persist:
+  * Prefer URL-based persistence (/de or /en). Also store user preference in localStorage and auto-redirect on future visits if user lands on root.
+- Make sure all internal links switch correctly for both locales.
+- Add a language switcher in the top nav (right side). It must:
+  * show “DE | EN”
+  * highlight the active language
+  * preserve current page path when switching (e.g., /de/services -> /en/services)
+- Add a sitemap.xml and robots.txt:
+  * Include both /de and /en URLs
+  * Add correct <xhtml:link rel="alternate" hreflang="..."> entries if applicable
+- Add/verify favicon, social preview image, and correct OG tags per language.
+
+CONTENT TASKS
+- Translate the whole German content to English with professional business tone for:
+  * MedTech consulting
+  * medical cannabis/pharma logistics
+  * AI models (Copilot & ChatGPT) intro with focus on Sales & Business Development
+- Keep brand terms consistent: “MadforMed”, “MED4MED” if mentioned, company address and email unchanged.
+- Provide English versions for:
+  * Legal Notice (Impressum equivalent) — in English, but keep the German page as required.
+  * Privacy Policy — in English, consistent with the German version including IONOS hosting, contact form, Google Analytics, cookies/consent.
+- Ensure the English pages have localized meta titles/descriptions and OG tags.
+
+DELIVERABLES
+1) Implemented bilingual routing (/de and /en) with working language switcher in top nav.
+2) Complete English translations for all pages (no placeholders).
+3) SEO/AI enhancements:
+   - hreflang tags
+   - canonical tags
+   - schema.org JSON-LD (Organization + WebSite)
+   - sitemap.xml and robots.txt updated
+4) A short “What changed” summary in a README section:
+   - how to add/edit translations
+   - how to add new pages in both languages
+   - how to test language switching and SEO tags
+
+VALIDATION / TESTS
+- Add quick automated checks or instructions:
+  * Run build and ensure no broken links.
+  * Confirm that GA loads only after consent (if consent tool exists).
+  * Check that /de and /en pages render correct titles/descriptions.
+  * Confirm language switch preserves page and updates hreflang/canonical.
+
+NOW DO IT
+- Start by analyzing my repo structure and framework.
+- Then implement the best i18n approach accordingly.
+- Make the translations and metadata updates.
+- Provide the final file changes.
