@@ -34,7 +34,7 @@ const getContactSchema = (isEnglish: boolean) => z.object({
   firma: z.string().min(1, isEnglish ? "Please enter your company" : "Bitte geben Sie Ihre Firma an"),
   email: z.string().email(isEnglish ? "Please enter a valid email address" : "Bitte geben Sie eine gültige E-Mail-Adresse ein"),
   telefon: z.string().optional(),
-  thema: z.enum(["cannabis", "medizintechnik", "ki-workshop", "allgemein"], {
+  thema: z.enum(["cannabis", "medizintechnik", "medizinalhandel", "ki-workshop", "allgemein"], {
     required_error: isEnglish ? "Please select a topic" : "Bitte wählen Sie ein Thema",
   }),
   nachricht: z.string().min(10, isEnglish ? "Message must be at least 10 characters" : "Nachricht muss mindestens 10 Zeichen lang sein"),
@@ -123,6 +123,7 @@ export default function Kontakt() {
     topics: {
       cannabis: isEnglish ? "Medical Cannabis" : "Medizinisches Cannabis",
       medizintechnik: isEnglish ? "Medical Technology" : "Medizintechnik",
+      medizinalhandel: isEnglish ? "Medical Trade" : "Medizinalhandel",
       kiWorkshop: isEnglish ? "AI Workshop (Copilot & ChatGPT)" : "KI Workshop (Copilot & ChatGPT)",
       allgemein: isEnglish ? "General Inquiry" : "Allgemeine Anfrage",
     },
@@ -269,6 +270,7 @@ export default function Kontakt() {
                               <SelectContent>
                                 <SelectItem value="cannabis">{labels.topics.cannabis}</SelectItem>
                                 <SelectItem value="medizintechnik">{labels.topics.medizintechnik}</SelectItem>
+                                <SelectItem value="medizinalhandel">{labels.topics.medizinalhandel}</SelectItem>
                                 <SelectItem value="ki-workshop">{labels.topics.kiWorkshop}</SelectItem>
                                 <SelectItem value="allgemein">{labels.topics.allgemein}</SelectItem>
                               </SelectContent>
