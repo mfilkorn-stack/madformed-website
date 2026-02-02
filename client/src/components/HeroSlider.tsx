@@ -195,19 +195,19 @@ export function HeroSlider() {
 
         <button
           onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors"
+          className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center transition-opacity"
           aria-label="Previous slide"
           data-testid="button-prev-slide"
         >
-          <ChevronLeft className="w-6 h-6 text-white" />
+          <ChevronLeft className="w-8 h-8 text-white/30 hover:text-white/50 transition-colors" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors"
+          className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center transition-opacity"
           aria-label="Next slide"
           data-testid="button-next-slide"
         >
-          <ChevronRight className="w-6 h-6 text-white" />
+          <ChevronRight className="w-8 h-8 text-white/30 hover:text-white/50 transition-colors" />
         </button>
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
