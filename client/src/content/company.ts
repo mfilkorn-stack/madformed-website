@@ -23,7 +23,7 @@ export const companyInfo = {
 export const benefits = [
   {
     title: "Regulatorische Expertise",
-    description: "Tiefes Verständnis der Compliance-Anforderungen in Cannabis und Medizintechnik"
+    description: "Tiefes Verständnis der Market Access, Reimbursement, Compliance & Quality Anforderungen im Pharma- und Medizintechnikbereich"
   },
   {
     title: "Praxisorientierung",
