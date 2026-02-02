@@ -99,7 +99,7 @@ export function HeroSlider() {
           }`}
         >
           <div
-            className={`absolute inset-0 bg-cover bg-no-repeat ${s.isFullImage ? 'bg-[35%_top]' : 'bg-center'}`}
+            className={`absolute inset-0 bg-cover bg-no-repeat ${s.isFullImage ? 'bg-[15%_top]' : 'bg-center'}`}
             style={{ backgroundImage: `url(${s.image})` }}
           >
             {!s.isFullImage && (
