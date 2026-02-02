@@ -133,7 +133,7 @@ export function HeroSlider() {
 
       <div className="relative z-10 h-full flex items-center">
         {slide.showLogo && (
-          <div className="absolute inset-0 flex items-center justify-end pr-8 md:pr-16 lg:pr-24 pointer-events-none overflow-hidden">
+          <div className="absolute top-20 right-4 md:right-8 lg:right-12 pointer-events-none">
             <div
               className={`transition-all duration-1000 ${
                 isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
@@ -142,7 +142,7 @@ export function HeroSlider() {
               <img 
                 src={logoImage} 
                 alt="MadforMed Logo" 
-                className="w-[20rem] md:w-[28rem] lg:w-[36rem] xl:w-[44rem] h-auto opacity-25 md:opacity-30"
+                className="w-32 md:w-40 lg:w-52 xl:w-64 h-auto opacity-70 md:opacity-80 drop-shadow-lg"
               />
             </div>
           </div>
