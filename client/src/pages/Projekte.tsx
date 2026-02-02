@@ -5,7 +5,7 @@ import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
 import { projectTypes } from "@/content/company";
 import { projectReferences, companyLogos, experienceHighlights } from "@/content/references";
-import { ArrowRight, FileText, Briefcase, LayoutGrid, TrendingUp, Leaf, Stethoscope, CheckCircle2, Building2 } from "lucide-react";
+import { ArrowRight, FileText, Briefcase, LayoutGrid, TrendingUp, Leaf, Stethoscope, ShoppingCart, CheckCircle2, Building2 } from "lucide-react";
 
 const projectIcons = [Briefcase, LayoutGrid, FileText, TrendingUp];
 
@@ -89,17 +89,25 @@ export default function Projekte() {
                 data-testid={`project-ref-${project.id}`}
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-brand-green/10 rounded-lg flex items-center justify-center shrink-0">
+                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 ${
+                      project.category === "handel" ? "bg-brand-cyan/10" : "bg-brand-green/10"
+                    }`}>
                     {project.category === "cannabis" ? (
                       <Leaf className="w-6 h-6 text-brand-green" />
+                    ) : project.category === "handel" ? (
+                      <ShoppingCart className="w-6 h-6 text-brand-cyan" />
                     ) : (
                       <Stethoscope className="w-6 h-6 text-brand-green" />
                     )}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs font-medium text-brand-green bg-brand-green/10 px-2 py-1 rounded">
-                        {project.category === "cannabis" ? "Cannabis" : "Medizintechnik"}
+                      <span className={`text-xs font-medium px-2 py-1 rounded ${
+                        project.category === "handel" 
+                          ? "text-brand-cyan bg-brand-cyan/10" 
+                          : "text-brand-green bg-brand-green/10"
+                      }`}>
+                        {project.category === "cannabis" ? "Cannabis" : project.category === "handel" ? "Medizinalhandel" : "Medizintechnik"}
                       </span>
                     </div>
                     <h3 className="font-semibold text-brand-dark mb-2">{project.title}</h3>

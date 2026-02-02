@@ -8,7 +8,7 @@ import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
 import { medizinalhandelServices, medizinalhandelTargetGroups } from "@/content/services";
 import { medizinalhandelFaqs } from "@/content/faqs";
-import { ArrowRight, ShoppingCart, Users, CheckCircle2, Briefcase } from "lucide-react";
+import { ArrowRight, ShoppingCart, Users, CheckCircle2 } from "lucide-react";
 
 export default function MedizinalhandelServices() {
   return (
@@ -132,56 +132,6 @@ export default function MedizinalhandelServices() {
       </section>
 
       <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            title="Ausgewählte Projekte"
-            subtitle="Referenzen aus unserer Beratungspraxis im Medizinalhandel"
-          />
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="p-6 bg-brand-light border-brand-grey/20" data-testid="project-mars">
-              <div className="inline-block px-2 py-1 bg-brand-cyan/10 rounded text-brand-cyan text-xs font-medium mb-3">
-                Softwareentwicklung
-              </div>
-              <h3 className="font-semibold text-brand-dark mb-2">m.a.r.s. Software</h3>
-              <p className="text-sm text-brand-dark/70 mb-4">
-                Konzeption, Entwicklung und EMEA-weiter Rollout der m.a.r.s. Software für Arthrex GmbH.
-              </p>
-              <div className="flex items-center gap-2 text-sm text-brand-cyan font-medium">
-                <Briefcase className="w-4 h-4" />
-                Arthrex GmbH
-              </div>
-            </Card>
-            <Card className="p-6 bg-brand-light border-brand-grey/20" data-testid="project-mops">
-              <div className="inline-block px-2 py-1 bg-brand-cyan/10 rounded text-brand-cyan text-xs font-medium mb-3">
-                Softwareentwicklung
-              </div>
-              <h3 className="font-semibold text-brand-dark mb-2">m.o.p.s. Software</h3>
-              <p className="text-sm text-brand-dark/70 mb-4">
-                Konzeption, Entwicklung und Rollout der m.o.p.s. Software für aescologic GmbH.
-              </p>
-              <div className="flex items-center gap-2 text-sm text-brand-cyan font-medium">
-                <Briefcase className="w-4 h-4" />
-                aescologic GmbH
-              </div>
-            </Card>
-            <Card className="p-6 bg-brand-light border-brand-grey/20" data-testid="project-edi">
-              <div className="inline-block px-2 py-1 bg-brand-cyan/10 rounded text-brand-cyan text-xs font-medium mb-3">
-                Digitalisierung
-              </div>
-              <h3 className="font-semibold text-brand-dark mb-2">EDI & CRM Einführung</h3>
-              <p className="text-sm text-brand-dark/70 mb-4">
-                Einführung von EDI-Schnittstellen und CRM-System für optimierte Geschäftsprozesse.
-              </p>
-              <div className="flex items-center gap-2 text-sm text-brand-cyan font-medium">
-                <Briefcase className="w-4 h-4" />
-                aescologic GmbH
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             title="Häufige Fragen"

@@ -56,6 +56,30 @@ export const projectReferences = [
     description: "Leadership- und Strategiecoaching für ein deutsches Medizintechnikunternehmen mit Schwerpunkt auf der Optimierung ambulanter chirurgischer Dienstleistungen.",
     deliverables: ["Strategiecoaching", "Leadership-Development", "Prozessoptimierung"],
     result: "Verbesserte Marktpositionierung"
+  },
+  {
+    id: "mars-software",
+    title: "m.a.r.s. Software – Arthrex",
+    category: "handel",
+    description: "Konzeption, Entwicklung und EMEA-weiter Rollout der m.a.r.s. Software für Arthrex GmbH. Umfassendes Softwareprojekt für den internationalen Medizintechnik-Vertrieb.",
+    deliverables: ["Konzeption", "Softwareentwicklung", "EMEA Rollout"],
+    result: "Erfolgreicher internationaler Rollout"
+  },
+  {
+    id: "mops-software",
+    title: "m.o.p.s. Software – aescologic",
+    category: "handel",
+    description: "Konzeption, Entwicklung und Rollout der m.o.p.s. Software für aescologic GmbH. Branchenspezifische Lösung für den Medizinalhandel.",
+    deliverables: ["Konzeption", "Softwareentwicklung", "Rollout"],
+    result: "Erfolgreiche Implementierung"
+  },
+  {
+    id: "edi-crm-aescologic",
+    title: "EDI & CRM Einführung – aescologic",
+    category: "handel",
+    description: "Einführung von EDI-Schnittstellen und CRM-System bei aescologic GmbH für optimierte Geschäftsprozesse und verbesserte Kundenbeziehungen.",
+    deliverables: ["EDI-Integration", "CRM-Implementierung", "Prozessoptimierung"],
+    result: "Digitalisierte Geschäftsprozesse"
   }
 ];
 
