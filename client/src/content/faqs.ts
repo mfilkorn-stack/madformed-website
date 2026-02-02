@@ -36,7 +36,7 @@ export const cannabisFaqs = [
 export const medtechFaqs = [
   {
     question: "In welchen Bereichen der Medizintechnik berät MadforMed?",
-    answer: "Wir beraten branchenübergreifend in der Medizintechnik mit Schwerpunkten auf Ophthalmologie, Diagnostik und chirurgische Instrumente. Unsere Expertise umfasst sowohl Kapitalmedizintechnik als auch Verbrauchsmaterialien."
+    answer: "Wir beraten branchenübergreifend im Bereich Medizintechnik mit Schwerpunkten in Anästhesie, Chirurgie und insbesondere der Orthopädie. Ein besonderer Fokus liegt auf der Arthroskopie. Unsere Expertise erstreckt sich über Implantate, Investitionsgüter sowie Verbrauchsmaterialien entlang des gesamten Produktlebenszyklus."
   },
   {
     question: "Was umfasst Go-to-Market Beratung?",
