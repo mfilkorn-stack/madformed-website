@@ -23,7 +23,7 @@ const slides = [
   {
     image: "/images/hero-slide-3.jpg",
     icon: Brain,
-    accentColor: "brand-cyan",
+    accentColor: "brand-gradient",
     title: "KI-Enablement für Vertrieb",
     subtitle: "Copilot & ChatGPT praxisnah einführen: Workshops, Prompt-Playbooks und Enablement-Programme für Sales-Teams.",
     tagline: "Workshops & Training"
@@ -104,6 +104,8 @@ export function HeroSlider() {
             <div className={`absolute inset-0 ${
               s.accentColor === 'brand-green' 
                 ? 'bg-gradient-to-br from-brand-green/20 to-transparent' 
+                : s.accentColor === 'brand-gradient'
+                ? 'bg-gradient-to-br from-brand-green/15 via-brand-cyan/15 to-transparent'
                 : 'bg-gradient-to-br from-brand-cyan/20 to-transparent'
             }`} />
           </div>
@@ -145,6 +147,8 @@ export function HeroSlider() {
               <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm text-sm font-medium mb-6 ${
                 slide.accentColor === 'brand-green'
                   ? 'bg-brand-green/30 text-brand-green border border-brand-green/30'
+                  : slide.accentColor === 'brand-gradient'
+                  ? 'bg-gradient-to-r from-brand-green/30 to-brand-cyan/30 text-brand-cyan border border-brand-cyan/30'
                   : 'bg-brand-cyan/30 text-brand-cyan border border-brand-cyan/30'
               }`}>
                 <Icon className="w-4 h-4" />
@@ -207,7 +211,7 @@ export function HeroSlider() {
             onClick={() => goToSlide(index)}
             className={`h-3 rounded-full transition-all duration-300 ${
               index === currentSlide
-                ? `w-8 ${s.accentColor === 'brand-green' ? 'bg-brand-green' : 'bg-brand-cyan'}`
+                ? `w-8 ${s.accentColor === 'brand-green' ? 'bg-brand-green' : s.accentColor === 'brand-gradient' ? 'bg-gradient-to-r from-brand-green to-brand-cyan' : 'bg-brand-cyan'}`
                 : "bg-white/40 hover:bg-white/60 w-3"
             }`}
             aria-label={`Zu Folie ${index + 1}`}

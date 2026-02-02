@@ -90,22 +90,22 @@ export default function Projekte() {
               >
                 <div className="flex items-start gap-4">
                   <div className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 ${
-                      project.category === "handel" ? "bg-brand-cyan/10" : "bg-brand-green/10"
+                      project.category === "cannabis" ? "bg-brand-green/10" : "bg-brand-cyan/10"
                     }`}>
                     {project.category === "cannabis" ? (
                       <Leaf className="w-6 h-6 text-brand-green" />
                     ) : project.category === "handel" ? (
                       <ShoppingCart className="w-6 h-6 text-brand-cyan" />
                     ) : (
-                      <Stethoscope className="w-6 h-6 text-brand-green" />
+                      <Stethoscope className="w-6 h-6 text-brand-cyan" />
                     )}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
                       <span className={`text-xs font-medium px-2 py-1 rounded ${
-                        project.category === "handel" 
-                          ? "text-brand-cyan bg-brand-cyan/10" 
-                          : "text-brand-green bg-brand-green/10"
+                        project.category === "cannabis" 
+                          ? "text-brand-green bg-brand-green/10" 
+                          : "text-brand-cyan bg-brand-cyan/10"
                       }`}>
                         {project.category === "cannabis" ? "Cannabis" : project.category === "handel" ? "Medizinalhandel" : "Medizintechnik"}
                       </span>
@@ -248,12 +248,12 @@ export default function Projekte() {
               </Card>
             </Link>
             <Link href="/leistungen/medizintechnik">
-              <Card className="p-6 bg-brand-light border-brand-grey/20 hover:border-brand-green transition-colors cursor-pointer group h-full">
+              <Card className="p-6 bg-brand-light border-brand-grey/20 hover:border-brand-cyan transition-colors cursor-pointer group h-full">
                 <h3 className="font-semibold text-brand-dark mb-2">Medizintechnik</h3>
                 <p className="text-sm text-brand-dark/70 mb-4">
                   Go-to-Market, Prozessoptimierung, Sales Enablement
                 </p>
-                <span className="inline-flex items-center text-brand-green text-sm font-medium">
+                <span className="inline-flex items-center text-brand-cyan text-sm font-medium">
                   Mehr erfahren
                   <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </span>
@@ -272,14 +272,14 @@ export default function Projekte() {
               </Card>
             </Link>
             <Link href="/leistungen/ki-sales-bd">
-              <Card className="p-6 bg-brand-light border-brand-grey/20 hover:border-brand-cyan transition-colors cursor-pointer group h-full">
+              <Card className="p-6 bg-brand-light border-brand-grey/20 hover:border-brand-green transition-colors cursor-pointer group h-full">
                 <h3 className="font-semibold text-brand-dark mb-2">KI für Sales & BD</h3>
                 <p className="text-sm text-brand-dark/70 mb-4">
                   Workshops, Prompt-Playbooks, Enablement
                 </p>
-                <span className="inline-flex items-center text-brand-cyan text-sm font-medium">
+                <span className="inline-flex items-center bg-gradient-to-r from-brand-green to-brand-cyan bg-clip-text text-transparent text-sm font-medium">
                   Mehr erfahren
-                  <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 ml-1 text-brand-cyan group-hover:translate-x-1 transition-transform" />
                 </span>
               </Card>
             </Link>

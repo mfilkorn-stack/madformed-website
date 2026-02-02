@@ -66,11 +66,11 @@ export default function Leistungen() {
             </Card>
 
             <Card
-              className="p-6 lg:p-8 bg-white border-brand-grey/20 hover:border-brand-green transition-colors"
+              className="p-6 lg:p-8 bg-white border-brand-grey/20 hover:border-brand-cyan transition-colors"
               data-testid="card-medtech-overview"
             >
-              <div className="w-14 h-14 bg-brand-green/10 rounded-xl flex items-center justify-center mb-5">
-                <Stethoscope className="w-7 h-7 text-brand-green" />
+              <div className="w-14 h-14 bg-brand-cyan/10 rounded-xl flex items-center justify-center mb-5">
+                <Stethoscope className="w-7 h-7 text-brand-cyan" />
               </div>
               <h2 className="text-xl font-bold text-brand-dark mb-3">
                 Medizintechnik
@@ -81,21 +81,21 @@ export default function Leistungen() {
               </p>
               <ul className="space-y-2 mb-6 text-sm text-brand-dark/70">
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-brand-green rounded-full" />
+                  <div className="w-1.5 h-1.5 bg-brand-cyan rounded-full" />
                   Go-to-Market & BD
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-brand-green rounded-full" />
+                  <div className="w-1.5 h-1.5 bg-brand-cyan rounded-full" />
                   Prozessoptimierung
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-brand-green rounded-full" />
+                  <div className="w-1.5 h-1.5 bg-brand-cyan rounded-full" />
                   Sales Enablement
                 </li>
               </ul>
               <Link href="/leistungen/medizintechnik">
                 <Button
-                  className="bg-brand-green hover:bg-brand-green/90 text-white w-full"
+                  className="bg-brand-cyan hover:bg-brand-cyan/90 text-white w-full"
                   data-testid="button-medtech-details"
                 >
                   Details
@@ -145,12 +145,13 @@ export default function Leistungen() {
           </div>
 
           <Card
-            className="p-8 lg:p-10 mt-8 bg-gradient-to-r from-brand-dark to-brand-dark/95 border-brand-green"
+            className="p-8 lg:p-10 mt-8 bg-gradient-to-r from-brand-dark to-brand-dark/95 border-transparent"
+            style={{ borderImage: "linear-gradient(to right, #5FB94E, #1E9BD9) 1", borderWidth: "2px", borderStyle: "solid" }}
             data-testid="card-ki-overview"
           >
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-green/20 text-brand-green text-sm font-medium rounded-full mb-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-brand-green/20 to-brand-cyan/20 text-brand-cyan text-sm font-medium rounded-full mb-4">
                   <Bot className="w-4 h-4" />
                   Querschnittsleistung
                 </div>

@@ -15,14 +15,20 @@ Professionelle, SEO-optimierte Website für MadforMed GmbH - eine Beratungsgesel
 
 ## Branding
 
-- **Primary Green**: #5FB94E (lebhaftes Grün - Cannabis, EKG-Linie)
-- **Brand Cyan**: #1E9BD9 (Cyan/Blau - KI-Kopf, Medizintechnik-Monitor)
+- **Primary Green**: #5FB94E (lebhaftes Grün - Cannabis/Pharma)
+- **Brand Cyan**: #1E9BD9 (Cyan/Blau - Medizintechnik, Medizinalhandel)
 - **Dark**: #4A5A4A (Logo-Grau)
 - **Medical Grey**: #7A8A7A (Logo-Grau)
 - **Light BG**: #F8FAF8
 - **Font**: Inter (Google Fonts)
-- **Logo**: Drei Säulen - Cannabis-Blatt (grün), KI-Kopf mit Schaltkreisen (blau), Medizin-Monitor (blau/grün) mit fließenden Wellen
+- **Logo**: Vier Säulen - Cannabis-Blatt (grün), KI-Kopf mit Schaltkreisen (gradient), Medizin-Monitor (cyan), Handel/Distribution (cyan)
 - **Tagline**: Medical Resulting
+
+### Farbschema nach Bereich
+- **Medizinisches Cannabis / Pharma**: Grün (#5FB94E)
+- **Medizintechnik**: Cyan (#1E9BD9)
+- **Medizinalhandel**: Cyan (#1E9BD9)
+- **KI für Sales & BD**: Gradient (Grün → Cyan)
 
 ## Design-Elemente (Februar 2026)
 

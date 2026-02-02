@@ -50,16 +50,17 @@ export default function Home() {
 
             <Link href="/leistungen/ki-sales-bd">
               <Card
-                className="group relative p-6 bg-white border-2 border-brand-cyan/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
+                className="group relative p-6 bg-white border-2 border-brand-green/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-ki"
+                style={{ borderImage: "linear-gradient(to right, #5FB94E, #1E9BD9) 1" }}
               >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-cyan to-brand-cyan/50" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-green to-brand-cyan" />
                 <div className="absolute top-3 right-3">
-                  <span className="inline-flex items-center px-2 py-0.5 bg-brand-cyan/10 text-brand-cyan text-xs font-semibold rounded-full">
+                  <span className="inline-flex items-center px-2 py-0.5 bg-gradient-to-r from-brand-green/10 to-brand-cyan/10 text-brand-cyan text-xs font-semibold rounded-full">
                     Neu
                   </span>
                 </div>
-                <div className="w-14 h-14 bg-brand-cyan/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand-cyan/20 transition-colors">
+                <div className="w-14 h-14 bg-gradient-to-br from-brand-green/10 to-brand-cyan/10 rounded-2xl flex items-center justify-center mb-5 group-hover:from-brand-green/20 group-hover:to-brand-cyan/20 transition-colors">
                   <Brain className="w-7 h-7 text-brand-cyan" />
                 </div>
                 <h3 className="text-lg font-bold text-brand-dark mb-3">
@@ -69,21 +70,21 @@ export default function Home() {
                   Copilot & ChatGPT Workshops und Prompt-Playbooks 
                   für Vertriebsteams.
                 </p>
-                <span className="inline-flex items-center text-brand-cyan font-semibold text-sm">
+                <span className="inline-flex items-center bg-gradient-to-r from-brand-green to-brand-cyan bg-clip-text text-transparent font-semibold text-sm">
                   Mehr erfahren
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
+                  <ArrowRight className="w-4 h-4 ml-2 text-brand-cyan group-hover:translate-x-2 transition-transform" />
                 </span>
               </Card>
             </Link>
 
             <Link href="/leistungen/medizintechnik">
               <Card
-                className="group relative p-6 bg-white border-2 border-brand-green/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
+                className="group relative p-6 bg-white border-2 border-brand-cyan/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-medtech"
               >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-green to-brand-green/50" />
-                <div className="w-14 h-14 bg-brand-green/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand-green/20 transition-colors">
-                  <Monitor className="w-7 h-7 text-brand-green" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-cyan to-brand-cyan/50" />
+                <div className="w-14 h-14 bg-brand-cyan/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand-cyan/20 transition-colors">
+                  <Monitor className="w-7 h-7 text-brand-cyan" />
                 </div>
                 <h3 className="text-lg font-bold text-brand-dark mb-3">
                   Medizintechnik
@@ -92,7 +93,7 @@ export default function Home() {
                   Go-to-Market, Prozessoptimierung und Sales Enablement für 
                   Medizintechnik-Unternehmen.
                 </p>
-                <span className="inline-flex items-center text-brand-green font-semibold text-sm">
+                <span className="inline-flex items-center text-brand-cyan font-semibold text-sm">
                   Mehr erfahren
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
                 </span>

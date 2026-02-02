@@ -21,7 +21,7 @@ export default function MedizinalhandelServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm text-brand-dark/60 mb-6">
             <Link href="/leistungen">
-              <span className="hover:text-brand-green cursor-pointer">Leistungen</span>
+              <span className="hover:text-brand-cyan cursor-pointer">Leistungen</span>
             </Link>
             <span>/</span>
             <span className="text-brand-dark">Medizinalhandel</span>
@@ -84,6 +84,7 @@ export default function MedizinalhandelServices() {
                 title={service.title}
                 description={service.description}
                 icon={service.icon}
+                accentColor="cyan"
               />
             ))}
           </div>
@@ -145,7 +146,7 @@ export default function MedizinalhandelServices() {
 
       <section className="py-16 md:py-20 bg-brand-dark">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-cyan/20 text-brand-cyan text-sm font-medium rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-brand-green/20 to-brand-cyan/20 text-brand-cyan text-sm font-medium rounded-full mb-4">
             Passend dazu
           </div>
           <h2 className="text-2xl font-bold text-white mb-4">
@@ -156,7 +157,7 @@ export default function MedizinalhandelServices() {
             Copilot & ChatGPT für E-Mails, Angebote und Account-Vorbereitung – praxisnah und messbar.
           </p>
           <Link href="/leistungen/ki-sales-bd">
-            <Button className="bg-brand-cyan hover:bg-brand-cyan/90 text-white">
+            <Button className="bg-gradient-to-r from-brand-green to-brand-cyan hover:from-brand-green/90 hover:to-brand-cyan/90 text-white">
               KI-Workshops entdecken
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>

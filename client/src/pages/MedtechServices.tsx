@@ -21,7 +21,7 @@ export default function MedtechServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm text-brand-dark/60 mb-6">
             <Link href="/leistungen">
-              <span className="hover:text-brand-green cursor-pointer">Leistungen</span>
+              <span className="hover:text-brand-cyan cursor-pointer">Leistungen</span>
             </Link>
             <span>/</span>
             <span className="text-brand-dark">Medizintechnik</span>
@@ -29,7 +29,7 @@ export default function MedtechServices() {
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-green/10 rounded-full text-brand-green text-sm font-medium mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-cyan/10 rounded-full text-brand-cyan text-sm font-medium mb-4">
                 <Stethoscope className="w-4 h-4" />
                 Beratungsschwerpunkt
               </div>
@@ -44,7 +44,7 @@ export default function MedtechServices() {
               <Link href="/kontakt">
                 <Button
                   size="lg"
-                  className="bg-brand-green hover:bg-brand-green/90 text-white"
+                  className="bg-brand-cyan hover:bg-brand-cyan/90 text-white"
                   data-testid="button-contact-medtech"
                 >
                   Beratungsgespräch vereinbaren
@@ -55,7 +55,7 @@ export default function MedtechServices() {
 
             <Card className="p-6 bg-white border-brand-grey/20">
               <div className="flex items-center gap-3 mb-4">
-                <Users className="w-5 h-5 text-brand-green" />
+                <Users className="w-5 h-5 text-brand-cyan" />
                 <h3 className="font-semibold text-brand-dark">Zielgruppen</h3>
               </div>
               <div className="space-y-4">
@@ -84,6 +84,7 @@ export default function MedtechServices() {
                 title={service.title}
                 description={service.description}
                 icon={service.icon}
+                accentColor="cyan"
               />
             ))}
           </div>
@@ -103,7 +104,7 @@ export default function MedtechServices() {
                 className="p-6 bg-white border-brand-grey/20"
                 data-testid={`case-study-${study.id}`}
               >
-                <div className="inline-block px-2 py-1 bg-brand-green/10 rounded text-brand-green text-xs font-medium mb-3">
+                <div className="inline-block px-2 py-1 bg-brand-cyan/10 rounded text-brand-cyan text-xs font-medium mb-3">
                   {study.category}
                 </div>
                 <h3 className="font-semibold text-brand-dark mb-2">{study.title}</h3>
@@ -111,7 +112,7 @@ export default function MedtechServices() {
                 <div className="space-y-2">
                   {study.results.map((result, index) => (
                     <div key={index} className="flex items-center gap-2 text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-brand-green shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-brand-cyan shrink-0" />
                       <span className="text-brand-dark/80">{result}</span>
                     </div>
                   ))}
@@ -136,7 +137,7 @@ export default function MedtechServices() {
 
       <section className="py-16 md:py-20 bg-brand-dark">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-green/20 text-brand-green text-sm font-medium rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-brand-green/20 to-brand-cyan/20 text-brand-cyan text-sm font-medium rounded-full mb-4">
             Passend dazu
           </div>
           <h2 className="text-2xl font-bold text-white mb-4">
@@ -147,7 +148,7 @@ export default function MedtechServices() {
             Copilot & ChatGPT für E-Mails, Angebote und Account-Vorbereitung – praxisnah und messbar.
           </p>
           <Link href="/leistungen/ki-sales-bd">
-            <Button className="bg-brand-green hover:bg-brand-green/90 text-white">
+            <Button className="bg-gradient-to-r from-brand-green to-brand-cyan hover:from-brand-green/90 hover:to-brand-cyan/90 text-white">
               KI-Workshops entdecken
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
