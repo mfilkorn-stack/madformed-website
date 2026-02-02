@@ -174,10 +174,11 @@ Um E-Mail-Benachrichtigungen für neue Kontaktanfragen zu aktivieren:
    - Theme-Color für Mobile
    - Font-Preconnect für Performance
 
-7. **Server-seitige Meta-Daten** (server/routes.ts)
+7. **SSR-lite Meta-Tag Injection** (server/static.ts)
    - `PAGE_META`: Meta-Daten Map für alle statischen Seiten
    - `BLOG_POST_META`: Meta-Daten Map für alle Blog-Artikel
-   - Bereit für SSR/Prerendering-Integration
+   - In Produktion: HTML wird mit korrekten Meta-Tags pro Route ausgeliefert
+   - `injectMetaTags()`: Ersetzt Title, Description, OG-Tags, Canonical pro Request
 
 ### Komponenten
 
