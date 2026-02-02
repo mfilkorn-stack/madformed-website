@@ -27,7 +27,7 @@ export const benefits = [
   },
   {
     title: "Praxisorientierung",
-    description: "Lösungen, die im Tagesgeschäft funktionieren – nicht nur auf dem Papier"
+    description: "Lösungen, die sofort Mehrwert stiften und im Tagesgeschäft auch wirklich funktionieren"
   },
   {
     title: "Ergebnisorientiert",
