@@ -7,7 +7,7 @@ import { HeroSlider } from "@/components/HeroSlider";
 import { WaveDivider } from "@/components/WaveDivider";
 import { benefits, workProcess } from "@/content/company";
 import { companyLogos } from "@/content/references";
-import { ArrowRight, Leaf, Monitor, Brain, CheckCircle2, AlertTriangle, Building2 } from "lucide-react";
+import { ArrowRight, Leaf, Monitor, Brain, CheckCircle2, AlertTriangle, Building2, Search, Lightbulb, Rocket } from "lucide-react";
 
 export default function Home() {
   return (
@@ -126,31 +126,54 @@ export default function Home() {
 
       <WaveDivider variant="cyan-green" flip />
 
-      <section className="py-16 md:py-20 bg-white" data-testid="process-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-brand-dark via-brand-dark to-brand-dark/95 relative overflow-hidden" data-testid="process-section">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-brand-green rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-cyan rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeading
             title="Unsere Arbeitsweise"
             subtitle="Strukturiert und transparent von der ersten Analyse bis zur Umsetzung"
+            light
           />
-          <div className="grid md:grid-cols-3 gap-8">
-            {workProcess.map((step, index) => (
-              <div key={step.step} className="relative bg-brand-light p-8 rounded-xl border border-brand-grey/10">
-                <div className="flex items-center gap-4 mb-5">
-                  <div 
-                    className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0 ${
-                      index === 0 ? "bg-brand-green" : index === 1 ? "bg-gradient-to-r from-brand-green to-brand-cyan" : "bg-brand-cyan"
-                    }`}
-                  >
-                    {step.step}
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 relative">
+            <div className="hidden md:block absolute top-24 left-[20%] right-[20%] h-0.5 bg-gradient-to-r from-brand-green via-brand-cyan to-brand-cyan opacity-30" />
+            
+            {workProcess.map((step, index) => {
+              const icons = [Search, Lightbulb, Rocket];
+              const Icon = icons[index];
+              return (
+                <div 
+                  key={step.step} 
+                  className="relative group"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-green/20 to-brand-cyan/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 h-full">
+                    <div className="flex flex-col items-center text-center mb-6">
+                      <div 
+                        className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 shadow-lg ${
+                          index === 0 
+                            ? "bg-gradient-to-br from-brand-green to-brand-green/80" 
+                            : index === 1 
+                              ? "bg-gradient-to-br from-brand-green to-brand-cyan" 
+                              : "bg-gradient-to-br from-brand-cyan to-brand-cyan/80"
+                        }`}
+                      >
+                        <Icon className="w-8 h-8 text-white" />
+                      </div>
+                      <span className={`text-xs font-semibold tracking-wider uppercase mb-2 ${
+                        index === 0 ? "text-brand-green" : index === 1 ? "text-brand-cyan" : "text-brand-cyan"
+                      }`}>
+                        Schritt {step.step}
+                      </span>
+                      <h3 className="text-xl font-bold text-white">{step.title}</h3>
+                    </div>
+                    <p className="text-white/70 leading-relaxed text-center">{step.description}</p>
                   </div>
-                  <h3 className="text-xl font-semibold text-brand-dark">{step.title}</h3>
                 </div>
-                <p className="text-brand-dark/70 leading-relaxed">{step.description}</p>
-                {step.step < 3 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-brand-green to-brand-cyan" />
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
