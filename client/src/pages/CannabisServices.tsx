@@ -7,6 +7,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
 import { ServiceData, FAQData, BreadcrumbData } from "@/components/StructuredData";
+import { RelatedArticles, RelatedServices } from "@/components/RelatedContent";
 import { cannabisServices, cannabisTargetGroups } from "@/content/services";
 import { cannabisFaqs } from "@/content/faqs";
 import { ArrowRight, Leaf, Users } from "lucide-react";
@@ -115,6 +116,28 @@ export default function CannabisServices() {
           </Card>
         </div>
       </section>
+
+      <RelatedArticles category="cannabis" title="Insights zu medizinischem Cannabis" />
+
+      <RelatedServices 
+        services={[
+          {
+            title: "Medizintechnik",
+            description: "Go-to-Market und Sales Enablement für Medizintechnik-Unternehmen.",
+            href: "/leistungen/medizintechnik",
+            icon: "medtech",
+            color: "cyan"
+          },
+          {
+            title: "Medizinalhandel",
+            description: "Vertriebsstrategie und Key Account Management für Händler.",
+            href: "/leistungen/medizinalhandel",
+            icon: "handel",
+            color: "cyan"
+          }
+        ]}
+        title="Verwandte Beratungsbereiche"
+      />
 
       <section className="py-16 md:py-20 bg-brand-dark">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

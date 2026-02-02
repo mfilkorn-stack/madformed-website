@@ -7,6 +7,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
 import { ServiceData, FAQData, BreadcrumbData } from "@/components/StructuredData";
+import { RelatedServices } from "@/components/RelatedContent";
 import { medizinalhandelServices, medizinalhandelTargetGroups } from "@/content/services";
 import { medizinalhandelFaqs } from "@/content/faqs";
 import { ArrowRight, ShoppingCart, Users, CheckCircle2 } from "lucide-react";
@@ -157,6 +158,26 @@ export default function MedizinalhandelServices() {
           </Card>
         </div>
       </section>
+
+      <RelatedServices 
+        services={[
+          {
+            title: "Medizinisches Cannabis",
+            description: "EU-GMP/GDP-Beratung und Markteintritt für Cannabis-Unternehmen.",
+            href: "/leistungen/medizinisches-cannabis",
+            icon: "cannabis",
+            color: "green"
+          },
+          {
+            title: "Medizintechnik",
+            description: "Go-to-Market und Sales Enablement für Medizintechnik-Unternehmen.",
+            href: "/leistungen/medizintechnik",
+            icon: "medtech",
+            color: "cyan"
+          }
+        ]}
+        title="Verwandte Beratungsbereiche"
+      />
 
       <section className="py-16 md:py-20 bg-brand-dark">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

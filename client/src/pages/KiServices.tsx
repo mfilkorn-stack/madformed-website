@@ -6,6 +6,7 @@ import { CTABand } from "@/components/CTABand";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { SEO } from "@/components/SEO";
 import { ServiceData, FAQData, BreadcrumbData } from "@/components/StructuredData";
+import { RelatedArticles, RelatedServices } from "@/components/RelatedContent";
 import {
   kiServiceInfo,
   kiTargetGroups,
@@ -331,27 +332,34 @@ export default function KiServices() {
         </div>
       </section>
 
-      <section className="py-12 bg-brand-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <p className="text-brand-dark/70">{kiServiceInfo.crossSellNote}</p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/leistungen/medizinisches-cannabis">
-              <Button variant="outline" className="border-brand-green text-brand-green hover:bg-brand-green/10">
-                Cannabis-Beratung
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-            <Link href="/leistungen/medizintechnik">
-              <Button variant="outline" className="border-brand-green text-brand-green hover:bg-brand-green/10">
-                Medizintechnik-Beratung
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <RelatedArticles category="ki" title="Insights zu KI im Vertrieb" />
+
+      <RelatedServices 
+        services={[
+          {
+            title: "Medizinisches Cannabis",
+            description: "KI-Enablement für Cannabis-Vertriebsteams.",
+            href: "/leistungen/medizinisches-cannabis",
+            icon: "cannabis",
+            color: "green"
+          },
+          {
+            title: "Medizintechnik",
+            description: "KI-Enablement für Medizintechnik-Vertriebsteams.",
+            href: "/leistungen/medizintechnik",
+            icon: "medtech",
+            color: "cyan"
+          },
+          {
+            title: "Medizinalhandel",
+            description: "KI-Enablement für Handelsvertriebsteams.",
+            href: "/leistungen/medizinalhandel",
+            icon: "handel",
+            color: "cyan"
+          }
+        ]}
+        title="KI-Workshops passend zu Ihrer Branche"
+      />
     </div>
   );
 }

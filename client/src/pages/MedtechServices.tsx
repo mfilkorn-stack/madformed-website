@@ -7,6 +7,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
 import { ServiceData, FAQData, BreadcrumbData } from "@/components/StructuredData";
+import { RelatedArticles, RelatedServices } from "@/components/RelatedContent";
 import { medtechServices, medtechTargetGroups, caseStudies } from "@/content/services";
 import { medtechFaqs } from "@/content/faqs";
 import { ArrowRight, Stethoscope, Users, CheckCircle2 } from "lucide-react";
@@ -148,6 +149,28 @@ export default function MedtechServices() {
           </Card>
         </div>
       </section>
+
+      <RelatedArticles category="medtech" title="Insights zur Medizintechnik" />
+
+      <RelatedServices 
+        services={[
+          {
+            title: "Medizinisches Cannabis",
+            description: "EU-GMP/GDP-Beratung für Cannabis-Unternehmen.",
+            href: "/leistungen/medizinisches-cannabis",
+            icon: "cannabis",
+            color: "green"
+          },
+          {
+            title: "Medizinalhandel",
+            description: "Vertriebsstrategie und Key Account Management für Händler.",
+            href: "/leistungen/medizinalhandel",
+            icon: "handel",
+            color: "cyan"
+          }
+        ]}
+        title="Verwandte Beratungsbereiche"
+      />
 
       <section className="py-16 md:py-20 bg-brand-dark">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

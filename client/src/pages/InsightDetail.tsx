@@ -4,12 +4,72 @@ import { Card } from "@/components/ui/card";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
 import { getPostBySlug, blogPosts } from "@/content/posts";
-import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, User, Tag, Leaf, Monitor, Brain, ShoppingCart } from "lucide-react";
 
 const categoryLabels: Record<string, string> = {
   cannabis: "Cannabis",
   medtech: "Medizintechnik",
+  ki: "KI",
   allgemein: "Allgemein",
+};
+
+interface ServiceLink {
+  title: string;
+  href: string;
+  description: string;
+  Icon: React.ElementType;
+  bgClass: string;
+  borderClass: string;
+  hoverBorderClass: string;
+  iconBgClass: string;
+  iconColorClass: string;
+}
+
+const categoryToService: Record<string, ServiceLink> = {
+  cannabis: {
+    title: "Cannabis-Beratung",
+    href: "/leistungen/medizinisches-cannabis",
+    description: "EU-GMP/GDP, Supply Chain und Markteintritt",
+    Icon: Leaf,
+    bgClass: "bg-brand-green/5",
+    borderClass: "border-brand-green/20",
+    hoverBorderClass: "hover:border-brand-green",
+    iconBgClass: "bg-brand-green/10",
+    iconColorClass: "text-brand-green"
+  },
+  medtech: {
+    title: "Medizintechnik-Beratung",
+    href: "/leistungen/medizintechnik",
+    description: "Go-to-Market und Sales Enablement",
+    Icon: Monitor,
+    bgClass: "bg-brand-cyan/5",
+    borderClass: "border-brand-cyan/20",
+    hoverBorderClass: "hover:border-brand-cyan",
+    iconBgClass: "bg-brand-cyan/10",
+    iconColorClass: "text-brand-cyan"
+  },
+  ki: {
+    title: "KI-Workshops",
+    href: "/leistungen/ki-sales-bd",
+    description: "Copilot & ChatGPT für Vertriebsteams",
+    Icon: Brain,
+    bgClass: "bg-brand-green/5",
+    borderClass: "border-brand-green/20",
+    hoverBorderClass: "hover:border-brand-green",
+    iconBgClass: "bg-brand-green/10",
+    iconColorClass: "text-brand-green"
+  },
+  allgemein: {
+    title: "Unsere Leistungen",
+    href: "/leistungen",
+    description: "Beratung für Cannabis, Medizintechnik und KI",
+    Icon: ShoppingCart,
+    bgClass: "bg-brand-cyan/5",
+    borderClass: "border-brand-cyan/20",
+    hoverBorderClass: "hover:border-brand-cyan",
+    iconBgClass: "bg-brand-cyan/10",
+    iconColorClass: "text-brand-cyan"
+  }
 };
 
 export default function InsightDetail() {
@@ -92,6 +152,37 @@ export default function InsightDetail() {
           </div>
         </div>
       </article>
+
+      {categoryToService[post.category] && (() => {
+        const service = categoryToService[post.category];
+        const ServiceIcon = service.Icon;
+        return (
+          <section className="py-12 bg-white border-t border-brand-grey/10">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-xl font-bold text-brand-dark mb-6">Passende Beratungsleistung</h2>
+              <Link href={service.href}>
+                <Card className={`p-6 ${service.bgClass} ${service.borderClass} ${service.hoverBorderClass} transition-colors cursor-pointer group`}>
+                  <div className="flex items-start gap-4">
+                    <div className={`w-12 h-12 ${service.iconBgClass} rounded-xl flex items-center justify-center shrink-0`}>
+                      <ServiceIcon className={`w-6 h-6 ${service.iconColorClass}`} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-brand-dark mb-1 group-hover:text-brand-green transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm text-brand-dark/70 mb-2">{service.description}</p>
+                      <span className="inline-flex items-center text-brand-green text-sm font-medium">
+                        Mehr erfahren
+                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
+                  </div>
+                </Card>
+              </Link>
+            </div>
+          </section>
+        );
+      })()}
 
       {relatedPosts.length > 0 && (
         <section className="py-16 md:py-20 bg-white">

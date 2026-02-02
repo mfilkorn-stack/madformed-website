@@ -140,10 +140,17 @@ Um E-Mail-Benachrichtigungen für neue Kontaktanfragen zu aktivieren:
    - `FAQData`: FAQPage Schema für alle FAQs
    - `BreadcrumbData`: Navigationspfade
 
+5. **Interne Verlinkung (Hub/Spoke-Struktur)**
+   - Leistungen-Seite als Hub zu allen Service-Seiten
+   - Service-Seiten verlinken zu verwandten Services und passenden Blog-Artikeln
+   - Blog-Artikel verlinken zu passenden Service-Seiten basierend auf Kategorie
+   - Komponenten: `RelatedArticles`, `RelatedServices` in `client/src/components/RelatedContent.tsx`
+
 ### Komponenten
 
 - `client/src/components/StructuredData.tsx` - Alle Schema.org Komponenten
 - `client/src/components/SEO.tsx` - Meta-Tags (title, description, OG, Twitter)
+- `client/src/components/RelatedContent.tsx` - Interne Verlinkung (RelatedArticles, RelatedServices)
 
 ### Testen
 
