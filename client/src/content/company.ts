@@ -1,8 +1,8 @@
 export const companyInfo = {
-  name: "MAD for MED GmbH",
+  name: "MadforMed GmbH",
   tagline: "Medical Resulting",
   address: {
-    street: "Bonner Straße 12",
+    street: "Bonnerstraße 12",
     zip: "51371",
     city: "Leverkusen",
     country: "Deutschland"
@@ -13,10 +13,10 @@ export const companyInfo = {
   },
   responseTime: "Rückmeldung i. d. R. innerhalb von 48h",
   legal: {
-    geschaeftsfuehrer: "[Name Geschäftsführer]",
+    geschaeftsfuehrer: "Matthias Joerg Filkorn",
     handelsregister: "Amtsgericht Köln",
-    hrb: "HRB [Nummer]",
-    ustId: "DE[Nummer]"
+    hrb: "HRB 113572",
+    ustId: "DE360969435"
   }
 };
 
