@@ -10,6 +10,7 @@ import {
   Coins,
   Users,
   ClipboardList,
+  Code,
 } from "lucide-react";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -23,6 +24,7 @@ const iconMap: Record<string, React.ElementType> = {
   coins: Coins,
   users: Users,
   clipboardList: ClipboardList,
+  code: Code,
 };
 
 interface ServiceCardProps {

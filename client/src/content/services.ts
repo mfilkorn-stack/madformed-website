@@ -108,6 +108,12 @@ export const medizinalhandelServices = [
     title: "Produktportfolio-Management",
     description: "Strategische Sortimentsgestaltung und Portfolioanalyse. Identifikation von Marktlücken und Wachstumschancen.",
     icon: "clipboardList"
+  },
+  {
+    id: "softwareentwicklung",
+    title: "Softwareentwicklung",
+    description: "Entwicklung branchenspezifischer Software für den Medizinalhandel. Referenzen: m.o.p.s. (aescologic) und m.a.r.s. (Arthrex).",
+    icon: "code"
   }
 ];
 
