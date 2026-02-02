@@ -6,6 +6,7 @@ import canpharmaLogo from "@assets/IMG_0819_1769992336840.jpeg";
 import cansativaLogo from "@assets/IMG_0820_1769992336840.jpeg";
 import lohmannRauscherLogo from "@assets/IMG_0821_1769992336840.jpeg";
 import primaMedLogo from "@assets/IMG_0822_1769992336840.jpeg";
+import aescologicLogo from "@assets/IMG_0824_1770006786137.jpeg";
 
 export const projectReferences = [
   {
@@ -106,6 +107,12 @@ export const companyLogos = [
     industry: "Medizinalcannabis",
     description: "Cannabis-Unternehmen",
     logo: nobleLogo
+  },
+  {
+    name: "aescologic",
+    industry: "Medizintechnik",
+    description: "Spezialist für ambulante Versorgung",
+    logo: aescologicLogo
   }
 ];
 
