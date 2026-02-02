@@ -1,0 +1,52 @@
+Du bist mein technischer Co-Entwickler. Aufgabe: Bereinige das EXISTIERENDE Replit-Projekt radikal zurück auf den definierten MVP-Kern. NICHT neu bauen, sondern refactor/cleanup.
+
+Harte Regeln (nicht verhandelbar):
+- Nur Python. Kein Node/React/Frontend.
+- Keine API-Endpunkte, kein Webserver, kein UI.
+- Keine PostgreSQL, keine ORM, keine migrations/prisma.
+- Keine Mock-/Demo-/simulated data sources.
+- Kein Cron/Scheduler-Code im Projekt. Scheduling erfolgt später ausschließlich über Replit Scheduler.
+- Einziger Einstiegspunkt ist: `python main.py`.
+
+Ziel-MVP-Funktion:
+- Scrape best-effort zwei Quellen: eBay Kleinanzeigen + Immobilienscout24 (ohne Login, ohne Schutzumgehung).
+- Filter ausschließlich Stadt Bamberg per PLZ: 96047, 96049, 96050, 96052.
+- Extrahiere per Regex aus Titel+Beschreibung: Kaufpreis, Wohnfläche (m²), Baujahr, PLZ.
+  - Wohnfläche Plausibilität 15–300; Fallback 60 wenn fehlt.
+  - Baujahr Plausibilität 1850–2025; Fallback 1975 wenn fehlt.
+  - Kaufpreis Plausibilität 20.000–3.000.000; wenn fehlt -> Objekt verwerfen.
+- Renovierungszustand automatisch aus Text:
+  - stark => +20% Kaufpreis
+  - leicht => +10% Kaufpreis
+  - keine => +0%
+  - Wenn unklar => leicht (konservativ)
+- Miete dynamisch über Mietspiegel Bamberg 2024 (Median) abhängig von Baujahresklasse (A-F) und Flächenbucket (1-4). Hinterlege die Medianwerte als Dictionary im Code.
+- Bruttomietrendite (%) = Jahreskaltmiete / (Kaufpreis inkl. Renovierungsaufschlag) * 100.
+- Deal-Ampel: grün >=7.5, gelb 5.0–7.49, rot <4.9.
+- Ausgabe: E-Mail (SMTP) nur für Deals >=5.0. E-Mail enthält: Quelle, Titel, PLZ, m², Baujahr, Renovierungszustand, Kaufpreis angepasst, Kaufpreis €/m², Mietspiegel €/m², Jahreskaltmiete, Bruttomietrendite, Ampel, Link.
+- Duplikaterkennung via SQLite (data.db): stable hash aus normalisiertem Titel + Preis + Ort. Duplicate über Portale soll nicht doppelt gemeldet werden.
+
+Projektstruktur (muss exakt so entstehen):
+/main.py
+/config.py
+/calculator.py
+/extractor.py
+/renovation_extractor.py
+/mietspiegel_bamberg_2024.py
+/database.py
+/notifier.py
+/scraper/base.py
+/scraper/kleinanzeigen.py
+/scraper/immoscout.py
+/data.db
+/requirements.txt
+
+Vorgehen:
+1) Identifiziere alle nicht-MVP Dateien/Ordner (Frontend, API, Postgres, Mock, Cron). Lösche sie oder verschiebe sie nach _archive/ (damit Git sauber bleibt).
+2) Entferne unnötige Dependencies (package.json, node_modules, prisma, etc.). Stelle requirements.txt her.
+3) Implementiere/Refactore den MVP-Code in den oben genannten Dateien.
+4) Stelle sicher, dass `python main.py` ohne UI und ohne API läuft und im Terminal eine kurze Zusammenfassung loggt (z.B. Anzahl Listings gescraped, gefiltert, Deals >=5).
+5) Nutze Env-Variablen für E-Mail Zugangsdaten (z.B. SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, EMAIL_TO).
+
+Am Ende: Zeige mir eine kurze Liste: (a) Gelöschte/archivierte Pfade, (b) finale Run-Anweisung, (c) benötigte Env Vars.
+Kein zusätzlicher Scope. MVP first.
