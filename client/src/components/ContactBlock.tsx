@@ -1,4 +1,5 @@
 import { companyInfo } from "@/content/company";
+import { useLanguage } from "@/lib/i18n";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
@@ -7,6 +8,13 @@ interface ContactBlockProps {
 }
 
 export function ContactBlock({ variant = "light" }: ContactBlockProps) {
+  const { language } = useLanguage();
+  const isEnglish = language === "en";
+
+  const responseTimeText = isEnglish 
+    ? "Response usually within 48h" 
+    : companyInfo.responseTime;
+
   const content = (
     <div className="space-y-4">
       <div className="flex items-start gap-3">
@@ -45,7 +53,7 @@ export function ContactBlock({ variant = "light" }: ContactBlockProps) {
 
       <div className="flex items-center gap-3">
         <Clock className="w-5 h-5 text-brand-green shrink-0" />
-        <p className="text-brand-dark/70 text-sm">{companyInfo.responseTime}</p>
+        <p className="text-brand-dark/70 text-sm">{responseTimeText}</p>
       </div>
     </div>
   );

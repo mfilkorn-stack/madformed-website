@@ -25,26 +25,31 @@ import {
 import { ContactBlock } from "@/components/ContactBlock";
 import { SEO } from "@/components/SEO";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/lib/i18n";
 import { apiRequest } from "@/lib/queryClient";
 import { Send, CheckCircle2, Loader2 } from "lucide-react";
 
-const contactSchema = z.object({
-  name: z.string().min(2, "Name muss mindestens 2 Zeichen lang sein"),
-  firma: z.string().min(1, "Bitte geben Sie Ihre Firma an"),
-  email: z.string().email("Bitte geben Sie eine gültige E-Mail-Adresse ein"),
+const getContactSchema = (isEnglish: boolean) => z.object({
+  name: z.string().min(2, isEnglish ? "Name must be at least 2 characters" : "Name muss mindestens 2 Zeichen lang sein"),
+  firma: z.string().min(1, isEnglish ? "Please enter your company" : "Bitte geben Sie Ihre Firma an"),
+  email: z.string().email(isEnglish ? "Please enter a valid email address" : "Bitte geben Sie eine gültige E-Mail-Adresse ein"),
   telefon: z.string().optional(),
   thema: z.enum(["cannabis", "medizintechnik", "ki-workshop", "allgemein"], {
-    required_error: "Bitte wählen Sie ein Thema",
+    required_error: isEnglish ? "Please select a topic" : "Bitte wählen Sie ein Thema",
   }),
-  nachricht: z.string().min(10, "Nachricht muss mindestens 10 Zeichen lang sein"),
+  nachricht: z.string().min(10, isEnglish ? "Message must be at least 10 characters" : "Nachricht muss mindestens 10 Zeichen lang sein"),
   honeypot: z.string().max(0).optional(),
 });
 
-type ContactFormData = z.infer<typeof contactSchema>;
+type ContactFormData = z.infer<ReturnType<typeof getContactSchema>>;
 
 export default function Kontakt() {
   const { toast } = useToast();
+  const { language, t } = useLanguage();
+  const isEnglish = language === "en";
   const [submitted, setSubmitted] = useState(false);
+
+  const contactSchema = getContactSchema(isEnglish);
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -66,14 +71,18 @@ export default function Kontakt() {
     onSuccess: () => {
       setSubmitted(true);
       toast({
-        title: "Nachricht gesendet",
-        description: "Vielen Dank für Ihre Anfrage. Wir melden uns in Kürze bei Ihnen.",
+        title: isEnglish ? "Message sent" : "Nachricht gesendet",
+        description: isEnglish 
+          ? "Thank you for your inquiry. We will get back to you shortly."
+          : "Vielen Dank für Ihre Anfrage. Wir melden uns in Kürze bei Ihnen.",
       });
     },
     onError: () => {
       toast({
-        title: "Fehler",
-        description: "Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+        title: isEnglish ? "Error" : "Fehler",
+        description: isEnglish 
+          ? "An error occurred while sending. Please try again."
+          : "Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
         variant: "destructive",
       });
     },
@@ -86,22 +95,54 @@ export default function Kontakt() {
     mutation.mutate(data);
   };
 
+  const labels = {
+    title: isEnglish ? "Contact" : "Kontakt",
+    subtitle: isEnglish 
+      ? "Have a project or question? We look forward to your message and usually respond within 48 hours."
+      : "Haben Sie ein Projekt oder eine Frage? Wir freuen uns auf Ihre Nachricht und melden uns in der Regel innerhalb von 48 Stunden.",
+    seoDescription: isEnglish
+      ? "Contact MadforMed for a non-binding consultation about medical cannabis or medical technology. Response within 48 hours."
+      : "Kontaktieren Sie MadforMed für ein unverbindliches Beratungsgespräch zu medizinischem Cannabis oder Medizintechnik. Rückmeldung innerhalb von 48h.",
+    sendMessage: isEnglish ? "Send Message" : "Nachricht senden",
+    thankYou: isEnglish ? "Thank you!" : "Vielen Dank!",
+    successMessage: isEnglish 
+      ? "Your message has been sent successfully. We will get back to you as soon as possible."
+      : "Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns schnellstmöglich bei Ihnen.",
+    name: isEnglish ? "Name *" : "Name *",
+    namePlaceholder: isEnglish ? "Your name" : "Ihr Name",
+    company: isEnglish ? "Company *" : "Firma *",
+    companyPlaceholder: isEnglish ? "Your company" : "Ihre Firma",
+    email: isEnglish ? "Email *" : "E-Mail *",
+    emailPlaceholder: isEnglish ? "your@email.com" : "ihre@email.de",
+    phone: isEnglish ? "Phone (optional)" : "Telefon (optional)",
+    topic: isEnglish ? "Topic *" : "Thema *",
+    selectPlaceholder: isEnglish ? "Please select" : "Bitte wählen",
+    message: isEnglish ? "Message *" : "Nachricht *",
+    messagePlaceholder: isEnglish ? "Describe your inquiry..." : "Beschreiben Sie Ihr Anliegen...",
+    sending: isEnglish ? "Sending..." : "Wird gesendet...",
+    topics: {
+      cannabis: isEnglish ? "Medical Cannabis" : "Medizinisches Cannabis",
+      medizintechnik: isEnglish ? "Medical Technology" : "Medizintechnik",
+      kiWorkshop: isEnglish ? "AI Workshop (Copilot & ChatGPT)" : "KI Workshop (Copilot & ChatGPT)",
+      allgemein: isEnglish ? "General Inquiry" : "Allgemeine Anfrage",
+    },
+  };
+
   return (
     <div className="bg-brand-light">
       <SEO
-        title="Kontakt"
-        description="Kontaktieren Sie MadforMed für ein unverbindliches Beratungsgespräch zu medizinischem Cannabis oder Medizintechnik. Rückmeldung innerhalb von 48h."
+        title={labels.title}
+        description={labels.seoDescription}
       />
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-dark leading-tight mb-6">
-                Kontakt
+                {labels.title}
               </h1>
               <p className="text-lg text-brand-dark/70 mb-8 leading-relaxed">
-                Haben Sie ein Projekt oder eine Frage? Wir freuen uns auf Ihre 
-                Nachricht und melden uns in der Regel innerhalb von 48 Stunden.
+                {labels.subtitle}
               </p>
               <ContactBlock />
             </div>
@@ -113,17 +154,16 @@ export default function Kontakt() {
                     <CheckCircle2 className="w-8 h-8 text-brand-green" />
                   </div>
                   <h2 className="text-xl font-semibold text-brand-dark mb-2">
-                    Vielen Dank!
+                    {labels.thankYou}
                   </h2>
                   <p className="text-brand-dark/70">
-                    Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns 
-                    schnellstmöglich bei Ihnen.
+                    {labels.successMessage}
                   </p>
                 </Card>
               ) : (
                 <Card className="p-6 md:p-8 bg-white border-brand-grey/20">
                   <h2 className="text-xl font-semibold text-brand-dark mb-6">
-                    Nachricht senden
+                    {labels.sendMessage}
                   </h2>
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
@@ -141,10 +181,10 @@ export default function Kontakt() {
                           name="name"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Name *</FormLabel>
+                              <FormLabel>{labels.name}</FormLabel>
                               <FormControl>
                                 <Input
-                                  placeholder="Ihr Name"
+                                  placeholder={labels.namePlaceholder}
                                   data-testid="input-name"
                                   {...field}
                                 />
@@ -158,10 +198,10 @@ export default function Kontakt() {
                           name="firma"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Firma *</FormLabel>
+                              <FormLabel>{labels.company}</FormLabel>
                               <FormControl>
                                 <Input
-                                  placeholder="Ihre Firma"
+                                  placeholder={labels.companyPlaceholder}
                                   data-testid="input-firma"
                                   {...field}
                                 />
@@ -178,11 +218,11 @@ export default function Kontakt() {
                           name="email"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>E-Mail *</FormLabel>
+                              <FormLabel>{labels.email}</FormLabel>
                               <FormControl>
                                 <Input
                                   type="email"
-                                  placeholder="ihre@email.de"
+                                  placeholder={labels.emailPlaceholder}
                                   data-testid="input-email"
                                   {...field}
                                 />
@@ -196,7 +236,7 @@ export default function Kontakt() {
                           name="telefon"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Telefon (optional)</FormLabel>
+                              <FormLabel>{labels.phone}</FormLabel>
                               <FormControl>
                                 <Input
                                   type="tel"
@@ -216,21 +256,21 @@ export default function Kontakt() {
                         name="thema"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Thema *</FormLabel>
+                            <FormLabel>{labels.topic}</FormLabel>
                             <Select
                               onValueChange={field.onChange}
                               defaultValue={field.value}
                             >
                               <FormControl>
                                 <SelectTrigger data-testid="select-thema">
-                                  <SelectValue placeholder="Bitte wählen" />
+                                  <SelectValue placeholder={labels.selectPlaceholder} />
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                <SelectItem value="cannabis">Medizinisches Cannabis</SelectItem>
-                                <SelectItem value="medizintechnik">Medizintechnik</SelectItem>
-                                <SelectItem value="ki-workshop">KI Workshop (Copilot & ChatGPT)</SelectItem>
-                                <SelectItem value="allgemein">Allgemeine Anfrage</SelectItem>
+                                <SelectItem value="cannabis">{labels.topics.cannabis}</SelectItem>
+                                <SelectItem value="medizintechnik">{labels.topics.medizintechnik}</SelectItem>
+                                <SelectItem value="ki-workshop">{labels.topics.kiWorkshop}</SelectItem>
+                                <SelectItem value="allgemein">{labels.topics.allgemein}</SelectItem>
                               </SelectContent>
                             </Select>
                             <FormMessage />
@@ -243,10 +283,10 @@ export default function Kontakt() {
                         name="nachricht"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Nachricht *</FormLabel>
+                            <FormLabel>{labels.message}</FormLabel>
                             <FormControl>
                               <Textarea
-                                placeholder="Beschreiben Sie Ihr Anliegen..."
+                                placeholder={labels.messagePlaceholder}
                                 className="min-h-[120px] resize-none"
                                 data-testid="input-nachricht"
                                 {...field}
@@ -266,12 +306,12 @@ export default function Kontakt() {
                         {mutation.isPending ? (
                           <>
                             <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                            Wird gesendet...
+                            {labels.sending}
                           </>
                         ) : (
                           <>
                             <Send className="w-4 h-4 mr-2" />
-                            Nachricht senden
+                            {labels.sendMessage}
                           </>
                         )}
                       </Button>

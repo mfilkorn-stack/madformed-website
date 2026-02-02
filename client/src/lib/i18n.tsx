@@ -15,6 +15,26 @@ const LanguageContext = createContext<LanguageContextType | null>(null);
 
 const STORAGE_KEY = "madformed_language";
 
+const PATH_MAPPINGS: Record<string, string> = {
+  "/leistungen": "/en/services",
+  "/leistungen/medizinisches-cannabis": "/en/services/medical-cannabis",
+  "/leistungen/medizintechnik": "/en/services/medical-technology",
+  "/leistungen/medizinalhandel": "/en/services/medical-trade",
+  "/leistungen/ki-sales-bd": "/en/services/ai-sales-bd",
+  "/ueber-uns": "/en/about",
+  "/projekte": "/en/projects",
+  "/insights": "/en/insights",
+  "/kontakt": "/en/contact",
+  "/impressum": "/en/legal-notice",
+  "/datenschutz": "/en/privacy-policy",
+  "/": "/en",
+};
+
+const REVERSE_PATH_MAPPINGS: Record<string, string> = Object.entries(PATH_MAPPINGS).reduce(
+  (acc, [de, en]) => ({ ...acc, [en]: de }),
+  {}
+);
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [location, setLocation] = useLocation();
   
@@ -71,16 +91,40 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const switchLanguagePath = (targetLang: Language): string => {
     let cleanPath = location;
-    if (cleanPath.startsWith("/en")) {
-      cleanPath = cleanPath.slice(3) || "/";
-    } else if (cleanPath.startsWith("/de")) {
-      cleanPath = cleanPath.slice(3) || "/";
-    }
     
     if (targetLang === "en") {
+      if (cleanPath.startsWith("/en")) {
+        return cleanPath;
+      }
+      
+      for (const dePath of Object.keys(PATH_MAPPINGS).sort((a, b) => b.length - a.length)) {
+        if (cleanPath === dePath) {
+          return PATH_MAPPINGS[dePath];
+        }
+        if (cleanPath.startsWith(dePath + "/")) {
+          const remainder = cleanPath.slice(dePath.length);
+          return PATH_MAPPINGS[dePath] + remainder;
+        }
+      }
+      
       return `/en${cleanPath === "/" ? "" : cleanPath}`;
+    } else {
+      if (!cleanPath.startsWith("/en")) {
+        return cleanPath;
+      }
+      
+      for (const enPath of Object.keys(REVERSE_PATH_MAPPINGS).sort((a, b) => b.length - a.length)) {
+        if (cleanPath === enPath) {
+          return REVERSE_PATH_MAPPINGS[enPath];
+        }
+        if (cleanPath.startsWith(enPath + "/")) {
+          const remainder = cleanPath.slice(enPath.length);
+          return REVERSE_PATH_MAPPINGS[enPath] + remainder;
+        }
+      }
+      
+      return cleanPath.slice(3) || "/";
     }
-    return cleanPath || "/";
   };
 
   return (

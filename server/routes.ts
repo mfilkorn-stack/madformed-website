@@ -7,7 +7,7 @@ const SITE_URL = process.env.NODE_ENV === 'production'
   ? (process.env.SITE_URL || 'https://madformed.de')
   : 'http://localhost:5000';
 
-const STATIC_PAGES = [
+const STATIC_PAGES_DE = [
   { path: '/', priority: 1.0, changefreq: 'weekly' },
   { path: '/leistungen', priority: 0.9, changefreq: 'weekly' },
   { path: '/leistungen/medizinisches-cannabis', priority: 0.8, changefreq: 'monthly' },
@@ -22,7 +22,37 @@ const STATIC_PAGES = [
   { path: '/datenschutz', priority: 0.3, changefreq: 'yearly' },
 ];
 
-const BLOG_POSTS = [
+const STATIC_PAGES_EN = [
+  { path: '/en', priority: 1.0, changefreq: 'weekly' },
+  { path: '/en/services', priority: 0.9, changefreq: 'weekly' },
+  { path: '/en/services/medical-cannabis', priority: 0.8, changefreq: 'monthly' },
+  { path: '/en/services/medical-technology', priority: 0.8, changefreq: 'monthly' },
+  { path: '/en/services/medical-trade', priority: 0.8, changefreq: 'monthly' },
+  { path: '/en/services/ai-sales-bd', priority: 0.8, changefreq: 'monthly' },
+  { path: '/en/projects', priority: 0.7, changefreq: 'monthly' },
+  { path: '/en/about', priority: 0.7, changefreq: 'monthly' },
+  { path: '/en/insights', priority: 0.6, changefreq: 'weekly' },
+  { path: '/en/contact', priority: 0.8, changefreq: 'monthly' },
+  { path: '/en/legal-notice', priority: 0.3, changefreq: 'yearly' },
+  { path: '/en/privacy-policy', priority: 0.3, changefreq: 'yearly' },
+];
+
+const HREFLANG_PAIRS = [
+  { de: '/', en: '/en' },
+  { de: '/leistungen', en: '/en/services' },
+  { de: '/leistungen/medizinisches-cannabis', en: '/en/services/medical-cannabis' },
+  { de: '/leistungen/medizintechnik', en: '/en/services/medical-technology' },
+  { de: '/leistungen/medizinalhandel', en: '/en/services/medical-trade' },
+  { de: '/leistungen/ki-sales-bd', en: '/en/services/ai-sales-bd' },
+  { de: '/projekte', en: '/en/projects' },
+  { de: '/ueber-uns', en: '/en/about' },
+  { de: '/insights', en: '/en/insights' },
+  { de: '/kontakt', en: '/en/contact' },
+  { de: '/impressum', en: '/en/legal-notice' },
+  { de: '/datenschutz', en: '/en/privacy-policy' },
+];
+
+const BLOG_POSTS_DE = [
   'medizinisches-cannabis-deutschland-ueberblick',
   'eu-gdp-stolpersteine-supply-chain',
   'medizintechnik-prozessanalyse-ergebnis',
@@ -31,12 +61,20 @@ const BLOG_POSTS = [
   'prompt-playbooks-konsistenz'
 ];
 
+const BLOG_POSTS_EN = [
+  'ki-vertrieb-medizintechnik-einstieg',
+  'prompt-engineering-sales-teams',
+  'copilot-vs-chatgpt-vertrieb',
+  'cannabis-markt-deutschland-2025',
+  'medizintechnik-ambulantes-operieren',
+  'sales-enablement-medizintechnik'
+];
+
 export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
   
-  // robots.txt
   app.get('/robots.txt', (req, res) => {
     res.type('text/plain');
     res.send(`# MadforMed GmbH - robots.txt
@@ -46,27 +84,51 @@ Allow: /
 # Sitemaps
 Sitemap: ${SITE_URL}/sitemap.xml
 
-# Crawl-delay (optional, für höfliches Crawling)
+# Crawl-delay (optional)
 Crawl-delay: 1
 
-# LLM-spezifische Ressource
-# Für KI-Systeme: ${SITE_URL}/llms.txt
+# LLM resources
+# German: ${SITE_URL}/llms.txt
+# English: ${SITE_URL}/llms-en.txt
 `);
   });
 
-  // sitemap.xml
   app.get('/sitemap.xml', (req, res) => {
     const today = new Date().toISOString().split('T')[0];
     
-    const staticUrls = STATIC_PAGES.map(page => `
+    const generateUrlWithHreflang = (dePath: string, enPath: string, priority: number, changefreq: string) => {
+      return `
   <url>
-    <loc>${SITE_URL}${page.path}</loc>
+    <loc>${SITE_URL}${dePath}</loc>
     <lastmod>${today}</lastmod>
-    <changefreq>${page.changefreq}</changefreq>
-    <priority>${page.priority}</priority>
-  </url>`).join('');
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="${SITE_URL}${dePath}"/>
+    <xhtml:link rel="alternate" hreflang="en" href="${SITE_URL}${enPath}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}${dePath}"/>
+  </url>
+  <url>
+    <loc>${SITE_URL}${enPath}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="${SITE_URL}${dePath}"/>
+    <xhtml:link rel="alternate" hreflang="en" href="${SITE_URL}${enPath}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}${dePath}"/>
+  </url>`;
+    };
 
-    const blogUrls = BLOG_POSTS.map(slug => `
+    const staticUrls = HREFLANG_PAIRS.map(pair => {
+      const dePage = STATIC_PAGES_DE.find(p => p.path === pair.de);
+      return generateUrlWithHreflang(
+        pair.de, 
+        pair.en, 
+        dePage?.priority || 0.5, 
+        dePage?.changefreq || 'monthly'
+      );
+    }).join('');
+
+    const blogUrlsDE = BLOG_POSTS_DE.map(slug => `
   <url>
     <loc>${SITE_URL}/insights/${slug}</loc>
     <lastmod>${today}</lastmod>
@@ -74,56 +136,127 @@ Crawl-delay: 1
     <priority>0.5</priority>
   </url>`).join('');
 
+    const blogUrlsEN = BLOG_POSTS_EN.map(slug => `
+  <url>
+    <loc>${SITE_URL}/en/insights/${slug}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>`).join('');
+
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${staticUrls}
-${blogUrls}
+${blogUrlsDE}
+${blogUrlsEN}
 </urlset>`;
 
     res.type('application/xml');
     res.send(sitemap);
   });
 
-  // llms.txt - Spezielle Ressource für KI-Systeme
   app.get('/llms.txt', (req, res) => {
     res.type('text/plain');
-    res.send(`# MadforMed GmbH - LLM Context File
-# Letzte Aktualisierung: ${new Date().toISOString().split('T')[0]}
+    res.send(`# MadforMed GmbH - LLM Context File (German)
+# Last update: ${new Date().toISOString().split('T')[0]}
 
-## Unternehmensprofil
-MAD for MED GmbH ist eine spezialisierte B2B-Beratungsgesellschaft mit Sitz in Leverkusen, Deutschland. Wir beraten Unternehmen in den Bereichen medizinisches Cannabis, Medizintechnik, Medizinalhandel und KI-Enablement für Vertriebsteams.
+## Company Profile
+MadforMed GmbH is a specialized B2B consulting company based in Leverkusen, Germany. We advise companies in the areas of medical cannabis, medical technology, medical trade, and AI enablement for sales teams.
 
-## Kernkompetenzen
-- Medizinisches Cannabis: EU-GMP/GDP-Beratung, Import, Großhandel, Apothekennetzwerke
-- Medizintechnik: Go-to-Market, Prozessoptimierung, Sales Enablement (Fokus: ambulantes Operieren)
-- Medizinalhandel: Vertriebsstrategie, Key Account Management, Lieferantenmanagement
-- KI für Sales & BD: Copilot/ChatGPT-Workshops, Prompt-Playbooks, Enablement-Programme
+## Core Competencies
+- Medical Cannabis: EU-GMP/GDP consulting, import, wholesale, pharmacy networks
+- Medical Technology: Go-to-Market, process optimization, sales enablement (focus: outpatient surgery)
+- Medical Trade: Sales strategy, key account management, supplier management
+- AI for Sales & BD: Copilot/ChatGPT workshops, prompt playbooks, enablement programs
 
-## Zielgruppen
-- Pharma- und Cannabis-Unternehmen (Hersteller, Importeure, Großhändler)
-- Medizintechnik-Hersteller und OEMs
-- Medizinalhandels-Unternehmen und Distributoren
-- Vertriebsteams in der Healthcare-Branche
+## Target Groups
+- Pharma and cannabis companies (manufacturers, importers, wholesalers)
+- Medical technology manufacturers and OEMs
+- Medical trade companies and distributors
+- Sales teams in the healthcare industry
 
-## Wichtige URLs
-- Startseite: ${SITE_URL}/
-- Leistungsübersicht: ${SITE_URL}/leistungen
-- Medizinisches Cannabis: ${SITE_URL}/leistungen/medizinisches-cannabis
-- Medizintechnik: ${SITE_URL}/leistungen/medizintechnik
-- Medizinalhandel: ${SITE_URL}/leistungen/medizinalhandel
-- KI-Workshops: ${SITE_URL}/leistungen/ki-sales-bd
-- Referenzprojekte: ${SITE_URL}/projekte
-- Über uns: ${SITE_URL}/ueber-uns
-- FAQ: Integriert in Leistungsseiten
-- Kontakt: ${SITE_URL}/kontakt
+## Important URLs (German)
+- Homepage: ${SITE_URL}/
+- Services: ${SITE_URL}/leistungen
+- Medical Cannabis: ${SITE_URL}/leistungen/medizinisches-cannabis
+- Medical Technology: ${SITE_URL}/leistungen/medizintechnik
+- Medical Trade: ${SITE_URL}/leistungen/medizinalhandel
+- AI Workshops: ${SITE_URL}/leistungen/ki-sales-bd
+- Projects: ${SITE_URL}/projekte
+- About Us: ${SITE_URL}/ueber-uns
+- Contact: ${SITE_URL}/kontakt
 
-## Kontakt
-E-Mail: matthias@madformed.de
-Telefon: 0176/22765249
-Adresse: Bonner Straße 12, 51371 Leverkusen, Deutschland
+## Important URLs (English)
+- Homepage: ${SITE_URL}/en
+- Services: ${SITE_URL}/en/services
+- Medical Cannabis: ${SITE_URL}/en/services/medical-cannabis
+- Medical Technology: ${SITE_URL}/en/services/medical-technology
+- Medical Trade: ${SITE_URL}/en/services/medical-trade
+- AI Workshops: ${SITE_URL}/en/services/ai-sales-bd
+- Projects: ${SITE_URL}/en/projects
+- About Us: ${SITE_URL}/en/about
+- Contact: ${SITE_URL}/en/contact
 
-## Sprache
-Diese Website ist auf Deutsch verfasst und richtet sich primär an den DACH-Markt.
+## Contact
+Email: matthias@madformed.de
+Phone: +49 176 22765249
+Address: Bonnerstraße 12, 51371 Leverkusen, Germany
+
+## Languages
+This website is available in German (primary) and English, targeting the DACH market and international clients.
+`);
+  });
+
+  app.get('/llms-en.txt', (req, res) => {
+    res.type('text/plain');
+    res.send(`# MadforMed GmbH - LLM Context File (English)
+# Last update: ${new Date().toISOString().split('T')[0]}
+
+## Company Profile
+MadforMed GmbH is a specialized B2B consulting company based in Leverkusen, Germany. We advise companies in the areas of medical cannabis, medical technology, medical trade, and AI enablement for sales teams.
+
+## Core Competencies
+- Medical Cannabis: EU-GMP/GDP consulting, import, wholesale, pharmacy networks
+- Medical Technology: Go-to-Market, process optimization, sales enablement (focus: outpatient surgery)
+- Medical Trade: Sales strategy, key account management, supplier management
+- AI for Sales & BD: Copilot/ChatGPT workshops, prompt playbooks, enablement programs
+
+## Target Groups
+- Pharma and cannabis companies (manufacturers, importers, wholesalers)
+- Medical technology manufacturers and OEMs
+- Medical trade companies and distributors
+- Sales teams in the healthcare industry
+
+## Important URLs (English)
+- Homepage: ${SITE_URL}/en
+- Services: ${SITE_URL}/en/services
+- Medical Cannabis: ${SITE_URL}/en/services/medical-cannabis
+- Medical Technology: ${SITE_URL}/en/services/medical-technology
+- Medical Trade: ${SITE_URL}/en/services/medical-trade
+- AI Workshops: ${SITE_URL}/en/services/ai-sales-bd
+- Projects: ${SITE_URL}/en/projects
+- About Us: ${SITE_URL}/en/about
+- Contact: ${SITE_URL}/en/contact
+
+## Important URLs (German)
+- Homepage: ${SITE_URL}/
+- Services: ${SITE_URL}/leistungen
+- Medical Cannabis: ${SITE_URL}/leistungen/medizinisches-cannabis
+- Medical Technology: ${SITE_URL}/leistungen/medizintechnik
+- Medical Trade: ${SITE_URL}/leistungen/medizinalhandel
+- AI Workshops: ${SITE_URL}/leistungen/ki-sales-bd
+- Projects: ${SITE_URL}/projekte
+- About Us: ${SITE_URL}/ueber-uns
+- Contact: ${SITE_URL}/kontakt
+
+## Contact
+Email: matthias@madformed.de
+Phone: +49 176 22765249
+Address: Bonnerstraße 12, 51371 Leverkusen, Germany
+
+## Languages
+This website is available in German and English (this version), targeting the DACH market and international clients.
 `);
   });
 
@@ -133,7 +266,7 @@ Diese Website ist auf Deutsch verfasst und richtet sich primär an den DACH-Mark
       
       if (!storage.checkRateLimit(ip)) {
         return res.status(429).json({ 
-          error: "Zu viele Anfragen. Bitte versuchen Sie es später erneut." 
+          error: "Too many requests. Please try again later." 
         });
       }
       
@@ -141,7 +274,7 @@ Diese Website ist auf Deutsch verfasst und richtet sich primär an den DACH-Mark
       
       if (!validationResult.success) {
         return res.status(400).json({ 
-          error: "Ungültige Eingabe",
+          error: "Invalid input",
           details: validationResult.error.flatten().fieldErrors 
         });
       }
@@ -163,13 +296,13 @@ Diese Website ist auf Deutsch verfasst und richtet sich primär an den DACH-Mark
       
       return res.status(201).json({ 
         success: true, 
-        message: "Ihre Nachricht wurde erfolgreich gesendet." 
+        message: "Your message has been sent successfully." 
       });
       
     } catch (error) {
       console.error("Contact form error:", error);
       return res.status(500).json({ 
-        error: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut." 
+        error: "An error occurred. Please try again later." 
       });
     }
   });

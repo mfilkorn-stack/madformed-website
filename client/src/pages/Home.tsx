@@ -5,27 +5,117 @@ import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
 import { HeroSlider } from "@/components/HeroSlider";
 import { WaveDivider } from "@/components/WaveDivider";
+import { useLanguage } from "@/lib/i18n";
 import { benefits, workProcess } from "@/content/company";
 import { companyLogos } from "@/content/references";
 import { ArrowRight, Leaf, Monitor, Brain, CheckCircle2, AlertTriangle, Building2, Search, Lightbulb, Rocket, Shield, Zap, Target, Users, ShoppingCart } from "lucide-react";
 
 export default function Home() {
+  const { language } = useLanguage();
+  const isEnglish = language === "en";
+
+  const labels = {
+    seo: {
+      title: isEnglish 
+        ? "Consulting for Medical Cannabis & Medical Technology | MadforMed GmbH"
+        : "Beratung für medizinisches Cannabis & Medizintechnik | MadforMed GmbH",
+      description: isEnglish
+        ? "MadforMed accompanies companies along regulatory, operational, and commercial questions – structured, compliance-oriented, results-focused."
+        : "MadforMed begleitet Unternehmen entlang regulatorischer, operativer und kommerzieller Fragestellungen – strukturiert, compliance-orientiert, ergebnisfokussiert.",
+    },
+    pillars: {
+      title: isEnglish ? "Four Pillars for Your Success" : "Vier Säulen für Ihren Erfolg",
+      subtitle: isEnglish ? "Our consulting focus areas" : "Unsere Beratungsschwerpunkte",
+    },
+    cards: {
+      cannabis: {
+        title: isEnglish ? "Med. Cannabis" : "Med. Cannabis",
+        description: isEnglish 
+          ? "Consulting for manufacturers, importers, wholesalers, and pharmacy networks."
+          : "Beratung für Hersteller, Importeure, Großhändler und Apothekennetzwerke.",
+      },
+      ki: {
+        title: isEnglish ? "AI Enablement" : "KI-Enablement",
+        badge: isEnglish ? "New" : "Neu",
+        description: isEnglish
+          ? "Copilot & ChatGPT workshops and prompt playbooks for sales teams."
+          : "Copilot & ChatGPT Workshops und Prompt-Playbooks für Vertriebsteams.",
+      },
+      medtech: {
+        title: isEnglish ? "Medical Technology" : "Medizintechnik",
+        description: isEnglish
+          ? "Go-to-Market, process optimization, and sales enablement for medical technology companies."
+          : "Go-to-Market, Prozessoptimierung und Sales Enablement für Medizintechnik-Unternehmen.",
+      },
+      handel: {
+        title: isEnglish ? "Medical Trade" : "Medizinalhandel",
+        description: isEnglish
+          ? "Sales strategy and key account management for traders and distributors."
+          : "Vertriebsstrategie und Key Account Management für Händler und Distributoren.",
+      },
+    },
+    learnMore: isEnglish ? "Learn more" : "Mehr erfahren",
+    whyMadformed: {
+      title: isEnglish ? "Why MadforMed" : "Warum MadforMed",
+      subtitle: isEnglish ? "What sets us apart" : "Was uns auszeichnet",
+    },
+    process: {
+      title: isEnglish ? "Our Approach" : "Unsere Arbeitsweise",
+      subtitle: isEnglish 
+        ? "Structured and transparent from initial analysis to implementation"
+        : "Strukturiert und transparent von der ersten Analyse bis zur Umsetzung",
+      step: isEnglish ? "Step" : "Schritt",
+    },
+    references: {
+      title: isEnglish ? "Experience from Leading Companies" : "Erfahrung aus führenden Unternehmen",
+      subtitle: isEnglish 
+        ? "Industry expertise from renowned medical technology and pharmaceutical companies"
+        : "Branchenexpertise aus namhaften Unternehmen der Medizintechnik und Pharmabranche",
+    },
+    disclaimer: {
+      title: isEnglish ? "Important Notice" : "Wichtiger Hinweis",
+      text: isEnglish
+        ? "MadforMed does not provide legal advice, medical advice, or healing promises. For legal and medical questions, we recommend working with appropriate specialists."
+        : "MadforMed bietet keine Rechtsberatung, keine medizinische Beratung und keine Heilversprechen. Für rechtliche und medizinische Fragestellungen empfehlen wir die Zusammenarbeit mit entsprechenden Fachexperten.",
+    },
+  };
+
+  const benefitsLabels = isEnglish ? [
+    { title: "Compliance-First", description: "We work according to the highest regulatory standards and ensure all processes comply with GMP/GDP requirements." },
+    { title: "Result-Oriented", description: "Clear milestones, measurable results, and transparent communication throughout the entire project." },
+    { title: "Industry Expertise", description: "Deep understanding of cannabis and medical technology markets from years of practical experience." },
+    { title: "Network", description: "Access to relevant contacts in the industry, regulatory authorities, and specialized partners." },
+  ] : benefits;
+
+  const workProcessLabels = isEnglish ? [
+    { step: 1, title: "Analysis", description: "Comprehensive assessment of your situation, challenges, and goals." },
+    { step: 2, title: "Strategy", description: "Development of tailored solutions and a concrete action plan." },
+    { step: 3, title: "Implementation", description: "Hands-on support in executing the strategy and achieving your goals." },
+  ] : workProcess;
+
+  const paths = {
+    cannabis: isEnglish ? "/en/services/medical-cannabis" : "/leistungen/medizinisches-cannabis",
+    ki: isEnglish ? "/en/services/ai-sales-bd" : "/leistungen/ki-sales-bd",
+    medtech: isEnglish ? "/en/services/medical-technology" : "/leistungen/medizintechnik",
+    handel: isEnglish ? "/en/services/medical-trade" : "/leistungen/medizinalhandel",
+  };
+
   return (
     <div className="bg-brand-light">
       <SEO
-        title="Beratung für medizinisches Cannabis & Medizintechnik | MadforMed GmbH"
-        description="MadforMed begleitet Unternehmen entlang regulatorischer, operativer und kommerzieller Fragestellungen – strukturiert, compliance-orientiert, ergebnisfokussiert."
+        title={labels.seo.title}
+        description={labels.seo.description}
       />
       <HeroSlider />
 
       <section className="py-16 md:py-24 bg-white relative" data-testid="services-overview">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            title="Vier Säulen für Ihren Erfolg"
-            subtitle="Unsere Beratungsschwerpunkte"
+            title={labels.pillars.title}
+            subtitle={labels.pillars.subtitle}
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Link href="/leistungen/medizinisches-cannabis">
+            <Link href={paths.cannabis}>
               <Card
                 className="group relative p-6 bg-white border-2 border-brand-green/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-cannabis"
@@ -35,20 +125,19 @@ export default function Home() {
                   <Leaf className="w-7 h-7 text-brand-green" />
                 </div>
                 <h3 className="text-lg font-bold text-brand-dark mb-3">
-                  Med. Cannabis
+                  {labels.cards.cannabis.title}
                 </h3>
                 <p className="text-brand-dark/70 mb-5 leading-relaxed text-sm">
-                  Beratung für Hersteller, Importeure, Großhändler und 
-                  Apothekennetzwerke.
+                  {labels.cards.cannabis.description}
                 </p>
                 <span className="inline-flex items-center text-brand-green font-semibold text-sm">
-                  Mehr erfahren
+                  {labels.learnMore}
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
                 </span>
               </Card>
             </Link>
 
-            <Link href="/leistungen/ki-sales-bd">
+            <Link href={paths.ki}>
               <Card
                 className="group relative p-6 bg-white border-2 border-brand-green/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-ki"
@@ -57,27 +146,26 @@ export default function Home() {
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-green to-brand-cyan" />
                 <div className="absolute top-3 right-3">
                   <span className="inline-flex items-center px-2 py-0.5 bg-gradient-to-r from-brand-green/10 to-brand-cyan/10 text-brand-cyan text-xs font-semibold rounded-full">
-                    Neu
+                    {labels.cards.ki.badge}
                   </span>
                 </div>
                 <div className="w-14 h-14 bg-gradient-to-br from-brand-green/10 to-brand-cyan/10 rounded-2xl flex items-center justify-center mb-5 group-hover:from-brand-green/20 group-hover:to-brand-cyan/20 transition-colors">
                   <Brain className="w-7 h-7 text-brand-cyan" />
                 </div>
                 <h3 className="text-lg font-bold text-brand-dark mb-3">
-                  KI-Enablement
+                  {labels.cards.ki.title}
                 </h3>
                 <p className="text-brand-dark/70 mb-5 leading-relaxed text-sm">
-                  Copilot & ChatGPT Workshops und Prompt-Playbooks 
-                  für Vertriebsteams.
+                  {labels.cards.ki.description}
                 </p>
                 <span className="inline-flex items-center bg-gradient-to-r from-brand-green to-brand-cyan bg-clip-text text-transparent font-semibold text-sm">
-                  Mehr erfahren
+                  {labels.learnMore}
                   <ArrowRight className="w-4 h-4 ml-2 text-brand-cyan group-hover:translate-x-2 transition-transform" />
                 </span>
               </Card>
             </Link>
 
-            <Link href="/leistungen/medizintechnik">
+            <Link href={paths.medtech}>
               <Card
                 className="group relative p-6 bg-white border-2 border-brand-cyan/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-medtech"
@@ -87,20 +175,19 @@ export default function Home() {
                   <Monitor className="w-7 h-7 text-brand-cyan" />
                 </div>
                 <h3 className="text-lg font-bold text-brand-dark mb-3">
-                  Medizintechnik
+                  {labels.cards.medtech.title}
                 </h3>
                 <p className="text-brand-dark/70 mb-5 leading-relaxed text-sm">
-                  Go-to-Market, Prozessoptimierung und Sales Enablement für 
-                  Medizintechnik-Unternehmen.
+                  {labels.cards.medtech.description}
                 </p>
                 <span className="inline-flex items-center text-brand-cyan font-semibold text-sm">
-                  Mehr erfahren
+                  {labels.learnMore}
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
                 </span>
               </Card>
             </Link>
 
-            <Link href="/leistungen/medizinalhandel">
+            <Link href={paths.handel}>
               <Card
                 className="group relative p-6 bg-white border-2 border-brand-cyan/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-handel"
@@ -110,14 +197,13 @@ export default function Home() {
                   <ShoppingCart className="w-7 h-7 text-brand-cyan" />
                 </div>
                 <h3 className="text-lg font-bold text-brand-dark mb-3">
-                  Medizinalhandel
+                  {labels.cards.handel.title}
                 </h3>
                 <p className="text-brand-dark/70 mb-5 leading-relaxed text-sm">
-                  Vertriebsstrategie und Key Account Management für Händler 
-                  und Distributoren.
+                  {labels.cards.handel.description}
                 </p>
                 <span className="inline-flex items-center text-brand-cyan font-semibold text-sm">
-                  Mehr erfahren
+                  {labels.learnMore}
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
                 </span>
               </Card>
@@ -134,11 +220,11 @@ export default function Home() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeading
-            title="Warum MadforMed"
-            subtitle="Was uns auszeichnet"
+            title={labels.whyMadformed.title}
+            subtitle={labels.whyMadformed.subtitle}
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((benefit, index) => {
+            {benefitsLabels.map((benefit, index) => {
               const icons = [Shield, Zap, Target, Users];
               const Icon = icons[index];
               const colors = [
@@ -175,14 +261,14 @@ export default function Home() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeading
-            title="Unsere Arbeitsweise"
-            subtitle="Strukturiert und transparent von der ersten Analyse bis zur Umsetzung"
+            title={labels.process.title}
+            subtitle={labels.process.subtitle}
             light
           />
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8 relative">
             <div className="hidden md:block absolute top-24 left-[20%] right-[20%] h-0.5 bg-gradient-to-r from-brand-green via-brand-cyan to-brand-cyan opacity-30" />
             
-            {workProcess.map((step, index) => {
+            {workProcessLabels.map((step, index) => {
               const icons = [Search, Lightbulb, Rocket];
               const Icon = icons[index];
               return (
@@ -207,7 +293,7 @@ export default function Home() {
                       <span className={`text-xs font-semibold tracking-wider uppercase mb-2 ${
                         index === 0 ? "text-brand-green" : index === 1 ? "text-brand-cyan" : "text-brand-cyan"
                       }`}>
-                        Schritt {step.step}
+                        {labels.process.step} {step.step}
                       </span>
                       <h3 className="text-xl font-bold text-white">{step.title}</h3>
                     </div>
@@ -223,8 +309,8 @@ export default function Home() {
       <section className="py-16 md:py-20 bg-gradient-to-b from-brand-light to-white" data-testid="references-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            title="Erfahrung aus führenden Unternehmen"
-            subtitle="Branchenexpertise aus namhaften Unternehmen der Medizintechnik und Pharmabranche"
+            title={labels.references.title}
+            subtitle={labels.references.subtitle}
           />
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
             {companyLogos.map((company, index) => (
@@ -249,11 +335,9 @@ export default function Home() {
           <div className="flex items-start gap-4 p-6 bg-brand-light rounded-xl border border-brand-grey/10">
             <AlertTriangle className="w-6 h-6 text-brand-grey shrink-0 mt-0.5" />
             <div>
-              <h3 className="font-semibold text-brand-dark mb-2">Wichtiger Hinweis</h3>
+              <h3 className="font-semibold text-brand-dark mb-2">{labels.disclaimer.title}</h3>
               <p className="text-sm text-brand-dark/70 leading-relaxed">
-                MadforMed bietet keine Rechtsberatung, keine medizinische Beratung und 
-                keine Heilversprechen. Für rechtliche und medizinische Fragestellungen 
-                empfehlen wir die Zusammenarbeit mit entsprechenden Fachexperten.
+                {labels.disclaimer.text}
               </p>
             </div>
           </div>

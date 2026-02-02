@@ -36,13 +36,15 @@ Professionelle, SEO-optimierte Website für MadforMed GmbH - eine Beratungsgesel
 - **WaveDivider**: SVG-Wellenlinien als Sektions-Trenner (grün-cyan Gradient)
 - **Service-Karten**: 3 Säulen mit farbcodierten Akzenten (Cannabis=grün, KI=cyan, Medtech=cyan-grün)
 
-## Seitenstruktur
+## Seitenstruktur (Bilingual DE/EN)
 
-- `/` - Startseite (mit 3 Service-Kacheln)
+### German (Default)
+- `/` - Startseite (mit 4 Service-Kacheln)
 - `/leistungen` - Leistungsübersicht
 - `/leistungen/medizinisches-cannabis` - Cannabis-Beratung
 - `/leistungen/medizintechnik` - Medizintechnik-Beratung
-- `/leistungen/ki-sales-bd` - KI für Sales & Business Development (Querschnittsleistung)
+- `/leistungen/medizinalhandel` - Medizinalhandel-Beratung
+- `/leistungen/ki-sales-bd` - KI für Sales & Business Development
 - `/ueber-uns` - Über uns
 - `/projekte` - Referenzprojekte
 - `/insights` - Blog/Insights (Kategorien: cannabis, medtech, ki, allgemein)
@@ -50,6 +52,64 @@ Professionelle, SEO-optimierte Website für MadforMed GmbH - eine Beratungsgesel
 - `/kontakt` - Kontaktformular (mit KI-Workshop Option)
 - `/impressum` - Impressum
 - `/datenschutz` - Datenschutzerklärung
+
+### English
+- `/en` - Homepage
+- `/en/services` - Services Overview
+- `/en/services/medical-cannabis` - Cannabis Consulting
+- `/en/services/medical-technology` - Medical Technology Consulting
+- `/en/services/medical-trade` - Medical Trade Consulting
+- `/en/services/ai-sales-bd` - AI for Sales & Business Development
+- `/en/about` - About Us
+- `/en/projects` - Reference Projects
+- `/en/insights` - Blog/Insights
+- `/en/insights/:slug` - Blog Article Detail
+- `/en/contact` - Contact Form
+- `/en/legal-notice` - Legal Notice (Impressum)
+- `/en/privacy-policy` - Privacy Policy
+
+## i18n (Internationalization)
+
+The website supports German (default) and English languages.
+
+### Architecture
+- **LanguageProvider**: React context in `client/src/lib/i18n.tsx`
+- **Language detection**: From URL path (`/en/*` = English, else German)
+- **Language toggle**: DE/EN switch in header via `LanguageSwitcher` component
+- **Preference storage**: localStorage for returning visitors
+
+### Content Files
+- German: `client/src/content/*.ts`
+- English: `client/src/content/*.en.ts`
+
+### Content Hooks (`client/src/hooks/useContent.ts`)
+- `useServicesContent()` - Services, target groups, case studies
+- `useFaqsContent()` - FAQs per service area
+- `useKiContent()` - AI workshops content
+- `useBlogContent()` - Blog posts
+- `usePageContent()` - Page metadata and common labels
+
+### URL Mapping (Path Equivalents)
+| German | English |
+|--------|---------|
+| `/` | `/en` |
+| `/leistungen` | `/en/services` |
+| `/leistungen/medizinisches-cannabis` | `/en/services/medical-cannabis` |
+| `/leistungen/medizintechnik` | `/en/services/medical-technology` |
+| `/leistungen/medizinalhandel` | `/en/services/medical-trade` |
+| `/leistungen/ki-sales-bd` | `/en/services/ai-sales-bd` |
+| `/ueber-uns` | `/en/about` |
+| `/projekte` | `/en/projects` |
+| `/insights` | `/en/insights` |
+| `/kontakt` | `/en/contact` |
+| `/impressum` | `/en/legal-notice` |
+| `/datenschutz` | `/en/privacy-policy` |
+
+### SEO for Bilingual
+- hreflang tags on all pages (de, en, x-default)
+- Separate sitemap entries with hreflang annotations
+- Canonical URLs per language
+- llms.txt and llms-en.txt for AI crawlers
 
 ## Wichtige Dateien
 
