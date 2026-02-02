@@ -7,6 +7,86 @@ const SITE_URL = process.env.NODE_ENV === 'production'
   ? 'https://madformed.de' 
   : 'http://localhost:5000';
 
+// SEO Meta-Daten für alle Seiten (für serverseitige Injection)
+const PAGE_META: Record<string, { title: string; description: string; ogType?: string }> = {
+  '/': {
+    title: 'Beratung für medizinisches Cannabis & Medizintechnik | MadforMed GmbH',
+    description: 'MadforMed begleitet Unternehmen entlang regulatorischer, operativer und kommerzieller Fragestellungen – strukturiert, compliance-orientiert, ergebnisfokussiert.'
+  },
+  '/leistungen': {
+    title: 'Unsere Leistungen | MadforMed GmbH',
+    description: 'Strukturierte Beratung für medizinisches Cannabis und Medizintechnik – maßgeschneidert für Ihre Herausforderungen in regulierten Wachstumsmärkten.'
+  },
+  '/leistungen/medizinisches-cannabis': {
+    title: 'Medizinisches Cannabis Beratung | MadforMed GmbH',
+    description: 'Beratung für medizinisches Cannabis: Markteintritt, EU-GMP/GDP, Supply Chain, QM-Konzeption. Für Hersteller, Importeure, Großhändler und Apotheken.'
+  },
+  '/leistungen/medizintechnik': {
+    title: 'Medizintechnik Beratung | MadforMed GmbH',
+    description: 'Praxisorientierte Beratung für Medizintechnik: Go-to-Market, Prozessoptimierung, Sales Enablement, Projektmanagement. Für Hersteller und Vertriebsteams.'
+  },
+  '/leistungen/medizinalhandel': {
+    title: 'Medizinalhandel Beratung | MadforMed GmbH',
+    description: 'Beratung für den Medizinalhandel: Vertriebsstrategie, Lieferantenmanagement, Logistik, Key Account Management. Für Händler und Distributoren.'
+  },
+  '/leistungen/ki-sales-bd': {
+    title: 'KI für Sales & Business Development | MadforMed GmbH',
+    description: 'KI-Workshops für Vertriebsteams: Copilot, ChatGPT, Prompt-Engineering. Enablement-Programme und maßgeschneiderte Prompt-Playbooks.'
+  },
+  '/ueber-uns': {
+    title: 'Über uns | MadforMed GmbH',
+    description: 'Lernen Sie MadforMed kennen – Ihr Partner für strukturierte Beratung in medizinischem Cannabis, Medizintechnik und KI-Enablement im DACH-Raum.'
+  },
+  '/projekte': {
+    title: 'Referenzprojekte | MadforMed GmbH',
+    description: 'Erfolgreiche Projekte in medizinischem Cannabis, Medizintechnik und KI-Enablement. Erfahren Sie mehr über unsere Referenzen und Expertise.'
+  },
+  '/insights': {
+    title: 'Insights & Blog | MadforMed GmbH',
+    description: 'Aktuelle Einblicke, Fachartikel und Trends zu medizinischem Cannabis, Medizintechnik und KI im Vertrieb.'
+  },
+  '/kontakt': {
+    title: 'Kontakt | MadforMed GmbH',
+    description: 'Kontaktieren Sie MadforMed für ein unverbindliches Beratungsgespräch zu medizinischem Cannabis oder Medizintechnik. Rückmeldung innerhalb von 48h.'
+  },
+  '/impressum': {
+    title: 'Impressum | MadforMed GmbH',
+    description: 'Impressum der MadforMed GmbH - Angaben gemäß § 5 TMG, Kontaktdaten und rechtliche Hinweise.'
+  },
+  '/datenschutz': {
+    title: 'Datenschutzerklärung | MadforMed GmbH',
+    description: 'Datenschutzerklärung der MadforMed GmbH - Informationen zur Datenverarbeitung, Ihren Rechten und unseren Datenschutzpraktiken.'
+  }
+};
+
+// Blog-Post Meta-Daten
+const BLOG_POST_META: Record<string, { title: string; description: string }> = {
+  'medizinisches-cannabis-deutschland-ueberblick': {
+    title: 'Medizinisches Cannabis in Deutschland: Marktüberblick 2025 | MadforMed',
+    description: 'Aktueller Überblick über den deutschen Markt für medizinisches Cannabis: Regulierung, Akteure, Trends und Prognosen.'
+  },
+  'eu-gdp-stolpersteine-supply-chain': {
+    title: 'EU-GDP Stolpersteine in der Cannabis Supply Chain | MadforMed',
+    description: 'Die häufigsten Compliance-Fehler bei EU-GDP in der Cannabis-Lieferkette und wie Sie diese vermeiden.'
+  },
+  'medizintechnik-prozessanalyse-ergebnis': {
+    title: 'Prozessanalyse in der Medizintechnik | MadforMed',
+    description: 'Wie systematische Prozessanalyse in der Medizintechnik zu messbaren Ergebnissen führt.'
+  },
+  'ki-aussendienst-use-cases': {
+    title: 'KI im Außendienst: Praktische Use Cases | MadforMed',
+    description: 'Konkrete Anwendungsfälle für KI-Tools wie Copilot und ChatGPT im pharmazeutischen Außendienst.'
+  },
+  'copilot-vs-chatgpt-sales': {
+    title: 'Copilot vs. ChatGPT für Sales Teams | MadforMed',
+    description: 'Vergleich von Microsoft Copilot und ChatGPT für den Einsatz in Vertriebsteams: Stärken, Schwächen, Empfehlungen.'
+  },
+  'prompt-playbooks-konsistenz': {
+    title: 'Prompt-Playbooks für konsistente KI-Nutzung | MadforMed',
+    description: 'Wie Prompt-Playbooks die konsistente und effektive Nutzung von KI-Tools im Vertrieb sicherstellen.'
+  }
+};
+
 const STATIC_PAGES = [
   { path: '/', priority: 1.0, changefreq: 'weekly' },
   { path: '/leistungen', priority: 0.9, changefreq: 'weekly' },
