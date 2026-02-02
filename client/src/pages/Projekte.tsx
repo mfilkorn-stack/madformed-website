@@ -234,9 +234,9 @@ export default function Projekte() {
             title="Passende Leistungen"
             subtitle="Erfahren Sie mehr über unsere Beratungsschwerpunkte"
           />
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <Link href="/leistungen/medizinisches-cannabis">
-              <Card className="p-6 bg-brand-light border-brand-grey/20 hover:border-brand-green transition-colors cursor-pointer group">
+              <Card className="p-6 bg-brand-light border-brand-grey/20 hover:border-brand-green transition-colors cursor-pointer group h-full">
                 <h3 className="font-semibold text-brand-dark mb-2">Medizinisches Cannabis</h3>
                 <p className="text-sm text-brand-dark/70 mb-4">
                   Regulierung, Supply Chain, Qualitätsmanagement
@@ -248,12 +248,36 @@ export default function Projekte() {
               </Card>
             </Link>
             <Link href="/leistungen/medizintechnik">
-              <Card className="p-6 bg-brand-light border-brand-grey/20 hover:border-brand-green transition-colors cursor-pointer group">
+              <Card className="p-6 bg-brand-light border-brand-grey/20 hover:border-brand-green transition-colors cursor-pointer group h-full">
                 <h3 className="font-semibold text-brand-dark mb-2">Medizintechnik</h3>
                 <p className="text-sm text-brand-dark/70 mb-4">
                   Go-to-Market, Prozessoptimierung, Sales Enablement
                 </p>
                 <span className="inline-flex items-center text-brand-green text-sm font-medium">
+                  Mehr erfahren
+                  <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Card>
+            </Link>
+            <Link href="/leistungen/medizinalhandel">
+              <Card className="p-6 bg-brand-light border-brand-grey/20 hover:border-brand-cyan transition-colors cursor-pointer group h-full">
+                <h3 className="font-semibold text-brand-dark mb-2">Medizinalhandel</h3>
+                <p className="text-sm text-brand-dark/70 mb-4">
+                  Vertriebsstrategie, Key Account, Distribution
+                </p>
+                <span className="inline-flex items-center text-brand-cyan text-sm font-medium">
+                  Mehr erfahren
+                  <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Card>
+            </Link>
+            <Link href="/leistungen/ki-sales-bd">
+              <Card className="p-6 bg-brand-light border-brand-grey/20 hover:border-brand-cyan transition-colors cursor-pointer group h-full">
+                <h3 className="font-semibold text-brand-dark mb-2">KI für Sales & BD</h3>
+                <p className="text-sm text-brand-dark/70 mb-4">
+                  Workshops, Prompt-Playbooks, Enablement
+                </p>
+                <span className="inline-flex items-center text-brand-cyan text-sm font-medium">
                   Mehr erfahren
                   <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </span>
