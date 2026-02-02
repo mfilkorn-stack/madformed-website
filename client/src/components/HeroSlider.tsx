@@ -6,18 +6,6 @@ import { ArrowRight, Leaf, Brain, Monitor, ShoppingCart, ChevronLeft, ChevronRig
 
 const slides = [
   {
-    image: "/images/hero-slide-1.jpg",
-    icon: Leaf,
-    accentColor: "brand-green",
-    title: { de: "Medizinisches Cannabis", en: "Medical Cannabis" },
-    subtitle: { 
-      de: "Beratung für Markteintritt, Compliance und Wachstum in der Cannabis-Pharma-Branche.", 
-      en: "Consulting for market entry, compliance, and growth in the cannabis pharma industry." 
-    },
-    tagline: { de: "Strategie & Compliance", en: "Strategy & Compliance" },
-    link: { de: "/leistungen/medizinisches-cannabis", en: "/en/services/medical-cannabis" }
-  },
-  {
     image: "/images/hero-slide-2.jpg",
     icon: Leaf,
     accentColor: "brand-green",
@@ -135,7 +123,7 @@ export function HeroSlider() {
             className="absolute inset-0 bg-cover bg-no-repeat"
             style={{
               backgroundImage: `url(${s.image})`,
-              backgroundPosition: index === 0 ? "15% top" : "center",
+              backgroundPosition: "center",
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
