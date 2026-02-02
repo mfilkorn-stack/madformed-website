@@ -7,7 +7,7 @@ import { HeroSlider } from "@/components/HeroSlider";
 import { WaveDivider } from "@/components/WaveDivider";
 import { benefits, workProcess } from "@/content/company";
 import { companyLogos } from "@/content/references";
-import { ArrowRight, Leaf, Monitor, Brain, CheckCircle2, AlertTriangle, Building2, Search, Lightbulb, Rocket } from "lucide-react";
+import { ArrowRight, Leaf, Monitor, Brain, CheckCircle2, AlertTriangle, Building2, Search, Lightbulb, Rocket, Shield, Zap, Target, Users } from "lucide-react";
 
 export default function Home() {
   return (
@@ -104,22 +104,40 @@ export default function Home() {
 
       <WaveDivider variant="green-cyan" />
 
-      <section className="py-16 md:py-20 bg-brand-light" data-testid="benefits-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-20 bg-brand-light relative overflow-hidden" data-testid="benefits-section">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-brand-green to-brand-cyan rounded-full blur-3xl" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeading
             title="Warum MadforMed"
             subtitle="Was uns auszeichnet"
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="text-center bg-white p-6 rounded-xl border border-brand-grey/10">
-                <div className="w-14 h-14 bg-gradient-to-br from-brand-green/20 to-brand-cyan/20 rounded-full flex items-center justify-center mx-auto mb-5">
-                  <CheckCircle2 className="w-7 h-7 text-brand-green" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {benefits.map((benefit, index) => {
+              const icons = [Shield, Zap, Target, Users];
+              const Icon = icons[index];
+              const colors = [
+                { bg: "from-brand-green to-brand-green/80", icon: "text-white", border: "border-brand-green/20 hover:border-brand-green/40" },
+                { bg: "from-brand-cyan to-brand-cyan/80", icon: "text-white", border: "border-brand-cyan/20 hover:border-brand-cyan/40" },
+                { bg: "from-brand-green to-brand-cyan", icon: "text-white", border: "border-brand-green/20 hover:border-brand-cyan/40" },
+                { bg: "from-brand-cyan to-brand-green", icon: "text-white", border: "border-brand-cyan/20 hover:border-brand-green/40" }
+              ];
+              const color = colors[index];
+              return (
+                <div 
+                  key={index} 
+                  className={`group relative bg-white p-8 rounded-2xl border-2 ${color.border} transition-all duration-300 hover:shadow-xl`}
+                >
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-brand-green/5 to-brand-cyan/5 rounded-bl-[100px] -z-0" />
+                  <div className={`w-14 h-14 bg-gradient-to-br ${color.bg} rounded-xl flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon className={`w-7 h-7 ${color.icon}`} />
+                  </div>
+                  <h3 className="font-bold text-brand-dark mb-3 text-lg">{benefit.title}</h3>
+                  <p className="text-sm text-brand-dark/70 leading-relaxed">{benefit.description}</p>
                 </div>
-                <h3 className="font-semibold text-brand-dark mb-3">{benefit.title}</h3>
-                <p className="text-sm text-brand-dark/70 leading-relaxed">{benefit.description}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
