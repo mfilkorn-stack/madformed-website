@@ -2,17 +2,17 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight, Leaf, Brain, Monitor, Target, ShoppingCart } from "lucide-react";
-import logoPath from "@assets/586E4BEB-9A32-49CD-B6A4-925E000A0D62_1769909787454.png";
+import heroSlide1 from "@assets/image_1770051852409.png";
 
 const slides = [
   {
-    image: "/images/hero-slide-1-new.png",
+    image: heroSlide1,
     icon: Target,
     accentColor: "brand-green",
-    title: "Medical Resulting",
-    subtitle: "Strategieberatung für regulierte Märkte – strukturiert, compliance-orientiert, ergebnisfokussiert.",
-    tagline: "MadforMed GmbH",
-    showLogo: true
+    title: "",
+    subtitle: "",
+    tagline: "",
+    isFullImage: true
   },
   {
     image: "/images/hero-slide-2.jpg",
@@ -102,9 +102,7 @@ export function HeroSlider() {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${s.image})` }}
           >
-            {s.showLogo ? (
-              <div className="absolute inset-0 bg-gradient-to-r from-[#4A5A4A]/90 via-[#4A5A4A]/70 to-transparent" />
-            ) : (
+            {!s.isFullImage && (
               <>
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
                 <div className={`absolute inset-0 ${
@@ -152,15 +150,7 @@ export function HeroSlider() {
                 isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
               }`}
             >
-              {slide.showLogo ? (
-                <div className="mb-8">
-                  <img 
-                    src={logoPath} 
-                    alt="MadforMed Logo" 
-                    className="h-32 md:h-40 lg:h-48 w-auto mb-4 drop-shadow-xl"
-                  />
-                </div>
-              ) : (
+              {!slide.isFullImage && slide.tagline && (
                 <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm text-sm font-medium mb-6 ${
                   slide.accentColor === 'brand-green'
                     ? 'bg-brand-green/30 text-brand-green border border-brand-green/30'
@@ -172,35 +162,41 @@ export function HeroSlider() {
                   {slide.tagline}
                 </div>
               )}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
-                {slide.title}
-              </h1>
-              <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-xl drop-shadow-md">
-                {slide.subtitle}
-              </p>
+              {!slide.isFullImage && (
+                <>
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
+                    {slide.title}
+                  </h1>
+                  <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-xl drop-shadow-md">
+                    {slide.subtitle}
+                  </p>
+                </>
+              )}
             </div>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/leistungen">
-                <Button
-                  size="lg"
-                  className="bg-brand-green hover:bg-brand-green/90 text-white shadow-lg"
-                  data-testid="button-services-hero"
-                >
-                  Leistungen ansehen
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-              <Link href="/kontakt">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white/40 text-white hover:bg-white/10 backdrop-blur-sm"
-                  data-testid="button-contact-hero"
-                >
-                  Kontakt aufnehmen
-                </Button>
-              </Link>
-            </div>
+            {!slide.isFullImage && (
+              <div className="flex flex-wrap gap-4">
+                <Link href="/leistungen">
+                  <Button
+                    size="lg"
+                    className="bg-brand-green hover:bg-brand-green/90 text-white shadow-lg"
+                    data-testid="button-services-hero"
+                  >
+                    Leistungen ansehen
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/kontakt">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white/40 text-white hover:bg-white/10 backdrop-blur-sm"
+                    data-testid="button-contact-hero"
+                  >
+                    Kontakt aufnehmen
+                  </Button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
