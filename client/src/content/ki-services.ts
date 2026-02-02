@@ -202,7 +202,7 @@ export const kiFaqs = [
     answer: "Keine technischen Vorkenntnisse nötig. Wichtig sind Offenheit für neue Tools und Bereitschaft, bestehende Prozesse zu hinterfragen. Die Workshops sind praxisnah und niedrigschwellig aufgebaut."
   },
   {
-    question: "Kann das mit Cannabis oder Medizintechnik kombiniert werden?",
+    question: "Kann das mit Projekten aus der Pharma oder der Medizintechnik kombiniert werden?",
     answer: "Ja, absolut! Die KI-Schulung ist eine Querschnittsleistung, die perfekt zu unseren Fachberatungen passt. Gerade im regulierten Umfeld hilft KI bei Dokumentation und Compliance-konformer Kommunikation."
   }
 ];
