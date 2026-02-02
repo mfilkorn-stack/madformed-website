@@ -26,7 +26,7 @@ const slides = [
     image: "/images/hero-slide-3.jpg",
     icon: Brain,
     accentColor: "brand-gradient",
-    title: "KI-Enablement für Vertrieb",
+    title: "KI-Enablement für den Vertrieb",
     subtitle: "Copilot & ChatGPT praxisnah einführen: Workshops, Prompt-Playbooks und Enablement-Programme für Sales-Teams.",
     tagline: "Workshops & Training"
   },
