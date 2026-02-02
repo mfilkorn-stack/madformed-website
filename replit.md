@@ -163,9 +163,25 @@ curl http://localhost:5000/llms.txt
 # 3. Nach "application/ld+json" suchen
 ```
 
-### Noch ausstehend (P1/P2)
+### Prerendering (manuell einrichten)
 
-- **SSR/Prerendering**: Für echte Crawler-Lesbarkeit empfohlen (react-snap oder SSG-Migration)
+Für statisches HTML bei Build-Zeit, fügen Sie folgendes zu package.json hinzu:
+
+```json
+"reactSnap": {
+  "source": "dist/public",
+  "destination": "dist/public",
+  "include": ["/", "/leistungen", "/leistungen/medizinisches-cannabis", ...],
+  "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"]
+}
+```
+
+Dann `npm run build` ausführen - react-snap wird automatisch nach dem Build laufen.
+
+Alternativ: `script/prerender.ts` manuell ausführen nach dem Build.
+
+### Noch ausstehend
+
 - **Canonical URLs**: Bei Produktion Domain ersetzen (SITE_URL in server/routes.ts)
 
 ## Hinweise
