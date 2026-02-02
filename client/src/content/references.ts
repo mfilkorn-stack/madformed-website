@@ -1,3 +1,12 @@
+import smithNephewLogo from "@assets/IMG_0815_1769992336840.jpeg";
+import arthrexLogo from "@assets/IMG_0816_1769992336840.jpeg";
+import canifyLogo from "@assets/IMG_0817_1769992336840.jpeg";
+import nobleLogo from "@assets/IMG_0818_1769992336840.jpeg";
+import canpharmaLogo from "@assets/IMG_0819_1769992336840.jpeg";
+import cansativaLogo from "@assets/IMG_0820_1769992336840.jpeg";
+import lohmannRauscherLogo from "@assets/IMG_0821_1769992336840.jpeg";
+import primaMedLogo from "@assets/IMG_0822_1769992336840.jpeg";
+
 export const projectReferences = [
   {
     id: "ma-us-cannabis",
@@ -53,52 +62,50 @@ export const companyLogos = [
   {
     name: "Smith & Nephew",
     industry: "Medizintechnik",
-    description: "Globaler Marktführer für Medizintechnik"
+    description: "Globaler Marktführer für Medizintechnik",
+    logo: smithNephewLogo
   },
   {
     name: "Arthrex",
     industry: "Medizintechnik",
-    description: "Führender Anbieter für Arthroskopie"
+    description: "Führender Anbieter für Arthroskopie",
+    logo: arthrexLogo
   },
   {
     name: "Lohmann & Rauscher",
     industry: "Medizintechnik",
-    description: "Spezialist für Verbandmittel und Medizinprodukte"
+    description: "Spezialist für Verbandmittel und Medizinprodukte",
+    logo: lohmannRauscherLogo
   },
   {
     name: "Prima-med",
     industry: "Medizintechnik",
-    description: "Medizintechnik-Lösungen"
+    description: "Medizintechnik-Lösungen",
+    logo: primaMedLogo
   },
   {
     name: "Cansativa",
     industry: "Medizinalcannabis",
-    description: "Deutscher Cannabis-Distributor"
+    description: "Deutscher Cannabis-Distributor",
+    logo: cansativaLogo
   },
   {
     name: "Canify AG",
     industry: "Medizinalcannabis",
-    description: "Cannabis-Unternehmen"
-  },
-  {
-    name: "Balancial GmbH",
-    industry: "Medizinalcannabis",
-    description: "Cannabis-Unternehmen"
+    description: "Cannabis-Unternehmen",
+    logo: canifyLogo
   },
   {
     name: "Canpharma",
     industry: "Medizinalcannabis",
-    description: "Cannabis-Pharma-Unternehmen"
+    description: "Cannabis-Pharma-Unternehmen",
+    logo: canpharmaLogo
   },
   {
     name: "b-noble",
     industry: "Medizinalcannabis",
-    description: "Cannabis-Unternehmen"
-  },
-  {
-    name: "aescologic",
-    industry: "Medizintechnik",
-    description: "Spezialist für ambulante Versorgung"
+    description: "Cannabis-Unternehmen",
+    logo: nobleLogo
   }
 ];
 

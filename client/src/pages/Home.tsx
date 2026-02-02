@@ -202,18 +202,18 @@ export default function Home() {
             title="Erfahrung aus führenden Unternehmen"
             subtitle="Branchenexpertise aus namhaften Unternehmen der Medizintechnik und Pharmabranche"
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
             {companyLogos.map((company, index) => (
               <div
                 key={index}
-                className="text-center p-6 bg-white rounded-xl border border-brand-grey/10 hover:border-brand-cyan/30 transition-colors"
+                className="group flex items-center justify-center p-6 bg-white rounded-xl border border-brand-grey/10 hover:border-brand-cyan/30 hover:shadow-lg transition-all duration-300"
                 data-testid={`home-company-${index}`}
               >
-                <div className="w-14 h-14 bg-gradient-to-br from-brand-green/10 to-brand-cyan/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Building2 className="w-7 h-7 text-brand-cyan" />
-                </div>
-                <h3 className="font-semibold text-brand-dark text-sm">{company.name}</h3>
-                <p className="text-xs text-brand-dark/60 mt-1">{company.industry}</p>
+                <img 
+                  src={company.logo} 
+                  alt={company.name}
+                  className="max-h-16 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                />
               </div>
             ))}
           </div>
