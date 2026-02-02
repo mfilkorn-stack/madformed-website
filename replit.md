@@ -116,17 +116,36 @@ Um E-Mail-Benachrichtigungen für neue Kontaktanfragen zu aktivieren:
 
 ## SEO & LLM-Optimierung (Februar 2026)
 
+### Technische Analyse
+
+| Element | Status | Details |
+|---------|--------|---------|
+| Tech-Stack | React + Vite | CSR mit serverseitigen Fallbacks |
+| Routing | Wouter | Pfad-basiert, kein Hash-Routing |
+| Meta-Tags | ✓ | Client-side + HTML-Fallbacks |
+| Canonical | ✓ | Dynamisch gesetzt |
+| robots.txt | ✓ | Dynamisch generiert |
+| sitemap.xml | ✓ | Dynamisch generiert |
+| llms.txt | ✓ | Für KI-Systeme |
+| JSON-LD | ✓ | Organization, WebSite, Service, FAQ, Breadcrumb |
+| OG-Tags | ✓ | Vollständig implementiert |
+| Twitter Cards | ✓ | summary_large_image |
+| H1-Struktur | ✓ | Genau 1 H1 pro Seite |
+| Interne Links | ✓ | Hub/Spoke-Struktur |
+
 ### Implementierte Features
 
 1. **robots.txt** - `/robots.txt`
    - Erlaubt alle Crawler
    - Verweist auf Sitemap
    - Enthält Crawl-delay für höfliches Crawling
+   - Domain automatisch via `SITE_URL` (production/development)
 
 2. **sitemap.xml** - `/sitemap.xml`
    - Dynamisch generiert mit allen Seiten
    - Enthält lastmod, changefreq, priority
-   - Automatische Aktualisierung bei Deployment
+   - Blog-Artikel automatisch inkludiert
+   - Domain automatisch via `SITE_URL`
 
 3. **llms.txt** - `/llms.txt`
    - Spezielles Format für KI-Systeme
@@ -144,13 +163,45 @@ Um E-Mail-Benachrichtigungen für neue Kontaktanfragen zu aktivieren:
    - Leistungen-Seite als Hub zu allen Service-Seiten
    - Service-Seiten verlinken zu verwandten Services und passenden Blog-Artikeln
    - Blog-Artikel verlinken zu passenden Service-Seiten basierend auf Kategorie
-   - Komponenten: `RelatedArticles`, `RelatedServices` in `client/src/components/RelatedContent.tsx`
+   - Komponenten: `RelatedArticles`, `RelatedServices`
+
+6. **index.html SEO-Optimierungen**
+   - Vollständige Primary Meta Tags
+   - Open Graph Tags (og:title, og:description, og:url, og:type, og:site_name, og:locale)
+   - Twitter Cards (summary_large_image)
+   - Canonical URL
+   - Keywords, Author, Language, Geo-Tags
+   - Theme-Color für Mobile
+   - Font-Preconnect für Performance
+
+7. **Server-seitige Meta-Daten** (server/routes.ts)
+   - `PAGE_META`: Meta-Daten Map für alle statischen Seiten
+   - `BLOG_POST_META`: Meta-Daten Map für alle Blog-Artikel
+   - Bereit für SSR/Prerendering-Integration
 
 ### Komponenten
 
 - `client/src/components/StructuredData.tsx` - Alle Schema.org Komponenten
-- `client/src/components/SEO.tsx` - Meta-Tags (title, description, OG, Twitter)
-- `client/src/components/RelatedContent.tsx` - Interne Verlinkung (RelatedArticles, RelatedServices)
+- `client/src/components/SEO.tsx` - Meta-Tags (title, description, OG, Twitter, Canonical)
+- `client/src/components/RelatedContent.tsx` - Interne Verlinkung
+
+### SEO-Checkliste
+
+#### Pre-Launch
+- [ ] Domain in `server/routes.ts` SITE_URL anpassen (https://madformed.de)
+- [ ] `NODE_ENV=production` beim Deployment setzen
+- [ ] robots.txt auf Production-Domain testen
+- [ ] sitemap.xml in Google Search Console einreichen
+- [ ] Strukturierte Daten mit Google Rich Results Test validieren
+- [ ] OG-Tags mit Facebook Sharing Debugger testen
+- [ ] Impressum und Datenschutz rechtlich prüfen lassen
+
+#### Post-Launch
+- [ ] Google Search Console einrichten
+- [ ] Bing Webmaster Tools einrichten
+- [ ] Core Web Vitals mit PageSpeed Insights prüfen
+- [ ] Mobile-Friendliness testen
+- [ ] Indexierung überwachen (site:madformed.de)
 
 ### Testen
 
@@ -164,15 +215,24 @@ curl http://localhost:5000/sitemap.xml
 # llms.txt prüfen
 curl http://localhost:5000/llms.txt
 
+# Meta-Tags prüfen
+curl -s http://localhost:5000/ | grep -E "(og:|twitter:|canonical|description)"
+
 # Strukturierte Daten im Browser prüfen
 # 1. Seite öffnen
 # 2. View Source (Strg+U)
 # 3. Nach "application/ld+json" suchen
 ```
 
-### Prerendering (manuell einrichten)
+### Performance-Optimierungen
 
-Für statisches HTML bei Build-Zeit, fügen Sie folgendes zu package.json hinzu:
+- **Font-Loading**: `display=swap` + Preconnect zu Google Fonts
+- **Lazy Loading**: Bilder mit nativer lazy-loading
+- **Theme-Color**: Definiert für Mobile-Browser
+
+### Prerendering (optional für SSG)
+
+Für statisches HTML bei Build-Zeit (empfohlen für maximale SEO):
 
 ```json
 "reactSnap": {
@@ -183,13 +243,15 @@ Für statisches HTML bei Build-Zeit, fügen Sie folgendes zu package.json hinzu:
 }
 ```
 
-Dann `npm run build` ausführen - react-snap wird automatisch nach dem Build laufen.
+### Typische SPA/PWA SEO-Fehler (vermieden)
 
-Alternativ: `script/prerender.ts` manuell ausführen nach dem Build.
-
-### Noch ausstehend
-
-- **Canonical URLs**: Bei Produktion Domain ersetzen (SITE_URL in server/routes.ts)
+1. ✓ Hash-Routing → Pfad-basiertes Routing verwendet
+2. ✓ Fehlende Meta-Tags → Fallbacks in index.html
+3. ✓ Duplicate Title → Eindeutige Titles pro Seite
+4. ✓ Fehlende Canonicals → Dynamisch gesetzt
+5. ✓ Keine strukturierten Daten → JSON-LD implementiert
+6. ✓ Keine Sitemap → Dynamisch generiert
+7. ✓ Keine internen Links → Hub/Spoke-Struktur
 
 ## Hinweise
 
