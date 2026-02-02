@@ -163,7 +163,7 @@ export default function UeberUns() {
             title="Erfahrungsschwerpunkte"
             subtitle="Branchenexpertise aus erster Hand"
           />
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             <Card className="p-6 bg-white border-brand-grey/20">
               <h3 className="font-semibold text-brand-dark mb-4">Medizinisches Cannabis</h3>
               <ul className="space-y-2 text-sm text-brand-dark/70">
@@ -203,6 +203,27 @@ export default function UeberUns() {
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
                   Projektmanagement und Implementierung
+                </li>
+              </ul>
+            </Card>
+            <Card className="p-6 bg-white border-brand-grey/20">
+              <h3 className="font-semibold text-brand-dark mb-4">KI-Enablement</h3>
+              <ul className="space-y-2 text-sm text-brand-dark/70">
+                <li className="flex items-start gap-2">
+                  <div className="w-1.5 h-1.5 bg-brand-cyan rounded-full mt-2 shrink-0" />
+                  KI-Workshops für Vertriebsteams
+                </li>
+                <li className="flex items-start gap-2">
+                  <div className="w-1.5 h-1.5 bg-brand-cyan rounded-full mt-2 shrink-0" />
+                  Copilot & ChatGPT Implementierung
+                </li>
+                <li className="flex items-start gap-2">
+                  <div className="w-1.5 h-1.5 bg-brand-cyan rounded-full mt-2 shrink-0" />
+                  Prompt-Playbooks und Best Practices
+                </li>
+                <li className="flex items-start gap-2">
+                  <div className="w-1.5 h-1.5 bg-brand-cyan rounded-full mt-2 shrink-0" />
+                  Enablement-Programme und Coaching
                 </li>
               </ul>
             </Card>
