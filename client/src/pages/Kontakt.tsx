@@ -2,18 +2,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useMutation } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -24,30 +17,34 @@ import {
 } from "@/components/ui/form";
 import { ContactBlock } from "@/components/ContactBlock";
 import { SEO } from "@/components/SEO";
-import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/lib/i18n";
-import { apiRequest } from "@/lib/queryClient";
-import { Send, CheckCircle2, Loader2 } from "lucide-react";
+import { Send, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 
-const getContactSchema = (isEnglish: boolean) => z.object({
-  name: z.string().min(2, isEnglish ? "Name must be at least 2 characters" : "Name muss mindestens 2 Zeichen lang sein"),
-  firma: z.string().min(1, isEnglish ? "Please enter your company" : "Bitte geben Sie Ihre Firma an"),
-  email: z.string().email(isEnglish ? "Please enter a valid email address" : "Bitte geben Sie eine gültige E-Mail-Adresse ein"),
-  telefon: z.string().optional(),
-  thema: z.enum(["cannabis", "medizintechnik", "medizinalhandel", "ki-workshop", "allgemein"], {
-    required_error: isEnglish ? "Please select a topic" : "Bitte wählen Sie ein Thema",
-  }),
-  nachricht: z.string().min(10, isEnglish ? "Message must be at least 10 characters" : "Nachricht muss mindestens 10 Zeichen lang sein"),
-  honeypot: z.string().max(0).optional(),
-});
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mreagzbn";
+
+const getContactSchema = (isEnglish: boolean) =>
+  z.object({
+    name: z.string().min(2, isEnglish ? "Name must be at least 2 characters" : "Name muss mindestens 2 Zeichen lang sein"),
+    email: z.string().email(isEnglish ? "Please enter a valid email address" : "Bitte geben Sie eine gültige E-Mail-Adresse ein"),
+    message: z.string().min(10, isEnglish ? "Message must be at least 10 characters" : "Nachricht muss mindestens 10 Zeichen lang sein"),
+    privacy: z.literal(true, {
+      errorMap: () => ({
+        message: isEnglish
+          ? "You must accept the privacy policy"
+          : "Sie müssen die Datenschutzerklärung akzeptieren",
+      }),
+    }),
+    company: z.string().max(0).optional(),
+  });
 
 type ContactFormData = z.infer<ReturnType<typeof getContactSchema>>;
 
 export default function Kontakt() {
-  const { toast } = useToast();
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
   const isEnglish = language === "en";
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const contactSchema = getContactSchema(isEnglish);
 
@@ -55,49 +52,60 @@ export default function Kontakt() {
     resolver: zodResolver(contactSchema),
     defaultValues: {
       name: "",
-      firma: "",
       email: "",
-      telefon: "",
-      thema: undefined,
-      nachricht: "",
-      honeypot: "",
+      message: "",
+      privacy: false as unknown as true,
+      company: "",
     },
   });
 
-  const mutation = useMutation({
-    mutationFn: async (data: ContactFormData) => {
-      return apiRequest("POST", "/api/contact", data);
-    },
-    onSuccess: () => {
-      setSubmitted(true);
-      toast({
-        title: isEnglish ? "Message sent" : "Nachricht gesendet",
-        description: isEnglish 
-          ? "Thank you for your inquiry. We will get back to you shortly."
-          : "Vielen Dank für Ihre Anfrage. Wir melden uns in Kürze bei Ihnen.",
-      });
-    },
-    onError: () => {
-      toast({
-        title: isEnglish ? "Error" : "Fehler",
-        description: isEnglish 
-          ? "An error occurred while sending. Please try again."
-          : "Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
-        variant: "destructive",
-      });
-    },
-  });
-
-  const onSubmit = (data: ContactFormData) => {
-    if (data.honeypot && data.honeypot.length > 0) {
+  const onSubmit = async (data: ContactFormData) => {
+    if (data.company && data.company.length > 0) {
       return;
     }
-    mutation.mutate(data);
+
+    setSending(true);
+    setErrorMsg(null);
+
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("email", data.email);
+    formData.append("message", data.message);
+    formData.append("_gotcha", data.company || "");
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        setErrorMsg(
+          isEnglish
+            ? "An error occurred while sending. Please try again."
+            : "Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+        );
+      }
+    } catch {
+      setErrorMsg(
+        isEnglish
+          ? "A network error occurred. Please check your connection and try again."
+          : "Ein Netzwerkfehler ist aufgetreten. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   const labels = {
     title: isEnglish ? "Contact" : "Kontakt",
-    subtitle: isEnglish 
+    subtitle: isEnglish
       ? "Are you planning a project or need a qualified assessment? We would be happy to discuss your matter personally and confidentially. Simply send us a message – we will get back to you promptly."
       : "Sie planen ein Projekt oder benötigen eine fundierte Einschätzung? Gerne besprechen wir Ihr Anliegen persönlich und vertraulich. Senden Sie uns einfach eine Nachricht – wir melden uns zeitnah bei Ihnen.",
     seoDescription: isEnglish
@@ -105,28 +113,19 @@ export default function Kontakt() {
       : "Kontaktieren Sie MadforMed für ein unverbindliches Beratungsgespräch zu medizinischem Cannabis oder Medizintechnik.",
     sendMessage: isEnglish ? "Send Message" : "Nachricht senden",
     thankYou: isEnglish ? "Thank you!" : "Vielen Dank!",
-    successMessage: isEnglish 
+    successMessage: isEnglish
       ? "Your message has been sent successfully. We will get back to you as soon as possible."
       : "Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns schnellstmöglich bei Ihnen.",
     name: isEnglish ? "Name *" : "Name *",
     namePlaceholder: isEnglish ? "Your name" : "Ihr Name",
-    company: isEnglish ? "Company *" : "Firma *",
-    companyPlaceholder: isEnglish ? "Your company" : "Ihre Firma",
     email: isEnglish ? "Email *" : "E-Mail *",
     emailPlaceholder: isEnglish ? "your@email.com" : "ihre@email.de",
-    phone: isEnglish ? "Phone (optional)" : "Telefon (optional)",
-    topic: isEnglish ? "Topic *" : "Thema *",
-    selectPlaceholder: isEnglish ? "Please select" : "Bitte wählen",
     message: isEnglish ? "Message *" : "Nachricht *",
     messagePlaceholder: isEnglish ? "Describe your inquiry..." : "Beschreiben Sie Ihr Anliegen...",
     sending: isEnglish ? "Sending..." : "Wird gesendet...",
-    topics: {
-      cannabis: isEnglish ? "Medical Cannabis" : "Medizinisches Cannabis",
-      medizintechnik: isEnglish ? "Medical Technology" : "Medizintechnik",
-      medizinalhandel: isEnglish ? "Medical Trade" : "Medizinalhandel",
-      kiWorkshop: isEnglish ? "AI Workshop (Copilot & ChatGPT)" : "KI Workshop (Copilot & ChatGPT)",
-      allgemein: isEnglish ? "General Inquiry" : "Allgemeine Anfrage",
-    },
+    privacyLabel: isEnglish
+      ? "I agree to the processing of my data according to the privacy policy. *"
+      : "Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu. *",
   };
 
   return (
@@ -170,127 +169,23 @@ export default function Kontakt() {
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                       <input
                         type="text"
-                        {...form.register("honeypot")}
-                        style={{ display: "none" }}
+                        {...form.register("company")}
+                        style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0, overflow: "hidden" }}
                         tabIndex={-1}
                         autoComplete="off"
-                      />
-
-                      <div className="grid sm:grid-cols-2 gap-4">
-                        <FormField
-                          control={form.control}
-                          name="name"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>{labels.name}</FormLabel>
-                              <FormControl>
-                                <Input
-                                  placeholder={labels.namePlaceholder}
-                                  data-testid="input-name"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="firma"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>{labels.company}</FormLabel>
-                              <FormControl>
-                                <Input
-                                  placeholder={labels.companyPlaceholder}
-                                  data-testid="input-firma"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-
-                      <div className="grid sm:grid-cols-2 gap-4">
-                        <FormField
-                          control={form.control}
-                          name="email"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>{labels.email}</FormLabel>
-                              <FormControl>
-                                <Input
-                                  type="email"
-                                  placeholder={labels.emailPlaceholder}
-                                  data-testid="input-email"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="telefon"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>{labels.phone}</FormLabel>
-                              <FormControl>
-                                <Input
-                                  type="tel"
-                                  placeholder="+49 ..."
-                                  data-testid="input-telefon"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-
-                      <FormField
-                        control={form.control}
-                        name="thema"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>{labels.topic}</FormLabel>
-                            <Select
-                              onValueChange={field.onChange}
-                              defaultValue={field.value}
-                            >
-                              <FormControl>
-                                <SelectTrigger data-testid="select-thema">
-                                  <SelectValue placeholder={labels.selectPlaceholder} />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent>
-                                <SelectItem value="cannabis">{labels.topics.cannabis}</SelectItem>
-                                <SelectItem value="medizintechnik">{labels.topics.medizintechnik}</SelectItem>
-                                <SelectItem value="medizinalhandel">{labels.topics.medizinalhandel}</SelectItem>
-                                <SelectItem value="ki-workshop">{labels.topics.kiWorkshop}</SelectItem>
-                                <SelectItem value="allgemein">{labels.topics.allgemein}</SelectItem>
-                              </SelectContent>
-                            </Select>
-                            <FormMessage />
-                          </FormItem>
-                        )}
+                        aria-hidden="true"
                       />
 
                       <FormField
                         control={form.control}
-                        name="nachricht"
+                        name="name"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>{labels.message}</FormLabel>
+                            <FormLabel>{labels.name}</FormLabel>
                             <FormControl>
-                              <Textarea
-                                placeholder={labels.messagePlaceholder}
-                                className="min-h-[120px] resize-none"
-                                data-testid="input-nachricht"
+                              <Input
+                                placeholder={labels.namePlaceholder}
+                                data-testid="input-name"
                                 {...field}
                               />
                             </FormControl>
@@ -299,13 +194,80 @@ export default function Kontakt() {
                         )}
                       />
 
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>{labels.email}</FormLabel>
+                            <FormControl>
+                              <Input
+                                type="email"
+                                placeholder={labels.emailPlaceholder}
+                                data-testid="input-email"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="message"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>{labels.message}</FormLabel>
+                            <FormControl>
+                              <Textarea
+                                placeholder={labels.messagePlaceholder}
+                                className="min-h-[120px] resize-none"
+                                data-testid="input-message"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="privacy"
+                        render={({ field }) => (
+                          <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value as unknown as boolean}
+                                onCheckedChange={field.onChange}
+                                data-testid="input-privacy"
+                              />
+                            </FormControl>
+                            <div className="space-y-1 leading-none">
+                              <FormLabel className="text-sm font-normal text-brand-dark/70 cursor-pointer">
+                                {labels.privacyLabel}
+                              </FormLabel>
+                              <FormMessage />
+                            </div>
+                          </FormItem>
+                        )}
+                      />
+
+                      {errorMsg && (
+                        <div className="flex items-center gap-2 rounded-md bg-destructive/10 p-3 text-sm text-destructive" data-testid="text-error">
+                          <AlertCircle className="h-4 w-4 shrink-0" />
+                          <span>{errorMsg}</span>
+                        </div>
+                      )}
+
                       <Button
                         type="submit"
                         className="w-full bg-brand-green hover:bg-brand-green/90 text-white"
-                        disabled={mutation.isPending}
+                        disabled={sending}
                         data-testid="button-submit"
                       >
-                        {mutation.isPending ? (
+                        {sending ? (
                           <>
                             <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                             {labels.sending}
