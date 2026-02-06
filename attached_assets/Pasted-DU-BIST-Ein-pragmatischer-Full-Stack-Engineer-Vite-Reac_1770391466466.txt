@@ -1,0 +1,65 @@
+DU BIST: Ein pragmatischer Full-Stack-Engineer (Vite/React/TS), der ein bestehendes Repo in ein **reines Static-Site-Deployment** umstellt, sodass am Ende ein **client/dist** mit **index.html** entsteht (für IONOS Deploy Now Static).
+
+ZIEL:
+- Das Projekt soll als **statische Website** gebaut werden.
+- Build-Output muss in **client/dist** landen und **client/dist/index.html** enthalten.
+- KEIN SSR/Node-Server-Start mehr im Build-Pfad (kein index.cjs als Entry für den Webserver).
+- Danach kann ich in IONOS Deploy Now: 
+  - Commands: `npm --prefix ./client install` und `npm --prefix ./client run build`
+  - Publish directory: `client/dist`
+
+WICHTIG:
+- Mach nur Änderungen, die wirklich nötig sind. Keine Refactor-Orgie.
+- Wenn etwas unklar ist, setze Defaults so, dass Static Build funktioniert.
+- Nach jeder Änderung kurz begründen, warum sie nötig ist.
+- Am Ende: Liste der geänderten Dateien + was ich als nächstes in IONOS eintragen soll.
+
+AUFGABEN (bitte exakt in dieser Reihenfolge abarbeiten):
+
+1) REPO-ANALYSE
+- Prüfe die Ordnerstruktur: gibt es `client/`? Gibt es `client/package.json`? Gibt es `client/vite.config.*`?
+- Prüfe Root-`package.json`: Welche Scripts existieren (build/dev/start)? Gibt es SSR/Node-spezifische Schritte?
+
+2) CLIENT BUILD AUF STATIC FESTNAGELN
+- Stelle sicher, dass im `client/package.json` ein Script existiert:
+  - `"build": "vite build"`
+- Stelle sicher, dass es KEIN SSR-Flag im Client-Build gibt (z.B. `vite build --ssr` entfernen).
+- Stelle sicher, dass Vite in `client/vite.config.ts` (oder .js) ein outDir auf `dist` setzt:
+  - `build: { outDir: "dist", emptyOutDir: true }`
+- Stelle sicher, dass der Client-Entry `index.html` existiert bzw. Vite korrekt eine `index.html` generiert.
+  - Falls `client/index.html` fehlt: erstelle eine minimale Vite-Standard-`index.html`, die auf `src/main.tsx` zeigt.
+
+3) ROOT BUILD SCRIPT (damit IONOS es zuverlässig baut)
+- In Root-`package.json`:
+  - Setze `"build"` so, dass er den Client baut:
+    - `"build": "npm --prefix ./client install && npm --prefix ./client run build"`
+  - Optional: setze `"start"` NICHT auf Node/SSR, sondern entferne/neutralisiere es (z.B. `"start": "echo 'Static build only'"`), damit CI/Provider nicht versucht, einen Server zu starten.
+  - Entferne/ersetze Skripte, die beim Build SSR/Server erzeugen (z.B. `server`-build steps), aber lösche keine Ordner – nur Scripts so anpassen, dass Static Build der Default ist.
+
+4) BUILD-VERIFIKATION IN REPLIT
+- Führe diese Commands aus und prüfe die Ausgaben:
+  - `npm --prefix ./client install`
+  - `npm --prefix ./client run build`
+- Prüfe danach, dass folgende Dateien existieren:
+  - `client/dist/index.html`
+  - `client/dist/assets/...`
+- Wenn das nicht der Fall ist: finde Ursache (falscher outDir, fehlende index.html, falscher entry) und korrigiere.
+
+5) IONOS DEPLOY-NOW KONFIG (finale Werte ausgeben)
+Gib mir am Ende exakt diese Werte aus (copy/paste-fähig):
+- Node Version Empfehlung (22.x ist ok, aber nur wenn Build damit läuft)
+- Commands (2 Zeilen):
+  1) `npm --prefix ./client install`
+  2) `npm --prefix ./client run build`
+- Publish directory:
+  - `client/dist`
+- Environment variables:
+  - leer lassen (keine nötig für Static), außer du findest zwingende VITE_ Variablen im Code.
+
+6) OUTPUT
+- Zeige mir eine knappe Liste:
+  - ✅ Was wurde geändert (Datei + Änderung)
+  - ✅ Welche Commands ich in IONOS eingebe
+  - ✅ Was ich im Browser erwarten muss (keine /index.cjs mehr, sondern normale Seite)
+
+LOSLEGEN: Bitte jetzt sofort mit Schritt 1 starten und alle notwendigen Änderungen im Repo durchführen.
