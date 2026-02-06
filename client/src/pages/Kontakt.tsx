@@ -8,6 +8,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
   Form,
   FormControl,
   FormField,
@@ -26,6 +33,9 @@ const getContactSchema = (isEnglish: boolean) =>
   z.object({
     name: z.string().min(2, isEnglish ? "Name must be at least 2 characters" : "Name muss mindestens 2 Zeichen lang sein"),
     email: z.string().email(isEnglish ? "Please enter a valid email address" : "Bitte geben Sie eine gültige E-Mail-Adresse ein"),
+    thema: z.enum(["cannabis", "medizintechnik", "medizinalhandel", "ki-workshop", "allgemein"], {
+      required_error: isEnglish ? "Please select a topic" : "Bitte wählen Sie ein Thema",
+    }),
     message: z.string().min(10, isEnglish ? "Message must be at least 10 characters" : "Nachricht muss mindestens 10 Zeichen lang sein"),
     privacy: z.literal(true, {
       errorMap: () => ({
@@ -53,6 +63,7 @@ export default function Kontakt() {
     defaultValues: {
       name: "",
       email: "",
+      thema: undefined as unknown as "cannabis",
       message: "",
       privacy: false as unknown as true,
       company: "",
@@ -70,6 +81,7 @@ export default function Kontakt() {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("email", data.email);
+    formData.append("thema", data.thema);
     formData.append("message", data.message);
     formData.append("_gotcha", data.company || "");
 
@@ -120,6 +132,15 @@ export default function Kontakt() {
     namePlaceholder: isEnglish ? "Your name" : "Ihr Name",
     email: isEnglish ? "Email *" : "E-Mail *",
     emailPlaceholder: isEnglish ? "your@email.com" : "ihre@email.de",
+    topic: isEnglish ? "Topic *" : "Thema *",
+    selectPlaceholder: isEnglish ? "Please select" : "Bitte wählen",
+    topics: {
+      cannabis: isEnglish ? "Medical Cannabis" : "Medizinisches Cannabis",
+      medizintechnik: isEnglish ? "Medical Technology" : "Medizintechnik",
+      medizinalhandel: isEnglish ? "Medical Trade" : "Medizinalhandel",
+      kiWorkshop: isEnglish ? "AI Workshop (Copilot & ChatGPT)" : "KI Workshop (Copilot & ChatGPT)",
+      allgemein: isEnglish ? "General Inquiry" : "Allgemeine Anfrage",
+    },
     message: isEnglish ? "Message *" : "Nachricht *",
     messagePlaceholder: isEnglish ? "Describe your inquiry..." : "Beschreiben Sie Ihr Anliegen...",
     sending: isEnglish ? "Sending..." : "Wird gesendet...",
@@ -208,6 +229,34 @@ export default function Kontakt() {
                                 {...field}
                               />
                             </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="thema"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>{labels.topic}</FormLabel>
+                            <Select
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                            >
+                              <FormControl>
+                                <SelectTrigger data-testid="select-thema">
+                                  <SelectValue placeholder={labels.selectPlaceholder} />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                <SelectItem value="cannabis">{labels.topics.cannabis}</SelectItem>
+                                <SelectItem value="medizintechnik">{labels.topics.medizintechnik}</SelectItem>
+                                <SelectItem value="medizinalhandel">{labels.topics.medizinalhandel}</SelectItem>
+                                <SelectItem value="ki-workshop">{labels.topics.kiWorkshop}</SelectItem>
+                                <SelectItem value="allgemein">{labels.topics.allgemein}</SelectItem>
+                              </SelectContent>
+                            </Select>
                             <FormMessage />
                           </FormItem>
                         )}
