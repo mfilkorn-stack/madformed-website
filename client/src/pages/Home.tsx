@@ -6,7 +6,6 @@ import { SEO } from "@/components/SEO";
 import { HeroSlider } from "@/components/HeroSlider";
 import { WaveDivider } from "@/components/WaveDivider";
 import { FAQAccordion } from "@/components/FAQAccordion";
-import { FAQData } from "@/components/StructuredData";
 import { useLanguage } from "@/lib/i18n";
 import { benefits, workProcess } from "@/content/company";
 import { companyLogos } from "@/content/references";
@@ -174,7 +173,6 @@ export default function Home() {
         title={labels.seo.title}
         description={labels.seo.description}
       />
-      <FAQData items={homeFaqs} />
 
       <HeroSlider />
 

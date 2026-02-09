@@ -97,9 +97,215 @@
       }
     }
     </script>
+    <!-- FAQPage JSON-LD (static for crawlers) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Worauf ist MadforMed spezialisiert?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MadforMed GmbH ist eine spezialisierte B2B-Beratungsgesellschaft mit Sitz in Leverkusen. Wir beraten Unternehmen in den Bereichen medizinisches Cannabis (EU-GMP/GDP, Supply Chain, Market Access), Medizintechnik (Go-to-Market, Sales Enablement, Prozessoptimierung), Medizinalhandel (Distribution, Sortimentsgestaltung, Herstellerverhandlungen) und KI-Enablement für Vertriebsteams (Copilot, ChatGPT, Prompt-Engineering)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "In welcher Region ist MadforMed tätig?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MadforMed ist primär im DACH-Raum (Deutschland, Österreich, Schweiz) tätig. Unser Sitz ist in Leverkusen (NRW). Wir begleiten Projekte deutschlandweit vor Ort und arbeiten auch mit internationalen Mandanten, insbesondere bei Cannabis-Import/Export und Medizintechnik-Markteintrittsprojekten."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was bedeutet KI-Enablement für Vertriebsteams?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KI-Enablement bedeutet, Vertriebsmitarbeiter im Umgang mit KI-Tools wie Microsoft Copilot und ChatGPT zu schulen. Wir bieten drei Workshop-Formate: Kickstart (2h Impuls), Team-Workshop (halber Tag) und ein 4-Wochen-Enablement-Programm. Jeder Teilnehmer erhält ein Prompt-Playbook mit über 20 praxiserprobten Vorlagen für Akquise, Angebotserstellung und Kundenkommunikation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bietet MadforMed Rechtsberatung oder medizinische Beratung an?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. MadforMed bietet keine Rechtsberatung, keine Steuerberatung und keine medizinische Beratung an. Unsere Leistungen umfassen ausschließlich strategische und operative Unternehmensberatung. Für rechtliche Fragen empfehlen wir spezialisierte Kanzleien."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie kann ich MadforMed kontaktieren?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sie erreichen uns per E-Mail unter matthias@madformed.de oder telefonisch unter 0176/22765249. Alternativ nutzen Sie unser Kontaktformular auf der Website. Wir melden uns in der Regel innerhalb von 48 Stunden zurück. MadforMed GmbH, Bonnerstraße 12, 51371 Leverkusen."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- BreadcrumbList JSON-LD (static for crawlers) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://madformed.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Leistungen", "item": "https://madformed.de/leistungen" },
+        { "@type": "ListItem", "position": 3, "name": "Über uns", "item": "https://madformed.de/ueber-uns" },
+        { "@type": "ListItem", "position": 4, "name": "Kontakt", "item": "https://madformed.de/kontakt" }
+      ]
+    }
+    </script>
+
+    <!-- Service JSON-LD (static for crawlers) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "B2B-Beratung für medizinische Märkte und KI-Enablement",
+      "provider": {
+        "@type": "Organization",
+        "name": "MadforMed GmbH",
+        "url": "https://madformed.de"
+      },
+      "areaServed": { "@type": "Country", "name": "Deutschland" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Beratungsleistungen",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medizinisches Cannabis – Regulatorik & Supply Chain", "description": "EU-GMP/GDP-Beratung, Supply-Chain-Aufbau, Import/Export-Begleitung, Market Access und Compliance für Cannabis-Unternehmen." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "KI-Enablement für Vertriebsteams", "description": "Workshops und Enablement-Programme für den Einsatz von Microsoft Copilot und ChatGPT im B2B-Vertrieb. Inklusive Prompt-Playbook." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medizintechnik – Go-to-Market & Sales", "description": "Markteintrittsstrategie, Vertriebsoptimierung, Prozessanalyse und Sales Enablement für Medizintechnik-Unternehmen." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medizinalhandel – Distribution & Strategie", "description": "Sortimentsberatung, Herstellerverhandlungen, Marktpositionierung und Vertriebsstrategie für Distributoren und Fachhändler." } }
+        ]
+      }
+    }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Static fallback content for crawlers (replaced by React on load) -->
+      <header role="banner" aria-label="Hauptnavigation MadforMed">
+        <nav role="navigation" aria-label="Hauptmenü">
+          <a href="/" aria-label="MadforMed Startseite">MadforMed GmbH</a>
+          <a href="/leistungen" aria-label="Unsere Leistungen">Leistungen</a>
+          <a href="/leistungen/medizinisches-cannabis">Medizinisches Cannabis</a>
+          <a href="/leistungen/medizintechnik">Medizintechnik</a>
+          <a href="/leistungen/medizinalhandel">Medizinalhandel</a>
+          <a href="/leistungen/ki-sales-bd">KI für Sales &amp; BD</a>
+          <a href="/ueber-uns" aria-label="Über uns">Über uns</a>
+          <a href="/projekte">Referenzen &amp; Projekte</a>
+          <a href="/insights">Insights</a>
+          <a href="/kontakt" aria-label="Kontakt aufnehmen">Kontakt aufnehmen</a>
+        </nav>
+      </header>
+
+      <main role="main" aria-label="Hauptinhalt">
+        <article aria-label="Unternehmensvorstellung MadforMed GmbH">
+          <section aria-labelledby="hero-heading">
+            <h1 id="hero-heading">MadforMed – Beratung für Cannabis, Medtech, Medizinalhandel &amp; KI-Enablement</h1>
+            <p>Strategieberatung für regulierte medizinische Märkte – strukturiert, compliance-orientiert, ergebnisfokussiert. MadforMed GmbH mit Sitz in Leverkusen ist Ihr Partner für den erfolgreichen Marktzugang in der Medizinbranche.</p>
+            <a href="/leistungen" aria-label="Alle Leistungen ansehen">Leistungen ansehen</a>
+            <a href="/kontakt" aria-label="Jetzt Kontakt aufnehmen">Kontakt aufnehmen</a>
+          </section>
+
+          <section aria-labelledby="intro-heading">
+            <h2 id="intro-heading">Ihr Partner für medizinische Märkte &amp; KI-Enablement im DACH-Raum</h2>
+            <p>MadforMed GmbH ist eine spezialisierte B2B-Beratungsgesellschaft mit Sitz in Leverkusen. Wir unterstützen Unternehmen der Medizin- und Pharmabranche bei strategischen und operativen Herausforderungen in vier Kernbereichen: medizinisches Cannabis, Medizintechnik, Medizinalhandel und KI-Enablement für Vertriebsteams.</p>
+            <p>Unsere Beratung ist compliance-orientiert und praxisnah. Wir arbeiten mit Herstellern, Importeuren, Großhändlern, Distributoren und Vertriebsgesellschaften im gesamten DACH-Raum. Unsere Mandanten profitieren von unserer tiefen Branchenkenntnis, regulatorischer Expertise und einem belastbaren Netzwerk in der Gesundheitswirtschaft.</p>
+            <p>Von der strategischen Marktanalyse über den operativen Aufbau einer Cannabis-Supply-Chain bis hin zum KI-gestützten Vertriebstraining – MadforMed liefert strukturierte Ergebnisse, messbar und nachhaltig.</p>
+            <a href="/leistungen" aria-label="Alle Leistungen entdecken">Alle Leistungen</a>
+            <a href="/ueber-uns" aria-label="Mehr über MadforMed erfahren">Über uns</a>
+            <a href="/kontakt" aria-label="Direkt Kontakt aufnehmen">Kontakt aufnehmen</a>
+          </section>
+
+          <section aria-labelledby="services-heading" role="region">
+            <h2 id="services-heading">Unsere Leistungsbereiche</h2>
+
+            <section aria-labelledby="service-cannabis">
+              <h3 id="service-cannabis">Medizinisches Cannabis – Regulatorik &amp; Supply Chain</h3>
+              <p>Umfassende Beratung für Unternehmen im Bereich medizinisches Cannabis: EU-GMP/GDP-Compliance, Supply-Chain-Aufbau, Import- und Exportbegleitung, Market Access und behördliche Abstimmung. Wir unterstützen Hersteller, Importeure und Großhändler bei der Etablierung rechtskonformer und effizienter Lieferketten im deutschen und europäischen Markt.</p>
+              <a href="/leistungen/medizinisches-cannabis" aria-label="Mehr zur Cannabis-Beratung">Mehr erfahren</a>
+            </section>
+
+            <section aria-labelledby="service-ki">
+              <h3 id="service-ki">KI-Enablement für Vertriebsteams</h3>
+              <p>Praxisnahe Workshops und Enablement-Programme für den Einsatz von KI-Tools wie Microsoft Copilot und ChatGPT im B2B-Vertrieb. Unsere drei Formate – Kickstart-Impuls (2 Stunden), Team-Workshop (halber Tag) und 4-Wochen-Enablement-Programm – vermitteln sofort anwendbare Techniken für Akquise, Angebotserstellung und Kundenkommunikation. Jeder Teilnehmer erhält ein individuelles Prompt-Playbook mit über 20 erprobten Vorlagen.</p>
+              <a href="/leistungen/ki-sales-bd" aria-label="Mehr zu KI-Workshops">Mehr erfahren</a>
+            </section>
+
+            <section aria-labelledby="service-medtech">
+              <h3 id="service-medtech">Medizintechnik – Go-to-Market &amp; Sales Enablement</h3>
+              <p>Strategische Beratung für Medizintechnik-Unternehmen: Markteintrittsstrategie, Vertriebsoptimierung, Prozessanalyse und maßgeschneiderte Sales-Enablement-Programme. Unser Fokus liegt auf Orthopädie, Arthroskopie, Chirurgie und Anästhesie – von Implantaten über Investitionsgüter bis zu Verbrauchsmaterialien.</p>
+              <a href="/leistungen/medizintechnik" aria-label="Mehr zur Medizintechnik-Beratung">Mehr erfahren</a>
+            </section>
+
+            <section aria-labelledby="service-handel">
+              <h3 id="service-handel">Medizinalhandel – Distribution &amp; Strategie</h3>
+              <p>Beratung für Distributoren, Großhändler und Fachhändler im Medizinprodukte-Bereich: Sortimentsgestaltung, Herstellerverhandlungen, Marktpositionierung und Vertriebsstrategie. Wir helfen Handelsunternehmen, sich im Wettbewerb zu differenzieren und nachhaltige Geschäftsbeziehungen aufzubauen.</p>
+              <a href="/leistungen/medizinalhandel" aria-label="Mehr zur Medizinalhandel-Beratung">Mehr erfahren</a>
+            </section>
+          </section>
+
+          <section aria-labelledby="benefits-heading">
+            <h2 id="benefits-heading">Warum MadforMed?</h2>
+            <ul role="list" aria-label="Vorteile der Zusammenarbeit">
+              <li>Regulatorische Expertise: Tiefes Verständnis der Market Access, Compliance und Quality Anforderungen</li>
+              <li>Praxisorientierung: Lösungen, die sofort Mehrwert stiften und im Tagesgeschäft funktionieren</li>
+              <li>Ergebnisorientiert: Klare Ziele, messbare Ergebnisse und transparente Kommunikation</li>
+              <li>Netzwerk: Zugang zu relevanten Partnern und Experten in der Gesundheitswirtschaft</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="faq-heading">
+            <h2 id="faq-heading">Häufig gestellte Fragen</h2>
+
+            <details>
+              <summary>Worauf ist MadforMed spezialisiert?</summary>
+              <p>MadforMed GmbH ist eine spezialisierte B2B-Beratungsgesellschaft mit Sitz in Leverkusen. Wir beraten Unternehmen in den Bereichen medizinisches Cannabis (EU-GMP/GDP, Supply Chain, Market Access), Medizintechnik (Go-to-Market, Sales Enablement, Prozessoptimierung), Medizinalhandel (Distribution, Sortimentsgestaltung, Herstellerverhandlungen) und KI-Enablement für Vertriebsteams (Copilot, ChatGPT, Prompt-Engineering).</p>
+            </details>
+
+            <details>
+              <summary>In welcher Region ist MadforMed tätig?</summary>
+              <p>MadforMed ist primär im DACH-Raum (Deutschland, Österreich, Schweiz) tätig. Unser Sitz ist in Leverkusen (NRW). Wir begleiten Projekte deutschlandweit vor Ort und arbeiten auch mit internationalen Mandanten, insbesondere bei Cannabis-Import/Export und Medizintechnik-Markteintrittsprojekten.</p>
+            </details>
+
+            <details>
+              <summary>Was bedeutet KI-Enablement für Vertriebsteams?</summary>
+              <p>KI-Enablement bedeutet, Vertriebsmitarbeiter im Umgang mit KI-Tools wie Microsoft Copilot und ChatGPT zu schulen. Wir bieten drei Workshop-Formate: Kickstart (2h Impuls), Team-Workshop (halber Tag) und ein 4-Wochen-Enablement-Programm. Jeder Teilnehmer erhält ein Prompt-Playbook mit über 20 praxiserprobten Vorlagen.</p>
+            </details>
+
+            <details>
+              <summary>Bietet MadforMed Rechtsberatung oder medizinische Beratung an?</summary>
+              <p>Nein. MadforMed bietet keine Rechtsberatung, keine Steuerberatung und keine medizinische Beratung an. Unsere Leistungen umfassen ausschließlich strategische und operative Unternehmensberatung.</p>
+            </details>
+
+            <details>
+              <summary>Wie kann ich MadforMed kontaktieren?</summary>
+              <p>Sie erreichen uns per E-Mail unter matthias@madformed.de oder telefonisch unter 0176/22765249. Alternativ nutzen Sie unser Kontaktformular. Wir melden uns in der Regel innerhalb von 48 Stunden zurück. MadforMed GmbH, Bonnerstraße 12, 51371 Leverkusen.</p>
+            </details>
+          </section>
+
+          <section aria-labelledby="disclaimer-heading">
+            <h2 id="disclaimer-heading">Hinweis</h2>
+            <p>MadforMed bietet keine Rechtsberatung, keine Steuerberatung und keine Heilversprechen. Unsere Leistungen ersetzen keine anwaltliche Beratung. Alle Angaben auf dieser Website dienen ausschließlich der allgemeinen Information.</p>
+          </section>
+        </article>
+      </main>
+
+      <footer role="contentinfo" aria-label="Fußbereich">
+        <nav role="navigation" aria-label="Rechtliche Links">
+          <a href="/impressum">Impressum</a>
+          <a href="/datenschutz">Datenschutzerklärung</a>
+        </nav>
+        <p>MadforMed GmbH · Bonnerstraße 12, 51371 Leverkusen · matthias@madformed.de · 0176/22765249</p>
+        <p>Geschäftsführer: Matthias Joerg Filkorn · Amtsgericht Köln, HRB 113572 · USt-IdNr.: DE360969435</p>
+      </footer>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
