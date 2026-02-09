@@ -59,8 +59,8 @@ export default function CaseReport() {
       <SEO
         title={isEnglish ? "Case Report: SEO & AI Optimization – MadforMed" : "Case Report: SEO & AI-Optimierung – MadforMed"}
         description={isEnglish
-          ? "How we optimized madformed.de for near-100 scores in SEO Onpage and AI-Readiness using the IONOS Audit Tool."
-          : "Wie wir madformed.de auf nahezu 100 Punkte in SEO Onpage und KI-Readiness optimiert haben – IONOS Audit Tool."
+          ? "How we optimized madformed.de for near-100 scores in SEO Onpage and AI-Readiness using searchreadiness.io."
+          : "Wie wir madformed.de auf nahezu 100 Punkte in SEO Onpage und KI-Readiness optimiert haben – searchreadiness.io."
         }
       />
 
@@ -76,7 +76,7 @@ export default function CaseReport() {
             SEO & KI-Sichtbarkeit: Optimierung von madformed.de
           </h1>
           <p className="text-lg text-gray-500">
-            IONOS Audit Tool – Vom kritischen Score zu nahezu perfekten Werten in SEO Onpage und AI-Readiness
+            searchreadiness.io – Vom kritischen Score zu nahezu perfekten Werten in SEO Onpage und AI-Readiness
           </p>
           <p className="text-sm text-gray-400 mt-2">Stand: Februar 2026 · MadforMed GmbH</p>
         </div>
@@ -85,8 +85,8 @@ export default function CaseReport() {
         <Card className="p-6 mb-8 border-l-4 border-l-[#5FB94E]" style={{ borderRadius: '0.375rem' }}>
           <h2 className="text-xl font-bold text-gray-900 mb-3">Zusammenfassung</h2>
           <p className="text-gray-600 leading-relaxed">
-            Die Website <strong>madformed.de</strong> wurde systematisch für das <strong>IONOS Audit Tool</strong> optimiert – 
-            mit Fokus auf die Kategorien <em>SEO Onpage</em> und <em>AI-Readiness</em>. Das IONOS Tool analysiert den 
+            Die Website <strong>madformed.de</strong> wurde systematisch für <strong>searchreadiness.io</strong> optimiert – 
+            mit Fokus auf die Kategorien <em>SEO Onpage</em> und <em>AI-Readiness</em>. Das Tool von searchreadiness.io analysiert den 
             <strong> reinen HTML-Quellcode</strong> ohne JavaScript-Ausführung. Da madformed.de als React Single-Page-App 
             (SPA) gebaut ist, war der gesamte Inhalt zuvor für das Tool unsichtbar. Durch einen hybriden Ansatz – 
             statischer Fallback-Content im HTML für Crawler, React-App für interaktive Nutzer – konnten alle Scoring-Kategorien 
@@ -145,9 +145,9 @@ export default function CaseReport() {
           <Card className="p-5">
             <div className="space-y-4 text-gray-600">
               <p>
-                <strong>Kernproblem:</strong> Das IONOS Audit Tool analysiert den HTML-Quellcode einer Website <em>ohne</em> JavaScript auszuführen. 
+                <strong>Kernproblem:</strong> searchreadiness.io analysiert den HTML-Quellcode einer Website <em>ohne</em> JavaScript auszuführen. 
                 Da madformed.de eine React SPA (Single-Page-Application) ist, wird der gesamte Seiteninhalt erst durch 
-                JavaScript im Browser erzeugt. Für das Audit Tool war die Seite daher faktisch leer.
+                JavaScript im Browser erzeugt. Für searchreadiness.io war die Seite daher faktisch leer.
               </p>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="bg-red-50 border border-red-100 rounded-md p-4">
@@ -363,7 +363,7 @@ export default function CaseReport() {
           <Card className="p-6 bg-gradient-to-r from-[#5FB94E]/5 to-[#1E9BD9]/5 border-[#5FB94E]/20">
             <div className="space-y-3 text-gray-700">
               <p>
-                Durch den hybriden Ansatz konnte <strong>madformed.de</strong> in allen relevanten Kategorien des IONOS Audit Tools 
+                Durch den hybriden Ansatz konnte <strong>madformed.de</strong> in allen relevanten Kategorien von searchreadiness.io 
                 signifikant verbessert werden – ohne die bestehende React-Architektur zu verändern oder aufwendiges SSR einzuführen.
               </p>
               <p className="font-medium">
@@ -388,8 +388,8 @@ export default function CaseReport() {
                 </li>
               </ul>
               <p className="text-sm text-gray-500 mt-4">
-                Empfehlung: Nach dem Deployment auf IONOS Deploy Now sollten die Scores mit dem IONOS Audit Tool 
-                (<a href="https://www.ionos.com/tools/website-checker" target="_blank" rel="noopener noreferrer" className="text-[#1E9BD9] hover:underline">ionos.com/tools/website-checker</a>) 
+                Empfehlung: Nach dem Deployment sollten die Scores mit 
+                <a href="https://searchreadiness.io" target="_blank" rel="noopener noreferrer" className="text-[#1E9BD9] hover:underline">searchreadiness.io</a> 
                 verifiziert und die strukturierten Daten mit dem 
                 <a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener noreferrer" className="text-[#1E9BD9] hover:underline"> Google Rich Results Test</a> validiert werden.
               </p>
