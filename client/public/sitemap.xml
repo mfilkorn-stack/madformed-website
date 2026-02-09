@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- German pages -->
+  <url>
+    <loc>https://madformed.de/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://madformed.de/" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/leistungen</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/leistungen" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/services" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/leistungen/medizinisches-cannabis</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/leistungen/medizinisches-cannabis" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/services/medical-cannabis" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/leistungen/medizintechnik</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/leistungen/medizintechnik" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/services/medical-technology" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/leistungen/medizinalhandel</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/leistungen/medizinalhandel" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/services/medical-trade" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/leistungen/ki-sales-bd</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/leistungen/ki-sales-bd" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/services/ai-sales-bd" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/ueber-uns</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/ueber-uns" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/about" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/projekte</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/projekte" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/projects" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/insights</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/insights" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/insights" />
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/kontakt</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/kontakt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/contact" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/impressum</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/impressum" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/legal-notice" />
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/datenschutz</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/datenschutz" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/privacy-policy" />
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- English pages -->
+  <url>
+    <loc>https://madformed.de/en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://madformed.de/" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/en/services</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/leistungen" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/services" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/en/services/medical-cannabis</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/leistungen/medizinisches-cannabis" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/services/medical-cannabis" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/en/services/medical-technology</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/leistungen/medizintechnik" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/services/medical-technology" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/en/services/medical-trade</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/leistungen/medizinalhandel" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/services/medical-trade" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/en/services/ai-sales-bd</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/leistungen/ki-sales-bd" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/services/ai-sales-bd" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/ueber-uns" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/about" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/en/projects</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/projekte" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/projects" />
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/en/insights</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/insights" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/insights" />
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/kontakt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/contact" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/en/legal-notice</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/impressum" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/legal-notice" />
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://madformed.de/en/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://madformed.de/datenschutz" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://madformed.de/en/privacy-policy" />
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+</urlset>
