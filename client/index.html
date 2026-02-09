@@ -42,6 +42,9 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     
+    <!-- LLMs.txt Reference (AI discoverability) -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site information" />
+    
     <!-- Fonts with display=swap for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -159,6 +162,50 @@
         { "@type": "ListItem", "position": 3, "name": "Über uns", "item": "https://madformed.de/ueber-uns" },
         { "@type": "ListItem", "position": 4, "name": "Kontakt", "item": "https://madformed.de/kontakt" }
       ]
+    }
+    </script>
+
+    <!-- Action Schema (for AI agents like ChatGPT Agent Mode) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "MadforMed GmbH",
+      "url": "https://madformed.de",
+      "potentialAction": [
+        {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://madformed.de/insights?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        },
+        {
+          "@type": "CommunicateAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://madformed.de/kontakt",
+            "actionPlatform": "https://schema.org/DesktopWebPlatform"
+          },
+          "name": "Kontakt aufnehmen",
+          "description": "Kontaktformular für unverbindliche Beratungsanfragen an MadforMed GmbH"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Speakable Markup (for AI voice output) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "MadforMed – Beratung für Cannabis, Medtech & KI-Enablement",
+      "url": "https://madformed.de",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["#hero-heading", "#intro-heading", "[aria-labelledby='hero-heading'] p", "[aria-labelledby='intro-heading'] p", "[aria-labelledby='faq-heading']"]
+      }
     }
     </script>
 
