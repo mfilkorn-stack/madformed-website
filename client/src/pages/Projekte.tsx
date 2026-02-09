@@ -124,6 +124,93 @@ export default function Projekte() {
         </div>
       </section>
 
+      <section className="py-16 md:py-20 bg-white" data-testid="section-case-report">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            title={isEnglish ? "Case Report" : "Case Report"}
+            subtitle={isEnglish ? "Documented project with measurable results" : "Dokumentiertes Projekt mit messbaren Ergebnissen"}
+          />
+          <Card className="p-6 md:p-8 bg-gradient-to-r from-[#5FB94E]/5 to-[#1E9BD9]/5 border-[#5FB94E]/30" data-testid="card-case-report">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1E9BD9]/10 rounded-full text-[#1E9BD9] text-sm font-medium mb-3">
+                  <Search className="w-4 h-4" />
+                  searchreadiness.io
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-brand-dark mb-2">{caseReport.title}</h3>
+                <p className="text-sm text-brand-dark/50 mb-3">{caseReport.subtitle}</p>
+                <p className="text-brand-dark/70 mb-4 leading-relaxed">{caseReport.description}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {caseReport.highlights.map((item, i) => (
+                    <span key={i} className="inline-flex items-center gap-1 text-xs font-medium bg-white border border-brand-grey/20 text-brand-dark/70 px-2.5 py-1 rounded-full">
+                      <CheckCircle2 className="w-3 h-3 text-[#5FB94E]" />
+                      {item}
+                    </span>
+                  ))}
+                </div>
+                <Link href={caseReport.linkHref}>
+                  <Button className="bg-[#5FB94E] text-white" data-testid="button-case-report-link">
+                    {caseReport.linkText}
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
+              <div className="md:w-48 flex flex-row md:flex-col gap-3 md:justify-center">
+                <div className="flex-1 text-center p-3 bg-white rounded-lg border border-brand-grey/20">
+                  <div className="text-2xl font-bold text-[#5FB94E]" data-testid="text-metric-schemas">5</div>
+                  <div className="text-xs text-brand-dark/60">JSON-LD Schemas</div>
+                </div>
+                <div className="flex-1 text-center p-3 bg-white rounded-lg border border-brand-grey/20">
+                  <div className="text-2xl font-bold text-[#1E9BD9]" data-testid="text-metric-words">2.011</div>
+                  <div className="text-xs text-brand-dark/60">{isEnglish ? "Words" : "Wörter"}</div>
+                </div>
+                <div className="flex-1 text-center p-3 bg-white rounded-lg border border-brand-grey/20">
+                  <div className="text-2xl font-bold text-[#5FB94E]" data-testid="text-metric-aria">30+</div>
+                  <div className="text-xs text-brand-dark/60">ARIA Attrs</div>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            title={labels.references.title}
+            subtitle={labels.references.subtitle}
+          />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projectRefsLabels.map((project: any, index: number) => {
+              const label = project.industry || project.category || "";
+              const industryIcon = label === "Cannabis" || label === "cannabis" ? Leaf 
+                : label === "Medical Technology" || label === "Medizintechnik" || label === "medtech" ? Stethoscope
+                : label === "ki" || label === "AI" ? Bot
+                : ShoppingCart;
+              const Icon = industryIcon;
+              return (
+                <Card
+                  key={index}
+                  className="p-6 bg-white border-brand-grey/20"
+                  data-testid={`project-card-${index}`}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-brand-green" />
+                    </div>
+                    <span className="text-xs font-medium text-brand-green uppercase tracking-wide">
+                      {label}
+                    </span>
+                  </div>
+                  <h3 className="font-semibold text-brand-dark mb-2">{project.title}</h3>
+                  <p className="text-sm text-brand-dark/70">{project.description}</p>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -172,93 +259,6 @@ export default function Projekte() {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            title={labels.references.title}
-            subtitle={labels.references.subtitle}
-          />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projectRefsLabels.map((project: any, index: number) => {
-              const label = project.industry || project.category || "";
-              const industryIcon = label === "Cannabis" || label === "cannabis" ? Leaf 
-                : label === "Medical Technology" || label === "Medizintechnik" || label === "medtech" ? Stethoscope
-                : label === "ki" || label === "AI" ? Bot
-                : ShoppingCart;
-              const Icon = industryIcon;
-              return (
-                <Card
-                  key={index}
-                  className="p-6 bg-brand-light border-brand-grey/20"
-                  data-testid={`project-card-${index}`}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-brand-green" />
-                    </div>
-                    <span className="text-xs font-medium text-brand-green uppercase tracking-wide">
-                      {label}
-                    </span>
-                  </div>
-                  <h3 className="font-semibold text-brand-dark mb-2">{project.title}</h3>
-                  <p className="text-sm text-brand-dark/70">{project.description}</p>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-20" data-testid="section-case-report">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            title={isEnglish ? "Case Report" : "Case Report"}
-            subtitle={isEnglish ? "Documented project with measurable results" : "Dokumentiertes Projekt mit messbaren Ergebnissen"}
-          />
-          <Card className="p-6 md:p-8 bg-gradient-to-r from-[#5FB94E]/5 to-[#1E9BD9]/5 border-[#5FB94E]/30" data-testid="card-case-report">
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="flex-1">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1E9BD9]/10 rounded-full text-[#1E9BD9] text-sm font-medium mb-3">
-                  <Search className="w-4 h-4" />
-                  searchreadiness.io
-                </div>
-                <h3 className="text-xl md:text-2xl font-bold text-brand-dark mb-2">{caseReport.title}</h3>
-                <p className="text-sm text-brand-dark/50 mb-3">{caseReport.subtitle}</p>
-                <p className="text-brand-dark/70 mb-4 leading-relaxed">{caseReport.description}</p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {caseReport.highlights.map((item, i) => (
-                    <span key={i} className="inline-flex items-center gap-1 text-xs font-medium bg-white border border-brand-grey/20 text-brand-dark/70 px-2.5 py-1 rounded-full">
-                      <CheckCircle2 className="w-3 h-3 text-[#5FB94E]" />
-                      {item}
-                    </span>
-                  ))}
-                </div>
-                <Link href={caseReport.linkHref}>
-                  <Button className="bg-[#5FB94E] text-white" data-testid="button-case-report-link">
-                    {caseReport.linkText}
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-              </div>
-              <div className="md:w-48 flex flex-row md:flex-col gap-3 md:justify-center">
-                <div className="flex-1 text-center p-3 bg-white rounded-lg border border-brand-grey/20">
-                  <div className="text-2xl font-bold text-[#5FB94E]">5</div>
-                  <div className="text-xs text-brand-dark/60">JSON-LD Schemas</div>
-                </div>
-                <div className="flex-1 text-center p-3 bg-white rounded-lg border border-brand-grey/20">
-                  <div className="text-2xl font-bold text-[#1E9BD9]">2.011</div>
-                  <div className="text-xs text-brand-dark/60">{isEnglish ? "Words" : "Wörter"}</div>
-                </div>
-                <div className="flex-1 text-center p-3 bg-white rounded-lg border border-brand-grey/20">
-                  <div className="text-2xl font-bold text-[#5FB94E]">30+</div>
-                  <div className="text-xs text-brand-dark/60">ARIA Attrs</div>
-                </div>
-              </div>
-            </div>
-          </Card>
         </div>
       </section>
 
