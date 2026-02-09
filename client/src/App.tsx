@@ -21,6 +21,7 @@ import Impressum from "@/pages/Impressum";
 import Datenschutz from "@/pages/Datenschutz";
 import ImpressumEN from "@/pages/ImpressumEN";
 import DatenschutzEN from "@/pages/DatenschutzEN";
+import CaseReport from "@/pages/CaseReport";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -41,6 +42,7 @@ function Router() {
         <Route path="/kontakt" component={Kontakt} />
         <Route path="/impressum" component={Impressum} />
         <Route path="/datenschutz" component={Datenschutz} />
+        <Route path="/case-report" component={CaseReport} />
         
         {/* English routes */}
         <Route path="/en" component={Home} />
