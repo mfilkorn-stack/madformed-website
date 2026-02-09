@@ -80,6 +80,14 @@ export const projectReferences = [
     description: "Einführung von EDI-Schnittstellen und CRM-System bei aescologic GmbH für optimierte Geschäftsprozesse und verbesserte Kundenbeziehungen.",
     deliverables: ["EDI-Integration", "CRM-Implementierung", "Prozessoptimierung"],
     result: "Digitalisierte Geschäftsprozesse"
+  },
+  {
+    id: "seo-ai-madformed",
+    title: "SEO & KI-Sichtbarkeit – madformed.de",
+    category: "ki",
+    description: "Systematische Optimierung der Website madformed.de für maximale SEO- und KI-Sichtbarkeit. Analyse mit searchreadiness.io, Implementierung von 5 JSON-LD Schemas, semantischem HTML, FAQ-Markup und 2.000+ Wörter Crawler-Content.",
+    deliverables: ["searchreadiness.io Analyse", "JSON-LD Structured Data", "Semantic HTML Optimierung", "FAQ-Schema Implementierung", "AI-Readiness Scoring"],
+    result: "Nahezu perfekte Scores in SEO Onpage und AI-Readiness"
   }
 ];
 

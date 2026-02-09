@@ -31,7 +31,10 @@ import {
   Shield,
   Bot,
   Sparkles,
-  Package
+  Package,
+  Search,
+  BarChart3,
+  Code
 } from "lucide-react";
 
 const targetGroupIcons: Record<string, React.ElementType> = {
@@ -301,7 +304,87 @@ export default function KiServices() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-white" data-testid="section-faq">
+      <section className="py-16 md:py-20 bg-white" data-testid="section-searchreadiness">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            title="SEO & KI-Sichtbarkeit mit searchreadiness.io"
+            subtitle="Analyse, Empfehlungen und Umsetzung für maximale Online-Sichtbarkeit"
+          />
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <Card className="p-6 bg-brand-light border-brand-grey/20">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-[#1E9BD9]/10 rounded-lg flex items-center justify-center">
+                  <Search className="w-6 h-6 text-[#1E9BD9]" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-brand-dark">searchreadiness.io Analyse</h3>
+                  <p className="text-xs text-brand-dark/60">SEO Onpage & AI-Readiness Scoring</p>
+                </div>
+              </div>
+              <p className="text-sm text-brand-dark/70 mb-4">
+                Wir analysieren Ihre Website mit searchreadiness.io und identifizieren konkrete Optimierungspotenziale 
+                für Suchmaschinen und KI-Systeme. Der Audit deckt technische SEO-Faktoren, strukturierte Daten, 
+                semantisches HTML und AI-Readiness-Kriterien ab.
+              </p>
+              <ul className="space-y-2">
+                {["SEO Onpage Score-Analyse", "AI-Readiness Bewertung", "JSON-LD Schema Audit", "Content-Gap Identifikation"].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-brand-dark/70">
+                    <CheckCircle2 className="w-4 h-4 text-[#1E9BD9] shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Card>
+
+            <Card className="p-6 bg-brand-light border-brand-grey/20">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-[#5FB94E]/10 rounded-lg flex items-center justify-center">
+                  <Code className="w-6 h-6 text-[#5FB94E]" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-brand-dark">Umsetzung & Optimierung</h3>
+                  <p className="text-xs text-brand-dark/60">Von der Analyse zur messbaren Verbesserung</p>
+                </div>
+              </div>
+              <p className="text-sm text-brand-dark/70 mb-4">
+                Basierend auf den Ergebnissen setzen wir die Empfehlungen direkt um: Structured Data implementieren, 
+                semantische HTML-Struktur optimieren, FAQ-Schemas einbetten und Content für KI-Crawler aufbereiten – 
+                für messbar bessere Scores.
+              </p>
+              <ul className="space-y-2">
+                {["Structured Data (JSON-LD) Implementierung", "Semantisches HTML & ARIA Markup", "FAQ-Schema & Answer-Ready Content", "Crawler-optimierter Fallback-Content"].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-brand-dark/70">
+                    <CheckCircle2 className="w-4 h-4 text-[#5FB94E] shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </div>
+
+          <Card className="p-6 bg-gradient-to-r from-[#5FB94E]/5 to-[#1E9BD9]/5 border-[#5FB94E]/30">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+              <div className="flex items-center gap-3 flex-1">
+                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-brand-grey/20">
+                  <BarChart3 className="w-5 h-5 text-[#1E9BD9]" />
+                </div>
+                <div>
+                  <p className="font-semibold text-brand-dark">Case Report: madformed.de</p>
+                  <p className="text-sm text-brand-dark/60">Von kritischen Scores zu nahezu perfekten Werten in SEO & AI-Readiness</p>
+                </div>
+              </div>
+              <Link href="/case-report">
+                <Button className="bg-[#1E9BD9] text-white" data-testid="button-searchreadiness-case-report">
+                  Case Report ansehen
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20" data-testid="section-faq">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             title="Häufige Fragen"

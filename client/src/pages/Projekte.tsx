@@ -1,12 +1,13 @@
 import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
 import { useLanguage } from "@/lib/i18n";
 import { projectTypes } from "@/content/company";
 import { projectReferences, companyLogos, experienceHighlights } from "@/content/references";
-import { ArrowRight, FileText, Briefcase, LayoutGrid, TrendingUp, Leaf, Stethoscope, ShoppingCart, CheckCircle2, Building2 } from "lucide-react";
+import { ArrowRight, FileText, Briefcase, LayoutGrid, TrendingUp, Leaf, Stethoscope, ShoppingCart, CheckCircle2, Building2, Bot, Search } from "lucide-react";
 
 const projectIcons = [Briefcase, LayoutGrid, FileText, TrendingUp];
 
@@ -69,6 +70,19 @@ export default function Projekte() {
     { industry: "Medical Trade", title: "Key Account Management", description: "Development and implementation of a key account strategy" },
     { industry: "AI", title: "AI Sales Enablement", description: "Copilot implementation and training program for sales teams" },
   ] : projectReferences;
+
+  const caseReport = {
+    title: isEnglish ? "SEO & AI Visibility Optimization" : "SEO & KI-Sichtbarkeit optimiert",
+    subtitle: isEnglish ? "madformed.de – searchreadiness.io" : "madformed.de – searchreadiness.io",
+    description: isEnglish
+      ? "Systematic optimization of madformed.de for maximum SEO and AI visibility. Analysis with searchreadiness.io, implementation of 5 JSON-LD schemas, semantic HTML, FAQ markup and 2,000+ words of crawler content."
+      : "Systematische Optimierung von madformed.de für maximale SEO- und KI-Sichtbarkeit. Analyse mit searchreadiness.io, Implementierung von 5 JSON-LD Schemas, semantischem HTML, FAQ-Markup und 2.000+ Wörtern Crawler-Content.",
+    highlights: isEnglish
+      ? ["5 JSON-LD Schemas", "2,000+ words crawler content", "7/7 semantic HTML tags", "30+ ARIA attributes", "Near-perfect scores"]
+      : ["5 JSON-LD Schemas", "2.000+ Wörter Crawler-Content", "7/7 semantische HTML-Tags", "30+ ARIA-Attribute", "Nahezu perfekte Scores"],
+    linkText: isEnglish ? "View full Case Report" : "Case Report ansehen",
+    linkHref: "/case-report",
+  };
 
   const contactPath = isEnglish ? "/en/contact" : "/kontakt";
 
@@ -168,9 +182,11 @@ export default function Projekte() {
             subtitle={labels.references.subtitle}
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projectRefsLabels.map((project, index) => {
-              const industryIcon = project.industry === "Cannabis" ? Leaf 
-                : project.industry === "Medical Technology" || project.industry === "Medizintechnik" ? Stethoscope 
+            {projectRefsLabels.map((project: any, index: number) => {
+              const label = project.industry || project.category || "";
+              const industryIcon = label === "Cannabis" || label === "cannabis" ? Leaf 
+                : label === "Medical Technology" || label === "Medizintechnik" || label === "medtech" ? Stethoscope
+                : label === "ki" || label === "AI" ? Bot
                 : ShoppingCart;
               const Icon = industryIcon;
               return (
@@ -184,7 +200,7 @@ export default function Projekte() {
                       <Icon className="w-5 h-5 text-brand-green" />
                     </div>
                     <span className="text-xs font-medium text-brand-green uppercase tracking-wide">
-                      {project.industry}
+                      {label}
                     </span>
                   </div>
                   <h3 className="font-semibold text-brand-dark mb-2">{project.title}</h3>
@@ -193,6 +209,56 @@ export default function Projekte() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20" data-testid="section-case-report">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            title={isEnglish ? "Case Report" : "Case Report"}
+            subtitle={isEnglish ? "Documented project with measurable results" : "Dokumentiertes Projekt mit messbaren Ergebnissen"}
+          />
+          <Card className="p-6 md:p-8 bg-gradient-to-r from-[#5FB94E]/5 to-[#1E9BD9]/5 border-[#5FB94E]/30" data-testid="card-case-report">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1E9BD9]/10 rounded-full text-[#1E9BD9] text-sm font-medium mb-3">
+                  <Search className="w-4 h-4" />
+                  searchreadiness.io
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-brand-dark mb-2">{caseReport.title}</h3>
+                <p className="text-sm text-brand-dark/50 mb-3">{caseReport.subtitle}</p>
+                <p className="text-brand-dark/70 mb-4 leading-relaxed">{caseReport.description}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {caseReport.highlights.map((item, i) => (
+                    <span key={i} className="inline-flex items-center gap-1 text-xs font-medium bg-white border border-brand-grey/20 text-brand-dark/70 px-2.5 py-1 rounded-full">
+                      <CheckCircle2 className="w-3 h-3 text-[#5FB94E]" />
+                      {item}
+                    </span>
+                  ))}
+                </div>
+                <Link href={caseReport.linkHref}>
+                  <Button className="bg-[#5FB94E] text-white" data-testid="button-case-report-link">
+                    {caseReport.linkText}
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
+              <div className="md:w-48 flex flex-row md:flex-col gap-3 md:justify-center">
+                <div className="flex-1 text-center p-3 bg-white rounded-lg border border-brand-grey/20">
+                  <div className="text-2xl font-bold text-[#5FB94E]">5</div>
+                  <div className="text-xs text-brand-dark/60">JSON-LD Schemas</div>
+                </div>
+                <div className="flex-1 text-center p-3 bg-white rounded-lg border border-brand-grey/20">
+                  <div className="text-2xl font-bold text-[#1E9BD9]">2.011</div>
+                  <div className="text-xs text-brand-dark/60">{isEnglish ? "Words" : "Wörter"}</div>
+                </div>
+                <div className="flex-1 text-center p-3 bg-white rounded-lg border border-brand-grey/20">
+                  <div className="text-2xl font-bold text-[#5FB94E]">30+</div>
+                  <div className="text-xs text-brand-dark/60">ARIA Attrs</div>
+                </div>
+              </div>
+            </div>
+          </Card>
         </div>
       </section>
 
