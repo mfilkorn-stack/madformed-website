@@ -1,5 +1,13 @@
+# MadforMed GmbH - robots.txt
 User-agent: *
 Allow: /
+
+# Sitemaps
+Sitemap: https://madformed.de/sitemap.xml
+
+# Crawl-delay (optional)
 Crawl-delay: 1
 
-Sitemap: https://madformed.de/sitemap.xml
+# LLM resources
+# German: https://madformed.de/llms.txt
+# English: https://madformed.de/llms-en.txt

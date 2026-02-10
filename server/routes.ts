@@ -3,9 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { contactFormSchema } from "@shared/schema";
 
-const SITE_URL = process.env.NODE_ENV === 'production' 
-  ? (process.env.SITE_URL || 'https://madformed.de')
-  : 'http://localhost:5000';
+const SITE_URL = process.env.SITE_URL || 'https://madformed.de';
 
 const STATIC_PAGES_DE = [
   { path: '/', priority: 1.0, changefreq: 'weekly' },
