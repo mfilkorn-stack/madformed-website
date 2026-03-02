@@ -43,10 +43,21 @@ export class MemStorage implements IStorage {
   private users: Map<string, User>;
   private rateLimitMap: Map<string, number>;
   private readonly RATE_LIMIT_WINDOW = 60000;
+  private readonly RATE_LIMIT_CLEANUP_INTERVAL = 300000; // 5 minutes
 
   constructor() {
     this.users = new Map();
     this.rateLimitMap = new Map();
+
+    // Periodically clean up stale rate limit entries to prevent memory leak
+    setInterval(() => {
+      const now = Date.now();
+      for (const [ip, timestamp] of this.rateLimitMap) {
+        if (now - timestamp > this.RATE_LIMIT_WINDOW) {
+          this.rateLimitMap.delete(ip);
+        }
+      }
+    }, this.RATE_LIMIT_CLEANUP_INTERVAL);
   }
 
   async getUser(id: string): Promise<User | undefined> {
@@ -75,9 +86,7 @@ export class MemStorage implements IStorage {
     leads.push(contactLead);
     writeLeadsFile(leads);
     
-    console.log(`[Contact Lead] New inquiry from ${lead.name} (${lead.firma}) - Topic: ${lead.thema}`);
-    console.log(`  Email: ${lead.email}`);
-    console.log(`  Message: ${lead.nachricht.substring(0, 100)}...`);
+    console.log(`[Contact Lead] New inquiry - Topic: ${lead.thema} (ID: ${id})`);
     
     return contactLead;
   }

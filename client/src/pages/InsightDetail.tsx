@@ -1,10 +1,27 @@
 import { Link, useParams } from "wouter";
+import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
 import { getPostBySlug, blogPosts } from "@/content/posts";
 import { ArrowLeft, ArrowRight, Calendar, User, Tag, Leaf, Monitor, Brain, ShoppingCart } from "lucide-react";
+
+/** Escape HTML special characters to prevent XSS */
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+/** Convert plain text blog content to safe HTML */
+function renderSafeContent(content: string): string {
+  return escapeHtml(content)
+    .replace(/\n/g, "<br />");
+}
 
 const categoryLabels: Record<string, string> = {
   cannabis: "Cannabis",
@@ -134,9 +151,9 @@ export default function InsightDetail() {
             </div>
           </div>
 
-          <div 
+          <div
             className="prose prose-lg max-w-none prose-headings:text-brand-dark prose-p:text-brand-dark/80 prose-a:text-brand-green prose-strong:text-brand-dark prose-ul:text-brand-dark/80 prose-li:text-brand-dark/80"
-            dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, "<br />") }}
+            dangerouslySetInnerHTML={{ __html: renderSafeContent(post.content) }}
           />
 
           <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t border-brand-grey/20">

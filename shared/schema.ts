@@ -34,12 +34,12 @@ export const insertContactLeadSchema = createInsertSchema(contactLeads).omit({
 });
 
 export const contactFormSchema = z.object({
-  name: z.string().min(2, "Name muss mindestens 2 Zeichen lang sein"),
-  firma: z.string().min(1, "Bitte geben Sie Ihre Firma an"),
-  email: z.string().email("Bitte geben Sie eine gültige E-Mail-Adresse ein"),
-  telefon: z.string().optional(),
+  name: z.string().min(2, "Name muss mindestens 2 Zeichen lang sein").max(200),
+  firma: z.string().min(1, "Bitte geben Sie Ihre Firma an").max(200),
+  email: z.string().email("Bitte geben Sie eine gültige E-Mail-Adresse ein").max(254),
+  telefon: z.string().max(30).optional(),
   thema: z.enum(["cannabis", "medizintechnik", "allgemein"]),
-  nachricht: z.string().min(10, "Nachricht muss mindestens 10 Zeichen lang sein"),
+  nachricht: z.string().min(10, "Nachricht muss mindestens 10 Zeichen lang sein").max(5000),
   honeypot: z.string().max(0).optional(),
 });
 
