@@ -58,7 +58,8 @@ function Router() {
         <Route path="/en/contact" component={Kontakt} />
         <Route path="/en/legal-notice" component={ImpressumEN} />
         <Route path="/en/privacy-policy" component={DatenschutzEN} />
-        
+        <Route path="/en/case-report" component={CaseReport} />
+
         <Route component={NotFound} />
       </Switch>
     </Layout>

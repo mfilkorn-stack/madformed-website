@@ -27,6 +27,7 @@ const PATH_MAPPINGS: Record<string, string> = {
   "/kontakt": "/en/contact",
   "/impressum": "/en/legal-notice",
   "/datenschutz": "/en/privacy-policy",
+  "/case-report": "/en/case-report",
   "/": "/en",
 };
 

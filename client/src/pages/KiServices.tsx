@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -45,6 +45,8 @@ const targetGroupIcons: Record<string, React.ElementType> = {
 };
 
 export default function KiServices() {
+  const [location] = useLocation();
+  const isEnglish = location.startsWith("/en");
   const faqItems = kiFaqs.map(faq => ({ question: faq.question, answer: faq.answer }));
   
   return (
@@ -373,7 +375,7 @@ export default function KiServices() {
                   <p className="text-sm text-brand-dark/60">Von kritischen Scores zu nahezu perfekten Werten in SEO & AI-Readiness</p>
                 </div>
               </div>
-              <Link href="/case-report">
+              <Link href={isEnglish ? "/en/case-report" : "/case-report"}>
                 <Button className="bg-[#1E9BD9] text-white" data-testid="button-searchreadiness-case-report">
                   Case Report ansehen
                   <ArrowRight className="w-4 h-4 ml-2" />

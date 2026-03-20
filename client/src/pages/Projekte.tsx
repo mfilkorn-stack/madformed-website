@@ -81,7 +81,7 @@ export default function Projekte() {
       ? ["5 JSON-LD Schemas", "2,000+ words crawler content", "7/7 semantic HTML tags", "30+ ARIA attributes", "Near-perfect scores"]
       : ["5 JSON-LD Schemas", "2.000+ Wörter Crawler-Content", "7/7 semantische HTML-Tags", "30+ ARIA-Attribute", "Nahezu perfekte Scores"],
     linkText: isEnglish ? "View full Case Report" : "Case Report ansehen",
-    linkHref: "/case-report",
+    linkHref: isEnglish ? "/en/case-report" : "/case-report",
   };
 
   const contactPath = isEnglish ? "/en/contact" : "/kontakt";
