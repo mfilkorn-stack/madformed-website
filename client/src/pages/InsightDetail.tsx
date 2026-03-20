@@ -3,15 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
-import { getPostBySlug, blogPosts } from "@/content/posts";
+import { usePageContent, useBlogContent } from "@/hooks/useContent";
 import { ArrowLeft, ArrowRight, Calendar, User, Tag, Leaf, Monitor, Brain, ShoppingCart } from "lucide-react";
-
-const categoryLabels: Record<string, string> = {
-  cannabis: "Cannabis",
-  medtech: "Medizintechnik",
-  ki: "KI",
-  allgemein: "Allgemein",
-};
 
 interface ServiceLink {
   title: string;
@@ -25,67 +18,80 @@ interface ServiceLink {
   iconColorClass: string;
 }
 
-const categoryToService: Record<string, ServiceLink> = {
-  cannabis: {
-    title: "Cannabis-Beratung",
-    href: "/leistungen/medizinisches-cannabis",
-    description: "EU-GMP/GDP, Supply Chain und Markteintritt",
-    Icon: Leaf,
-    bgClass: "bg-brand-green/5",
-    borderClass: "border-brand-green/20",
-    hoverBorderClass: "hover:border-brand-green",
-    iconBgClass: "bg-brand-green/10",
-    iconColorClass: "text-brand-green"
-  },
-  medtech: {
-    title: "Medizintechnik-Beratung",
-    href: "/leistungen/medizintechnik",
-    description: "Go-to-Market und Sales Enablement",
-    Icon: Monitor,
-    bgClass: "bg-brand-cyan/5",
-    borderClass: "border-brand-cyan/20",
-    hoverBorderClass: "hover:border-brand-cyan",
-    iconBgClass: "bg-brand-cyan/10",
-    iconColorClass: "text-brand-cyan"
-  },
-  ki: {
-    title: "KI-Workshops",
-    href: "/leistungen/ki-sales-bd",
-    description: "Copilot & ChatGPT für Vertriebsteams",
-    Icon: Brain,
-    bgClass: "bg-brand-green/5",
-    borderClass: "border-brand-green/20",
-    hoverBorderClass: "hover:border-brand-green",
-    iconBgClass: "bg-brand-green/10",
-    iconColorClass: "text-brand-green"
-  },
-  allgemein: {
-    title: "Unsere Leistungen",
-    href: "/leistungen",
-    description: "Beratung für Cannabis, Medizintechnik und KI",
-    Icon: ShoppingCart,
-    bgClass: "bg-brand-cyan/5",
-    borderClass: "border-brand-cyan/20",
-    hoverBorderClass: "hover:border-brand-cyan",
-    iconBgClass: "bg-brand-cyan/10",
-    iconColorClass: "text-brand-cyan"
-  }
-};
-
 export default function InsightDetail() {
   const params = useParams();
   const slug = params.slug as string;
-  const post = getPostBySlug(slug);
+  const { isEnglish, paths, labels } = usePageContent();
+  const { blogPosts } = useBlogContent();
+  const post = blogPosts.find(p => p.slug === slug);
+
+  const categoryLabels: Record<string, string> = {
+    cannabis: "Cannabis",
+    medtech: isEnglish ? "Medical Technology" : "Medizintechnik",
+    ki: isEnglish ? "AI" : "KI",
+    allgemein: isEnglish ? "General" : "Allgemein",
+  };
+
+  const categoryToService: Record<string, ServiceLink> = {
+    cannabis: {
+      title: isEnglish ? "Cannabis Consulting" : "Cannabis-Beratung",
+      href: paths.cannabis,
+      description: isEnglish ? "EU-GMP/GDP, supply chain, and market entry" : "EU-GMP/GDP, Supply Chain und Markteintritt",
+      Icon: Leaf,
+      bgClass: "bg-brand-green/5",
+      borderClass: "border-brand-green/20",
+      hoverBorderClass: "hover:border-brand-green",
+      iconBgClass: "bg-brand-green/10",
+      iconColorClass: "text-brand-green"
+    },
+    medtech: {
+      title: isEnglish ? "Medical Technology Consulting" : "Medizintechnik-Beratung",
+      href: paths.medtech,
+      description: isEnglish ? "Go-to-Market and sales enablement" : "Go-to-Market und Sales Enablement",
+      Icon: Monitor,
+      bgClass: "bg-brand-cyan/5",
+      borderClass: "border-brand-cyan/20",
+      hoverBorderClass: "hover:border-brand-cyan",
+      iconBgClass: "bg-brand-cyan/10",
+      iconColorClass: "text-brand-cyan"
+    },
+    ki: {
+      title: isEnglish ? "AI Workshops" : "KI-Workshops",
+      href: paths.kiServices,
+      description: isEnglish ? "Copilot & ChatGPT for sales teams" : "Copilot & ChatGPT für Vertriebsteams",
+      Icon: Brain,
+      bgClass: "bg-brand-green/5",
+      borderClass: "border-brand-green/20",
+      hoverBorderClass: "hover:border-brand-green",
+      iconBgClass: "bg-brand-green/10",
+      iconColorClass: "text-brand-green"
+    },
+    allgemein: {
+      title: isEnglish ? "Our Services" : "Unsere Leistungen",
+      href: paths.services,
+      description: isEnglish ? "Consulting for cannabis, medical technology, and AI" : "Beratung für Cannabis, Medizintechnik und KI",
+      Icon: ShoppingCart,
+      bgClass: "bg-brand-cyan/5",
+      borderClass: "border-brand-cyan/20",
+      hoverBorderClass: "hover:border-brand-cyan",
+      iconBgClass: "bg-brand-cyan/10",
+      iconColorClass: "text-brand-cyan"
+    }
+  };
 
   if (!post) {
     return (
       <div className="bg-brand-light min-h-screen py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-2xl font-bold text-brand-dark mb-4">Artikel nicht gefunden</h1>
-          <p className="text-brand-dark/70 mb-8">Der gesuchte Artikel existiert nicht.</p>
-          <Link href="/insights">
+          <h1 className="text-2xl font-bold text-brand-dark mb-4">
+            {isEnglish ? "Article not found" : "Artikel nicht gefunden"}
+          </h1>
+          <p className="text-brand-dark/70 mb-8">
+            {isEnglish ? "The requested article does not exist." : "Der gesuchte Artikel existiert nicht."}
+          </p>
+          <Link href={paths.insights}>
             <Button className="bg-brand-green hover:bg-brand-green/90 text-white">
-              Zurück zu Insights
+              {isEnglish ? "Back to Insights" : "Zurück zu Insights"}
             </Button>
           </Link>
         </div>
@@ -104,10 +110,10 @@ export default function InsightDetail() {
       />
       <article className="py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/insights">
+          <Link href={paths.insights}>
             <span className="inline-flex items-center text-brand-dark/60 hover:text-brand-green text-sm mb-6 cursor-pointer">
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Zurück zu Insights
+              {isEnglish ? "Back to Insights" : "Zurück zu Insights"}
             </span>
           </Link>
 
@@ -122,34 +128,38 @@ export default function InsightDetail() {
           <div className="flex flex-wrap items-center gap-4 text-sm text-brand-dark/60 mb-8 pb-8 border-b border-brand-grey/20">
             <div className="flex items-center gap-1">
               <Calendar className="w-4 h-4" />
-              <span>{new Date(post.date).toLocaleDateString("de-DE", { 
-                year: "numeric", 
-                month: "long", 
-                day: "numeric" 
+              <span>{new Date(post.date).toLocaleDateString(isEnglish ? "en-GB" : "de-DE", {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
               })}</span>
             </div>
-            <div className="flex items-center gap-1">
-              <User className="w-4 h-4" />
-              <span>{post.author}</span>
-            </div>
+            {post.author && (
+              <div className="flex items-center gap-1">
+                <User className="w-4 h-4" />
+                <span>{post.author}</span>
+              </div>
+            )}
           </div>
 
-          <div 
+          <div
             className="prose prose-lg max-w-none prose-headings:text-brand-dark prose-p:text-brand-dark/80 prose-a:text-brand-green prose-strong:text-brand-dark prose-ul:text-brand-dark/80 prose-li:text-brand-dark/80"
             dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, "<br />") }}
           />
 
-          <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t border-brand-grey/20">
-            <Tag className="w-4 h-4 text-brand-dark/60" />
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="inline-block px-3 py-1 bg-white rounded-full text-xs text-brand-dark/70 border border-brand-grey/20"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+          {post.tags && post.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t border-brand-grey/20">
+              <Tag className="w-4 h-4 text-brand-dark/60" />
+              {post.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-block px-3 py-1 bg-white rounded-full text-xs text-brand-dark/70 border border-brand-grey/20"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </article>
 
@@ -159,7 +169,9 @@ export default function InsightDetail() {
         return (
           <section className="py-12 bg-white border-t border-brand-grey/10">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-xl font-bold text-brand-dark mb-6">Passende Beratungsleistung</h2>
+              <h2 className="text-xl font-bold text-brand-dark mb-6">
+                {isEnglish ? "Related Service" : "Passende Beratungsleistung"}
+              </h2>
               <Link href={service.href}>
                 <Card className={`p-6 ${service.bgClass} ${service.borderClass} ${service.hoverBorderClass} transition-colors cursor-pointer group`}>
                   <div className="flex items-start gap-4">
@@ -172,7 +184,7 @@ export default function InsightDetail() {
                       </h3>
                       <p className="text-sm text-brand-dark/70 mb-2">{service.description}</p>
                       <span className="inline-flex items-center text-brand-green text-sm font-medium">
-                        Mehr erfahren
+                        {labels.learnMore}
                         <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                       </span>
                     </div>
@@ -187,10 +199,12 @@ export default function InsightDetail() {
       {relatedPosts.length > 0 && (
         <section className="py-16 md:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-brand-dark mb-8">Weitere Artikel</h2>
+            <h2 className="text-2xl font-bold text-brand-dark mb-8">
+              {isEnglish ? "More Articles" : "Weitere Artikel"}
+            </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {relatedPosts.map((relatedPost) => (
-                <Link key={relatedPost.slug} href={`/insights/${relatedPost.slug}`}>
+                <Link key={relatedPost.slug} href={`${paths.insights}/${relatedPost.slug}`}>
                   <Card className="p-6 bg-brand-light border-brand-grey/20 hover:border-brand-green transition-colors cursor-pointer group">
                     <div className="inline-block px-2 py-1 bg-brand-green/10 rounded text-brand-green text-xs font-medium mb-3">
                       {categoryLabels[relatedPost.category]}

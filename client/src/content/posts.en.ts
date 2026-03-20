@@ -5,7 +5,8 @@ export const blogPostsEN = [
     excerpt: "Practical tips for medical technology sales teams looking to take their first steps with Copilot and ChatGPT.",
     category: "ki",
     date: "2025-01-20",
-    readTime: "5 min",
+    author: "MadforMed Team",
+    tags: ["AI", "Medical Technology", "Sales", "Copilot", "ChatGPT"],
     content: `
 ## AI as an Everyday Tool
 
@@ -37,7 +38,8 @@ Start with a Kickstart workshop. In 2 hours, your team learns the basics and rec
     excerpt: "Practical prompt templates that every sales representative can use immediately for emails, research, and meeting preparation.",
     category: "ki",
     date: "2025-01-18",
-    readTime: "7 min",
+    author: "MadforMed Team",
+    tags: ["AI", "Prompt Engineering", "Sales", "Templates"],
     content: `
 ## The Art of the Right Question
 
@@ -101,7 +103,8 @@ Try each template once per day. After a week, you'll have your own "prompt libra
     excerpt: "A practical comparison of both tools from a sales perspective – with recommendations for different use cases.",
     category: "ki",
     date: "2025-01-15",
-    readTime: "6 min",
+    author: "MadforMed Team",
+    tags: ["AI", "Copilot", "ChatGPT", "Sales", "Comparison"],
     content: `
 ## Two Tools, Different Strengths
 
@@ -152,7 +155,8 @@ Both tools process your inputs. For sensitive customer data, use the enterprise 
     excerpt: "An analysis of current market developments, regulatory changes, and opportunities for market participants.",
     category: "cannabis",
     date: "2025-01-10",
-    readTime: "8 min",
+    author: "MadforMed Team",
+    tags: ["Cannabis", "Market Analysis", "Germany", "Regulation"],
     content: `
 ## The Market in Transition
 
@@ -201,7 +205,8 @@ The market remains dynamic. Companies that invest in quality and compliance now 
     excerpt: "How the shift to outpatient procedures is changing medical technology – and what this means for manufacturers and distributors.",
     category: "medtech",
     date: "2025-01-05",
-    readTime: "6 min",
+    author: "MadforMed Team",
+    tags: ["Medical Technology", "Outpatient Surgery", "Market Trends"],
     content: `
 ## The Shift to Outpatient
 
@@ -247,7 +252,8 @@ MadforMed supports medical technology companies in strategically and operational
     excerpt: "How modern sales enablement goes beyond classic product training – with practical examples from medical technology.",
     category: "medtech",
     date: "2024-12-28",
-    readTime: "5 min",
+    author: "MadforMed Team",
+    tags: ["Medical Technology", "Sales Enablement", "Training"],
     content: `
 ## Sales Enablement 2.0
 

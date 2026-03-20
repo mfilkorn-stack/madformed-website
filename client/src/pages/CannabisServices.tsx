@@ -8,61 +8,67 @@ import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
 import { ServiceData, FAQData, BreadcrumbData } from "@/components/StructuredData";
 import { RelatedArticles, RelatedServices } from "@/components/RelatedContent";
-import { cannabisServices, cannabisTargetGroups } from "@/content/services";
-import { cannabisFaqs } from "@/content/faqs";
+import { useServicesContent, useFaqsContent, usePageContent } from "@/hooks/useContent";
 import { ArrowRight, Leaf, Users } from "lucide-react";
 
 export default function CannabisServices() {
+  const { cannabisServices, cannabisTargetGroups } = useServicesContent();
+  const { cannabisFaqs } = useFaqsContent();
+  const { isEnglish, paths, labels } = usePageContent();
   const faqItems = cannabisFaqs.map(faq => ({ question: faq.question, answer: faq.answer }));
-  
+
   return (
     <div className="bg-brand-light">
       <SEO
-        title="Medizinisches Cannabis Beratung"
-        description="Beratung für medizinisches Cannabis: Markteintritt, EU-GMP/GDP, Supply Chain, QM-Konzeption. Für Hersteller, Importeure, Großhändler und Apotheken."
+        title={isEnglish ? "Medical Cannabis Consulting" : "Medizinisches Cannabis Beratung"}
+        description={isEnglish
+          ? "Medical cannabis consulting: Market entry, EU-GMP/GDP, supply chain, QM conception. For manufacturers, importers, wholesalers, and pharmacies."
+          : "Beratung für medizinisches Cannabis: Markteintritt, EU-GMP/GDP, Supply Chain, QM-Konzeption. Für Hersteller, Importeure, Großhändler und Apotheken."}
       />
-      <ServiceData 
-        name="Beratung Medizinisches Cannabis" 
-        description="Strategische und operative Beratung für Unternehmen im Bereich medizinisches Cannabis: EU-GMP/GDP-Compliance, Supply Chain, Import, Großhandel und Apothekennetzwerke."
+      <ServiceData
+        name={isEnglish ? "Medical Cannabis Consulting" : "Beratung Medizinisches Cannabis"}
+        description={isEnglish
+          ? "Strategic and operational consulting for companies in the medical cannabis sector: EU-GMP/GDP compliance, supply chain, import, wholesale, and pharmacy networks."
+          : "Strategische und operative Beratung für Unternehmen im Bereich medizinisches Cannabis: EU-GMP/GDP-Compliance, Supply Chain, Import, Großhandel und Apothekennetzwerke."}
         serviceType="Consulting"
       />
       <FAQData items={faqItems} />
       <BreadcrumbData items={[
-        { name: "Start", url: "/" },
-        { name: "Leistungen", url: "/leistungen" },
-        { name: "Medizinisches Cannabis", url: "/leistungen/medizinisches-cannabis" }
+        { name: isEnglish ? "Home" : "Start", url: isEnglish ? "/en" : "/" },
+        { name: isEnglish ? "Services" : "Leistungen", url: paths.services },
+        { name: isEnglish ? "Medical Cannabis" : "Medizinisches Cannabis", url: paths.cannabis }
       ]} />
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm text-brand-dark/60 mb-6">
-            <Link href="/leistungen">
-              <span className="hover:text-brand-green cursor-pointer">Leistungen</span>
+            <Link href={paths.services}>
+              <span className="hover:text-brand-green cursor-pointer">{isEnglish ? "Services" : "Leistungen"}</span>
             </Link>
             <span>/</span>
-            <span className="text-brand-dark">Medizinisches Cannabis</span>
+            <span className="text-brand-dark">{isEnglish ? "Medical Cannabis" : "Medizinisches Cannabis"}</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-green/10 rounded-full text-brand-green text-sm font-medium mb-4">
                 <Leaf className="w-4 h-4" />
-                Beratungsschwerpunkt
+                {isEnglish ? "Consulting Focus" : "Beratungsschwerpunkt"}
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-dark leading-tight mb-6">
-                Medizinisches Cannabis
+                {isEnglish ? "Medical Cannabis" : "Medizinisches Cannabis"}
               </h1>
               <p className="text-lg text-brand-dark/70 mb-6 leading-relaxed">
-                Der deutsche Markt für medizinisches Cannabis ist hochreguliert und 
-                dynamisch. Wir unterstützen Unternehmen bei der strategischen 
-                Positionierung, operativen Umsetzung und Compliance-Sicherung.
+                {isEnglish
+                  ? "The German medical cannabis market is highly regulated and dynamic. We support companies with strategic positioning, operational implementation, and compliance assurance."
+                  : "Der deutsche Markt für medizinisches Cannabis ist hochreguliert und dynamisch. Wir unterstützen Unternehmen bei der strategischen Positionierung, operativen Umsetzung und Compliance-Sicherung."}
               </p>
-              <Link href="/kontakt">
+              <Link href={paths.contact}>
                 <Button
                   size="lg"
                   className="bg-brand-green hover:bg-brand-green/90 text-white"
                   data-testid="button-contact-cannabis"
                 >
-                  Beratungsgespräch vereinbaren
+                  {isEnglish ? "Schedule a consultation" : "Beratungsgespräch vereinbaren"}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
@@ -71,7 +77,7 @@ export default function CannabisServices() {
             <Card className="p-6 bg-white border-brand-grey/20">
               <div className="flex items-center gap-3 mb-4">
                 <Users className="w-5 h-5 text-brand-green" />
-                <h3 className="font-semibold text-brand-dark">Zielgruppen</h3>
+                <h3 className="font-semibold text-brand-dark">{isEnglish ? "Target Groups" : "Zielgruppen"}</h3>
               </div>
               <div className="space-y-4">
                 {cannabisTargetGroups.map((group, index) => (
@@ -89,8 +95,8 @@ export default function CannabisServices() {
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            title="Leistungsbausteine"
-            subtitle="Modulare Beratung – passend zu Ihren Anforderungen"
+            title={isEnglish ? "Service Modules" : "Leistungsbausteine"}
+            subtitle={isEnglish ? "Modular consulting – tailored to your needs" : "Modulare Beratung – passend zu Ihren Anforderungen"}
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {cannabisServices.map((service) => (
@@ -108,8 +114,8 @@ export default function CannabisServices() {
       <section className="py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            title="Häufige Fragen"
-            subtitle="Antworten auf typische Fragen zum Bereich medizinisches Cannabis"
+            title={isEnglish ? "FAQ" : "Häufige Fragen"}
+            subtitle={isEnglish ? "Answers to common questions about medical cannabis" : "Antworten auf typische Fragen zum Bereich medizinisches Cannabis"}
           />
           <Card className="p-6 md:p-8 bg-white border-brand-grey/20">
             <FAQAccordion items={cannabisFaqs} />
@@ -117,43 +123,44 @@ export default function CannabisServices() {
         </div>
       </section>
 
-      <RelatedArticles category="cannabis" title="Insights zu medizinischem Cannabis" />
+      <RelatedArticles category="cannabis" title={isEnglish ? "Insights on Medical Cannabis" : "Insights zu medizinischem Cannabis"} />
 
-      <RelatedServices 
+      <RelatedServices
         services={[
           {
-            title: "Medizintechnik",
-            description: "Go-to-Market und Sales Enablement für Medizintechnik-Unternehmen.",
-            href: "/leistungen/medizintechnik",
+            title: isEnglish ? "Medical Technology" : "Medizintechnik",
+            description: isEnglish ? "Go-to-Market and sales enablement for medical technology companies." : "Go-to-Market und Sales Enablement für Medizintechnik-Unternehmen.",
+            href: paths.medtech,
             icon: "medtech",
             color: "cyan"
           },
           {
-            title: "Medizinalhandel",
-            description: "Vertriebsstrategie und Key Account Management für Händler.",
-            href: "/leistungen/medizinalhandel",
+            title: isEnglish ? "Medical Trade" : "Medizinalhandel",
+            description: isEnglish ? "Sales strategy and key account management for distributors." : "Vertriebsstrategie und Key Account Management für Händler.",
+            href: paths.medizinalhandel,
             icon: "handel",
             color: "cyan"
           }
         ]}
-        title="Verwandte Beratungsbereiche"
+        title={isEnglish ? "Related Consulting Areas" : "Verwandte Beratungsbereiche"}
       />
 
       <section className="py-16 md:py-20 bg-brand-dark">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-green/20 text-brand-green text-sm font-medium rounded-full mb-4">
-            Passend dazu
+            {isEnglish ? "Related" : "Passend dazu"}
           </div>
           <h2 className="text-2xl font-bold text-white mb-4">
-            KI-Enablement für Ihr Team
+            {isEnglish ? "AI Enablement for Your Team" : "KI-Enablement für Ihr Team"}
           </h2>
           <p className="text-white/70 mb-8">
-            Ergänzen Sie Ihre Cannabis-Beratung mit unseren KI-Workshops für Vertrieb und Business Development.
-            Copilot & ChatGPT praxisnah einführen – compliance-bewusst und messbar.
+            {isEnglish
+              ? "Complement your cannabis consulting with our AI workshops for sales and business development. Practical Copilot & ChatGPT introduction – compliance-aware and measurable."
+              : "Ergänzen Sie Ihre Cannabis-Beratung mit unseren KI-Workshops für Vertrieb und Business Development. Copilot & ChatGPT praxisnah einführen – compliance-bewusst und messbar."}
           </p>
-          <Link href="/leistungen/ki-sales-bd">
+          <Link href={paths.kiServices}>
             <Button className="bg-brand-green hover:bg-brand-green/90 text-white">
-              KI-Workshops entdecken
+              {isEnglish ? "Discover AI Workshops" : "KI-Workshops entdecken"}
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
@@ -161,8 +168,8 @@ export default function CannabisServices() {
       </section>
 
       <CTABand
-        title="Cannabis-Beratung anfragen"
-        subtitle="Besprechen Sie Ihr Vorhaben mit uns – unverbindlich und vertraulich."
+        title={isEnglish ? "Request Cannabis Consulting" : "Cannabis-Beratung anfragen"}
+        subtitle={isEnglish ? "Discuss your project with us – non-binding and confidential." : "Besprechen Sie Ihr Vorhaben mit uns – unverbindlich und vertraulich."}
       />
     </div>
   );

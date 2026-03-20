@@ -2,14 +2,7 @@ import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Leaf, Monitor, ShoppingCart, Brain, BookOpen } from "lucide-react";
-import { blogPosts, BlogPost } from "@/content/posts";
-
-interface RelatedArticle {
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: string;
-}
+import { usePageContent, useBlogContent } from "@/hooks/useContent";
 
 interface RelatedService {
   title: string;
@@ -44,24 +37,28 @@ const colorClasses = {
   }
 };
 
-const categoryLabels: Record<string, string> = {
-  cannabis: "Cannabis",
-  medtech: "Medizintechnik",
-  ki: "KI",
-  allgemein: "Allgemein"
-};
-
-export function RelatedArticles({ 
-  category, 
+export function RelatedArticles({
+  category,
   excludeSlug,
   maxItems = 2,
-  title = "Passende Artikel" 
-}: { 
-  category: string; 
+  title
+}: {
+  category: string;
   excludeSlug?: string;
   maxItems?: number;
   title?: string;
 }) {
+  const { isEnglish, paths, labels } = usePageContent();
+  const { blogPosts } = useBlogContent();
+
+  const categoryLabels: Record<string, string> = {
+    cannabis: "Cannabis",
+    medtech: isEnglish ? "Medical Technology" : "Medizintechnik",
+    ki: isEnglish ? "AI" : "KI",
+    allgemein: isEnglish ? "General" : "Allgemein"
+  };
+
+  const defaultTitle = isEnglish ? "Related Articles" : "Passende Artikel";
   const articles = blogPosts
     .filter(post => post.category === category && post.slug !== excludeSlug)
     .slice(0, maxItems);
@@ -73,11 +70,11 @@ export function RelatedArticles({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2 mb-6">
           <BookOpen className="w-5 h-5 text-brand-green" />
-          <h2 className="text-xl font-bold text-brand-dark">{title}</h2>
+          <h2 className="text-xl font-bold text-brand-dark">{title || defaultTitle}</h2>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           {articles.map((article) => (
-            <Link key={article.slug} href={`/insights/${article.slug}`}>
+            <Link key={article.slug} href={`${paths.insights}/${article.slug}`}>
               <Card className="p-6 bg-brand-light border-brand-grey/20 hover:border-brand-green transition-colors cursor-pointer group h-full">
                 <div className="inline-block px-2 py-1 bg-brand-green/10 rounded text-brand-green text-xs font-medium mb-3">
                   {categoryLabels[article.category]}
@@ -91,9 +88,9 @@ export function RelatedArticles({
           ))}
         </div>
         <div className="text-center mt-6">
-          <Link href="/insights">
+          <Link href={paths.insights}>
             <Button variant="outline" className="border-brand-green text-brand-green hover:bg-brand-green/5">
-              Alle Insights ansehen
+              {isEnglish ? "View all Insights" : "Alle Insights ansehen"}
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
@@ -103,22 +100,25 @@ export function RelatedArticles({
   );
 }
 
-export function RelatedServices({ 
+export function RelatedServices({
   services,
-  title = "Weitere Leistungen" 
-}: { 
+  title
+}: {
   services: RelatedService[];
   title?: string;
 }) {
+  const { isEnglish, labels } = usePageContent();
+  const defaultTitle = isEnglish ? "More Services" : "Weitere Leistungen";
+
   return (
     <section className="py-12 bg-brand-light border-t border-brand-grey/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-xl font-bold text-brand-dark mb-6">{title}</h2>
+        <h2 className="text-xl font-bold text-brand-dark mb-6">{title || defaultTitle}</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => {
             const Icon = serviceIcons[service.icon];
             const colors = colorClasses[service.color];
-            
+
             return (
               <Link key={service.href} href={service.href}>
                 <Card className={`p-6 bg-white border-brand-grey/20 ${colors.hoverBorder} transition-colors cursor-pointer group h-full`}>
@@ -130,7 +130,7 @@ export function RelatedServices({
                   </h3>
                   <p className="text-sm text-brand-dark/70 mb-4">{service.description}</p>
                   <span className="inline-flex items-center text-brand-green text-sm font-medium">
-                    Mehr erfahren
+                    {labels.learnMore}
                     <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </Card>
@@ -143,16 +143,18 @@ export function RelatedServices({
   );
 }
 
-export function ServiceCTA({ 
-  service 
-}: { 
+export function ServiceCTA({
+  service
+}: {
   service: "cannabis" | "medtech" | "handel" | "ki";
 }) {
+  const { isEnglish, paths } = usePageContent();
+
   const serviceData = {
     cannabis: {
-      title: "Medizinisches Cannabis",
-      description: "EU-GMP/GDP-Beratung, Markteintritt und Supply Chain für Cannabis-Unternehmen.",
-      href: "/leistungen/medizinisches-cannabis",
+      title: isEnglish ? "Medical Cannabis" : "Medizinisches Cannabis",
+      description: isEnglish ? "EU-GMP/GDP consulting, market entry, and supply chain for cannabis companies." : "EU-GMP/GDP-Beratung, Markteintritt und Supply Chain für Cannabis-Unternehmen.",
+      href: paths.cannabis,
       bgClass: "bg-brand-green/5",
       borderClass: "border-brand-green/20",
       hoverBorderClass: "hover:border-brand-green",
@@ -160,9 +162,9 @@ export function ServiceCTA({
       iconColorClass: "text-brand-green"
     },
     medtech: {
-      title: "Medizintechnik",
-      description: "Go-to-Market, Prozessoptimierung und Sales Enablement für Medizintechnik-Unternehmen.",
-      href: "/leistungen/medizintechnik",
+      title: isEnglish ? "Medical Technology" : "Medizintechnik",
+      description: isEnglish ? "Go-to-Market, process optimization, and sales enablement for medical technology companies." : "Go-to-Market, Prozessoptimierung und Sales Enablement für Medizintechnik-Unternehmen.",
+      href: paths.medtech,
       bgClass: "bg-brand-cyan/5",
       borderClass: "border-brand-cyan/20",
       hoverBorderClass: "hover:border-brand-cyan",
@@ -170,9 +172,9 @@ export function ServiceCTA({
       iconColorClass: "text-brand-cyan"
     },
     handel: {
-      title: "Medizinalhandel",
-      description: "Vertriebsstrategie und Key Account Management für Händler und Distributoren.",
-      href: "/leistungen/medizinalhandel",
+      title: isEnglish ? "Medical Trade" : "Medizinalhandel",
+      description: isEnglish ? "Sales strategy and key account management for distributors." : "Vertriebsstrategie und Key Account Management für Händler und Distributoren.",
+      href: paths.medizinalhandel,
       bgClass: "bg-brand-cyan/5",
       borderClass: "border-brand-cyan/20",
       hoverBorderClass: "hover:border-brand-cyan",
@@ -180,9 +182,9 @@ export function ServiceCTA({
       iconColorClass: "text-brand-cyan"
     },
     ki: {
-      title: "KI für Sales & BD",
-      description: "Copilot & ChatGPT Workshops, Prompt-Playbooks und Enablement-Programme.",
-      href: "/leistungen/ki-sales-bd",
+      title: isEnglish ? "AI for Sales & BD" : "KI für Sales & BD",
+      description: isEnglish ? "Copilot & ChatGPT workshops, prompt playbooks, and enablement programs." : "Copilot & ChatGPT Workshops, Prompt-Playbooks und Enablement-Programme.",
+      href: paths.kiServices,
       bgClass: "bg-brand-green/5",
       borderClass: "border-brand-green/20",
       hoverBorderClass: "hover:border-brand-green",
