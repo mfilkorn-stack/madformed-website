@@ -8,61 +8,67 @@ import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
 import { ServiceData, FAQData, BreadcrumbData } from "@/components/StructuredData";
 import { RelatedServices } from "@/components/RelatedContent";
-import { medizinalhandelServices, medizinalhandelTargetGroups } from "@/content/services";
-import { medizinalhandelFaqs } from "@/content/faqs";
+import { useServicesContent, useFaqsContent, usePageContent } from "@/hooks/useContent";
 import { ArrowRight, ShoppingCart, Users, CheckCircle2 } from "lucide-react";
 
 export default function MedizinalhandelServices() {
+  const { medizinalhandelServices, medizinalhandelTargetGroups } = useServicesContent();
+  const { medizinalhandelFaqs } = useFaqsContent();
+  const { isEnglish, paths, labels } = usePageContent();
   const faqItems = medizinalhandelFaqs.map(faq => ({ question: faq.question, answer: faq.answer }));
-  
+
   return (
     <div className="bg-brand-light">
       <SEO
-        title="Medizinalhandel Beratung"
-        description="Beratung für den Medizinalhandel: Vertriebsstrategie, Lieferantenmanagement, Logistik, Key Account Management. Für Händler und Distributoren."
+        title={isEnglish ? "Medical Trade Consulting" : "Medizinalhandel Beratung"}
+        description={isEnglish
+          ? "Consulting for medical trade: Sales strategy, supplier management, logistics, key account management. For distributors and traders."
+          : "Beratung für den Medizinalhandel: Vertriebsstrategie, Lieferantenmanagement, Logistik, Key Account Management. Für Händler und Distributoren."}
       />
-      <ServiceData 
-        name="Beratung Medizinalhandel" 
-        description="Spezialisierte Beratung für den Handel mit Medizinprodukten: Vertriebsstrategie, Lieferantenmanagement, Key Account Management und Prozessoptimierung."
+      <ServiceData
+        name={isEnglish ? "Medical Trade Consulting" : "Beratung Medizinalhandel"}
+        description={isEnglish
+          ? "Specialized consulting for medical products trade: Sales strategy, supplier management, key account management, and process optimization."
+          : "Spezialisierte Beratung für den Handel mit Medizinprodukten: Vertriebsstrategie, Lieferantenmanagement, Key Account Management und Prozessoptimierung."}
         serviceType="Consulting"
       />
       <FAQData items={faqItems} />
       <BreadcrumbData items={[
-        { name: "Start", url: "/" },
-        { name: "Leistungen", url: "/leistungen" },
-        { name: "Medizinalhandel", url: "/leistungen/medizinalhandel" }
+        { name: isEnglish ? "Home" : "Start", url: isEnglish ? "/en" : "/" },
+        { name: isEnglish ? "Services" : "Leistungen", url: paths.services },
+        { name: isEnglish ? "Medical Trade" : "Medizinalhandel", url: paths.medizinalhandel }
       ]} />
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm text-brand-dark/60 mb-6">
-            <Link href="/leistungen">
-              <span className="hover:text-brand-cyan cursor-pointer">Leistungen</span>
+            <Link href={paths.services}>
+              <span className="hover:text-brand-cyan cursor-pointer">{isEnglish ? "Services" : "Leistungen"}</span>
             </Link>
             <span>/</span>
-            <span className="text-brand-dark">Medizinalhandel</span>
+            <span className="text-brand-dark">{isEnglish ? "Medical Trade" : "Medizinalhandel"}</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-cyan/10 rounded-full text-brand-cyan text-sm font-medium mb-4">
                 <ShoppingCart className="w-4 h-4" />
-                Beratungsschwerpunkt
+                {isEnglish ? "Consulting Focus" : "Beratungsschwerpunkt"}
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-dark leading-tight mb-6">
-                Medizinalhandel
+                {isEnglish ? "Medical Trade" : "Medizinalhandel"}
               </h1>
               <p className="text-lg text-brand-dark/70 mb-6 leading-relaxed">
-                Spezialisierte Beratung für den Handel mit Medizinprodukten – von der 
-                Vertriebsstrategie über Lieferantenmanagement bis zur Kundenbetreuung. 
-                Wir verstehen die Besonderheiten des rein handelnden Geschäftsmodells.
+                {isEnglish
+                  ? "Specialized consulting for medical products trade – from sales strategy to supplier management to customer care. We understand the specifics of the pure trading business model."
+                  : "Spezialisierte Beratung für den Handel mit Medizinprodukten – von der Vertriebsstrategie über Lieferantenmanagement bis zur Kundenbetreuung. Wir verstehen die Besonderheiten des rein handelnden Geschäftsmodells."}
               </p>
-              <Link href="/kontakt">
+              <Link href={paths.contact}>
                 <Button
                   size="lg"
                   className="bg-brand-cyan hover:bg-brand-cyan/90 text-white"
                   data-testid="button-contact-handel"
                 >
-                  Beratungsgespräch vereinbaren
+                  {isEnglish ? "Schedule a consultation" : "Beratungsgespräch vereinbaren"}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
@@ -71,7 +77,7 @@ export default function MedizinalhandelServices() {
             <Card className="p-6 bg-white border-brand-grey/20">
               <div className="flex items-center gap-3 mb-4">
                 <Users className="w-5 h-5 text-brand-cyan" />
-                <h3 className="font-semibold text-brand-dark">Zielgruppen</h3>
+                <h3 className="font-semibold text-brand-dark">{isEnglish ? "Target Groups" : "Zielgruppen"}</h3>
               </div>
               <div className="space-y-4">
                 {medizinalhandelTargetGroups.map((group, index) => (
@@ -89,8 +95,8 @@ export default function MedizinalhandelServices() {
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            title="Leistungsbausteine"
-            subtitle="Praxisorientierte Beratung für den Medizinalhandel"
+            title={isEnglish ? "Service Modules" : "Leistungsbausteine"}
+            subtitle={isEnglish ? "Practice-oriented consulting for medical trade" : "Praxisorientierte Beratung für den Medizinalhandel"}
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {medizinalhandelServices.map((service) => (
@@ -109,38 +115,41 @@ export default function MedizinalhandelServices() {
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            title="Unsere Expertise"
-            subtitle="Was uns im Medizinalhandel auszeichnet"
+            title={isEnglish ? "Our Expertise" : "Unsere Expertise"}
+            subtitle={isEnglish ? "What sets us apart in medical trade" : "Was uns im Medizinalhandel auszeichnet"}
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card className="p-6 bg-white border-brand-grey/20">
               <div className="w-12 h-12 bg-brand-cyan/10 rounded-lg flex items-center justify-center mb-4">
                 <CheckCircle2 className="w-6 h-6 text-brand-cyan" />
               </div>
-              <h3 className="font-semibold text-brand-dark mb-2">Produktkenntnisse</h3>
+              <h3 className="font-semibold text-brand-dark mb-2">{isEnglish ? "Product Knowledge" : "Produktkenntnisse"}</h3>
               <p className="text-sm text-brand-dark/70">
-                Tiefes Verständnis für Implantate, Investitionsgüter und Verbrauchsmaterialien 
-                in Orthopädie, Chirurgie und Anästhesie.
+                {isEnglish
+                  ? "Deep understanding of implants, capital equipment, and consumables in orthopedics, surgery, and anesthesia."
+                  : "Tiefes Verständnis für Implantate, Investitionsgüter und Verbrauchsmaterialien in Orthopädie, Chirurgie und Anästhesie."}
               </p>
             </Card>
             <Card className="p-6 bg-white border-brand-grey/20">
               <div className="w-12 h-12 bg-brand-cyan/10 rounded-lg flex items-center justify-center mb-4">
                 <CheckCircle2 className="w-6 h-6 text-brand-cyan" />
               </div>
-              <h3 className="font-semibold text-brand-dark mb-2">Marktverständnis</h3>
+              <h3 className="font-semibold text-brand-dark mb-2">{isEnglish ? "Market Understanding" : "Marktverständnis"}</h3>
               <p className="text-sm text-brand-dark/70">
-                Jahrelange Erfahrung in der Zusammenarbeit mit Kliniken, Praxen, 
-                OP-Zentren und Einkaufsgemeinschaften.
+                {isEnglish
+                  ? "Years of experience working with clinics, practices, surgical centers, and purchasing groups."
+                  : "Jahrelange Erfahrung in der Zusammenarbeit mit Kliniken, Praxen, OP-Zentren und Einkaufsgemeinschaften."}
               </p>
             </Card>
             <Card className="p-6 bg-white border-brand-grey/20">
               <div className="w-12 h-12 bg-brand-cyan/10 rounded-lg flex items-center justify-center mb-4">
                 <CheckCircle2 className="w-6 h-6 text-brand-cyan" />
               </div>
-              <h3 className="font-semibold text-brand-dark mb-2">Herstellernetzwerk</h3>
+              <h3 className="font-semibold text-brand-dark mb-2">{isEnglish ? "Manufacturer Network" : "Herstellernetzwerk"}</h3>
               <p className="text-sm text-brand-dark/70">
-                Langjährige Beziehungen zu führenden Medizintechnik-Herstellern 
-                und Kenntnis der Distributionsmodelle.
+                {isEnglish
+                  ? "Long-standing relationships with leading medical technology manufacturers and knowledge of distribution models."
+                  : "Langjährige Beziehungen zu führenden Medizintechnik-Herstellern und Kenntnis der Distributionsmodelle."}
               </p>
             </Card>
           </div>
@@ -150,8 +159,8 @@ export default function MedizinalhandelServices() {
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            title="Häufige Fragen"
-            subtitle="Antworten auf typische Fragen zur Medizinalhandel-Beratung"
+            title={isEnglish ? "FAQ" : "Häufige Fragen"}
+            subtitle={isEnglish ? "Answers to common questions about medical trade consulting" : "Antworten auf typische Fragen zur Medizinalhandel-Beratung"}
           />
           <Card className="p-6 md:p-8 bg-brand-light border-brand-grey/20">
             <FAQAccordion items={medizinalhandelFaqs} />
@@ -159,41 +168,42 @@ export default function MedizinalhandelServices() {
         </div>
       </section>
 
-      <RelatedServices 
+      <RelatedServices
         services={[
           {
-            title: "Medizinisches Cannabis",
-            description: "EU-GMP/GDP-Beratung und Markteintritt für Cannabis-Unternehmen.",
-            href: "/leistungen/medizinisches-cannabis",
+            title: isEnglish ? "Medical Cannabis" : "Medizinisches Cannabis",
+            description: isEnglish ? "EU-GMP/GDP consulting and market entry for cannabis companies." : "EU-GMP/GDP-Beratung und Markteintritt für Cannabis-Unternehmen.",
+            href: paths.cannabis,
             icon: "cannabis",
             color: "green"
           },
           {
-            title: "Medizintechnik",
-            description: "Go-to-Market und Sales Enablement für Medizintechnik-Unternehmen.",
-            href: "/leistungen/medizintechnik",
+            title: isEnglish ? "Medical Technology" : "Medizintechnik",
+            description: isEnglish ? "Go-to-Market and sales enablement for medical technology companies." : "Go-to-Market und Sales Enablement für Medizintechnik-Unternehmen.",
+            href: paths.medtech,
             icon: "medtech",
             color: "cyan"
           }
         ]}
-        title="Verwandte Beratungsbereiche"
+        title={isEnglish ? "Related Consulting Areas" : "Verwandte Beratungsbereiche"}
       />
 
       <section className="py-16 md:py-20 bg-brand-dark">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-brand-green/20 to-brand-cyan/20 text-brand-cyan text-sm font-medium rounded-full mb-4">
-            Passend dazu
+            {isEnglish ? "Related" : "Passend dazu"}
           </div>
           <h2 className="text-2xl font-bold text-white mb-4">
-            KI-Enablement für Ihr Vertriebsteam
+            {isEnglish ? "AI Enablement for Your Sales Team" : "KI-Enablement für Ihr Vertriebsteam"}
           </h2>
           <p className="text-white/70 mb-8">
-            Steigern Sie die Produktivität Ihres Handelsvertriebs mit unseren KI-Workshops.
-            Copilot & ChatGPT für E-Mails, Angebote und Account-Vorbereitung – praxisnah und messbar.
+            {isEnglish
+              ? "Boost your trade sales team's productivity with our AI workshops. Copilot & ChatGPT for emails, proposals, and account preparation – practical and measurable."
+              : "Steigern Sie die Produktivität Ihres Handelsvertriebs mit unseren KI-Workshops. Copilot & ChatGPT für E-Mails, Angebote und Account-Vorbereitung – praxisnah und messbar."}
           </p>
-          <Link href="/leistungen/ki-sales-bd">
+          <Link href={paths.kiServices}>
             <Button className="bg-gradient-to-r from-brand-green to-brand-cyan hover:from-brand-green/90 hover:to-brand-cyan/90 text-white">
-              KI-Workshops entdecken
+              {isEnglish ? "Discover AI Workshops" : "KI-Workshops entdecken"}
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
@@ -201,8 +211,8 @@ export default function MedizinalhandelServices() {
       </section>
 
       <CTABand
-        title="Medizinalhandel-Beratung anfragen"
-        subtitle="Lassen Sie uns Ihre Herausforderungen besprechen."
+        title={isEnglish ? "Request Medical Trade Consulting" : "Medizinalhandel-Beratung anfragen"}
+        subtitle={isEnglish ? "Let's discuss your challenges." : "Lassen Sie uns Ihre Herausforderungen besprechen."}
       />
     </div>
   );
