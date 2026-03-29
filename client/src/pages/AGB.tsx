@@ -118,12 +118,20 @@ export default function AGB() {
                 KI-Verordnung (EU) 2024/1689 (EU AI Act).
               </p>
 
-              <h3 className="font-medium text-brand-dark mb-2 mt-4">6.1 Eingesetzte Werkzeuge</h3>
-              <p className="text-sm text-brand-dark/70 leading-relaxed">
-                Zum Einsatz kommen insbesondere Anthropic Claude / Claude Code (Anthropic, PBC, USA)
-                sowie ggf. weitere KI-Tools wie OpenAI ChatGPT, Microsoft Copilot oder GitHub Copilot.
-                Die konkret eingesetzten Werkzeuge können sich im Rahmen der technologischen
-                Weiterentwicklung ändern.
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">6.1 Eingesetzte Werkzeuge und Plattformen</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed mb-2">
+                Zum Einsatz kommen insbesondere:
+              </p>
+              <ul className="text-sm text-brand-dark/70 leading-relaxed list-disc list-inside space-y-1">
+                <li>Anthropic Claude / Claude Code (Anthropic, PBC, USA) – KI-gestützte
+                  Text- und Code-Erstellung</li>
+                <li>GitHub / GitHub Copilot (GitHub, Inc. / Microsoft Corporation, USA) –
+                  Versionsverwaltung, kollaborative Entwicklung und KI-gestützte Code-Unterstützung</li>
+              </ul>
+              <p className="text-sm text-brand-dark/70 leading-relaxed mt-2">
+                Der Einsatz weiterer KI-Tools (z. B. OpenAI ChatGPT, Microsoft Copilot) kann im
+                Rahmen der Leistungserbringung erfolgen. Die konkret eingesetzten Werkzeuge können
+                sich im Rahmen der technologischen Weiterentwicklung ändern.
               </p>
 
               <h3 className="font-medium text-brand-dark mb-2 mt-4">6.2 Einsatzbereiche</h3>

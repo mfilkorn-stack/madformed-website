@@ -118,11 +118,19 @@ export default function AGBEN() {
                 Art. 50 of the AI Act (EU) 2024/1689 (EU AI Act).
               </p>
 
-              <h3 className="font-medium text-brand-dark mb-2 mt-4">6.1 Tools Used</h3>
-              <p className="text-sm text-brand-dark/70 leading-relaxed">
-                Tools used include in particular Anthropic Claude / Claude Code (Anthropic, PBC, USA)
-                as well as potentially other AI tools such as OpenAI ChatGPT, Microsoft Copilot, or
-                GitHub Copilot. The specific tools used may change as technology evolves.
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">6.1 Tools and Platforms Used</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed mb-2">
+                Tools used include in particular:
+              </p>
+              <ul className="text-sm text-brand-dark/70 leading-relaxed list-disc list-inside space-y-1">
+                <li>Anthropic Claude / Claude Code (Anthropic, PBC, USA) – AI-assisted text
+                  and code creation</li>
+                <li>GitHub / GitHub Copilot (GitHub, Inc. / Microsoft Corporation, USA) – version
+                  control, collaborative development, and AI-assisted code support</li>
+              </ul>
+              <p className="text-sm text-brand-dark/70 leading-relaxed mt-2">
+                Additional AI tools (e.g., OpenAI ChatGPT, Microsoft Copilot) may be used in the
+                course of service delivery. The specific tools used may change as technology evolves.
               </p>
 
               <h3 className="font-medium text-brand-dark mb-2 mt-4">6.2 Areas of Application</h3>

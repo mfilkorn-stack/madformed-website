@@ -261,9 +261,10 @@ export default function DatenschutzEN() {
               <h3 className="font-medium text-brand-dark mb-2 mt-4">Tools and Providers Used</h3>
               <ul className="text-sm text-brand-dark/70 leading-relaxed list-disc list-inside space-y-1">
                 <li>Anthropic Claude / Claude Code – Anthropic, PBC, San Francisco, USA</li>
+                <li>GitHub / GitHub Copilot – GitHub, Inc. (Microsoft Corporation), San Francisco, USA</li>
               </ul>
               <p className="text-sm text-brand-dark/70 leading-relaxed mt-2">
-                Additional AI tools (e.g., OpenAI ChatGPT, GitHub Copilot) may be used in the
+                Additional AI tools (e.g., OpenAI ChatGPT, Microsoft Copilot) may be used in the
                 course of development and content creation.
               </p>
 
@@ -310,7 +311,48 @@ export default function DatenschutzEN() {
 
             <div>
               <h2 className="text-lg font-semibold text-brand-dark mb-3">
-                11. Data Sharing
+                11. Development Platform (GitHub)
+              </h2>
+              <p className="text-sm text-brand-dark/70 leading-relaxed">
+                For the development and version control of this website's source code, we use
+                GitHub, a service provided by GitHub, Inc. (Microsoft Corporation), 88 Colin P
+                Kelly Jr St, San Francisco, CA 94107, USA.
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Purpose of Use</h3>
+              <ul className="text-sm text-brand-dark/70 leading-relaxed list-disc list-inside space-y-1">
+                <li>Version control and storage of website source code</li>
+                <li>Collaborative software development and code reviews</li>
+                <li>Automated build and deployment processes (CI/CD)</li>
+              </ul>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Data Processed</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed">
+                Only source code and technical configuration files are stored in the GitHub
+                repository. <strong>No personal data of website visitors is transmitted to
+                GitHub.</strong>
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Data Transfer to Third Countries</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed">
+                GitHub is based in the USA. Data transfer is carried out on the basis of Standard
+                Contractual Clauses (SCCs) of the EU Commission pursuant to Art. 46(2)(c) GDPR
+                and on the basis of the EU-US Data Privacy Framework (DPF). Microsoft/GitHub is
+                certified under the DPF.
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Legal Basis</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed">
+                Art. 6(1)(f) GDPR (legitimate interest in secure and efficient software
+                development and version control).
+              </p>
+            </div>
+
+            <hr className="border-brand-grey/20" />
+
+            <div>
+              <h2 className="text-lg font-semibold text-brand-dark mb-3">
+                12. Data Sharing
               </h2>
               <p className="text-sm text-brand-dark/70 leading-relaxed mb-2">
                 Personal data will only be shared if:
@@ -326,7 +368,7 @@ export default function DatenschutzEN() {
 
             <div>
               <h2 className="text-lg font-semibold text-brand-dark mb-3">
-                12. Currency and Changes
+                13. Currency and Changes
               </h2>
               <p className="text-sm text-brand-dark/70 leading-relaxed">
                 This privacy policy is currently valid and will be updated as needed.

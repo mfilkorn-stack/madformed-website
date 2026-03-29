@@ -261,9 +261,10 @@ export default function Datenschutz() {
               <h3 className="font-medium text-brand-dark mb-2 mt-4">Eingesetzte Werkzeuge und Anbieter</h3>
               <ul className="text-sm text-brand-dark/70 leading-relaxed list-disc list-inside space-y-1">
                 <li>Anthropic Claude / Claude Code – Anthropic, PBC, San Francisco, USA</li>
+                <li>GitHub / GitHub Copilot – GitHub, Inc. (Microsoft Corporation), San Francisco, USA</li>
               </ul>
               <p className="text-sm text-brand-dark/70 leading-relaxed mt-2">
-                Der Einsatz weiterer KI-Tools (z. B. OpenAI ChatGPT, GitHub Copilot) kann im Rahmen
+                Der Einsatz weiterer KI-Tools (z. B. OpenAI ChatGPT, Microsoft Copilot) kann im Rahmen
                 der Entwicklung und Content-Erstellung erfolgen.
               </p>
 
@@ -312,7 +313,48 @@ export default function Datenschutz() {
 
             <div>
               <h2 className="text-lg font-semibold text-brand-dark mb-3">
-                11. Weitergabe von Daten
+                11. Entwicklungsplattform (GitHub)
+              </h2>
+              <p className="text-sm text-brand-dark/70 leading-relaxed">
+                Für die Entwicklung und Versionsverwaltung des Quellcodes dieser Website nutzen wir
+                GitHub, einen Dienst der GitHub, Inc. (Microsoft Corporation), 88 Colin P Kelly Jr St,
+                San Francisco, CA 94107, USA.
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Zweck der Nutzung</h3>
+              <ul className="text-sm text-brand-dark/70 leading-relaxed list-disc list-inside space-y-1">
+                <li>Versionsverwaltung und Speicherung des Website-Quellcodes</li>
+                <li>Kollaborative Softwareentwicklung und Code-Reviews</li>
+                <li>Automatisierte Build- und Deployment-Prozesse (CI/CD)</li>
+              </ul>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Verarbeitete Daten</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed">
+                Im GitHub-Repository werden ausschließlich Quellcode und technische Konfigurationsdateien
+                gespeichert. <strong>Personenbezogene Daten von Website-Besuchern werden nicht an
+                GitHub übermittelt.</strong>
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Datenübermittlung in Drittländer</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed">
+                GitHub hat seinen Sitz in den USA. Die Datenübermittlung erfolgt auf Grundlage
+                von Standardvertragsklauseln (SCCs) der EU-Kommission gemäß Art. 46 Abs. 2 lit. c
+                DSGVO sowie auf Basis des EU-US Data Privacy Framework (DPF). Microsoft/GitHub ist
+                unter dem DPF zertifiziert.
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Rechtsgrundlage</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed">
+                Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren und
+                effizienten Softwareentwicklung und Versionsverwaltung).
+              </p>
+            </div>
+
+            <hr className="border-brand-grey/20" />
+
+            <div>
+              <h2 className="text-lg font-semibold text-brand-dark mb-3">
+                12. Weitergabe von Daten
               </h2>
               <p className="text-sm text-brand-dark/70 leading-relaxed mb-2">
                 Eine Weitergabe personenbezogener Daten erfolgt nur, wenn:
@@ -328,7 +370,7 @@ export default function Datenschutz() {
 
             <div>
               <h2 className="text-lg font-semibold text-brand-dark mb-3">
-                12. Aktualität und Änderungen
+                13. Aktualität und Änderungen
               </h2>
               <p className="text-sm text-brand-dark/70 leading-relaxed">
                 Diese Datenschutzerklärung ist aktuell gültig und wird bei Bedarf angepasst.
