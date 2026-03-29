@@ -53,6 +53,10 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   '/datenschutz': {
     title: 'Datenschutzerklärung | MadforMed GmbH',
     description: 'Datenschutzerklärung der MadforMed GmbH - Informationen zur Datenverarbeitung, Ihren Rechten und unseren Datenschutzpraktiken.'
+  },
+  '/agb': {
+    title: 'Allgemeine Geschäftsbedingungen | MadforMed GmbH',
+    description: 'AGB der MadforMed GmbH – Geltungsbereich, Leistungen, KI-Einsatz, Haftung, Vertraulichkeit und Nutzungsrechte.'
   }
 };
 

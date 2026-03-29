@@ -27,6 +27,7 @@ const PATH_MAPPINGS: Record<string, string> = {
   "/kontakt": "/en/contact",
   "/impressum": "/en/legal-notice",
   "/datenschutz": "/en/privacy-policy",
+  "/agb": "/en/terms",
   "/case-report": "/en/case-report",
   "/": "/en",
 };
@@ -157,7 +158,8 @@ export const translations: Record<Language, Record<string, any>> = {
       insights: "Insights",
       contact: "Kontakt aufnehmen",
       legalNotice: "Impressum",
-      privacy: "Datenschutz"
+      privacy: "Datenschutz",
+      terms: "AGB"
     },
     hero: {
       cannabis: {
@@ -260,7 +262,8 @@ export const translations: Record<Language, Record<string, any>> = {
     },
     legal: {
       impressum: "Impressum",
-      privacy: "Datenschutzerklärung"
+      privacy: "Datenschutzerklärung",
+      terms: "Allgemeine Geschäftsbedingungen"
     },
     footer: {
       tagline: "Medical Resulting",
@@ -289,7 +292,8 @@ export const translations: Record<Language, Record<string, any>> = {
       insights: "Insights",
       contact: "Get in Touch",
       legalNotice: "Legal Notice",
-      privacy: "Privacy Policy"
+      privacy: "Privacy Policy",
+      terms: "Terms & Conditions"
     },
     hero: {
       cannabis: {
@@ -392,7 +396,8 @@ export const translations: Record<Language, Record<string, any>> = {
     },
     legal: {
       impressum: "Legal Notice",
-      privacy: "Privacy Policy"
+      privacy: "Privacy Policy",
+      terms: "Terms and Conditions"
     },
     footer: {
       tagline: "Medical Resulting",

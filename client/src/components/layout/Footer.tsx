@@ -24,9 +24,11 @@ export function Footer() {
   const legalLinks = isEnglish ? [
     { label: t("nav.legalNotice"), path: "/en/legal-notice" },
     { label: t("nav.privacy"), path: "/en/privacy-policy" },
+    { label: t("nav.terms"), path: "/en/terms" },
   ] : [
     { label: t("nav.legalNotice"), path: "/impressum" },
     { label: t("nav.privacy"), path: "/datenschutz" },
+    { label: t("nav.terms"), path: "/agb" },
   ];
 
   return (
