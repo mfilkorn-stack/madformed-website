@@ -69,7 +69,7 @@ export class MemStorage implements IStorage {
   async createContactLead(lead: InsertContactLead): Promise<ContactLead> {
     const id = randomUUID();
     const createdAt = new Date();
-    const contactLead: ContactLead = { ...lead, id, createdAt };
+    const contactLead: ContactLead = { ...lead, id, createdAt, telefon: lead.telefon ?? null };
     
     const leads = readLeadsFile();
     leads.push(contactLead);

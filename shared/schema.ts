@@ -38,7 +38,7 @@ export const contactFormSchema = z.object({
   firma: z.string().min(1, "Bitte geben Sie Ihre Firma an"),
   email: z.string().email("Bitte geben Sie eine gültige E-Mail-Adresse ein"),
   telefon: z.string().optional(),
-  thema: z.enum(["cannabis", "medizintechnik", "allgemein"]),
+  thema: z.enum(["cannabis", "medizintechnik", "medizinalhandel", "ki-workshop", "allgemein"]),
   nachricht: z.string().min(10, "Nachricht muss mindestens 10 Zeichen lang sein"),
   honeypot: z.string().max(0).optional(),
 });
