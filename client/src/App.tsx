@@ -19,8 +19,10 @@ import InsightDetail from "@/pages/InsightDetail";
 import Kontakt from "@/pages/Kontakt";
 import Impressum from "@/pages/Impressum";
 import Datenschutz from "@/pages/Datenschutz";
+import AGB from "@/pages/AGB";
 import ImpressumEN from "@/pages/ImpressumEN";
 import DatenschutzEN from "@/pages/DatenschutzEN";
+import AGBEN from "@/pages/AGBEN";
 import CaseReport from "@/pages/CaseReport";
 import NotFound from "@/pages/not-found";
 
@@ -42,6 +44,7 @@ function Router() {
         <Route path="/kontakt" component={Kontakt} />
         <Route path="/impressum" component={Impressum} />
         <Route path="/datenschutz" component={Datenschutz} />
+        <Route path="/agb" component={AGB} />
         <Route path="/case-report" component={CaseReport} />
         
         {/* English routes */}
@@ -58,6 +61,7 @@ function Router() {
         <Route path="/en/contact" component={Kontakt} />
         <Route path="/en/legal-notice" component={ImpressumEN} />
         <Route path="/en/privacy-policy" component={DatenschutzEN} />
+        <Route path="/en/terms" component={AGBEN} />
         <Route path="/en/case-report" component={CaseReport} />
 
         <Route component={NotFound} />

@@ -144,10 +144,31 @@ export default function ImpressumEN() {
                 Copyright
               </h2>
               <p className="text-brand-dark/70 text-sm leading-relaxed">
-                The content and works created by the site operators on these pages are subject to 
-                German copyright law. Duplication, processing, distribution, and any kind of 
-                exploitation outside the limits of copyright require the written consent of the 
+                The content and works created by the site operators on these pages are subject to
+                German copyright law. Duplication, processing, distribution, and any kind of
+                exploitation outside the limits of copyright require the written consent of the
                 respective author or creator.
+              </p>
+            </div>
+
+            <hr className="border-brand-grey/20" />
+
+            <div>
+              <h2 className="text-lg font-semibold text-brand-dark mb-3">
+                Notice on the Use of Artificial Intelligence
+              </h2>
+              <p className="text-brand-dark/70 text-sm leading-relaxed">
+                In accordance with Art. 50 of the AI Act (EU) 2024/1689 (EU AI Act), we inform you
+                that parts of the content on this website (texts, source code) were created or edited
+                with the assistance of AI-based tools.
+              </p>
+              <p className="text-brand-dark/70 text-sm leading-relaxed mt-3">
+                <strong>Tools used:</strong> Anthropic Claude / Claude Code (Anthropic, PBC, USA)
+                as well as potentially other AI tools in the course of development.
+              </p>
+              <p className="text-brand-dark/70 text-sm leading-relaxed mt-3">
+                All AI-generated or AI-assisted content is editorially reviewed, adapted, and approved
+                by MadforMed GmbH. Full editorial and content responsibility remains with the site operator.
               </p>
             </div>
           </div>
