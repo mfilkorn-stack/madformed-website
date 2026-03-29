@@ -146,10 +146,32 @@ export default function Impressum() {
                 Urheberrecht
               </h2>
               <p className="text-brand-dark/70 text-sm leading-relaxed">
-                Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten 
-                unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, 
-                Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes 
+                Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten
+                unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung,
+                Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes
                 bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+              </p>
+            </div>
+
+            <hr className="border-brand-grey/20" />
+
+            <div>
+              <h2 className="text-lg font-semibold text-brand-dark mb-3">
+                Hinweis zum Einsatz von Künstlicher Intelligenz
+              </h2>
+              <p className="text-brand-dark/70 text-sm leading-relaxed">
+                Gemäß Art. 50 der KI-Verordnung (EU) 2024/1689 (EU AI Act) weisen wir darauf hin,
+                dass Teile der Inhalte dieser Website (Texte, Quellcode) unter Einsatz von
+                KI-gestützten Werkzeugen erstellt oder bearbeitet wurden.
+              </p>
+              <p className="text-brand-dark/70 text-sm leading-relaxed mt-3">
+                <strong>Eingesetzte Werkzeuge:</strong> Anthropic Claude / Claude Code (Anthropic, PBC, USA)
+                sowie ggf. weitere KI-Tools im Rahmen der Entwicklung.
+              </p>
+              <p className="text-brand-dark/70 text-sm leading-relaxed mt-3">
+                Sämtliche KI-generierten oder KI-unterstützten Inhalte werden von der MadforMed GmbH
+                redaktionell geprüft, angepasst und freigegeben. Die inhaltliche und redaktionelle
+                Verantwortung verbleibt vollständig beim Seitenbetreiber.
               </p>
             </div>
           </div>

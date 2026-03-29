@@ -253,12 +253,56 @@ export default function DatenschutzEN() {
                 10. Use of Artificial Intelligence (AI)
               </h2>
               <p className="text-sm text-brand-dark/70 leading-relaxed mb-2">
-                If AI-based systems are used (e.g., for text analysis or decision support), this occurs:
+                We use AI-based tools for the creation and editing of content on this website
+                (texts, source code). This notice is provided in accordance with the transparency
+                obligations under Art. 50 of the AI Act (EU) 2024/1689 (EU AI Act).
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Tools and Providers Used</h3>
+              <ul className="text-sm text-brand-dark/70 leading-relaxed list-disc list-inside space-y-1">
+                <li>Anthropic Claude / Claude Code – Anthropic, PBC, San Francisco, USA</li>
+              </ul>
+              <p className="text-sm text-brand-dark/70 leading-relaxed mt-2">
+                Additional AI tools (e.g., OpenAI ChatGPT, GitHub Copilot) may be used in the
+                course of development and content creation.
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Purpose of Use</h3>
+              <ul className="text-sm text-brand-dark/70 leading-relaxed list-disc list-inside space-y-1">
+                <li>Assistance in creating and editing editorial content</li>
+                <li>Software development and source code creation</li>
+                <li>Text analysis and optimization</li>
+              </ul>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Personal Data</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed">
+                <strong>No personal data of website visitors</strong> is transmitted to AI systems
+                as part of our AI usage. AI tools are used exclusively for editorial purposes and
+                development, not for processing user data.
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Data Transfer to Third Countries</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed">
+                The aforementioned AI providers are based in the USA. To the extent that data is
+                transmitted to these providers in the course of editorial use, this is done on the
+                basis of Standard Contractual Clauses (SCCs) of the EU Commission pursuant to
+                Art. 46(2)(c) GDPR or on the basis of the EU-US Data Privacy Framework (DPF).
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Legal Basis</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed">
+                Art. 6(1)(f) GDPR (legitimate interest in efficient content creation and web development).
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Human Oversight</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed mb-2">
+                All AI-generated or AI-assisted content is editorially reviewed, adapted, and
+                approved by MadforMed GmbH before publication. There are:
               </p>
               <ul className="text-sm text-brand-dark/70 leading-relaxed list-disc list-inside space-y-1">
-                <li>Without automated individual decisions within the meaning of Art. 22 GDPR</li>
-                <li>Without profiling</li>
-                <li>With the preservation of confidentiality</li>
+                <li>No automated individual decisions within the meaning of Art. 22 GDPR</li>
+                <li>No profiling</li>
+                <li>No processing of personal data by AI systems</li>
               </ul>
             </div>
 

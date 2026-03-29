@@ -253,13 +253,58 @@ export default function Datenschutz() {
                 10. Einsatz von Künstlicher Intelligenz (KI)
               </h2>
               <p className="text-sm text-brand-dark/70 leading-relaxed mb-2">
-                Sofern KI-gestützte Systeme eingesetzt werden (z. B. zur Textanalyse oder 
-                Entscheidungsunterstützung), erfolgt dies:
+                Für die Erstellung und Bearbeitung von Inhalten dieser Website (Texte, Quellcode)
+                setzen wir KI-gestützte Werkzeuge ein. Dieser Hinweis erfolgt im Sinne der
+                Transparenzpflicht gemäß Art. 50 der KI-Verordnung (EU) 2024/1689 (EU AI Act).
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Eingesetzte Werkzeuge und Anbieter</h3>
+              <ul className="text-sm text-brand-dark/70 leading-relaxed list-disc list-inside space-y-1">
+                <li>Anthropic Claude / Claude Code – Anthropic, PBC, San Francisco, USA</li>
+              </ul>
+              <p className="text-sm text-brand-dark/70 leading-relaxed mt-2">
+                Der Einsatz weiterer KI-Tools (z. B. OpenAI ChatGPT, GitHub Copilot) kann im Rahmen
+                der Entwicklung und Content-Erstellung erfolgen.
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Zweck der Nutzung</h3>
+              <ul className="text-sm text-brand-dark/70 leading-relaxed list-disc list-inside space-y-1">
+                <li>Unterstützung bei der Erstellung und Bearbeitung redaktioneller Inhalte</li>
+                <li>Softwareentwicklung und Quellcode-Erstellung</li>
+                <li>Textanalyse und -optimierung</li>
+              </ul>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Personenbezogene Daten</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed">
+                Im Rahmen des KI-Einsatzes werden <strong>keine personenbezogenen Daten von
+                Website-Besuchern</strong> an KI-Systeme übermittelt. Die KI-Tools werden
+                ausschließlich redaktionell und zur Entwicklung eingesetzt, nicht zur Verarbeitung
+                von Nutzerdaten.
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Datenübermittlung in Drittländer</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed">
+                Die genannten KI-Anbieter haben ihren Sitz in den USA. Soweit im Rahmen der
+                redaktionellen Nutzung Daten an diese Anbieter übermittelt werden, erfolgt dies
+                auf Grundlage von Standardvertragsklauseln (SCCs) der EU-Kommission gemäß
+                Art. 46 Abs. 2 lit. c DSGVO bzw. auf Basis des EU-US Data Privacy Framework (DPF).
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Rechtsgrundlage</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed">
+                Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer effizienten
+                Content-Erstellung und Webentwicklung).
+              </p>
+
+              <h3 className="font-medium text-brand-dark mb-2 mt-4">Menschliche Kontrolle</h3>
+              <p className="text-sm text-brand-dark/70 leading-relaxed mb-2">
+                Sämtliche KI-generierten oder KI-unterstützten Inhalte werden vor Veröffentlichung
+                redaktionell geprüft, angepasst und von der MadforMed GmbH freigegeben. Es erfolgen:
               </p>
               <ul className="text-sm text-brand-dark/70 leading-relaxed list-disc list-inside space-y-1">
-                <li>ohne automatisierte Einzelentscheidungen im Sinne von Art. 22 DSGVO</li>
-                <li>ohne Profilbildung</li>
-                <li>unter Wahrung der Vertraulichkeit</li>
+                <li>keine automatisierten Einzelentscheidungen im Sinne von Art. 22 DSGVO</li>
+                <li>keine Profilbildung</li>
+                <li>keine Verarbeitung personenbezogener Daten durch KI-Systeme</li>
               </ul>
             </div>
 
