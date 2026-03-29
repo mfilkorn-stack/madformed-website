@@ -18,6 +18,7 @@ const STATIC_PAGES_DE = [
   { path: '/kontakt', priority: 0.8, changefreq: 'monthly' },
   { path: '/impressum', priority: 0.3, changefreq: 'yearly' },
   { path: '/datenschutz', priority: 0.3, changefreq: 'yearly' },
+  { path: '/agb', priority: 0.3, changefreq: 'yearly' },
 ];
 
 const STATIC_PAGES_EN = [
@@ -33,6 +34,7 @@ const STATIC_PAGES_EN = [
   { path: '/en/contact', priority: 0.8, changefreq: 'monthly' },
   { path: '/en/legal-notice', priority: 0.3, changefreq: 'yearly' },
   { path: '/en/privacy-policy', priority: 0.3, changefreq: 'yearly' },
+  { path: '/en/terms', priority: 0.3, changefreq: 'yearly' },
 ];
 
 const HREFLANG_PAIRS = [
@@ -48,6 +50,7 @@ const HREFLANG_PAIRS = [
   { de: '/kontakt', en: '/en/contact' },
   { de: '/impressum', en: '/en/legal-notice' },
   { de: '/datenschutz', en: '/en/privacy-policy' },
+  { de: '/agb', en: '/en/terms' },
 ];
 
 const BLOG_POSTS_DE = [
