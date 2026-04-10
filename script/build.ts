@@ -2,32 +2,22 @@ import { build as esbuild } from "esbuild";
 import { build as viteBuild } from "vite";
 import { rm, readFile } from "fs/promises";
 
-// server deps to bundle to reduce openat(2) syscalls
-// which helps cold start times
+// Server deps to bundle to reduce openat(2) syscalls,
+// which helps cold start times on Replit autoscale.
+// Only list packages that are actually in package.json dependencies.
 const allowlist = [
-  "@google/generative-ai",
-  "axios",
+  "@octokit/rest",
   "connect-pg-simple",
-  "cors",
   "date-fns",
   "drizzle-orm",
   "drizzle-zod",
   "express",
-  "express-rate-limit",
   "express-session",
-  "jsonwebtoken",
   "memorystore",
-  "multer",
-  "nanoid",
-  "nodemailer",
-  "openai",
   "passport",
   "passport-local",
   "pg",
-  "stripe",
-  "uuid",
   "ws",
-  "xlsx",
   "zod",
   "zod-validation-error",
 ];

@@ -1,6 +1,9 @@
 Options -MultiViews
 DirectoryIndex index.html
 
+# ---------------------------------------------------------------------------
+# SPA Routing — all unknown paths fall back to index.html
+# ---------------------------------------------------------------------------
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -14,29 +17,81 @@ DirectoryIndex index.html
   RewriteRule ^ index.html [L]
 </IfModule>
 
-# Security headers
+# ---------------------------------------------------------------------------
+# Security Headers (OWASP recommended baseline)
+# ---------------------------------------------------------------------------
 <IfModule mod_headers.c>
-  Header set X-Content-Type-Options "nosniff"
-  Header set X-Frame-Options "SAMEORIGIN"
-  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  # Prevent MIME-type sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Clickjacking protection
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Referrer information control
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Permissions Policy — disable unused browser features
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
+
+  # Content Security Policy
+  # - Google Fonts/Analytics/Ads are explicitly allowed (used in index.html)
+  # - 'unsafe-inline' for styles is required by Tailwind CSS
+  # - Adjust if adding new third-party scripts
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://googleads.g.doubleclick.net; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';"
+
+  # HSTS — enforce HTTPS for 1 year (only takes effect on HTTPS connections)
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+
+  # Remove server identification header
+  Header always unset X-Powered-By
+
+  # Cache-Control for index.html — must not be cached to pick up new deploys
+  <FilesMatch "^index\.html$">
+    Header always set Cache-Control "no-cache, no-store, must-revalidate"
+    Header always set Pragma "no-cache"
+    Header always set Expires "0"
+  </FilesMatch>
+
+  # Long-term immutable caching for content-hashed assets
+  <FilesMatch "\.(js|css|woff2?|ttf|eot|svg|png|jpg|jpeg|gif|ico|webp)$">
+    Header always set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
 </IfModule>
 
+# ---------------------------------------------------------------------------
 # Correct MIME types
+# ---------------------------------------------------------------------------
 <IfModule mod_mime.c>
-  AddType application/javascript .js
+  AddType application/javascript .js .mjs
   AddType text/css .css
   AddType image/svg+xml .svg
   AddType application/xml .xml
   AddType text/plain .txt
+  AddType font/woff2 .woff2
+  AddType font/woff .woff
+  AddType application/manifest+json .webmanifest
 </IfModule>
 
-# Caching
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType text/html "access plus 0 seconds"
-  ExpiresByType text/css "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
+# ---------------------------------------------------------------------------
+# Compression (Brotli preferred, Gzip fallback)
+# ---------------------------------------------------------------------------
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css application/javascript application/json image/svg+xml
 </IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Block access to hidden files and directories (e.g. .git, .env)
+# ---------------------------------------------------------------------------
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# ---------------------------------------------------------------------------
+# Block access to source map files in production
+# ---------------------------------------------------------------------------
+<FilesMatch "\.map$">
+  Require all denied
+</FilesMatch>

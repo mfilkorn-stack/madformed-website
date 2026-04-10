@@ -1,6 +1,30 @@
+# Dependencies
 node_modules
+
+# Build outputs
 dist
+client/dist
+
+# Environment files — NEVER commit these
+.env
+.env.local
+.env.*.local
+
+# Runtime data (contact leads stored locally)
+data/
+
+# OS / editor artefacts
 .DS_Store
+
+# Replit internal
 server/public
+
+# Vite build cache
 vite.config.ts.*
+
+# Archives
 *.tar.gz
+
+# SBOM (generated per build, not committed)
+sbom.json
+sbom.xml
