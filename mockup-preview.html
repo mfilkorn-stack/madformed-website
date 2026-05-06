@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MadforMed – Animation Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Open Sans', sans-serif; background: #f5f7f5; }
+
+  /* ── Animations ── */
+  .anim-fade-up   { opacity:0; transform:translateY(40px); transition:opacity .6s ease, transform .6s ease; }
+  .anim-fade-up.visible { opacity:1; transform:translateY(0); }
+  .anim-fade      { opacity:0; transition:opacity .7s ease; }
+  .anim-fade.visible { opacity:1; }
+  .anim-slide-left { opacity:0; transform:translateX(-30px); transition:opacity .7s ease, transform .7s ease; }
+  .anim-slide-left.visible { opacity:1; transform:translateX(0); }
+  .anim-scale     { opacity:0; transform:scale(.8); transition:opacity .5s ease, transform .5s ease; }
+  .anim-scale.visible { opacity:1; transform:scale(1); }
+
+  .md1 { transition-delay:.1s } .md2 { transition-delay:.2s }
+  .md3 { transition-delay:.3s } .md4 { transition-delay:.4s }
+
+  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+  .marquee-track { display:flex; width:max-content; animation:marquee 20s linear infinite; }
+  .marquee-track:hover { animation-play-state:paused; }
+
+  @keyframes glow-pulse {
+    0%,100% { box-shadow:0 0 0 0 rgba(95,185,78,0); }
+    50%      { box-shadow:0 0 30px 8px rgba(95,185,78,.25); }
+  }
+  .cta-glow { animation:glow-pulse 3s ease-in-out infinite; }
+
+  /* ── Layout helpers ── */
+  .container { max-width:1200px; margin:0 auto; padding:0 32px; }
+  .container-sm { max-width:900px; margin:0 auto; padding:0 32px; }
+  .container-xs { max-width:800px; margin:0 auto; padding:0 32px; }
+  .section { padding:80px 0; }
+  .section-white { background:#fff; }
+  .section-light  { background:#f5f7f5; }
+  .section-dark   { background:#1a2332; }
+
+  /* ── Legend ── */
+  #legend {
+    position:fixed; bottom:24px; right:24px; background:#fff;
+    border-radius:16px; box-shadow:0 8px 40px rgba(0,0,0,.15);
+    padding:20px; max-width:260px; border:1px solid #eee;
+    z-index:9999; font-size:13px;
+  }
+  #legend h4 { font-weight:700; margin-bottom:10px; color:#1a2332; }
+  #legend ul { list-style:none; color:#666; line-height:2; }
+  #legend p  { font-size:11px; color:#aaa; margin-top:10px; padding-top:10px; border-top:1px solid #eee; }
+
+  /* ── Hero ── */
+  .hero {
+    position:relative; height:600px; display:flex; align-items:center; overflow:hidden;
+    background: linear-gradient(to right, rgba(0,0,0,.8), rgba(0,0,0,.4) 60%, transparent),
+                url('https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=1400&q=80') center/cover no-repeat;
+  }
+  .hero-content { max-width:640px; display:flex; flex-direction:column; gap:20px; }
+  .hero-badge { display:flex; align-items:center; gap:12px; }
+  .hero-badge-icon { width:48px; height:48px; border-radius:12px; background:rgba(95,185,78,.2); display:flex; align-items:center; justify-content:center; font-size:22px; }
+  .hero-badge-text { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#5FB94E; }
+  .hero h1 { font-size:52px; font-weight:800; color:#fff; line-height:1.15; }
+  .hero p  { font-size:20px; color:rgba(255,255,255,.8); line-height:1.6; }
+  .hero-btns { display:flex; gap:16px; }
+  .btn-primary { background:#5FB94E; color:#fff; padding:14px 28px; border-radius:10px; border:none; font-weight:700; font-size:15px; cursor:pointer; }
+  .btn-ghost   { background:transparent; color:#fff; padding:14px 28px; border-radius:10px; border:1px solid rgba(255,255,255,.3); font-weight:700; font-size:15px; cursor:pointer; }
+  .hero-dots { position:absolute; bottom:32px; left:50%; transform:translateX(-50%); display:flex; gap:10px; }
+  .hero-dot { width:12px; height:12px; border-radius:50%; background:rgba(255,255,255,.4); }
+  .hero-dot.active { background:#fff; }
+
+  /* ── Stats ── */
+  .stats-bar { background:#fff; border-bottom:1px solid #eee; padding:32px 0; }
+  .stats-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; text-align:center; }
+  .stat-num  { font-size:42px; font-weight:800; }
+  .stat-label { font-size:13px; color:#888; margin-top:4px; }
+
+  /* ── Intro ── */
+  .intro { padding:64px 0; background:#fff; text-align:center; }
+  .intro h2 { font-size:30px; font-weight:800; color:#1a2332; margin-bottom:24px; }
+  .intro p  { font-size:17px; color:#555; line-height:1.8; margin-bottom:32px; }
+  .intro-links { display:flex; justify-content:center; gap:32px; }
+  .intro-links a { font-weight:700; text-decoration:none; }
+
+  /* ── Cards grid ── */
+  .cards-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+  .card { position:relative; padding:24px; background:#fff; border-radius:16px; cursor:pointer; }
+  .card-bar { position:absolute; top:0; left:0; right:0; height:4px; border-radius:16px 16px 0 0; }
+  .card-badge { position:absolute; top:12px; right:12px; padding:2px 10px; background:rgba(30,155,217,.1); color:#1E9BD9; font-size:11px; font-weight:700; border-radius:20px; }
+  .card-icon { width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center; margin-bottom:20px; font-size:24px; }
+  .card h3 { font-weight:800; color:#1a2332; margin-bottom:12px; font-size:16px; }
+  .card p  { font-size:13px; color:#666; line-height:1.7; margin-bottom:20px; }
+  .card-link { font-weight:700; font-size:13px; }
+
+  /* ── Benefits ── */
+  .benefits-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+  .benefit { background:#fff; padding:32px; border-radius:20px; border:2px solid transparent; transition:border-color .3s, box-shadow .3s; }
+  .benefit:hover { border-color:#5FB94E40; box-shadow:0 20px 40px rgba(0,0,0,.1); }
+  .benefit-icon { width:56px; height:56px; border-radius:14px; display:flex; align-items:center; justify-content:center; margin-bottom:20px; font-size:24px; box-shadow:0 4px 14px rgba(0,0,0,.15); }
+  .benefit h3 { font-weight:800; color:#1a2332; margin-bottom:8px; font-size:16px; }
+  .benefit p  { font-size:13px; color:#666; line-height:1.7; }
+
+  /* ── Process ── */
+  .process-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; position:relative; }
+  .process-line { position:absolute; top:88px; left:22%; right:22%; height:2px; background:linear-gradient(to right,#5FB94E,#1E9BD9); opacity:.3; }
+  .process-card { background:rgba(255,255,255,.05); backdrop-filter:blur(8px); padding:32px; border-radius:20px; border:1px solid rgba(255,255,255,.1); text-align:center; }
+  .process-icon { width:64px; height:64px; border-radius:20px; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:28px; box-shadow:0 4px 20px rgba(0,0,0,.3); }
+  .process-step { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; }
+  .process-card h3 { font-size:20px; font-weight:800; color:#fff; margin:8px 0 16px; }
+  .process-card p  { color:rgba(255,255,255,.7); line-height:1.7; }
+
+  /* ── Marquee ── */
+  .marquee-wrap { position:relative; overflow:hidden; }
+  .logo-pill { display:flex; align-items:center; justify-content:center; width:160px; height:64px; background:#f8f9f8; border-radius:12px; border:1px solid #eee; margin:0 24px; color:#999; font-weight:700; font-size:13px; flex-shrink:0; }
+  .fade-left  { position:absolute; inset:0 auto 0 0; width:96px; background:linear-gradient(to right,#fff,transparent); pointer-events:none; }
+  .fade-right { position:absolute; inset:0 0 0 auto; width:96px; background:linear-gradient(to left,#fff,transparent); pointer-events:none; }
+
+  /* ── CTA ── */
+  .cta-blur { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:600px; height:300px; border-radius:50%; background:linear-gradient(to right,#5FB94E,#1E9BD9); filter:blur(80px); opacity:.2; pointer-events:none; }
+  .cta-btn { background:linear-gradient(to right,#5FB94E,#1E9BD9); color:#fff; padding:16px 40px; border-radius:14px; border:none; font-weight:700; font-size:17px; cursor:pointer; display:inline-flex; align-items:center; gap:12px; }
+
+  /* ── Section headers ── */
+  .section-tag { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#5FB94E; margin-bottom:8px; }
+  .section-title { font-size:30px; font-weight:800; color:#1a2332; }
+  .section-title-white { font-size:30px; font-weight:800; color:#fff; }
+  .section-header { text-align:center; margin-bottom:48px; }
+
+  @media(max-width:900px) {
+    .cards-grid, .benefits-grid { grid-template-columns:1fr 1fr; }
+    .process-grid { grid-template-columns:1fr; }
+    .stats-grid { grid-template-columns:1fr; }
+    .hero h1 { font-size:36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Legend -->
+<div id="legend">
+  <h4>Animation-Mockup</h4>
+  <ul>
+    <li>🟢 <b>Hero:</b> Text slides-in von links</li>
+    <li>📊 <b>Stats-Bar:</b> Zähler-Animation (neu)</li>
+    <li>⬆️ <b>Sektionen:</b> fade-in-up beim Scrollen</li>
+    <li>🃏 <b>Cards:</b> gestaffelter Eingang</li>
+    <li>🔄 <b>Logos:</b> Auto-Marquee (neu)</li>
+    <li>✨ <b>CTA:</b> Glow-Puls + Gradient (neu)</li>
+  </ul>
+  <p>Scroll runter um Animationen zu sehen</p>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge anim-slide-left visible" style="transition-delay:0s">
+        <div class="hero-badge-icon">🌿</div>
+        <span class="hero-badge-text">Strategie &amp; Compliance</span>
+      </div>
+      <h1 class="anim-slide-left visible" style="transition-delay:.15s">Medizinisches Cannabis</h1>
+      <p class="anim-slide-left visible" style="transition-delay:.3s">Beratung für Markteintritt, Compliance und Wachstum in der Cannabis-Pharma-Branche.</p>
+      <div class="hero-btns anim-slide-left visible" style="transition-delay:.45s">
+        <button class="btn-primary">Mehr erfahren →</button>
+        <button class="btn-ghost">Kontakt aufnehmen</button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-dots">
+    <div class="hero-dot active"></div>
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<section class="stats-bar" id="stats-section">
+  <div class="container-sm">
+    <div class="stats-grid">
+      <div class="anim-fade-up md1">
+        <div class="stat-num" id="c1" style="color:#5FB94E">0+</div>
+        <div class="stat-label">Jahre Erfahrung</div>
+      </div>
+      <div class="anim-fade-up md2">
+        <div class="stat-num" id="c2" style="color:#1E9BD9">0+</div>
+        <div class="stat-label">Projekte abgeschlossen</div>
+      </div>
+      <div class="anim-fade-up md3">
+        <div class="stat-num" id="c3" style="color:#1a2332">0</div>
+        <div class="stat-label">Beratungsschwerpunkte</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Intro -->
+<section class="intro">
+  <div class="container-xs">
+    <h2 class="anim-fade-up">Ihr Partner für medizinische Märkte &amp; KI</h2>
+    <p class="anim-fade-up md1">MadforMed GmbH ist eine spezialisierte B2B-Beratungsgesellschaft mit Sitz in Leverkusen. Wir begleiten Unternehmen in den Bereichen medizinisches Cannabis, Medizintechnik und Medizinalhandel.</p>
+    <div class="intro-links anim-fade-up md2">
+      <a href="#" style="color:#5FB94E">Alle Leistungen →</a>
+      <a href="#" style="color:#1E9BD9">Über uns →</a>
+      <a href="#" style="color:#555">Kontakt →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Service Cards -->
+<section class="section section-white">
+  <div class="container">
+    <div class="section-header anim-fade-up">
+      <p class="section-tag">Unsere Beratungsschwerpunkte</p>
+      <h2 class="section-title">Vier Säulen für Ihren Erfolg</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card anim-fade-up md1" style="border:2px solid rgba(95,185,78,.3)">
+        <div class="card-bar" style="background:linear-gradient(to right,#5FB94E,#5FB94E80)"></div>
+        <div class="card-icon anim-scale md1" style="background:#5FB94E18">🌿</div>
+        <h3>Medizinisches Cannabis</h3>
+        <p>Strategische und operative Beratung für Hersteller, Importeure und Großhändler.</p>
+        <span class="card-link" style="color:#5FB94E">Mehr erfahren →</span>
+      </div>
+      <div class="card anim-fade-up md2" style="border:2px solid rgba(95,185,78,.3)">
+        <div class="card-bar" style="background:linear-gradient(to right,#5FB94E,#1E9BD9)"></div>
+        <div class="card-badge">Neu</div>
+        <div class="card-icon anim-scale md2" style="background:#1E9BD918">🧠</div>
+        <h3>KI-Enablement</h3>
+        <p>Copilot &amp; ChatGPT Workshops und Prompt-Playbooks für Vertriebsteams.</p>
+        <span class="card-link" style="color:#1E9BD9">Mehr erfahren →</span>
+      </div>
+      <div class="card anim-fade-up md3" style="border:2px solid rgba(30,155,217,.3)">
+        <div class="card-bar" style="background:linear-gradient(to right,#1E9BD9,#1E9BD980)"></div>
+        <div class="card-icon anim-scale md3" style="background:#1E9BD918">🖥️</div>
+        <h3>Medizintechnik</h3>
+        <p>Go-to-Market-Strategie und Sales Enablement für Medizintechnik-Unternehmen.</p>
+        <span class="card-link" style="color:#1E9BD9">Mehr erfahren →</span>
+      </div>
+      <div class="card anim-fade-up md4" style="border:2px solid rgba(30,155,217,.3)">
+        <div class="card-bar" style="background:linear-gradient(to right,#1E9BD9,#1E9BD980)"></div>
+        <div class="card-icon anim-scale md4" style="background:#1E9BD918">🛒</div>
+        <h3>Medizinalhandel</h3>
+        <p>Vertriebsstrategie und Key Account Management für Distributoren.</p>
+        <span class="card-link" style="color:#1E9BD9">Mehr erfahren →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits -->
+<section class="section section-light">
+  <div class="container">
+    <div class="section-header anim-fade-up">
+      <p class="section-tag">Was uns auszeichnet</p>
+      <h2 class="section-title">Warum MadforMed</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit anim-fade-up md1">
+        <div class="benefit-icon anim-scale md1" style="background:linear-gradient(135deg,#5FB94E,rgba(95,185,78,.8))">🛡️</div>
+        <h3>Compliance-First</h3>
+        <p>Höchste regulatorische Standards. Alle Prozesse GMP/GDP-konform.</p>
+      </div>
+      <div class="benefit anim-fade-up md2">
+        <div class="benefit-icon anim-scale md2" style="background:linear-gradient(135deg,#1E9BD9,rgba(30,155,217,.8))">⚡</div>
+        <h3>Ergebnisorientiert</h3>
+        <p>Klare Meilensteine, messbare Ergebnisse, transparente Kommunikation.</p>
+      </div>
+      <div class="benefit anim-fade-up md3">
+        <div class="benefit-icon anim-scale md3" style="background:linear-gradient(135deg,#5FB94E,#1E9BD9)">🔥</div>
+        <h3>Branchenexpertise</h3>
+        <p>Tiefes Verständnis der Cannabis- und Medizintechnikmärkte.</p>
+      </div>
+      <div class="benefit anim-fade-up md4">
+        <div class="benefit-icon anim-scale md4" style="background:linear-gradient(135deg,#1E9BD9,#5FB94E)">👥</div>
+        <h3>Netzwerk</h3>
+        <p>Zugang zu relevanten Kontakten in der Branche und Behörden.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="section section-dark" style="position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;opacity:.1;pointer-events:none">
+    <div style="position:absolute;top:0;left:0;width:384px;height:384px;border-radius:50%;background:#5FB94E;filter:blur(80px);transform:translate(-50%,-50%)"></div>
+    <div style="position:absolute;bottom:0;right:0;width:384px;height:384px;border-radius:50%;background:#1E9BD9;filter:blur(80px);transform:translate(50%,50%)"></div>
+  </div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-header anim-fade">
+      <p class="section-tag">Strukturiert &amp; Transparent</p>
+      <h2 class="section-title-white">Unsere Arbeitsweise</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-line anim-fade md3"></div>
+      <div class="anim-fade-up md1">
+        <div class="process-card">
+          <div class="process-icon" style="background:linear-gradient(135deg,#5FB94E,rgba(95,185,78,.8))">🔍</div>
+          <span class="process-step" style="color:#5FB94E">Schritt 1</span>
+          <h3>Analyse</h3>
+          <p>Umfassende Bestandsaufnahme Ihrer Situation, Herausforderungen und Ziele.</p>
+        </div>
+      </div>
+      <div class="anim-fade-up md2">
+        <div class="process-card">
+          <div class="process-icon" style="background:linear-gradient(135deg,#5FB94E,#1E9BD9)">💡</div>
+          <span class="process-step" style="color:#1E9BD9">Schritt 2</span>
+          <h3>Strategie</h3>
+          <p>Entwicklung maßgeschneiderter Lösungen und eines konkreten Aktionsplans.</p>
+        </div>
+      </div>
+      <div class="anim-fade-up md3">
+        <div class="process-card">
+          <div class="process-icon" style="background:linear-gradient(135deg,#1E9BD9,rgba(30,155,217,.8))">📈</div>
+          <span class="process-step" style="color:#1E9BD9">Schritt 3</span>
+          <h3>Umsetzung</h3>
+          <p>Hands-on Begleitung bei der Ausführung der Strategie und Zielerreichung.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Logo Marquee -->
+<section class="section section-white" style="overflow:hidden">
+  <div class="container" style="text-align:center;margin-bottom:40px">
+    <div class="anim-fade-up">
+      <p class="section-tag">Branchenexpertise</p>
+      <h2 class="section-title">Erfahrung aus führenden Unternehmen</h2>
+    </div>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="logo-pill">Stryker</div>
+      <div class="logo-pill">Synthes</div>
+      <div class="logo-pill">Arthrex</div>
+      <div class="logo-pill">B.Braun</div>
+      <div class="logo-pill">Zimmer</div>
+      <div class="logo-pill">Medtronic</div>
+      <div class="logo-pill">Johnson &amp; Johnson</div>
+      <div class="logo-pill">Smith &amp; Nephew</div>
+      <!-- duplicate for seamless loop -->
+      <div class="logo-pill">Stryker</div>
+      <div class="logo-pill">Synthes</div>
+      <div class="logo-pill">Arthrex</div>
+      <div class="logo-pill">B.Braun</div>
+      <div class="logo-pill">Zimmer</div>
+      <div class="logo-pill">Medtronic</div>
+      <div class="logo-pill">Johnson &amp; Johnson</div>
+      <div class="logo-pill">Smith &amp; Nephew</div>
+    </div>
+    <div class="fade-left"></div>
+    <div class="fade-right"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section-dark" style="position:relative;overflow:hidden">
+  <div class="cta-blur"></div>
+  <div class="container-xs" style="text-align:center;position:relative;z-index:1">
+    <h2 class="anim-fade-up section-title-white" style="margin-bottom:16px">Projekt besprechen</h2>
+    <p class="anim-fade-up md1" style="font-size:17px;color:rgba(255,255,255,.6);margin-bottom:32px;line-height:1.7">
+      Lassen Sie uns gemeinsam Ihre Herausforderungen analysieren und Lösungen entwickeln.
+    </p>
+    <div class="anim-fade-up md2">
+      <button class="cta-btn cta-glow">Kontakt aufnehmen <span>→</span></button>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.anim-fade-up, .anim-fade, .anim-slide-left, .anim-scale')
+    .forEach(el => observer.observe(el));
+
+  // Counter animation
+  function animateCounter(el, target, suffix = '+', duration = 1500) {
+    const start = performance.now();
+    const update = now => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (p < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
+
+  const statsObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCounter(document.getElementById('c1'), 10);
+        animateCounter(document.getElementById('c2'), 50);
+        animateCounter(document.getElementById('c3'), 4, '');
+        statsObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  statsObserver.observe(document.getElementById('stats-section'));
+</script>
+</body>
+</html>
