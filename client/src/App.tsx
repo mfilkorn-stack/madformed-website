@@ -25,6 +25,7 @@ import DatenschutzEN from "@/pages/DatenschutzEN";
 import AGBEN from "@/pages/AGBEN";
 import CaseReport from "@/pages/CaseReport";
 import NotFound from "@/pages/not-found";
+import MockupAnimations from "@/pages/MockupAnimations";
 
 function Router() {
   return (
@@ -64,6 +65,7 @@ function Router() {
         <Route path="/en/terms" component={AGBEN} />
         <Route path="/en/case-report" component={CaseReport} />
 
+        <Route path="/mockup" component={MockupAnimations} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

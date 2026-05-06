@@ -1,15 +1,32 @@
 import { Link } from "wouter";
+import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CTABand } from "@/components/CTABand";
 import { SEO } from "@/components/SEO";
 import { HeroSlider } from "@/components/HeroSlider";
+import { StatsBar } from "@/components/StatsBar";
+import { LogoMarquee } from "@/components/LogoMarquee";
 import { WaveDivider } from "@/components/WaveDivider";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { useLanguage } from "@/lib/i18n";
 import { benefits, workProcess } from "@/content/company";
-import { companyLogos } from "@/content/references";
 import { ArrowRight, Leaf, Monitor, Brain, AlertTriangle, Search, Lightbulb, Rocket, Shield, Zap, Target, Users, ShoppingCart } from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 32 },
+  visible: (delay = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.6, delay } }),
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
+};
 
 export default function Home() {
   const { language } = useLanguage();
@@ -176,16 +193,31 @@ export default function Home() {
 
       <HeroSlider />
 
+      <StatsBar />
+
       <article aria-label={isEnglish ? "Company introduction" : "Unternehmensvorstellung"}>
         <section className="py-12 md:py-16 bg-white" data-testid="intro-section">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-dark mb-6">
+            <motion.h2
+              className="text-2xl md:text-3xl font-bold text-brand-dark mb-6"
+              variants={fadeUp} custom={0}
+              initial="hidden" whileInView="visible" viewport={{ once: true }}
+            >
               {labels.intro.title}
-            </h2>
-            <p className="text-base md:text-lg text-brand-dark/70 leading-relaxed">
+            </motion.h2>
+            <motion.p
+              className="text-base md:text-lg text-brand-dark/70 leading-relaxed"
+              variants={fadeUp} custom={0.15}
+              initial="hidden" whileInView="visible" viewport={{ once: true }}
+            >
               {labels.intro.text}
-            </p>
-            <nav className="flex flex-wrap justify-center gap-4 mt-8" aria-label={isEnglish ? "Quick links" : "Schnellzugriff"}>
+            </motion.p>
+            <motion.nav
+              className="flex flex-wrap justify-center gap-4 mt-8"
+              aria-label={isEnglish ? "Quick links" : "Schnellzugriff"}
+              variants={fadeUp} custom={0.3}
+              initial="hidden" whileInView="visible" viewport={{ once: true }}
+            >
               <Link href={paths.services}>
                 <span className="inline-flex items-center text-brand-green font-semibold hover:underline" data-testid="link-services">
                   {labels.entityLinks.services}
@@ -204,7 +236,7 @@ export default function Home() {
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </span>
               </Link>
-            </nav>
+            </motion.nav>
           </div>
         </section>
       </article>
@@ -215,12 +247,18 @@ export default function Home() {
             title={labels.pillars.title}
             subtitle={labels.pillars.subtitle}
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6" role="list" aria-label={isEnglish ? "Consulting services" : "Beratungsleistungen"}>
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+            role="list"
+            aria-label={isEnglish ? "Consulting services" : "Beratungsleistungen"}
+            variants={staggerContainer}
+            initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
+          >
+            <motion.div variants={staggerItem} role="listitem">
             <Link href={paths.cannabis}>
               <Card
                 className="group relative p-6 bg-white border-2 border-brand-green/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-cannabis"
-                role="listitem"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-green to-brand-green/50" />
                 <div className="w-14 h-14 bg-brand-green/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand-green/20 transition-colors">
@@ -238,12 +276,13 @@ export default function Home() {
                 </span>
               </Card>
             </Link>
+            </motion.div>
 
+            <motion.div variants={staggerItem} role="listitem">
             <Link href={paths.ki}>
               <Card
                 className="group relative p-6 bg-white border-2 border-brand-green/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-ki"
-                role="listitem"
                 style={{ borderImage: "linear-gradient(to right, #5FB94E, #1E9BD9) 1" }}
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-green to-brand-cyan" />
@@ -267,12 +306,13 @@ export default function Home() {
                 </span>
               </Card>
             </Link>
+            </motion.div>
 
+            <motion.div variants={staggerItem} role="listitem">
             <Link href={paths.medtech}>
               <Card
                 className="group relative p-6 bg-white border-2 border-brand-cyan/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-medtech"
-                role="listitem"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-cyan to-brand-cyan/50" />
                 <div className="w-14 h-14 bg-brand-cyan/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand-cyan/20 transition-colors">
@@ -290,12 +330,13 @@ export default function Home() {
                 </span>
               </Card>
             </Link>
+            </motion.div>
 
+            <motion.div variants={staggerItem} role="listitem">
             <Link href={paths.handel}>
               <Card
                 className="group relative p-6 bg-white border-2 border-brand-cyan/30 transition-all cursor-pointer h-full overflow-visible hover-elevate"
                 data-testid="card-handel"
-                role="listitem"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-cyan to-brand-cyan/50" />
                 <div className="w-14 h-14 bg-brand-cyan/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand-cyan/20 transition-colors">
@@ -313,7 +354,8 @@ export default function Home() {
                 </span>
               </Card>
             </Link>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -328,7 +370,11 @@ export default function Home() {
             title={labels.whyMadformed.title}
             subtitle={labels.whyMadformed.subtitle}
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            variants={staggerContainer}
+            initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
+          >
             {benefitsLabels.map((benefit, index) => {
               const icons = [Shield, Zap, Target, Users];
               const Icon = icons[index];
@@ -340,8 +386,9 @@ export default function Home() {
               ];
               const color = colors[index];
               return (
-                <div 
-                  key={index} 
+                <motion.div
+                  key={index}
+                  variants={staggerItem}
                   className={`group relative bg-white p-8 rounded-2xl border-2 ${color.border} transition-all duration-300 hover:shadow-xl`}
                 >
                   <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-brand-green/5 to-brand-cyan/5 rounded-bl-[100px] -z-0" />
@@ -350,10 +397,10 @@ export default function Home() {
                   </div>
                   <h3 className="font-bold text-brand-dark mb-3 text-lg">{benefit.title}</h3>
                   <p className="text-sm text-brand-dark/70 leading-relaxed">{benefit.description}</p>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -370,15 +417,20 @@ export default function Home() {
             subtitle={labels.process.subtitle}
             light
           />
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 relative">
+          <motion.div
+            className="grid md:grid-cols-3 gap-6 lg:gap-8 relative"
+            variants={staggerContainer}
+            initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
+          >
             <div className="hidden md:block absolute top-24 left-[20%] right-[20%] h-0.5 bg-gradient-to-r from-brand-green via-brand-cyan to-brand-cyan opacity-30" aria-hidden="true" />
-            
+
             {workProcessLabels.map((step, index) => {
               const icons = [Search, Lightbulb, Rocket];
               const Icon = icons[index];
               return (
-                <div 
-                  key={step.step} 
+                <motion.div
+                  key={step.step}
+                  variants={staggerItem}
                   className="relative group"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-brand-green/20 to-brand-cyan/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
@@ -404,37 +456,14 @@ export default function Home() {
                     </div>
                     <p className="text-white/70 leading-relaxed text-center">{step.description}</p>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-gradient-to-b from-brand-light to-white" aria-labelledby="references-heading" data-testid="references-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            title={labels.references.title}
-            subtitle={labels.references.subtitle}
-          />
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-            {companyLogos.map((company, index) => (
-              <div
-                key={index}
-                className="group flex items-center justify-center p-6 bg-white rounded-xl border border-brand-grey/10 hover:border-brand-cyan/30 hover:shadow-lg transition-all duration-300"
-                data-testid={`home-company-${index}`}
-              >
-                <img 
-                  src={company.logo} 
-                  alt={`${company.name} Logo`}
-                  loading="lazy"
-                  className="max-h-16 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <LogoMarquee />
 
       <section className="py-16 md:py-20 bg-white" aria-labelledby="faq-heading" data-testid="faq-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
