@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/i18n";
 import { ArrowRight, Leaf, Brain, Monitor, ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react";
@@ -132,65 +133,74 @@ export function HeroSlider() {
 
       <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-center h-full max-w-2xl">
-          <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                slide.accentColor === "brand-gradient" 
-                  ? "bg-gradient-to-br from-brand-green/20 to-brand-cyan/20" 
-                  : slide.accentColor === "brand-cyan"
-                  ? "bg-brand-cyan/20"
-                  : "bg-brand-green/20"
-              }`}>
-                <Icon className={`w-6 h-6 ${accent.icon}`} />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              className="space-y-6"
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
+              <div className="flex items-center gap-3">
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                  slide.accentColor === "brand-gradient"
+                    ? "bg-gradient-to-br from-brand-green/20 to-brand-cyan/20"
+                    : slide.accentColor === "brand-cyan"
+                    ? "bg-brand-cyan/20"
+                    : "bg-brand-green/20"
+                }`}>
+                  <Icon className={`w-6 h-6 ${accent.icon}`} />
+                </div>
+                <span className={`text-sm font-semibold uppercase tracking-wider ${
+                  slide.accentColor === "brand-gradient"
+                    ? "bg-gradient-to-r from-brand-green to-brand-cyan bg-clip-text text-transparent"
+                    : slide.accentColor === "brand-cyan"
+                    ? "text-brand-cyan"
+                    : "text-brand-green"
+                }`}>
+                  {slide.tagline[language]}
+                </span>
               </div>
-              <span className={`text-sm font-semibold uppercase tracking-wider ${
-                slide.accentColor === "brand-gradient" 
-                  ? "bg-gradient-to-r from-brand-green to-brand-cyan bg-clip-text text-transparent" 
-                  : slide.accentColor === "brand-cyan"
-                  ? "text-brand-cyan"
-                  : "text-brand-green"
-              }`}>
-                {slide.tagline[language]}
-              </span>
-            </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              {slide.title[language]}
-            </h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                {slide.title[language]}
+              </h1>
 
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed">
-              {slide.subtitle[language]}
-            </p>
+              <p className="text-lg md:text-xl text-white/80 leading-relaxed">
+                {slide.subtitle[language]}
+              </p>
 
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Link href={slide.link[language]}>
-                <Button
-                  size="lg"
-                  className={`${
-                    slide.accentColor === "brand-gradient"
-                      ? "bg-gradient-to-r from-brand-green to-brand-cyan hover:from-brand-green/90 hover:to-brand-cyan/90"
-                      : slide.accentColor === "brand-cyan"
-                      ? "bg-brand-cyan hover:bg-brand-cyan/90"
-                      : "bg-brand-green hover:bg-brand-green/90"
-                  } text-white`}
-                  data-testid="button-hero-primary"
-                >
-                  {learnMoreText}
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-              <Link href={contactLink}>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
-                  data-testid="button-hero-secondary"
-                >
-                  {contactText}
-                </Button>
-              </Link>
-            </div>
-          </div>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <Link href={slide.link[language]}>
+                  <Button
+                    size="lg"
+                    className={`${
+                      slide.accentColor === "brand-gradient"
+                        ? "bg-gradient-to-r from-brand-green to-brand-cyan hover:from-brand-green/90 hover:to-brand-cyan/90"
+                        : slide.accentColor === "brand-cyan"
+                        ? "bg-brand-cyan hover:bg-brand-cyan/90"
+                        : "bg-brand-green hover:bg-brand-green/90"
+                    } text-white`}
+                    data-testid="button-hero-primary"
+                  >
+                    {learnMoreText}
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+                <Link href={contactLink}>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
+                    data-testid="button-hero-secondary"
+                  >
+                    {contactText}
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         <button
