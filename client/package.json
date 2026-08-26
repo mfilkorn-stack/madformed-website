@@ -8,9 +8,10 @@
     "npm": ">=10.0.0"
   },
   "scripts": {
-    "build": "vite build",
+    "build": "node script/prerender.mjs",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:spa": "vite build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

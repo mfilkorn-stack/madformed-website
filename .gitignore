@@ -28,3 +28,5 @@ vite.config.ts.*
 # SBOM (generated per build, not committed)
 sbom.json
 sbom.xml
+
+.ssr
