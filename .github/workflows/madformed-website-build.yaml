@@ -50,7 +50,9 @@ jobs:
         run: npm run build --prefix client
 
       - name: Generate SBOM
-        run: npx --yes @cyclonedx/cyclonedx-npm --output-format JSON --output-file sbom.json --omit dev --prefix client
+        # cyclonedx-npm kennt kein --prefix, sondern erwartet den Pfad zum
+        # Manifest als Argument. Das -- trennt es vom variadischen --omit.
+        run: npx --yes @cyclonedx/cyclonedx-npm --output-format JSON --output-file sbom.json --omit dev -- client/package.json
 
       - name: Upload SBOM artifact
         uses: actions/upload-artifact@v4
