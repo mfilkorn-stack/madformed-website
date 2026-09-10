@@ -7,11 +7,31 @@ Professionelle, SEO-optimierte Website für MadforMed GmbH - eine Beratungsgesel
 ## Technologie-Stack
 
 - **Frontend**: React mit TypeScript, Vite
-- **Backend**: Express.js (Node.js)
+- **Backend (nur lokal/Replit)**: Express.js (Node.js) — nicht Teil des Produktions-Deployments
 - **Styling**: Tailwind CSS mit benutzerdefinierten Markenfarben
 - **Routing**: Wouter
-- **Formulare**: React Hook Form + Zod Validierung
+- **Formulare**: React Hook Form + Zod Validierung, Versand via Formspree
 - **State Management**: TanStack Query
+
+## Architektur & Deployment
+
+Das Repo enthält zwei getrennte npm-Packages mit je eigener `package-lock.json`:
+
+| | Root (`package.json`) | `client/package.json` |
+|---|---|---|
+| Zweck | Express-Dev-Server, Replit-Umgebung | Deploy-Artefakt |
+| Build | `npm run build` → `dist/index.cjs` + `dist/public` | `npm run build` → `client/dist` |
+| Produktion | wird **nicht** deployt | wird deployt |
+
+**Produktion ist eine statische Site.** `.github/workflows/madformed-website-orchestration.yaml`
+ruft `madformed-website-build.yaml` auf, das ausschließlich `client/` baut
+(`npm ci --prefix client`, `npm run typecheck --prefix client`, `npm run build --prefix client`)
+und `client/dist` als `DEPLOYMENT_FOLDER` an IONOS Deploy Now übergibt. Ausgeliefert wird
+über Apache; `client/public/.htaccess` liefert SPA-Rewrite, Security-Header und CSP.
+
+Konsequenz: Alles in `server/` (Express-Routen, SSR-lite Meta-Injection, `/api/contact`)
+läuft nur in der lokalen Dev-Umgebung, nie in Produktion. Was in Produktion wirken soll,
+muss als statische Datei in `client/public/` liegen oder im Client-Bundle stecken.
 
 ## Branding
 
@@ -52,6 +72,9 @@ Professionelle, SEO-optimierte Website für MadforMed GmbH - eine Beratungsgesel
 - `/kontakt` - Kontaktformular (mit KI-Workshop Option)
 - `/impressum` - Impressum
 - `/datenschutz` - Datenschutzerklärung
+- `/agb` - Allgemeine Geschäftsbedingungen
+- `/case-report` - SEO-/KI-Sichtbarkeits-Case-Report
+- `/mockup` - interne Animations-Vorschau (nicht in Navigation und Sitemap)
 
 ### English
 - `/en` - Homepage
@@ -67,6 +90,7 @@ Professionelle, SEO-optimierte Website für MadforMed GmbH - eine Beratungsgesel
 - `/en/contact` - Contact Form
 - `/en/legal-notice` - Legal Notice (Impressum)
 - `/en/privacy-policy` - Privacy Policy
+- `/en/terms` - Terms and Conditions (AGB)
 
 ## i18n (Internationalization)
 
@@ -104,6 +128,7 @@ The website supports German (default) and English languages.
 | `/kontakt` | `/en/contact` |
 | `/impressum` | `/en/legal-notice` |
 | `/datenschutz` | `/en/privacy-policy` |
+| `/agb` | `/en/terms` |
 
 ### SEO for Bilingual
 - hreflang tags on all pages (de, en, x-default)
@@ -128,24 +153,42 @@ The website supports German (default) and English languages.
 - `client/src/components/ServiceCard.tsx` - Service-Karten
 - `client/src/components/CTABand.tsx` - Call-to-Action Banner
 
-### API
-- `POST /api/contact` - Kontaktformular-Einreichung
-  - Validiert mit Zod
-  - Honeypot-Schutz gegen Spam
-  - Rate Limiting (1 Anfrage pro Minute pro IP)
-  - Speichert Leads in `/data/leads.json`
+### Formularversand
+
+Das Kontaktformular (`client/src/pages/Kontakt.tsx`) postet direkt an einen
+**Formspree-Endpoint** — clientseitig, ohne eigenes Backend. Validierung via Zod,
+Honeypot-Feld `_gotcha` gegen Spam.
+
+Die Express-Route `POST /api/contact` (`server/routes.ts`) mit Rate-Limiting und
+Ablage in `data/leads.json` existiert weiterhin, greift aber nur im lokalen
+Dev-Server — im statischen Produktions-Deploy gibt es sie nicht.
 
 ## Starten
+
+Lokaler Dev-Server (Express + Vite-Middleware, Port 5000):
 
 ```bash
 npm run dev
 ```
 
-## Build für Produktion
+Reiner Client-Build wie in CI:
 
 ```bash
-npm run build
+npm ci --prefix client
+npm run typecheck --prefix client
+npm run build --prefix client   # -> client/dist
 ```
+
+## Build für Produktion
+
+Produktionsrelevant ist ausschließlich der Client-Build:
+
+```bash
+npm run build --prefix client
+```
+
+`npm run build` im Root baut die Replit-Variante (`dist/index.cjs` + `dist/public`)
+und wird vom Deployment nicht verwendet.
 
 ## Wo Inhalte gepflegt werden
 
@@ -180,13 +223,13 @@ Um E-Mail-Benachrichtigungen für neue Kontaktanfragen zu aktivieren:
 
 | Element | Status | Details |
 |---------|--------|---------|
-| Tech-Stack | React + Vite | CSR mit serverseitigen Fallbacks |
+| Tech-Stack | React + Vite | CSR, statisch ausgeliefert |
 | Routing | Wouter | Pfad-basiert, kein Hash-Routing |
-| Meta-Tags | ✓ | Client-side + HTML-Fallbacks |
-| Canonical | ✓ | Dynamisch gesetzt |
-| robots.txt | ✓ | Dynamisch generiert |
-| sitemap.xml | ✓ | Dynamisch generiert |
-| llms.txt | ✓ | Für KI-Systeme |
+| Meta-Tags | ✓ | Client-side + Fallbacks in `client/index.html` |
+| Canonical | ✓ | Client-side gesetzt (`SEO.tsx`) |
+| robots.txt | ✓ | Statisch: `client/public/robots.txt` |
+| sitemap.xml | ✓ | Statisch: `client/public/sitemap.xml` (manuell pflegen) |
+| llms.txt | ⚠ | Nur als Express-Route, fehlt in `client/public/` — siehe Hinweise |
 | JSON-LD | ✓ | Organization, WebSite, Service, FAQ, Breadcrumb |
 | OG-Tags | ✓ | Vollständig implementiert |
 | Twitter Cards | ✓ | summary_large_image |
@@ -195,22 +238,22 @@ Um E-Mail-Benachrichtigungen für neue Kontaktanfragen zu aktivieren:
 
 ### Implementierte Features
 
-1. **robots.txt** - `/robots.txt`
-   - Erlaubt alle Crawler
-   - Verweist auf Sitemap
-   - Enthält Crawl-delay für höfliches Crawling
-   - Domain automatisch via `SITE_URL` (production/development)
+1. **robots.txt** — `client/public/robots.txt` (statisch, wird 1:1 nach `client/dist` kopiert)
+   - Erlaubt alle Crawler, explizite Allow-Einträge für GPTBot, ClaudeBot, PerplexityBot u. a.
+   - Verweist auf Sitemap, enthält Crawl-delay
+   - Domain hart auf `https://madformed.de` — bei Domainwechsel hier mitziehen
 
-2. **sitemap.xml** - `/sitemap.xml`
-   - Dynamisch generiert mit allen Seiten
-   - Enthält lastmod, changefreq, priority
-   - Blog-Artikel automatisch inkludiert
-   - Domain automatisch via `SITE_URL`
+2. **sitemap.xml** — `client/public/sitemap.xml` (statisch)
+   - Alle DE-/EN-Seiten mit hreflang-Annotationen, changefreq, priority
+   - **Manuell pflegen**: neue Seiten und Blog-Artikel hier nachtragen
 
-3. **llms.txt** - `/llms.txt`
-   - Spezielles Format für KI-Systeme
-   - Unternehmensprofil, Kernkompetenzen, wichtige URLs
-   - Kontaktinformationen
+3. **llms.txt / llms-en.txt**
+   - Als Express-Routen in `server/routes.ts` implementiert
+   - In `client/public/` nicht vorhanden → im statischen Deploy 404, obwohl
+     `robots.txt` und `client/index.html` darauf verweisen
+
+   Die Express-Varianten von robots/sitemap/llms erzeugen ihre Domain via `SITE_URL`;
+   das betrifft nur den Dev-Server.
 
 4. **Strukturierte Daten (JSON-LD)**
    - `OrganizationData`: Globale Unternehmensdaten
@@ -234,11 +277,11 @@ Um E-Mail-Benachrichtigungen für neue Kontaktanfragen zu aktivieren:
    - Theme-Color für Mobile
    - Font-Preconnect für Performance
 
-7. **SSR-lite Meta-Tag Injection** (server/static.ts)
-   - `PAGE_META`: Meta-Daten Map für alle statischen Seiten
-   - `BLOG_POST_META`: Meta-Daten Map für alle Blog-Artikel
-   - In Produktion: HTML wird mit korrekten Meta-Tags pro Route ausgeliefert
-   - `injectMetaTags()`: Ersetzt Title, Description, OG-Tags, Canonical pro Request
+7. **SSR-lite Meta-Tag Injection** (`server/static.ts`) — nur Dev-Server
+   - `PAGE_META` / `BLOG_POST_META`: Meta-Daten Maps für Seiten und Blog-Artikel
+   - `injectMetaTags()`: ersetzt Title, Description, OG-Tags, Canonical pro Request
+   - Greift im statischen IONOS-Deploy **nicht**. Crawler sehen dort die Fallbacks
+     aus `client/index.html`, korrekte Per-Route-Tags setzt der Client zur Laufzeit.
 
 ### Komponenten
 
@@ -267,17 +310,19 @@ Um E-Mail-Benachrichtigungen für neue Kontaktanfragen zu aktivieren:
 ### Testen
 
 ```bash
-# robots.txt prüfen
+# Dev-Server (Express-Routen)
 curl http://localhost:5000/robots.txt
-
-# sitemap.xml prüfen
 curl http://localhost:5000/sitemap.xml
-
-# llms.txt prüfen
 curl http://localhost:5000/llms.txt
-
-# Meta-Tags prüfen
 curl -s http://localhost:5000/ | grep -E "(og:|twitter:|canonical|description)"
+
+# Produktion (statische Dateien) — das ist der Stand, den Crawler sehen
+curl https://madformed.de/robots.txt
+curl https://madformed.de/sitemap.xml
+curl -s https://madformed.de/ | grep -E "(og:|twitter:|canonical|description)"
+
+# Statischen Build lokal gegenprüfen
+npm run build --prefix client && ls client/dist
 
 # Strukturierte Daten im Browser prüfen
 # 1. Seite öffnen
@@ -291,31 +336,34 @@ curl -s http://localhost:5000/ | grep -E "(og:|twitter:|canonical|description)"
 - **Lazy Loading**: Bilder mit nativer lazy-loading
 - **Theme-Color**: Definiert für Mobile-Browser
 
-### Prerendering (optional für SSG)
+### Prerendering (nicht aktiv)
 
-Für statisches HTML bei Build-Zeit (empfohlen für maximale SEO):
-
-```json
-"reactSnap": {
-  "source": "dist/public",
-  "destination": "dist/public",
-  "include": ["/", "/leistungen", "/leistungen/medizinisches-cannabis", ...],
-  "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"]
-}
-```
+`script/prerender.ts` existiert, importiert aber `puppeteer`, das in keiner der beiden
+`package.json` steht, und wird von keinem npm-Script aufgerufen. Der Prerender-Pfad ist
+damit nicht lauffähig. Wer ihn reaktivieren will, muss `puppeteer` als Dev-Dependency
+ergänzen, die Routenliste um EN-Seiten und `/agb` erweitern und den Schritt in
+`madformed-website-build.yaml` nach dem Client-Build einhängen.
 
 ### Typische SPA/PWA SEO-Fehler (vermieden)
 
 1. ✓ Hash-Routing → Pfad-basiertes Routing verwendet
 2. ✓ Fehlende Meta-Tags → Fallbacks in index.html
 3. ✓ Duplicate Title → Eindeutige Titles pro Seite
-4. ✓ Fehlende Canonicals → Dynamisch gesetzt
+4. ✓ Fehlende Canonicals → Client-side gesetzt
 5. ✓ Keine strukturierten Daten → JSON-LD implementiert
-6. ✓ Keine Sitemap → Dynamisch generiert
+6. ✓ Keine Sitemap → statische `client/public/sitemap.xml`
 7. ✓ Keine internen Links → Hub/Spoke-Struktur
 
 ## Hinweise
 
-- **Impressum/Datenschutz**: Diese Seiten enthalten Platzhalter und müssen vor der Veröffentlichung rechtlich geprüft werden
-- **Logo**: Kann unter `/public/madformed-logo.png` hinzugefügt werden
+- **Impressum/Datenschutz/AGB**: rechtlich prüfen lassen; AGB und KI-Offenlegung sind ergänzt
 - **Kontaktdaten**: In `client/src/content/company.ts` aktualisieren
+- **CSP**: Neue Third-Party-Skripte (Analytics, Widgets, Fonts) müssen in die
+  Content-Security-Policy in `client/public/.htaccess` eingetragen werden, sonst
+  blockiert der Browser sie in Produktion stillschweigend
+- **Tracking**: Google Ads/GTM-Tag `AW-17944281882` liegt in `client/index.html`
+- **llms.txt**: fehlt im statischen Deploy, obwohl robots.txt und index.html darauf
+  verweisen — offener Punkt, siehe `docs/DECISIONS.md`
+- **Nicht referenzierter Code**: `server/github.ts`, `scripts/push-to-github.ts`,
+  `scripts/upload-to-github.ts` werden von keinem Einstiegspunkt aufgerufen
+  (Replit→GitHub-Bridge); `@octokit/rest` hängt allein daran
